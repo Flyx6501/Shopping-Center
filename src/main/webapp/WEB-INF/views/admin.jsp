@@ -10,23 +10,24 @@
     <script type="text/javascript" src="${APP_PATH}/static/frame/jquery-3.4.1.min.js"></script>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="${APP_PATH}/static/frame/bootstrap-3.4.1-dist.min.css">
+    <link rel="stylesheet" href="../../static/css/admin.css">
 </head>
 <html>
 <body>
 
-<script src="./js/admin.js"></script>
+<script src="../../static/js/admin.js"></script>
 <div class="content">
     <div class="login-wrap">
         <!-- 接入跳转页面 -->
-        <form id="user_login" action="">
+        <form id="adminLogin" action="">
             <h3>后 台 登 录</h3>
-            <input class="name" name="" id="AdminName" type="text" placeholder="请输入用户名">
+            <input class="name" name="" id="adminName" type="text" placeholder="请输入用户名">
             <input class="pwd" name="password" id="password" type="password" placeholder="请输入密码">
             <div class="btn">
-                <input type="button" id="sbt" class="sbt" value="登录" onclick="return check(this.form);">
-                <input type="reset" id="reset" class="reset" value="重置">
+                <input type="button" id="submitBtn" class="submit-btn" value="登录" onclick="return check(this.form);">
+                <input type="reset" id="resetBtn" class="reset-btn" value="重置">
             </div>
-            <div id="CheckMsg" class="msg"></div>
+            <div id="checkMsg" class="msg"></div>
         </form>
     </div>
 </div>
