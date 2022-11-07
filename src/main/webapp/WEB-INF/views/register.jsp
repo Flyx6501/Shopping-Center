@@ -14,94 +14,42 @@
 <html>
 <body>
 <div class="container">
-
-    <h1>用户注册</h1>
-
+    <div class="rg_left"><p>用户注册</p></div>
+    <!-- 定义表单form -->
     <form action="#" method="post" >
-        <div class="form-group">
+        <table>
+            <tr>
+                <td class="td_left"><label for="userName">用户名</label></td>
+                <td class="td_center"><input id="userName" type="text" placeholder="4-10个英文字母或数字" ></td>
+                <td class="td_right"><label id="errorName" class="errstyle"></label></td>
+            </tr>
 
-            <label for="userName" class="col-md-2">
-                <span>用户名</span><b>*</b>
-            </label>
+            <tr>
+                <td class="td_left"><label for="nickName">昵称</label></td>
+                <td class="td_center"><input id="nickName" type="text" placeholder="昵称不能为空" ></td>
+                <td class="td_right"><label id="errorNick" class=" errstyle"></label></td>
+            </tr>
 
-            <div class="col-md-3">
-                <input id="userName" type="text" placeholder="4-10个英文字母或数字" >
-            </div>
+            <tr>
+                <td class="td_left"><label for="password">密码</label></td>
+                <td class="td_center"><input id="password" type="password" placeholder="6-15个英文字母或数字" ></td>
+                <td class="td_right"><label id="errorPassword" class="errstyle"></label></td>
+            </tr>
 
-            <div class="col-md-4">
-                <label id="errorName" class=" errstyle"></label>
-            </div>
+            <tr>
+                <td class="td_left"><label for="confirm">确认密码</label></td>
+                <td class="td_center"><input id="confirm" type="password" placeholder="确认密码" ></td>
+                <td class="td_right"><label id="errorConfirm" class="errstyle"></label></td>
+            </tr>
+            <tr>
+                <td class="td_left"><label for="email">电子邮箱</label></td>
+                <td class="td_center"><input type="email" id="email" placeholder="电子邮箱" ></td>
+                <td class="td_right"><label id="errorEmail" class="errstyle"></label></td>
+            </tr>
 
-        </div>
-
-        <div class="form-group">
-
-            <label for="nickName" class="col-md-2 ">
-                <span>昵称</span><b>*</b>
-            </label>
-
-            <div class="col-md-3">
-                <input id="nickName" type="text" placeholder="昵称不能为空" >
-            </div>
-
-            <div class="col-md-4">
-                <label id="errorNick" class=" errstyle"></label>
-            </div>
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label for="password" class="col-md-2 ">
-                <span>密码</span><b>*</b>
-            </label>
-
-            <div class="col-md-3">
-                <input id="password" type="password" placeholder="8-16个英文字母或数字" >
-            </div>
-
-            <div class="col-md-4">
-                <label id="errorPassword" class="errstyle"></label>
-            </div>
-
-        </div>
-
-
-        <div class="form-group">
-            <label for="confirm" class="col-md-2 ">
-                <span>确认密码</span><b>*</b>
-            </label>
-
-            <div class="col-md-3">
-                <input id="confirm" type="password" placeholder="确认密码" >
-            </div>
-
-            <div class="col-md-4">
-                <label id="errorConfirm" class="errstyle"></label>
-            </div>
-
-        </div>
-
-
-
-        <div class="form-group">
-            <label for="email" class="col-md-2">
-                <span>电子邮箱</span>
-            </label>
-            <div class="col-md-3">
-                <input type="email" id="email" placeholder="电子邮箱" >
-            </div>
-            <div class="col-md-4">
-                <label id="errorEmail" class="errstyle"></label>
-            </div>
-        </div>
-
-        <div class="col-md-1">
-            <button class="btn" id="submit">提交</button>
-
-        </div>
-
+        </table>
+        <div class="btn_sub"><button class="btn" id="submit">注册</button></div>
+        <div class="rg_right"><p>已有账号?<a href="#">立即登录</a></p></div>
     </form>
 </div>
 
