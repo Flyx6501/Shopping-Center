@@ -1,3 +1,9 @@
+<%--
+  @description: 顾客登录界面
+  @author: 86188
+  @date: 2022/11/8 16:11
+  @version: 1.0
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
@@ -10,12 +16,15 @@
     <script type="text/javascript" src="${APP_PATH}/static/frame/jquery-3.4.1.min.js"></script>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="${APP_PATH}/static/frame/bootstrap-3.4.1-dist.min.css">
-    <link rel="stylesheet" href="../../static/css/index.css">
+    <!-- 引入js验证文件-->
+    <script type="text/javascript" src="${APP_PATH}/static/js/index.js"></script>
+    <!-- 引入css样式-->
+    <link rel="stylesheet" href="${APP_PATH}/static/css/index.css">
 </head>
 <html>
 <body>
 
-<script src="../../static/js/index.js"></script>
+<script src="../../static/js/index1.js"></script>
 <div class="content">
     <div class="login-wrap">
         <!-- 接入跳转页面 -->
