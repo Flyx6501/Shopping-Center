@@ -1,9 +1,7 @@
 package com.service;
-
 import com.dao.ManagerDao;
 import com.mysql.jdbc.Connection;
 import com.utils.JDBCUtil;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -22,7 +20,7 @@ public class ManagerDaoImpl implements ManagerDao {
             ps.setInt(1, manageId);
             ps.setString(2, password);
             rs = ps.executeQuery();
-            while (rs.next()) {
+            if(rs.next()) {
                 return true;
             }
         } catch (Exception e) {
@@ -32,7 +30,6 @@ public class ManagerDaoImpl implements ManagerDao {
         }
         return false;
     }
-
     @Override
     public boolean registerName(Connection c,int manageId, String password, String userName) {
         PreparedStatement ps = null;
