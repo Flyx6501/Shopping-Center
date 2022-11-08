@@ -1,11 +1,16 @@
-
-*{
+/* @description: TODO
+   @author 小花妹妹
+   @date 2022/11/8 16:02
+   @version 1.0
+*/
+* {
     margin: 0;
     padding: 0;
     /*标准盒子 */
     box-sizing: border-box;
 }
-body,html{
+
+body, html {
     font-family: Arial, Helvetica, sans-serif;
     background-image: url(../img/bg.jpg);
     background-position: center center;
@@ -20,71 +25,70 @@ body,html{
     justify-content: center;
     align-items: center;
     height: 100%;
-    margin:  0 auto;
+    margin: 0 auto;
 }
 
-.container{
+.container {
     width: 1000px;
     height: 450px;
     border: 8px solid #EEEEEE;
     background-color: white;
-    /*让div水平居中*/
-    margin: auto;
-    margin-top: 15px;
+    margin: 15px auto 10px;
+    padding-top: 30px;
 }
-.rg_left{
+
+.rg-left {
     float: left;
     margin: 15px;
 }
-.rg_left > p{
+
+.rg-left>p {
     color: #FFD026;
     font-size: 20px;
 }
-.rg_right{
+
+.rg-right {
     float: right;
     margin: 15px;
 }
-.td_left{
+
+.td-left {
     width: 100px;
     text-align: right;
     height: 45px;
 }
-.td_center{
+
+.td-center {
     padding-left: 50px;
 }
 
-.errstyle{
+.err-style {
     color: red;
 }
-.btn{
+
+.btn {
     width: 150px;
     height: 40px;
     background-color: #FFD026;
     border: #FFD026 1px solid;
-    border-radius:8px;
+    border-radius: 8px;
 }
-.btn_sub{
+
+.btn-sub {
     margin-top: 40px;
     margin-left: 265px;
     width: 1000px;
 }
-a{
+
+a {
     color: hotpink;
     font-size: 1rem;
     /* 下划线消失 */
     text-decoration: none;
 }
-input{
+
+input {
     width: 400px;
     line-height: 20px;
     text-align: left;
 }
-
-
-
-
-
-
-
-
-

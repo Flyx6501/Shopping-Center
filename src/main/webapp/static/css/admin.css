@@ -1,3 +1,8 @@
+/* @description: 管理员登录界面样式
+   @author LL
+   @date 2022/11/8 15:55
+   @version 1.0
+*/
 .content {
     padding: 0 auto;
     margin: 0 auto;
@@ -85,13 +90,13 @@ input:hover {
 }
 
 /* 登录按钮 */
-.sbt {
+.submit-btn {
     background: #20b0fe;
     margin-left: 25px;
 }
 
 /* 重置按钮 */
-.reset {
+.reset-btn {
     background: #bbb;
 }
 
