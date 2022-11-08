@@ -1,3 +1,9 @@
+<%--
+  @description: 管理员登录界面
+  @author: 86188
+  @date: 2022/11/8 16:11
+  @version: 1.0
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
@@ -10,12 +16,14 @@
     <script type="text/javascript" src="${APP_PATH}/static/frame/jquery-3.4.1.min.js"></script>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="${APP_PATH}/static/frame/bootstrap-3.4.1-dist.min.css">
-    <link rel="stylesheet" href="../../static/css/admin.css">
+    <!-- 引入js验证文件-->
+    <script type="text/javascript" src="${APP_PATH}/static/js/admin.js"></script>
+    <!-- 引入css样式-->
+    <link rel="stylesheet" href="${APP_PATH}/static/css/admin.css">
 </head>
 <html>
 <body>
 
-<script src="../../static/js/admin.js"></script>
 <div class="content">
     <div class="login-wrap">
         <!-- 接入跳转页面 -->
