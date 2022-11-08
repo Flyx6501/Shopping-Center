@@ -1,3 +1,8 @@
+/* @description: TODO
+   @author 小花妹妹
+   @date 2022/11/8 16:02
+   @version 1.0
+*/
 * {
     margin: 0;
     padding: 0;
@@ -28,9 +33,8 @@ body, html {
     height: 450px;
     border: 8px solid #EEEEEE;
     background-color: white;
-    /*让div水平居中*/
-    margin: 15px auto;
-    margin-top: 15px;
+    margin: 15px auto 10px;
+    padding-top: 30px;
 }
 
 .rg-left {
