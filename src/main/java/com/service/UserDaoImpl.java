@@ -39,9 +39,7 @@ public class UserDaoImpl implements UserDao {
         return false;
     }
 
-
     @Override
-    //进行用户的注册
     public boolean registerName(Connection c, int userId, String password) {
         PreparedStatement ps = null;
         ResultSet rs = null;
