@@ -1,3 +1,8 @@
+/* @description: TODO
+   @author 小花妹妹
+   @date 2022/11/8 16:01
+   @version 1.0
+*/
 $(function() {
     var flag_username = false;
     var flag_nickname = false;

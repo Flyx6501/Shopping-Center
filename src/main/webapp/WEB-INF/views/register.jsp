@@ -1,12 +1,12 @@
 <%--
-  Created by IntelliJ IDEA.
-  User: 小花妹妹
-  Date: 2022/11/8
-  Time: 14:35
-  To change this template use File | Settings | File Templates.
+  @description: TODO
+  @author: 小花妹妹
+  @date: 2022/11/8 15:53
+  @version: 1.0
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>新用户注册界面</title>
