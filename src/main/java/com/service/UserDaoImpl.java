@@ -41,7 +41,6 @@ public class UserDaoImpl implements UserDao {
 
 
     @Override
-    //进行用户的注册
     public boolean registerName(Connection c, int userId, String password) {
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -54,7 +53,6 @@ public class UserDaoImpl implements UserDao {
             ps.setString(3, "");
             ps.setString(4, "");
             ps.setString(5, "");
-
 
             int rs1 = ps.executeUpdate();
             if (rs1 >= 1) {
