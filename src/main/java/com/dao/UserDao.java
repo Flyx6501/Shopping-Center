@@ -2,7 +2,7 @@ package com.dao;
 
 import com.mysql.jdbc.Connection;
 
-/**
+/**进行登陆和注册的接口
  * @author l666888999
  * @version 1.0
  * @date 2022/11/8 15:10
