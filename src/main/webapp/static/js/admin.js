@@ -1,12 +1,12 @@
 //验证表单是否为空，为空则聚焦input并提示；不为空则进行下一步表单验证
 function check(form) {
-  var AdminName = $("#AdminName").val();
+  var adminName = $("#adminName").val();
   var password = $("#password").val();
   //用户名为空
-  if (!AdminName || AdminName == "") {
+  if (!adminName || adminName == "") {
     showMsg("请输入用户名");
     //聚焦
-    form.AdminName.focus();
+    form.adminName.focus();
     //禁止默认行为
     return false;
   }
@@ -19,7 +19,7 @@ function check(form) {
   //验证账号密码是否存在且正确
   $.ajax({
     url: "#",// 后台接口
-    data: { "password": password, "AdminName": AdminName },
+    data: { "password": password, "adminName": adminName },
     type: "GET",
     dataType: "json",
     //data 默认参数
@@ -47,5 +47,5 @@ function check(form) {
 
 //错误信息提醒
 function showMsg(msg) {
-  $("#CheckMsg").text(msg);
+  $("#checkMsg").text(msg);
 }
