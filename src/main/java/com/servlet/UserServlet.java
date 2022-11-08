@@ -15,7 +15,7 @@ public class UserServlet extends HttpServlet {
 
         com.mysql.jdbc.Connection c=null;
         UserDao userdata=new UserDaoImpl();
-        userdata.check(c,1,"123");
+
 
 
         if (userdata==null){

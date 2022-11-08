@@ -7,47 +7,79 @@ import com.utils.JDBCUtil;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+/**
+ * 用户类 User 的 Service
+ * @author l66888999
+ * @version 1.0
+ * @date 2022/11/07 22:37
+ */
 public class UserDaoImpl implements UserDao {
+
+    /** 登陆时查看出入的用户和密码是否与数据库中的相匹配
+     * @param c JDBC链接
+     * @param userId 用户的ID
+     * @param password 用户密码
+     * @return boolean
+     * @author l666888999
+     * @date 2022/11/07 22:37
+     **/
     @Override
-    public void check(Connection c, int userId, String password) {
+    public boolean searchName(Connection c, int userId, String password) {
         PreparedStatement ps = null;
         ResultSet rs = null;
 
         try {
-            String sql = "SELECT user_id,password FROM user WHERE use_id=? password=?";
+            String sql = "SELECT user_id,user_password FROM `user` WHERE  user_id=? and user_password=? ";
             ps = c.prepareStatement(sql);
+           ps.setInt(1,userId);
+           ps.setString(2,password);
             rs = ps.executeQuery();
-            if (rs.next()) {
-                int user = rs.getInt(1);
-                String passwords = (String) rs.getObject(2);
-                if (password.equals(passwords)) {
-                    getUser(c,userId);
+            while (rs.next()) {
 
-                }
+                return true;
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             JDBCUtil.closeResource(c, ps, rs);
         }
+        return false;
     }
 
+    /** 注册用户id和密码
+     * @param c JDBC 连接
+     * @param userId 用户ID
+     * @param password 用户密码
+     * @return boolean
+     * @author
+     * @date
+     **/
+
     @Override
-    public void getUser(Connection c, int user_id) {
+    //进行用户的注册
+    public boolean registerName(Connection c, int userId, String password) {
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
-            String sql = "select * from user where use_id=?";
+            String sql = "INSERT INTO user(user_name,nickname,user_password,user_password,email) VALUES (?,?,?,?,?)";
             ps = c.prepareStatement(sql);
-            rs = ps.executeQuery();
-            int user = rs.getInt(1);
+            //ps.setInt(1,userId);
+            ps.setString(1,password);
+            ps.setString(2,"");
+            ps.setString(3,"");
+            ps.setString(4,"");
+            ps.setString(5,"");
 
-            String passwords = (String) rs.getObject(2);
 
+            int rs1 = ps.executeUpdate();
+           if (rs1>=1){
+               return true;
+           }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             JDBCUtil.closeResource(c, ps, rs);
         }
+        return false;
     }
 }

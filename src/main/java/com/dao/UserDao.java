@@ -3,7 +3,8 @@ package com.dao;
 import com.mysql.jdbc.Connection;
 
 public interface UserDao {
-    void check(Connection c, int userId, String password);
+
+    boolean searchName(Connection c, int userId, String password);
 /** 判断用户名是否已注册过
 1.前端传变量：用户名username
 2.根据username，查数据库中是否存在用户，其用户名为username
@@ -20,6 +21,7 @@ SELECT * FROM xxx WHERE username = username;
      * SELECT * FROM xxx WHERE username=username AND password=password;
      * **/
 
-    void getUser(Connection c, int userId);
+    boolean registerName(Connection c, int userId,String password);
+
 }
 
