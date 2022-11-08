@@ -17,7 +17,6 @@ import java.sql.SQLException;
 public class UserServiceTest {
     /**
      * 用户登录方法测试
-     * @param null
      * @author l666888999
      * @date 2022/11/08 17:41
      **/
@@ -43,7 +42,6 @@ public class UserServiceTest {
 
     /**
      * 用户注册方法测试
-     * @param null
      * @author l666888999
      * @date 2022/11/08 17:41
      **/

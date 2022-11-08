@@ -1,7 +1,7 @@
 package com.bean;
 
 /**
- * 用户类 User
+ * 用户实体类
  * @author l66888999
  * @version 1.0
  * @date 2022/11/07 18:37
@@ -74,6 +74,11 @@ public class User {
         this.nickname = nickname;
     }
 
+  /** TODO
+       * @return java.lang.String
+   * @author l666888999
+   * @date  2022/11/08 15:37
+   **/
     @Override
     public String toString() {
         return "User{" +
