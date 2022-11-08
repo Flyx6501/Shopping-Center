@@ -7,6 +7,7 @@ import com.service.UserDaoImpl;
 
 import java.io.IOException;
 import java.sql.SQLException;
+
 /**
  * @author l666888999
  * @version 1.0
@@ -14,53 +15,55 @@ import java.sql.SQLException;
  **/
 
 public class UserServiceTest {
-   /** TODO   
-    * @author l666888999
-    * @date  2022/11/08 15:40
-    **/
+    /**
+     * 用户登录方法测试
+     *
+     * @param null
+     * @author l666888999
+     * @date 2022/11/08 17:41
+     **/
     @Test
-    public void registerNametest()  {
+    public void registerNameTest() {
         UserDaoImpl userService = new UserDaoImpl();
-      //  userService.check(Connection c,1,22);
-     Connection c=null;
+        //  userService.check(Connection c,1,22);
+        Connection c = null;
         try {
-            c= (Connection) JDBCUtil.getConnection();
-            userService.registerName(c, 6,"12233124124");
+            c = (Connection) JDBCUtil.getConnection();
+            userService.registerName(c, 6, "12233124124");
             System.out.println("123");
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 c.close();
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
 
-   /** TODO   
-    * @author 
-    * @date  
-    **/
+    /**
+     * 用户注册方法测试
+     *
+     * @param null
+     * @author l666888999
+     * @date 2022/11/08 17:41
+     **/
     @Test
-    public void searchName()  {
+    public void searchNameTest() {
         UserDaoImpl userService = new UserDaoImpl();
-        Connection c=null;
+        Connection c = null;
+
         try {
-
-
-            c=(Connection) JDBCUtil.getConnection();
+            c = (Connection) JDBCUtil.getConnection();
             userService.searchName(c, 3, "123");
             System.out.println("123");
-
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
-
-
                 c.close();
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
