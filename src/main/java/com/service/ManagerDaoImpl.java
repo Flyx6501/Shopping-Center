@@ -39,8 +39,8 @@ public class ManagerDaoImpl implements ManagerDao {
             ps = c.prepareStatement(sql);
             ps.setString(1, password);
             ps.setString(2,userName);
-            int rs1 = ps.executeUpdate();
-            if (rs1 >= 1) {
+            rs = ps.executeQuery();
+            while (rs.next()) {
                 return true;
             }
         } catch (Exception e) {
