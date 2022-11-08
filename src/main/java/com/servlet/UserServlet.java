@@ -15,11 +15,7 @@ public class UserServlet extends HttpServlet {
 
         com.mysql.jdbc.Connection c=null;
         UserDao userdata=new UserDaoImpl();
-
-
-
         if (userdata==null){
-
             System.out.println("用户名是不存在的");
         }else{
             System.out.println("欢迎您");
