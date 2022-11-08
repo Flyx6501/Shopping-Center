@@ -1,6 +1,6 @@
 package com.bean;
 
-/**
+/** 管理员实体类
  * @author l666888999
  * @version 1.0
  * @date 2022/11/8 15:05
@@ -15,8 +15,8 @@ public class Manager {
         this.userName = userName;
         this.password = password;
     }
-    public Manager(){
 
+    public Manager() {
     }
 
     public int getManageId() {
@@ -42,11 +42,7 @@ public class Manager {
     public void setPassword(String password) {
         this.password = password;
     }
-/**  得到管理员ID,姓名、密码
-     * @return java.lang.String
- * @author l666888999
- * @date 2022/11/08 18:10
- **/
+
     @Override
     public String toString() {
         return "Manager{" +

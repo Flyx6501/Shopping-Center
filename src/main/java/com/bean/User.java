@@ -1,7 +1,7 @@
 package com.bean;
 
 /**
- * 用户类 User
+ * 用户实体类
  * @author l66888999
  * @version 1.0
  * @date 2022/11/07 18:37
