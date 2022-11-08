@@ -23,7 +23,6 @@ public class ManagerDaoImpl implements ManagerDao {
             ps.setString(2, password);
             rs = ps.executeQuery();
             while (rs.next()) {
-
                 return true;
             }
         } catch (Exception e) {
@@ -32,7 +31,6 @@ public class ManagerDaoImpl implements ManagerDao {
             JDBCUtil.closeResource(c, ps, rs);
         }
         return false;
-
     }
 
     @Override
@@ -42,12 +40,8 @@ public class ManagerDaoImpl implements ManagerDao {
         try {
             String sql = "INSERT INTO manage(password,mange_username) VALUES (?,?)";
             ps = c.prepareStatement(sql);
-
             ps.setString(1, password);
             ps.setString(2,userName);
-
-
-
             int rs1 = ps.executeUpdate();
             if (rs1 >= 1) {
                 return true;
