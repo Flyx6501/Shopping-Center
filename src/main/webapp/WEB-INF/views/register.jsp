@@ -29,7 +29,7 @@
         <p>用户注册</p>
     </div>
     <!-- 定义表单form -->
-    <form action="#" method="post">
+    <form action="/userRegister" method="post">
         <table>
             <tr>
                 <td class="td-left"><label for="userName">用户名</label></td>
