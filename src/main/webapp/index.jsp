@@ -24,7 +24,6 @@
 <html>
 <body>
 
-
 <div class="content">
     <div class="login-wrap">
         <!-- 接入跳转页面 -->
@@ -37,7 +36,7 @@
                 <input type="reset" id="resetBtn" class="reset-btn" value="重置">
             </div>
             <div class="register">
-                还没有账户？<a href="javascript:;">注册</a>
+                还没有账户？<a href="register">注册</a>
             </div>
             <div id="checkMsg" class="msg"></div>
         </form>
