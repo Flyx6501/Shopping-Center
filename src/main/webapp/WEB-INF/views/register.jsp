@@ -56,14 +56,14 @@
             </tr>
             <tr>
                 <td class="td-left"><label for="email">电子邮箱</label></td>
-                <td class="td-center"><input type="email" id="email" placeholder="电子邮箱"></td>
+                <td class="td-center"><input type="text" id="email" placeholder="电子邮箱"></td>
                 <td class="td-right"><label id="errorEmail" class="err-style"></label></td>
             </tr>
 
         </table>
         <div class="btn-sub"><input type="submit" class="btn" id="submit" name="注册"/></div>
         <div class="rg-right">
-            <p>已有账号?<a href="#">立即登录</a></p>
+            <p>已有账号?<a href="/index.jsp">立即登录</a></p>
         </div>
     </form>
 </div>
