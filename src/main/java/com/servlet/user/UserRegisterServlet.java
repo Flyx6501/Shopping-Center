@@ -27,7 +27,7 @@ public class UserRegisterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
         try {
-            registerUser(request, response);
+            userRegister(request, response);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
@@ -64,25 +64,29 @@ public class UserRegisterServlet extends HttpServlet {
      * @author l666888999
      * @date 2022/11/09 17:10
      **/
-    private void registerUser(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException, ServletException {
+    private void userRegister(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException, ServletException {
         String userName = req.getParameter("userName");
         String password = req.getParameter("password");
         String nickName = req.getParameter("nickName");
         String email = req.getParameter("email");
+        System.out.println(userName);
+        System.out.println(password);
+        System.out.println(nickName);
+        System.out.println(email);
 
         Connection c = (Connection) JDBCUtil.getConnection();
         UserDaoImpl dao = new UserDaoImpl();
-        boolean as1 = dao.registerName(c, password, email, nickName, userName);
-
-        if (as1) {
+        boolean flag = dao.registerName(c, password, email, nickName, userName);
+        System.out.println(flag);
+        if (flag) {
             req.setAttribute("useName",userName);
             req.setAttribute("nikName",nickName);
             req.setAttribute("password",password);
             req.setAttribute("email",email);
             // req.setAttribute("confirm",confirm);
             req.setAttribute("message", "注册成功");
-
-            req.getRequestDispatcher(req.getContextPath() + "/register.jsp").forward(req, resp);
+            // TODO:跳转逻辑需要修改
+            req.getRequestDispatcher("/register").forward(req, resp);
         }
     }
 
