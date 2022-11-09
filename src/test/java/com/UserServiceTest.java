@@ -27,7 +27,7 @@ public class UserServiceTest {
         Connection c = null;
         try {
             c = (Connection) JDBCUtil.getConnection();
-            userService.registerName(c, 6, "12233124124");
+            userService.registerName(c, "12233124124","141","ll","ljy");
             System.out.println("123");
         } catch (Exception e) {
             e.printStackTrace();
@@ -52,8 +52,8 @@ public class UserServiceTest {
 
         try {
             c = (Connection) JDBCUtil.getConnection();
-            userService.searchName(c, 3, "123");
-            System.out.println("123");
+            boolean flag = userService.searchName(c, "123456", "123");
+            System.out.println(flag);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
