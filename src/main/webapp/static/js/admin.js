@@ -1,10 +1,24 @@
 /* @description: 管理员登录验证
    @author 86188
-   @date 2022/11/8 16:06
+   @date 2022/11/9 21:43
    @version 1.0
 */
 //验证表单是否为空，为空则聚焦input并提示；不为空则进行下一步表单验证
-function check(form) {
+function checkAdminName (userName) {
+    var adminName = $("#adminName").val();
+    if (adminName == '') {
+        showMsg("请输入用户名");
+        return false;
+    }
+}
+function checkPassWord (password) {
+    var password = $("#password").val();
+    if (password == '') {
+        showMsg("请输入密码");
+        return false;
+    }
+}
+/*function check(form) {
     var adminName = $("#adminName").val();
     var password = $("#password").val();
     //用户名为空
@@ -48,7 +62,7 @@ function check(form) {
             alert("登录失败，请重试");
         }
     });
-}
+}*/
 
 //错误信息提醒
 function showMsg(msg) {
