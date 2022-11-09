@@ -23,12 +23,12 @@ public class JDBCUtil {
     public static Connection getConnection() throws IOException, ClassNotFoundException, SQLException {
         //读取配置文件基本信息
         Properties pros = new Properties();
-        pros.load(new FileInputStream(new File("jdbc.properties")));
+        Properties file = new Properties();
+        pros.load(new FileInputStream(new File("F:\\xianmu\\Shopping-Center\\src\\main\\resources\\jdbc.properties")));
         String user = pros.getProperty("user");
         String password = pros.getProperty("password");
         String url = pros.getProperty("url");
         String driverClass = pros.getProperty("driverClass");
-        System.out.println(driverClass);
 
         //2.加载驱动
         Class.forName(driverClass);
