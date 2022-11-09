@@ -18,7 +18,7 @@ public class UserDaoImpl implements UserDao {
 
 
     @Override
-    public boolean searchName(Connection c, String userName, String password) {
+    public boolean getUserByUsernameAndPassword(Connection c, String userName, String password) {
         PreparedStatement ps = null;
         ResultSet rs = null;
 
@@ -40,16 +40,16 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public boolean registerName(Connection c,String password, String email, String nickName, String userName) {
+    public boolean insertUser(Connection c, String userName, String password, String email, String nickName) {
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
-            String sql = "INSERT INTO user(user_username,nickname,user_password,email) VALUES (?,?,?,?)";
+            String sql = "INSERT INTO user(user_username,user_password,email,nickname) VALUES (?,?,?,?)";
             ps = c.prepareStatement(sql);
             ps.setString(1,userName);
-            ps.setString(2,nickName);
-            ps.setString(3, password);
-            ps.setString(4, email);
+            ps.setString(2, password);
+            ps.setString(3, email);
+            ps.setString(4,nickName);
 
             int rs1 = ps.executeUpdate();
             if (rs1 >= 1) {
