@@ -24,24 +24,15 @@ public class UserLoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println(123);
         doPost(request, response);
         try {
-          searchUser(request, response);
+            userLogin(request, response);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-/*
-        try {
-            registerUser(request, response);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-
- */
     }
 
     @Override
@@ -63,8 +54,6 @@ public class UserLoginServlet extends HttpServlet {
         } catch (InvocationTargetException e) {
             throw new RuntimeException(e);
         }
-
-
     }
 
     /**
@@ -75,7 +64,7 @@ public class UserLoginServlet extends HttpServlet {
      * @author l666888999
      * @date 2022/11/09 17:10
      **/
-    private void searchUser(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException, ServletException {
+    private void userLogin(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException, ServletException {
         String userName = req.getParameter("userName");
         String password = req.getParameter("password");
 
