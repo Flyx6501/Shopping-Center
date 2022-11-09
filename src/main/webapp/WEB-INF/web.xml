@@ -4,4 +4,35 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          id="WebApp_ID" version="2.5">
     <display-name>Archetype Created Web Application</display-name>
+    <!-- 用户登陆的 Servlet -->
+    <servlet>
+        <servlet-name>userLoginServlets</servlet-name>
+        <servlet-class>com.servlet.user.UserLoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>userLoginServlets</servlet-name>
+        <url-pattern>userLogin</url-pattern>
+    </servlet-mapping>
+
+    <!-- 用户注册的 Servlet -->
+    <servlet>
+        <servlet-name>userRegisterServlets</servlet-name>
+        <servlet-class>com.servlet.user.UserRegisterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>userRegisterServlets</servlet-name>
+        <url-pattern>userRegister</url-pattern>
+    </servlet-mapping>
+
+    <!-- 跳转到用户注册页 -->
+    <servlet>
+        <servlet-name>register</servlet-name>
+        <jsp-file>/WEB-INF/views/register.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>register</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
+
 </web-app>
