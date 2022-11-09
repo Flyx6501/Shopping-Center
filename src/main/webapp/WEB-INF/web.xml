@@ -11,7 +11,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>userLoginServlets</servlet-name>
-        <url-pattern>userLogin</url-pattern>
+        <url-pattern>/userLogin.do</url-pattern>
     </servlet-mapping>
 
     <!-- 用户注册的 Servlet -->
@@ -21,7 +21,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>userRegisterServlets</servlet-name>
-        <url-pattern>userRegister</url-pattern>
+        <url-pattern>/userRegister.do</url-pattern>
     </servlet-mapping>
 
     <!-- 跳转到用户注册页 -->
