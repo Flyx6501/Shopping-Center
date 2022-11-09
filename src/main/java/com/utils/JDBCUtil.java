@@ -24,7 +24,8 @@ public class JDBCUtil {
         //读取配置文件基本信息
         Properties pros = new Properties();
         Properties file = new Properties();
-        pros.load(new FileInputStream(new File("F:\\xianmu\\Shopping-Center\\src\\main\\resources\\jdbc.properties")));
+        //pros.load(new FileInputStream(new File("F:\\xianmu\\Shopping-Center\\src\\main\\resources\\jdbc.properties")));
+        pros.load(new FileInputStream(new File("I:\\Workspace\\Java\\Test\\Shopping-Center\\src\\main\\resources\\jdbc.properties")));
         String user = pros.getProperty("user");
         String password = pros.getProperty("password");
         String url = pros.getProperty("url");
