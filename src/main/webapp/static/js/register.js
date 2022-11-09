@@ -11,6 +11,7 @@ $(function() {
     var flag_email = false;
     //用户名
     $("#userName").blur(function() {
+
         if ($(this).val().length == 0) {
             //用户名为空
             $("#errorName").html("用户名不为空");
@@ -110,12 +111,7 @@ $(function() {
 
     //提交注册
     $("#submit").click(function() {
-        if (flag_username && flag_nickname && flag_password && flag_confirm && flag_email) {
-            $("form").submit();
-        } else {
-            //注册信息填写错误
-            alert("有信息填写错误");
-            return false;
-        }
+        $("form").submit();
     });
 });
+
