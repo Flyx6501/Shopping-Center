@@ -29,7 +29,7 @@
         <p>用户注册</p>
     </div>
     <!-- 定义表单form -->
-    <form action="/userRegister" method="post">
+    <form action="userRegister.do" method="post">
         <table>
             <tr>
                 <td class="td-left"><label for="userName">用户名</label></td>
@@ -61,7 +61,7 @@
             </tr>
 
         </table>
-        <div class="btn-sub"><button class="btn" id="submit">注册</button></div>
+        <div class="btn-sub"><input type="submit" class="btn" id="submit" name="注册"/></div>
         <div class="rg-right">
             <p>已有账号?<a href="#">立即登录</a></p>
         </div>

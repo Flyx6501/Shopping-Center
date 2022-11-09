@@ -24,7 +24,7 @@ public class UserLoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println(123);
+
         doPost(request, response);
         try {
             userLogin(request, response);
