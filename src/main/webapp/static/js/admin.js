@@ -4,7 +4,7 @@
    @version 1.0
 */
 //验证表单是否为空，为空则聚焦input并提示；不为空则进行下一步表单验证
-function checkAdminName (userName) {
+function checkAdminName (adminName) {
     var adminName = $("#adminName").val();
     if (adminName == '') {
         showMsg("请输入用户名");
