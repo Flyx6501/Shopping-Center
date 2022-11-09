@@ -1,7 +1,7 @@
 <%--
   @description: 管理员登录界面
   @author: 86188
-  @date: 2022/11/8 16:11
+  @date: 2022/11/9 21:43
   @version: 1.0
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
@@ -29,10 +29,10 @@
         <!-- 接入跳转页面 -->
         <form id="adminLogin" action="">
             <h3>后 台 登 录</h3>
-            <input class="name" name="" id="adminName" type="text" placeholder="请输入用户名">
-            <input class="pwd" name="password" id="password" type="password" placeholder="请输入密码">
+            <input class="name" name="" id="adminName" type="text" placeholder="请输入用户名" onblur="checkAdminName(this.value)">
+            <input class="pwd" name="password" id="password" type="password" placeholder="请输入密码" onblur="checkPassWord(this.value)">
             <div class="btn">
-                <input type="button" id="submitBtn" class="submit-btn" value="登录" onclick="return check(this.form);">
+                <input type="submit" id="submitBtn" class="submit-btn" value="登录" onclick="return check(this.form);">
                 <input type="reset" id="resetBtn" class="reset-btn" value="重置">
             </div>
             <div id="checkMsg" class="msg"></div>
