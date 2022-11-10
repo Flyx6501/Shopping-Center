@@ -33,14 +33,6 @@
         <servlet-name>register</servlet-name>
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
-<servlet>
-    <servlet-name>manageLoginServlets</servlet-name>
-    <servlet-class>com.servlet.manager.ManagerLoginServlet</servlet-class>
-</servlet>
-    <servlet-mapping>
-        <servlet-name>manageLoginServlets</servlet-name>
-        <url-pattern>/managerLogin.do</url-pattern>
-    </servlet-mapping>
 
     <!-- 跳转到登录成功页 -->
     <servlet>
@@ -50,6 +42,32 @@
     <servlet-mapping>
         <servlet-name>success</servlet-name>
         <url-pattern>/success</url-pattern>
+    </servlet-mapping>
+    <!--管理员登陆的Servlet-->
+    <servlet>
+        <servlet-name>manageLoginServlets</servlet-name>
+        <servlet-class>com.servlet.manager.ManagerLoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>manageLoginServlets</servlet-name>
+        <url-pattern>/managerLogin.do</url-pattern>
+    </servlet-mapping>
+    <!--跳转到管理员登录页面-->
+    <servlet>
+        <servlet-name>admin</servlet-name>
+        <jsp-file>/WEB-INF/views/admin.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>admin</servlet-name>
+        <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>findUserByUserName</servlet-name>
+        <servlet-class>com.servlet.find.FindUserByUserName</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>findUserByUserName</servlet-name>
+        <url-pattern>/findUserName.do</url-pattern>
     </servlet-mapping>
 
 </web-app>
