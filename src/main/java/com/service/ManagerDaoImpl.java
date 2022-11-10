@@ -11,13 +11,13 @@ import java.sql.ResultSet;
  **/
 public class ManagerDaoImpl implements ManagerDao {
     @Override
-    public boolean searchName(Connection c, int manageId, String password) {
+    public boolean searchName(Connection c, String manageName , String password) {
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
-            String sql = "SELECT mange_id,password FROM `manage` WHERE  mange_id=? and password=? ";
+            String sql = "SELECT mange_username,password FROM `manage` WHERE  mange_username=? and password=? ";
             ps = c.prepareStatement(sql);
-            ps.setInt(1, manageId);
+            ps.setString(1, manageName);
             ps.setString(2, password);
             rs = ps.executeQuery();
             if(rs.next()) {
