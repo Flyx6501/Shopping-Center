@@ -10,7 +10,8 @@
     box-sizing: border-box;
 }
 
-body, html {
+body,
+html {
     font-family: Arial, Helvetica, sans-serif;
     background-image: url(../img/bg.jpg);
     background-position: center center;
@@ -35,6 +36,7 @@ body, html {
     background-color: white;
     margin: 15px auto 10px;
     padding-top: 30px;
+
 }
 
 .rg-left {
@@ -67,8 +69,9 @@ body, html {
 }
 
 .btn {
-    width: 150px;
+    width: 50px;
     height: 40px;
+    text-align: center;
     background-color: #FFD026;
     border: #FFD026 1px solid;
     border-radius: 8px;
