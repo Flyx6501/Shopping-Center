@@ -69,21 +69,16 @@ public class UserRegisterServlet extends HttpServlet {
         String password = req.getParameter("password");
         String nickName = req.getParameter("nickName");
         String email = req.getParameter("email");
-        System.out.println(userName);
-        System.out.println(password);
-        System.out.println(nickName);
-        System.out.println(email);
-
         Connection c = (Connection) JDBCUtil.getConnection();
         UserDaoImpl dao = new UserDaoImpl();
-        boolean flag = dao.insertUser(c, userName, password, email, nickName);
+        boolean flag = dao.insertUser(c,userName,password, email, nickName);
 
         if (flag) {
             req.setAttribute("message", "注册成功");
-            req.getRequestDispatcher("/index.jsp").forward(req, resp);
-        } else {
-            req.setAttribute("message", "注册失败");
-            req.getRequestDispatcher("/register").forward(req, resp);
+            req.getRequestDispatcher("/index.jsp").forward(req,resp);
+        }else {
+            req.setAttribute("message","注册失败");
+            req.getRequestDispatcher("/register").forward(req,resp);
         }
     }
 }
