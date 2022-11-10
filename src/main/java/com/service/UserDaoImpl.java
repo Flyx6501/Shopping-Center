@@ -48,7 +48,6 @@ public class UserDaoImpl implements UserDao {
             ps.setString(2, password);
             ps.setString(3, email);
             ps.setString(4,nickName);
-
             int rs1 = ps.executeUpdate();
             if (rs1 >= 1) {
                 return true;
@@ -59,5 +58,25 @@ public class UserDaoImpl implements UserDao {
             JDBCUtil.closeResource(c, ps, rs);
         }
         return false;
+    }
+
+    @Override
+    public boolean findUserByUserName(Connection c, String userName) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+       try {
+           String sql = "SELECT user_username FROM `user` WHERE user_username=?";
+           ps = c.prepareStatement(sql);
+           ps.setString(1, userName);
+           rs = ps.executeQuery();
+           while (rs.next()) {
+               System.out.println("该用户已经注册过");
+           }
+       }catch (Exception e){
+           e.printStackTrace();
+       }finally {
+           JDBCUtil.closeResource(c, ps, rs);
+       }
+       return false;
     }
 }
