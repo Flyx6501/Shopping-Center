@@ -27,7 +27,7 @@
 <div class="content">
     <div class="login-wrap">
         <!-- 接入跳转页面 -->
-        <form id="adminLogin" action="">
+        <form id="adminLogin" action="managerLogin.do">
             <h3>后 台 登 录</h3>
             <input class="name" name="" id="adminName" type="text" placeholder="请输入用户名">
             <input class="pwd" name="password" id="password" type="password" placeholder="请输入密码">
