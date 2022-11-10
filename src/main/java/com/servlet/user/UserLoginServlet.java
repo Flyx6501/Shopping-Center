@@ -28,7 +28,9 @@ public class UserLoginServlet extends HttpServlet {
         doPost(request, response);
         try {
             userLogin(request, response);
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
@@ -47,7 +49,9 @@ public class UserLoginServlet extends HttpServlet {
         }
         try {
             method.invoke(this, req, resp);
-        } catch (IllegalAccessException | InvocationTargetException e) {
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        } catch (InvocationTargetException e) {
             throw new RuntimeException(e);
         }
     }
@@ -67,13 +71,11 @@ public class UserLoginServlet extends HttpServlet {
         UserDaoImpl userDao = new UserDaoImpl();
         Connection c = null;
         c = (Connection) JDBCUtil.getConnection();
-        boolean flag = userDao.getUserByUsernameAndPassword(c, userName, password);
+        boolean flag = userDao.searchName(c, userName, password);
+        // TODO:跳转逻辑需要修改
         if (flag) {
-            req.setAttribute("message", "登录成功");
-            req.getRequestDispatcher("/success").forward(req, resp);
-        } else {
-            req.setAttribute("message", "登录失败");
-            req.getRequestDispatcher("/index.jsp").forward(req, resp);
+            req.setAttribute("message", "登陆成功");
+            req.getRequestDispatcher("/register").forward(req, resp);
         }
     }
 }

@@ -15,8 +15,6 @@ import java.sql.ResultSet;
  * @date 2022/11/07 22:37
  */
 public class UserDaoImpl implements UserDao {
-
-
     @Override
     public boolean getUserByUsernameAndPassword(Connection c, String userName, String password) {
         PreparedStatement ps = null;
