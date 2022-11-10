@@ -27,7 +27,7 @@ public class UserServiceTest {
         Connection c = null;
         try {
             c = (Connection) JDBCUtil.getConnection();
-            userService.registerName(c, "12233124124","141","ll","ljy");
+            userService.insertUser(c, "123","141","ll","ljy");
             System.out.println("123");
         } catch (Exception e) {
             e.printStackTrace();
@@ -52,7 +52,7 @@ public class UserServiceTest {
 
         try {
             c = (Connection) JDBCUtil.getConnection();
-            boolean flag = userService.searchName(c, "123456", "123");
+            boolean flag = userService.getUserByUsernameAndPassword(c, "123456", "123");
             System.out.println(flag);
         } catch (Exception e) {
             e.printStackTrace();

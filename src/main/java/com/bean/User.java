@@ -74,11 +74,6 @@ public class User {
         this.nickname = nickname;
     }
 
-  /** TODO
-       * @return java.lang.String
-   * @author l666888999
-   * @date  2022/11/08 15:37
-   **/
     @Override
     public String toString() {
         return "User{" +

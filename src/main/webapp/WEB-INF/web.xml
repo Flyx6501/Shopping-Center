@@ -42,5 +42,14 @@
         <url-pattern>/managerLogin.do</url-pattern>
     </servlet-mapping>
 
+    <!-- 跳转到登录成功页 -->
+    <servlet>
+        <servlet-name>success</servlet-name>
+        <jsp-file>/WEB-INF/views/success.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>success</servlet-name>
+        <url-pattern>/success</url-pattern>
+    </servlet-mapping>
 
 </web-app>
