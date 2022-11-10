@@ -74,7 +74,7 @@ public class UserLoginServlet extends HttpServlet {
         boolean flag = userDao.searchName(c, userName, password);
         // TODO:跳转逻辑需要修改
         if (flag) {
-            System.out.println("登陆成功");
+            req.setAttribute("message", "登陆成功");
             req.getRequestDispatcher("/register").forward(req, resp);
         }
     }
