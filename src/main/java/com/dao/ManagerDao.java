@@ -21,12 +21,11 @@ public interface ManagerDao {
 
     /** 进行管理员注册
      * @param c  进行数据库链接
-     * @param manageId  管理员的ID
      * @param password  管理员的密码
      * @param userName  管理员的用户名
      * @return boolean
      * @author l666888999
      * @date 2022/11/8 15:37
      **/
-    boolean registerName(Connection c, int manageId, String password, String userName);
+    boolean registerName(Connection c,  String password, String userName);
 }
