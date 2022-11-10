@@ -48,7 +48,7 @@ public class ManagerServiceTest {
         Connection c=null;
         try {
             c = JDBCUtil.getConnection();
-            managerDao.searchName((com.mysql.jdbc.Connection) c, 6, "123");
+            managerDao.searchName((com.mysql.jdbc.Connection) c, "as", "123");
             System.out.println("添加成功");
         }catch (Exception e){
             e.printStackTrace();
