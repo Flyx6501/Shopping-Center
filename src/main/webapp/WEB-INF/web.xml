@@ -33,6 +33,14 @@
         <servlet-name>register</servlet-name>
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
+<servlet>
+    <servlet-name>manageLoginServlets</servlet-name>
+    <servlet-class>com.servlet.manager.ManagerLoginServlet</servlet-class>
+</servlet>
+    <servlet-mapping>
+        <servlet-name>manageLoginServlets</servlet-name>
+        <url-pattern>/managerLogin.do</url-pattern>
+    </servlet-mapping>
 
 
 </web-app>
