@@ -31,7 +31,7 @@ public class ManagerDaoImpl implements ManagerDao {
         return false;
     }
     @Override
-    public boolean registerName(Connection c,int manageId, String password, String userName) {
+    public boolean registerName(Connection c, String password, String userName) {
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
