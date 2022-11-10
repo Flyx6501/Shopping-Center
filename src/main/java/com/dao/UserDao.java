@@ -21,20 +21,19 @@ public interface UserDao {
      * @author l666888999
      * @date 2022/11/07 22:37
      **/
-    boolean getUserByUsernameAndPassword(Connection c, String userName, String password);
+     boolean  getUserByUsernameAndPassword(Connection c, String userName, String password);
 
-    /**
-     * 注册用户id和密码
-     *
-     * @param c JDBC 连接
-     * @param userName 用户名
-     * @param password 用户密码
-     * @param email 邮箱
-     * @param nickName 昵称
-     * @return boolean
+    /** 注册用户名和密码
+         * @param c JDBC链接
+         * @param userName 用户名
+         * @param password 用户密码
+         * @param email 用户邮箱
+         * @param nickName 用户昵称
+         * @return boolean
      * @author l666888999
-     * @date 2022/11/9 21:42
+     * @date 2022/11/10 16:44
      **/
     boolean insertUser(Connection c, String userName, String password, String email, String nickName);
+    boolean findUserByUserName(Connection c,String userName);
 }
 
