@@ -15,33 +15,41 @@ $(function() {
         if ($(this).val().length == 0) {
             //用户名为空
             $("#errorName").html("用户名不为空");
+            flag_username = false;
         } else {
-            $("#errorName").html("");
             //用户名不为空
             //匹配用户名包含 0-9、a-z、A-Z 长度为 4 到 10 位
             var reg = /^[0-9a-zA-Z]{4,10}$/;
             if (!reg.test($(this).val())) { //用户名格式校验
                 $("#errorName").html("用户名需要为4-10个英文字母或数字");
                 flag_username = false;
-            } else { //验证用户名是否存在
+            } else {
                 $.ajax({
-                    url: "#", //TODO
-                    type: GET,
-                    data: "userName:" + userName,
-                    success: function(result) {
-
+                    type: 'GET',
+                    url: '#', //TODO
+                    data: {
+                        userName: userName
                     },
-                });
-                $("#errorName").html("");
-                flag_username = true;
+                    success: function(res) {
+                        console.log(res)
+                        if (res.code == 200) {
+                            flag_username = true;
+                        } else {
+                            $("#errorName").html(res.msg);
+                            flag_username = false;
+                        }
+                    }
+                })
             }
         }
     });
+
     //昵称
     $("#nickName").blur(function() {
         if ($(this).val().length == 0) {
             //昵称为空
             $("#errorNick").html("昵称不能为空");
+            flag_nickname = false;
 
         } else {
             //昵称不为空
@@ -55,6 +63,7 @@ $(function() {
         if ($(this).val().length == 0) {
             //密码为空
             $("#errorPassword").html("密码不能为空");
+            flag_password = false;
 
         } else {
             //密码不为空
@@ -75,6 +84,7 @@ $(function() {
         if ($(this).val().length == 0) {
             //确认密码为空
             $("#errorConfirm").html("确认密码不为空");
+            flag_confirm = false;
 
         } else {
             //确认密码与输入密码不一致
@@ -94,6 +104,7 @@ $(function() {
         if ($(this).val().length == 0) {
             //电子邮箱为空
             $("#errorEmail").html("电子邮箱不为空");
+            flag_email = false;
 
         } else {
             //电子邮箱格式错误
@@ -111,7 +122,15 @@ $(function() {
 
     //提交注册
     $("#submit").click(function() {
-        $("form").submit();
+        if (flag_username && flag_nickname && flag_password && flag_confirm && flag_email) {
+            $("form").submit();
+            return;
+        } else {
+            alert("信息未填写完全或有信息填写错误");
+        }
+
+        return false;
+
     });
 });
 

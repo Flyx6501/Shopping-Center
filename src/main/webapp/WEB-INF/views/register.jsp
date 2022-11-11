@@ -33,35 +33,38 @@
         <table>
             <tr>
                 <td class="td-left"><label for="userName">用户名</label></td>
-                <td class="td-center"><input id="userName" type="text" placeholder="4-10个英文字母或数字"></td>
+                <td class="td-center"><input id="userName" name="userName" placeholder="4-10个英文字母或数字"></td>
                 <td class="td-right"><label id="errorName" class="err-style"></label></td>
             </tr>
 
             <tr>
                 <td class="td-left"><label for="nickName">昵称</label></td>
-                <td class="td-center"><input id="nickName" type="text" placeholder="昵称不能为空"></td>
+                <td class="td-center"><input id="nickName" name="nickName" type="text" placeholder="昵称不能为空">
+                </td>
                 <td class="td-right"><label id="errorNick" class=" err-style"></label></td>
             </tr>
 
             <tr>
                 <td class="td-left"><label for="password">密码</label></td>
-                <td class="td-center"><input id="password" type="password" placeholder="6-15个英文字母或数字"></td>
+                <td class="td-center"><input id="password" name="password" type="password"
+                                             placeholder="6-15个英文字母或数字"></td>
                 <td class="td-right"><label id="errorPassword" class="err-style"></label></td>
             </tr>
 
             <tr>
                 <td class="td-left"><label for="confirm">确认密码</label></td>
-                <td class="td-center"><input id="confirm" type="password" placeholder="确认密码"></td>
+                <td class="td-center"><input id="confirm" name="confirm" type="password" placeholder="确认密码">
+                </td>
                 <td class="td-right"><label id="errorConfirm" class="err-style"></label></td>
             </tr>
             <tr>
                 <td class="td-left"><label for="email">电子邮箱</label></td>
-                <td class="td-center"><input type="text" id="email" placeholder="电子邮箱"></td>
+                <td class="td-center"><input type="email" id="email" name="email" placeholder="电子邮箱"></td>
                 <td class="td-right"><label id="errorEmail" class="err-style"></label></td>
             </tr>
 
         </table>
-        <div class="btn-sub"><input type="submit" class="btn" id="submit" name="注册"/></div>
+        <div class="btn-sub"><input type="submit" class="btn" id="submit" name="submit" value="注册"></div>
         <div class="rg-right">
             <p>已有账号?<a href="${APP_PATH}/index.jsp">立即登录</a></p>
         </div>
