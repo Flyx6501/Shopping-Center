@@ -1,6 +1,6 @@
 /* @description: 顾客登录页面样式
    @author LL
-   @date 2022/11/8 15:58
+   @date 2022/11/9 21:43
    @version 1.0
 */
 .content {
@@ -17,14 +17,14 @@
 .login-wrap {
     position: absolute;
     width: 320px;
-    height: 320px;
+    height: 350px;
     border: 4px solid #ea8c37;
     border-radius: 10px;
     box-shadow: 0 5px 15px -5px rgba(0, 0, 0, .5);
     /* 圆角，兼容浏览器*/
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
-    top: 40%;
+    top: 35%;
     left: 45%;
     margin: -100px 0px 0px -100px;
     background: #fff;
@@ -42,37 +42,29 @@
 .name,
 .pwd {
     border: 1px solid #fff;
-    width: 230px;
+    width: 250px;
     height: 40px;
-    margin-left: 25px;
+    margin-top: 10px;
+    margin-left: 30px;
     margin-bottom: 20px;
     padding-left: 40px;
-}
-
-.name {
     background: rgb(235, 235, 235);
     /* x坐标上的水平偏移设置为12像素 */
     background-position-x: 12px;
 }
 
-.pwd {
-    background: rgb(235, 235, 235);
-    background-position-x: 12px;
-}
-
 /* 按钮 */
 .btn input {
-    height: 40px;
-    width: 120px;
+    height: 30px;
+    width: 100px;
     float: left;
-    margin-right: 25px;
+    margin-right: 20px;
     border: none;
     color: #fff;
     font-size: 16px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
-    margin-top: 10px;
     /* 鼠标经过变小手 */
     cursor: pointer;
 }
@@ -84,6 +76,25 @@
     color: grey;
 }
 
+/*管理员登录按钮*/
+.admin-btn{
+    margin-top: 10px;
+    margin-left: 105px;
+}
+.admin{
+    display:inline-block;
+    height:30px;
+    line-height:30px;
+    text-align:center;
+    width:100px;
+    border:1px solid #BBB;
+    border-radius: 5px;
+    outline:none;
+    background:#ea8c37;
+    color:white;
+    text-decoration: none;
+}
+
 /* 移入输入框状态 */
 input:hover {
     border-color: #ea8c37;
@@ -92,7 +103,7 @@ input:hover {
 /* 登录按钮 */
 .submit-btn {
     background: #ea8c37;
-    margin-left: 25px;
+    margin-left: 35px;
 }
 
 /* 重置按钮 */
