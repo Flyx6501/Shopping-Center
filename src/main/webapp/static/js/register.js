@@ -26,18 +26,18 @@ $(function() {
             } else {
                 $.ajax({
                     type: 'GET',
-                    url: '#', //TODO
+                    url: '/Shopping-Center/findUserName.do', //TODO
                     data: {
-                        userName: userName
+                        userName: $("#userName").val()
                     },
                     success: function(res) {
                         console.log(res)
-                        if (res.code == 200) {
+                    //    if (res.code == 200) {
                             flag_username = true;
-                        } else {
-                            $("#errorName").html(res.msg);
-                            flag_username = false;
-                        }
+                        // } else {
+                        //     $("#errorName").html(res.msg);
+                        //     flag_username = false;
+                        // }
                     }
                 })
             }
