@@ -28,9 +28,9 @@
 <div class="content">
     <div class="login-wrap">
         <!-- 接入跳转页面 -->
-        <form id="adminLogin" action="">
+        <form id="adminLogin" action="userLogin.do">
             <h3>用 户 登 录</h3>
-            <input class="name" name="" id="userName" type="text" placeholder="请输入用户名" onblur="checkUserName(this.value)">
+            <input class="name" name="userName" id="userName" type="text" placeholder="请输入用户名" onblur="checkUserName(this.value)">
             <input class="pwd" name="password" id="password" type="password" placeholder="请输入密码" onblur="checkPassWord(this.value)">
             <div class="btn">
                 <input type="submit" id="submitBtn" class="submit-btn" value="登录" onclick="return check(this.form);">
