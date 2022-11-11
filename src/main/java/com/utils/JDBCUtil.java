@@ -24,8 +24,7 @@ public class JDBCUtil {
         //读取配置文件基本信息
         Properties pros = new Properties();
         Properties file = new Properties();
-        //pros.load(new FileInputStream(new File("F:\\xianmu\\Shopping-Center\\src\\main\\resources\\jdbc.properties")));
-        pros.load(new FileInputStream(new File("I:\\Workspace\\Java\\Test\\Shopping-Center\\src\\main\\resources\\jdbc.properties")));
+        pros.load(new FileInputStream(new File("F:\\xianmu\\Shopping-Center\\src\\main\\resources\\jdbc.properties")));
         String user = pros.getProperty("user");
         String password = pros.getProperty("password");
         String url = pros.getProperty("url");
@@ -49,7 +48,7 @@ public class JDBCUtil {
      * @author l666888999
      * @date 2022/11/08 15:45
      **/
-    public static void closeResource(Connection c, Statement ps, ResultSet rs) {
+    public static void closeResource (Connection c, Statement ps,ResultSet rs){
         try {
             if (ps != null) {
                 ps.close();
@@ -82,7 +81,7 @@ public class JDBCUtil {
      * @author l666888999
      * @date 2022/11/08 15:45
      **/
-    public static void closeResource(Connection c, Statement ps) {
+    public static void closeResource (Connection c, Statement ps){
         try {
             if (ps != null) {
                 ps.close();
@@ -100,5 +99,6 @@ public class JDBCUtil {
         }
     }
 }
+
 
 

@@ -24,7 +24,7 @@ public class ManagerServiceTest {
         Connection c=null;
         try {
             c = JDBCUtil.getConnection();
-           managerService.registerName((com.mysql.jdbc.Connection) c, 1,"123", "manager");
+           managerService.registerName((com.mysql.jdbc.Connection) c,"123", "manager");
            System.out.println("添加成功");
        }catch (Exception e){
            e.printStackTrace();
