@@ -81,6 +81,7 @@
     margin-top: 10px;
     margin-left: 105px;
 }
+
 .admin{
     display:inline-block;
     height:30px;
@@ -91,8 +92,6 @@
     border-radius: 5px;
     outline:none;
     background:#ea8c37;
-    color:white;
-    text-decoration: none;
 }
 
 /* 移入输入框状态 */
