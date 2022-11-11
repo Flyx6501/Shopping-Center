@@ -68,7 +68,7 @@ public class ManagerLoginServlet extends HttpServlet {
             req.getRequestDispatcher("/success").forward(req,resp);
         }else {
             req.setAttribute("message","管理员登陆失败");
-            req.getRequestDispatcher("/index.jsp");
+            req.getRequestDispatcher("/admin.jsp");
         }
 
 
