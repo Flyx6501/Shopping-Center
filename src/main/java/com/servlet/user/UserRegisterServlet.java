@@ -72,10 +72,11 @@ public class UserRegisterServlet extends HttpServlet {
         Connection c = (Connection) JDBCUtil.getConnection();
         UserDaoImpl dao = new UserDaoImpl();
         boolean flag = dao.insertUser(c,userName,password, email, nickName);
+        System.out.println(flag);
 
         if (flag) {
             req.setAttribute("message", "注册成功");
-            req.getRequestDispatcher("/index.jsp").forward(req,resp);
+            req.getRequestDispatcher("/success.jsp").forward(req,resp);
         }else {
             req.setAttribute("message","注册失败");
             req.getRequestDispatcher("/register").forward(req,resp);

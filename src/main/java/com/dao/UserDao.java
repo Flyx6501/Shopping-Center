@@ -34,6 +34,27 @@ public interface UserDao {
      * @date 2022/11/10 16:44
      **/
     boolean insertUser(Connection c, String userName, String password, String email, String nickName);
+   /** 查询用户名是否重复
+        * @param c  数据库的链接
+        * @param userName  用户姓名
+        * @return boolean
+    * @author l666888999
+    * @date 2022/11/11 20:28
+    **/
     boolean findUserByUserName(Connection c,String userName);
+/** 更新用户信息
+     * @param c 数据库连接
+     * @param userName  用户姓名
+     * @param password 密码
+     * @param email 邮件
+     * @param nickName 昵称
+     * @param userId 用户Id
+     * @return boolean
+ * @author l666888999
+ * @date 2022/11/11 20:28
+ **/
+    boolean updateUserByUserId(Connection c, String userName, String password, String email, String nickName, int userId);
+
 }
+
 

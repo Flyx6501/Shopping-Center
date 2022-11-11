@@ -1,6 +1,7 @@
-package com.servlet.manager;
+package com.servlet.Update;
 
-import com.service.ManagerDaoImpl;
+import com.mysql.jdbc.Connection;
+import com.service.UserDaoImpl;
 import com.utils.JDBCUtil;
 
 import javax.servlet.ServletException;
@@ -10,28 +11,25 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
- * aa
+ * a
  *
  * @author l666888999
  * @version 1.0
- * @date 2022/11/10 9:51
+ * @date 2022/11/11 15:49
  **/
-public class ManagerLoginServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+public class UserUpdate extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doPost(req,resp);
+        doGet(req, resp);
         try {
-            managerLogin(req,resp);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+            userUpdate(req, resp);
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+
 
     }
 
@@ -49,28 +47,29 @@ public class ManagerLoginServlet extends HttpServlet {
         }
         try {
             method.invoke(this, req, resp);
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
-        } catch (InvocationTargetException e) {
+        } catch (IllegalAccessException | InvocationTargetException e) {
             throw new RuntimeException(e);
         }
     }
-    private void managerLogin(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException, ServletException {
-       System.out.println(122);
-        Connection c = JDBCUtil.getConnection();
-        String adminName = req.getParameter("adminName");
+
+    private void userUpdate(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException {
+        Connection c = (Connection) JDBCUtil.getConnection();
+
+
+        String userName = req.getParameter("userName");
         String password = req.getParameter("password");
-        ManagerDaoImpl asp=new ManagerDaoImpl();
-        boolean flag=asp.searchName((com.mysql.jdbc.Connection) c,adminName,password);
-        System.out.println(flag);
+        String email = req.getParameter("email");
+        String nickName = req.getParameter("nickName");
+        String userId = req.getParameter("useId");
+        UserDaoImpl as = new UserDaoImpl();
+        boolean flag=as.updateUserByUserId(c, userName, password, email, nickName, Integer.parseInt(userId));
         if (flag){
-            req.setAttribute("message","管理员登陆成功");
-            req.getRequestDispatcher("/success").forward(req,resp);
-        }else {
-            req.setAttribute("message","管理员登陆失败");
-            req.getRequestDispatcher("/admin.jsp");
+            req.setAttribute("message", "修改成功");
         }
 
+
+        //ToDo 转换
+        //req.getRequestDispatcher().forward(req,resp);
 
 
     }

@@ -79,4 +79,27 @@ public class UserDaoImpl implements UserDao {
        }
        return false;
     }
+
+    @Override
+    public boolean updateUserByUserId(Connection c, String userName, String password, String email, String nickName, int userId) {
+        PreparedStatement ps=null;
+        try {
+            String sql = "UPDATE `user` SET user_username=?,user_password=?,email=?,nickname=? WHERE user_id=?";
+             ps = c.prepareStatement(sql);
+            ps.setString(1, userName);
+            ps.setString(2, password);
+            ps.setString(3, email);
+            ps.setString(4, nickName);
+            ps.setInt(5,userId);
+            int rs1=ps.executeUpdate();
+            if (rs1>=1){
+                return true;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            JDBCUtil.closeResource(c,ps);
+        }
+        return false;
+    }
 }
