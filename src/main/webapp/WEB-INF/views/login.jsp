@@ -22,9 +22,7 @@
     <!-- 引入css样式-->
     <link rel="stylesheet" href="${APP_PATH}/static/css/login.css">
 </head>
-<html>
 <body>
-
 <div class="content">
     <div class="login-wrap">
         <!-- 接入跳转页面 -->
