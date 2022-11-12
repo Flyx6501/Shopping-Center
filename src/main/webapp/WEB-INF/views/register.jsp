@@ -66,7 +66,7 @@
         </table>
         <div class="btn-sub"><input type="submit" class="btn" id="submit" name="submit" value="注册"></div>
         <div class="rg-right">
-            <p>已有账号?<a href="${APP_PATH}/index.jsp">立即登录</a></p>
+            <p>已有账号?<a href="${APP_PATH}/login">立即登录</a></p>
         </div>
     </form>
 </div>
