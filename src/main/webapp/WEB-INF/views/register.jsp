@@ -25,6 +25,7 @@
 <html>
 <body>
 <div class="container">
+    <input type="hidden" value="${APP_PATH}" id="appPath">
     <div class="rg-left">
         <p>用户注册</p>
     </div>
