@@ -71,13 +71,14 @@ public class UserDaoImpl implements UserDao {
            rs = ps.executeQuery();
            while (rs.next()) {
                System.out.println("该用户已经注册过");
+               return true;
            }
        }catch (Exception e){
            e.printStackTrace();
        }finally {
            JDBCUtil.closeResource(c, ps, rs);
        }
-       return true;
+       return false;
     }
 
 

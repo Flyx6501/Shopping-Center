@@ -4,11 +4,30 @@
    @version 1.0
 */
 $(function() {
+    var appPath = $("#appPath").val()  //通过隐藏域获取系统根路径
     var flag_username = false;
     var flag_nickname = false;
     var flag_password = false;
     var flag_confirm = false;
     var flag_email = false;
+
+    /* 输入框获取到焦点 清空提示语 */
+    $("#userName").focus(function (){
+        $("#errorName").html("");
+    })
+    $("#nickName").focus(function (){
+        $("#errorNick").html("");
+    })
+    $("#password").focus(function (){
+        $("#errorPassword").html("");
+    })
+    $("#confirm").focus(function (){
+        $("#errorConfirm").html("");
+    })
+    $("#email").focus(function (){
+        $("#errorEmail").html("");
+    })
+
     //用户名
     $("#userName").blur(function() {
 
@@ -26,26 +45,21 @@ $(function() {
             } else {
                 $.ajax({
                     type: 'GET',
-                    url: '/Shopping_Center/findUserName.do',
+                    url: appPath+'/findUserName.do',
                     contentType: "application/x-www-form-urlencoded;charset=UTF-8",
                     data: {
                         userName: $("#userName").val()
                     },
                     dataType:"json",
                     success: function(result) {
+                        /* 判断是否已经注册，注册了显示提示语 */
                         let msg = result.msg;
                         if (msg == "failed") {
-                            alert("该用户已被注册");
+                            flag_username = false
+                            $("#errorName").html('该用户已被注册');
                         } else {
-                            alert("该用户未被注册");
-                        }
-
-                    //    if (res.code == 200) {
                             flag_username = true;
-                        // } else {
-                        //     $("#errorName").html(res.msg);
-                        //     flag_username = false;
-                        // }
+                        }
                     }
                 })
             }
@@ -60,8 +74,6 @@ $(function() {
             flag_nickname = false;
 
         } else {
-            //昵称不为空
-            $("#errorNick").html("");
             flag_nickname = true;
         }
     });
@@ -81,7 +93,6 @@ $(function() {
                 $("#errorPassword").html("6-15个英文字母或数字");
                 flag_password = false;
             } else {
-                $("#errorPassword").html("");
                 flag_password = true;
             }
         }
@@ -101,7 +112,6 @@ $(function() {
                 flag_confirm = false;
             } else {
                 //密码一致且不为空
-                $("#errorConfirm").html("");
                 flag_confirm = true;
             }
         }
@@ -122,7 +132,6 @@ $(function() {
                 flag_email = false;
             } else {
                 //电子邮箱格式正确且不为空
-                $("#errorEmail").html("");
                 flag_email = true;
             }
         }
