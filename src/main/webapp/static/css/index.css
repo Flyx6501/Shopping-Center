@@ -65,3 +65,8 @@ li {
 .left-nav a:hover {
     color: darkorange;
 }
+
+/*商品栏*/
+.thumbnail{
+    margin: 10px;
+}
