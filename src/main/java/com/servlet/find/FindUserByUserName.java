@@ -69,6 +69,14 @@ public class FindUserByUserName extends HttpServlet {
             out.close();
 
             req.getRequestDispatcher("/register").forward(req, resp);
+        }else{
+            JSONObject json=new JSONObject();
+            json.put("msg","success");
+
+            PrintWriter out=resp.getWriter();
+            out.println(json);
+            out.close();
+
         }
 
 
