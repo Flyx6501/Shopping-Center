@@ -1,6 +1,7 @@
 package com.servlet.Update;
 
 import com.mysql.jdbc.Connection;
+import com.service.ManagerDaoImpl;
 import com.service.UserDaoImpl;
 import com.utils.JDBCUtil;
 
@@ -61,7 +62,7 @@ public class UserUpdate extends HttpServlet {
         String email = req.getParameter("email");
         String nickName = req.getParameter("nickName");
         String userId = req.getParameter("useId");
-        UserDaoImpl as = new UserDaoImpl();
+        ManagerDaoImpl as = new ManagerDaoImpl();
         boolean flag=as.updateUserByUserId(c, userName, password, email, nickName, Integer.parseInt(userId));
         if (flag){
             req.setAttribute("message", "修改成功");
