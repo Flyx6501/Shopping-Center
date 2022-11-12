@@ -1,23 +1,22 @@
 package com.bean;
 
-import java.util.Arrays;
-
 /** 商品实体类
  * @author Qgs123
  * @version 1.0
- * @date 2022/11/10 9:37
+ * @date 2022/11/10 10:00
  **/
 public class Commodity {
     private int commodityId;
     private String commodityName;
-    private int commodityPrice;
+    private Double commodityPrice;
     private int commodityStock;
-    private byte[] commodityPhoto;
+    private String  commodityPhoto;
     private String commodityInformation;
     private String commodityComment;
     public Commodity(){
     }
-    public  Commodity(int commodityId,String commodityName,int commodityPrice,int commodityStock,byte[] commodityPhoto,String commodityInformation,String commodityComment){
+
+    public  Commodity(int commodityId,String commodityName,double commodityPrice,int commodityStock,String commodityPhoto,String commodityInformation,String commodityComment){
         this.commodityId=commodityId;
         this.commodityName=commodityName;
         this.commodityPrice=commodityPrice;
@@ -26,8 +25,7 @@ public class Commodity {
         this.commodityInformation=commodityInformation;
         this.commodityComment=commodityComment;
     }
-
-    public int getCommodityId() {
+    public  int getCommodityId() {
         return commodityId;
     }
 
@@ -43,11 +41,11 @@ public class Commodity {
         this.commodityName = commodityName;
     }
 
-    public int getCommodityPrice() {
+    public double getCommodityPrice() {
         return commodityPrice;
     }
 
-    public void setCommodityPrice(int commodityPrice) {
+    public void setCommodityPrice(Double commodityPrice) {
         this.commodityPrice = commodityPrice;
     }
 
@@ -59,11 +57,11 @@ public class Commodity {
         this.commodityStock = commodityStock;
     }
 
-    public byte[] getCommodityPhoto() {
+    public String getCommodityPhoto() {
         return commodityPhoto;
     }
 
-    public void setCommodityPhoto(byte[] commodityPhoto) {
+    public void setCommodityPhoto(String commodityPhoto) {
         this.commodityPhoto = commodityPhoto;
     }
 
@@ -89,8 +87,8 @@ public class Commodity {
                 "commodityId=" + commodityId +
                 ", commodityName='" + commodityName + '\'' +
                 ", commodityPrice='" + commodityPrice + '\'' +
-                ", commodityStock=" + commodityStock +
-                ", commodityPhoto=" + Arrays.toString(commodityPhoto) +
+                ", commodityStock=" + commodityStock +'\'' +
+                ", commodityPhoto=" + commodityPhoto +'\'' +
                 ", commodityInformation='" + commodityInformation + '\'' +
                 ", commodityComment='" + commodityComment + '\'' +
                 '}';
