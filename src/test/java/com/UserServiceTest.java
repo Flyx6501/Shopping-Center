@@ -27,7 +27,7 @@ public class UserServiceTest {
         Connection c = null;
         try {
             c = (Connection) JDBCUtil.getConnection();
-            userService.insertUser(c, "12233124124","141","ll","ljy");
+            userService.insertUser(c, "123132","141","ll","ljy");
             System.out.println("123");
         } catch (Exception e) {
             e.printStackTrace();
