@@ -26,7 +26,7 @@
 <div class="content">
     <div class="login-wrap">
         <!-- 接入跳转页面 -->
-        <form id="adminLogin" action="userLogin.do">
+        <form id="adminLogin" action="userLogin.do" method="post">
             <h3>用 户 登 录</h3>
             <input class="name" name="userName" id="userName" type="text" placeholder="请输入用户名" onblur="checkUserName(this.value)">
             <input class="pwd" name="password" id="password" type="password" placeholder="请输入密码" onblur="checkPassWord(this.value)">
@@ -35,10 +35,10 @@
                 <input type="reset" id="resetBtn" class="reset-btn" value="重置">
             </div>
             <div class="admin-btn">
-                <a class="admin" href="admin.jsp">管理员登录</a>
+                <a class="admin" href="admin">管理员登录</a>
             </div>
             <div class="register">
-                还没有账户？<a href="register">注册</a>
+                还没有账户？<a href="${APP_PATH}/register">注册</a>
             </div>
             <div id="checkMsg" class="msg"></div>
         </form>
