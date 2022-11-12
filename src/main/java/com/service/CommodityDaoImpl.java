@@ -53,7 +53,7 @@ public class CommodityDaoImpl  implements CommodityDao {
     public Commodity getOne(int id){
         try {
             con= (Connection) DBHeper.getCon();
-            ps=con.prepareStatement("select * from shopping where id=?");
+            ps=con.prepareStatement("select * from shopping where commodity_id=?");
             ps.setInt(1, id);
             rs=ps.executeQuery();
             if(rs.next()) {
