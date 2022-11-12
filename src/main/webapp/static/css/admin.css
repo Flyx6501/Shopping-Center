@@ -92,6 +92,24 @@ input:hover {
     background: #bbb;
 }
 
+/*管理员登录按钮*/
+.index-btn{
+    margin-top: 10px;
+    margin-left: 105px;
+}
+
+.index{
+    display:inline-block;
+    height:30px;
+    line-height:30px;
+    text-align:center;
+    width:100px;
+    border:1px solid #BBB;
+    border-radius: 5px;
+    outline:none;
+    background:#ea8c37;
+}
+
 /* 错误信息提醒 */
 .msg {
     color: #20b0fe;
