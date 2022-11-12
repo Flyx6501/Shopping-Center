@@ -29,7 +29,7 @@
         <p>用户注册</p>
     </div>
     <!-- 定义表单form -->
-    <form action="/Shopping-Center/userRegister.do" method="post">
+    <form action="${APP_PATH}/userRegister.do" method="post">
         <table>
             <tr>
                 <td class="td-left"><label for="userName">用户名</label></td>
