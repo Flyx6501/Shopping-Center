@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.SQLException;
@@ -69,14 +70,16 @@ public class UserRegisterServlet extends HttpServlet {
         String password = req.getParameter("password");
         String nickName = req.getParameter("nickName");
         String email = req.getParameter("email");
+
         Connection c = (Connection) JDBCUtil.getConnection();
         UserDaoImpl dao = new UserDaoImpl();
+
         boolean flag = dao.insertUser(c,userName,password, email, nickName);
         System.out.println(flag);
 
         if (flag) {
             req.setAttribute("message", "注册成功");
-            req.getRequestDispatcher("/success.jsp").forward(req,resp);
+            req.getRequestDispatcher("/success").forward(req,resp);
         }else {
             req.setAttribute("message","注册失败");
             req.getRequestDispatcher("/register").forward(req,resp);

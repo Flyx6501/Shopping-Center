@@ -28,4 +28,18 @@ public interface ManagerDao {
      * @date 2022/11/8 15:37
      **/
     boolean registerName(Connection c,  String password, String userName);
+
+    /** 更新用户信息
+     * @param c 数据库连接
+     * @param userName  用户姓名
+     * @param password 密码
+     * @param email 邮件
+     * @param nickName 昵称
+     * @param userId 用户Id
+     * @return boolean
+     * @author l666888999
+     * @date 2022/11/11 20:28
+     **/
+    boolean updateUserByUserId(Connection c, String userName, String password, String email, String nickName, int userId);
+
 }

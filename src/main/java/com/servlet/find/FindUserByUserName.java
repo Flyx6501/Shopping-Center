@@ -2,12 +2,14 @@ package com.servlet.find;
 
 import com.service.UserDaoImpl;
 import com.utils.JDBCUtil;
+import org.json.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.Connection;
@@ -53,10 +55,19 @@ public class FindUserByUserName extends HttpServlet {
     private void findUserName(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException, ServletException {
         String userName = req.getParameter("userName");
         Connection c = JDBCUtil.getConnection();
+
         UserDaoImpl as1 = new UserDaoImpl();
         boolean flag = as1.findUserByUserName((com.mysql.jdbc.Connection) c, userName);
+
         if (flag) {
-            req.setAttribute("message", "该用户名已经存在");
+
+            JSONObject json=new JSONObject();
+            json.put("msg","failed");
+
+            PrintWriter out=resp.getWriter();
+            out.println(json);
+            out.close();
+
             req.getRequestDispatcher("/register").forward(req, resp);
         }
 

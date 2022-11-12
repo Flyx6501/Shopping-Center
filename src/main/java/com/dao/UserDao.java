@@ -21,40 +21,33 @@ public interface UserDao {
      * @author l666888999
      * @date 2022/11/07 22:37
      **/
-     boolean  getUserByUsernameAndPassword(Connection c, String userName, String password);
+    boolean getUserByUsernameAndPassword(Connection c, String userName, String password);
 
-    /** 注册用户名和密码
-         * @param c JDBC链接
-         * @param userName 用户名
-         * @param password 用户密码
-         * @param email 用户邮箱
-         * @param nickName 用户昵称
-         * @return boolean
+    /**
+     * 注册用户名和密码
+     *
+     * @param c        JDBC链接
+     * @param userName 用户名
+     * @param password 用户密码
+     * @param email    用户邮箱
+     * @param nickName 用户昵称
+     * @return boolean
      * @author l666888999
      * @date 2022/11/10 16:44
      **/
     boolean insertUser(Connection c, String userName, String password, String email, String nickName);
-   /** 查询用户名是否重复
-        * @param c  数据库的链接
-        * @param userName  用户姓名
-        * @return boolean
-    * @author l666888999
-    * @date 2022/11/11 20:28
-    **/
-    boolean findUserByUserName(Connection c,String userName);
-/** 更新用户信息
-     * @param c 数据库连接
-     * @param userName  用户姓名
-     * @param password 密码
-     * @param email 邮件
-     * @param nickName 昵称
-     * @param userId 用户Id
-     * @return boolean
- * @author l666888999
- * @date 2022/11/11 20:28
- **/
-    boolean updateUserByUserId(Connection c, String userName, String password, String email, String nickName, int userId);
 
+    /**
+     * 查询用户名是否重复
+     *
+     * @param c        数据库的链接
+     * @param userName 用户姓名
+     * @return boolean
+     * @author l666888999
+     * @date 2022/11/11 20:28
+     **/
+    boolean findUserByUserName(Connection c, String userName);
 }
+
 
 

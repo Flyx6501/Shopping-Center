@@ -26,12 +26,20 @@ $(function() {
             } else {
                 $.ajax({
                     type: 'GET',
-                    url: '/Shopping-Center/findUserName.do', //TODO
+                    url: '/Shopping_Center/findUserName.do',
+                    contentType: "application/x-www-form-urlencoded;charset=UTF-8",
                     data: {
                         userName: $("#userName").val()
                     },
-                    success: function(res) {
-                        console.log(res)
+                    dataType:"json",
+                    success: function(result) {
+                        let msg = result.msg;
+                        if (msg == "failed") {
+                            alert("该用户已被注册");
+                        } else {
+                            alert("该用户未被注册");
+                        }
+
                     //    if (res.code == 200) {
                             flag_username = true;
                         // } else {
