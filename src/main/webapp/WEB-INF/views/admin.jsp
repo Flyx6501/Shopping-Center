@@ -35,6 +35,9 @@
                 <input type="submit" id="submitBtn" class="submit-btn" value="登录" onclick="return check(this.form);">
                 <input type="reset" id="resetBtn" class="reset-btn" value="重置">
             </div>
+            <div class="login-btn">
+                <a class="login" href="login.jsp">用户登录</a>
+            </div>
             <div id="checkMsg" class="msg"></div>
         </form>
     </div>
