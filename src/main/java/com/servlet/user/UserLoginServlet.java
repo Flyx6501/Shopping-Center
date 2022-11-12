@@ -70,10 +70,10 @@ public class UserLoginServlet extends HttpServlet {
         boolean flag = userDao.getUserByUsernameAndPassword(c, userName, password);
         if (flag) {
             req.setAttribute("message", "登陆成功");
-            req.getRequestDispatcher("/success").forward(req, resp);
+            req.getRequestDispatcher("/register").forward(req, resp);
         }else{
             req.setAttribute("message","登陆失败");
-            req.getRequestDispatcher("/index.jsp").forward(req,resp);
+            req.getRequestDispatcher("/login.jsp").forward(req,resp);
         }
     }
 }
