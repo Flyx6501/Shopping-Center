@@ -38,7 +38,7 @@
     <div class="layui-row">
         <!-- 登录/注册 -->
         <div class="layui-col-md8">
-            <a href="login.jsp">登录</a>
+            <a href="${APP_PATH}/login">登录</a>
             <span>/</span>
             <a href="${APP_PATH}/register">注册</a>
         </div>
