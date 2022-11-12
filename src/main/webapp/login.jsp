@@ -40,7 +40,7 @@
                 <a class="admin" href="admin.jsp">管理员登录</a>
             </div>
             <div class="register">
-                还没有账户？<a href="javascript:;">注册</a>
+                还没有账户？<a href="register">注册</a>
             </div>
             <div id="checkMsg" class="msg"></div>
         </form>
