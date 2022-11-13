@@ -93,12 +93,12 @@ input:hover {
 }
 
 /*管理员登录按钮*/
-.index-btn{
+.login-btn{
     margin-top: 10px;
     margin-left: 105px;
 }
 
-.index{
+.login-btn a{
     display:inline-block;
     height:30px;
     line-height:30px;
@@ -107,7 +107,9 @@ input:hover {
     border:1px solid #BBB;
     border-radius: 5px;
     outline:none;
-    background:#ea8c37;
+    background:#20b0fe;
+    text-decoration: none;
+    color: #fff;
 }
 
 /* 错误信息提醒 */
