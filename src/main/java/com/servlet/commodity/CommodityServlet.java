@@ -39,7 +39,7 @@ public class CommodityServlet extends HttpServlet {
         out.close();
         request.getRequestDispatcher("index.jsp").forward(request,response);
     }
-
+    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request,response);
     }
