@@ -76,23 +76,6 @@
     color: grey;
 }
 
-/*管理员登录按钮*/
-.admin-btn{
-    margin-top: 10px;
-    margin-left: 105px;
-}
-
-.admin{
-    display:inline-block;
-    height:30px;
-    line-height:30px;
-    text-align:center;
-    width:100px;
-    border:1px solid #BBB;
-    border-radius: 5px;
-    outline:none;
-    background:#ea8c37;
-}
 
 /* 移入输入框状态 */
 input:hover {
@@ -108,6 +91,26 @@ input:hover {
 /* 重置按钮 */
 .reset-btn {
     background: #bbb;
+}
+
+/*管理员登录按钮*/
+.admin-btn{
+    margin-top: 10px;
+    margin-left: 105px;
+}
+
+.admin-btn a{
+    display:inline-block;
+    height:30px;
+    line-height:30px;
+    text-align:center;
+    width:100px;
+    border:1px solid #BBB;
+    border-radius: 5px;
+    outline:none;
+    background:#ea8c37;
+    text-decoration: none;
+    color: #fff;
 }
 
 /* 错误信息提醒 */
