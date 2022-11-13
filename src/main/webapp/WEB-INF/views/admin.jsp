@@ -27,16 +27,16 @@
 <div class="content">
     <div class="login-wrap">
         <!-- 接入跳转页面 -->
-        <form id="adminLogin" action="managerLogin.do">
+        <form id="adminLogin" action="managerLogin.do" method="post">
             <h3>后 台 登 录</h3>
-            <input class="name" name="" id="adminName" type="text" placeholder="请输入用户名" onblur="checkAdminName(this.value)">
+            <input class="name" name="adminName" id="adminName" type="text" placeholder="请输入用户名" onblur="checkAdminName(this.value)">
             <input class="pwd" name="password" id="password" type="password" placeholder="请输入密码" onblur="checkPassWord(this.value)">
             <div class="btn">
                 <input type="submit" id="submitBtn" class="submit-btn" value="登录" onclick="return check(this.form);">
                 <input type="reset" id="resetBtn" class="reset-btn" value="重置">
             </div>
             <div class="login-btn">
-                <a class="login" href="login.jsp">用户登录</a>
+                <a class="login" href="${APP_PATH}/login">用户登录</a>
             </div>
             <div id="checkMsg" class="msg"></div>
         </form>

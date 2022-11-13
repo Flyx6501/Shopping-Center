@@ -56,10 +56,11 @@ public class ManagerLoginServlet extends HttpServlet {
         }
     }
     private void managerLogin(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException, ServletException {
-       System.out.println(122);
         Connection c = JDBCUtil.getConnection();
         String adminName = req.getParameter("adminName");
         String password = req.getParameter("password");
+        System.out.println(adminName);
+        System.out.println(password);
         ManagerDaoImpl asp=new ManagerDaoImpl();
         boolean flag=asp.searchName((com.mysql.jdbc.Connection) c,adminName,password);
         System.out.println(flag);
