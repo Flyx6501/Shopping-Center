@@ -38,9 +38,9 @@
     <div class="layui-row">
         <!-- 登录/注册 -->
         <div class="layui-col-md8">
-            <a href="${APP_PATH}/WEB-INF/views/login.jsp">登录</a>
+            <a href="${APP_PATH}/views/login.jsp">登录</a>
             <span>/</span>
-            <a href="${APP_PATH}/WEB-INF/views/regiser.jsp">注册</a>
+            <a href="${APP_PATH}/views/regiser.jsp">注册</a>
         </div>
         <div class="layui-col-md2">
         </div>
@@ -77,7 +77,7 @@
             <div class="layui-col-md2">
                 <!-- 分类 -->
                 <ul class="left-nav">
-                    <li class="active"><a href="./sort.html">服装</a></li>
+                    <li class="active"><a href="${APP_PATH}/views/sort.html">服装</a></li>
                     <li><a href="#">鞋包</a></li>
                     <li><a href="#">食品</a></li>
                     <li><a href="#">电子产品</a></li>
