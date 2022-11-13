@@ -1,0 +1,27 @@
+/* @description: TODO
+   @author 小花妹妹
+   @date 2022/11/13 21:37
+   @version 1.0
+*/
+h1{
+    color: black;
+    font-size: 45px;
+    text-align: center;
+    margin-top: 20px;
+}
+.home-page{
+    background-color: rgb(63, 165, 179);
+    height: 100%;
+    padding: 15px;
+}
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    /* 使h1和图片垂直显示 */
+    flex-direction: column;
+}
+.box img {
+    margin-top: 20px;
+}
