@@ -33,6 +33,11 @@
     text-decoration: none;
 }
 
+.layui-col-md1 a {
+    color: darkgray;
+    text-decoration: none;
+}
+
 /* 商标 */
 .img-circle {
     height: 9.375rem;
