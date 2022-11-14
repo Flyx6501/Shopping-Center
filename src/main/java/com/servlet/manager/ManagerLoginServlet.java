@@ -66,13 +66,10 @@ public class ManagerLoginServlet extends HttpServlet {
         System.out.println(flag);
         if (flag){
             req.setAttribute("message","管理员登陆成功");
-            req.getRequestDispatcher("/success").forward(req,resp);
+            req.getRequestDispatcher("/managerlogin").forward(req,resp);
         }else {
             req.setAttribute("message","管理员登陆失败");
             req.getRequestDispatcher("/admin.jsp");
         }
-
-
-
     }
 }
