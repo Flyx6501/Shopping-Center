@@ -34,6 +34,14 @@
         <div class="layui-col-md2">
             <a href="${APP_PATH}/self">个人中心</a>
         </div>
+        <div class="layui-col-md1">
+            <div id="userName">
+
+            </div>
+        </div>
+        <div class="layui-col-md1">
+            <a href="${APP_PATH}/index">退出</a>
+        </div>
     </div>
 </div>
 <!-- 留白布局 -->
@@ -73,7 +81,7 @@
                 </div>
                 <div class="cell c-quantity">
                     <button type="button"  class="reduce">-</button>
-                    <input type="text" value="数量" class="text-num">
+                    <input type="text" value="数量" class="text-num" value="1">
                     <button type="button" class="add">+</button>
                 </div>
                 <div class="cell c-sum">

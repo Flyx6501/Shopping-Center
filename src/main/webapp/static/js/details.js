@@ -4,19 +4,24 @@
    @version 1.0
 */
 window.onload = function() {
+    /* 获取货物id */
+    var url = window.location.search;
+    var id = url.split("=");
     $.ajax({
-        /* 获取货物名 */
-        /* var url = window.location.search;
-        var goodsName = url.split("="); */
         /* 获取数据 */
-        url: "#",
+        url: "details.do",
         type: "GET",
         dataType: "json",
         data: {
-            "id": id
+            "id":id,
         },
-        success: function () {
+        success: function(data) {
             /* 读取成功时将数据读取,显示在页面内 */
+
+            $("#img").html(data.commodityImg);
+            $("#goodsName").html(data.commodityName);
+            $("#props").html(data.commodityInformation);
+            $("#price").html(data.commodityPrice);
         }
-    })
+    });
 }

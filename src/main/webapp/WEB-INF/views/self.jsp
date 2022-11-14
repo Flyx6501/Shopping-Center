@@ -38,6 +38,14 @@
             <i class="layui-icon layui-icon-cart-simple" style="color: #ddd;"></i>
             <a href="${APP_PATH}/car">购物车</a>
         </div>
+        <div class="layui-col-md1">
+            <div id="userName">
+
+            </div>
+        </div>
+        <div class="layui-col-md1">
+            <a href="${APP_PATH}/index">退出</a>
+        </div>
     </div>
 </div>
 <!-- 留白布局 -->

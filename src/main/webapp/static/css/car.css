@@ -28,6 +28,11 @@
     text-decoration: none;
 }
 
+.layui-col-md1 a {
+    color: darkgray;
+    text-decoration: none;
+}
+
 /* 鼠标移入效果 */
 .layui-col-md8 a:hover {
     color: darkorange;
