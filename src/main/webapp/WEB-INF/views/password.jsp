@@ -36,10 +36,10 @@
     <div class="layui-row">
         <!-- 返回首页 -->
         <div class="layui-col-md8">
-            <a href="./home.html">返回首页</a>
+            <a href="${APP_PATH}/index">返回首页</a>
         </div>
         <div class="layui-col-md2">
-            <a href="./self.html">个人中心</a>
+            <a href="${APP_PATH}/self">个人中心</a>
         </div>
         <div class="layui-col-md2">
             <i class="layui-icon layui-icon-cart-simple" style="color: #ddd;"></i>
@@ -52,7 +52,7 @@
     <div class="layui-col-md2">
         <!-- 分类 -->
         <ul class="left-nav">
-            <li><a href="./self.html">个人信息</a></li>
+            <li><a href="${APP_PATH}/self">个人信息</a></li>
             <li><a href="#">我的订单</a></li>
             <li class="active"><a href="#">修改密码</a></li>
         </ul>
