@@ -4,6 +4,15 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          id="WebApp_ID" version="2.5">
     <display-name>Archetype Created Web Application</display-name>
+    <!-- 商品详细信息的 Servlet-->
+    <servlet>
+        <servlet-name>CommodityGetOneServlet</servlet-name>
+        <servlet-class>com.servlet.GetOne.CommodityGetOneServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CommodityGetOneServlet</servlet-name>
+        <url-pattern>/inde.do</url-pattern>
+    </servlet-mapping>
     <!-- 用户登陆的 Servlet -->
     <servlet>
         <servlet-name>userLoginServlets</servlet-name>
