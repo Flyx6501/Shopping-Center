@@ -43,6 +43,79 @@
         <servlet-name>success</servlet-name>
         <url-pattern>/success</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>managerlogin</servlet-name>
+        <jsp-file>/WEB-INF/views/managerlogin.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>managerlogin</servlet-name>
+        <url-pattern>/managerlogin</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>commodityAdd</servlet-name>
+        <jsp-file>/WEB-INF/views/commodityAdd.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>commodityAdd</servlet-name>
+        <url-pattern>/commodityAdd</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>commodityModify</servlet-name>
+        <jsp-file>/WEB-INF/views/commodityModify.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>commodityModify</servlet-name>
+        <url-pattern>/commodityModify</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>commodity</servlet-name>
+        <jsp-file>/WEB-INF/views/commodity.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>commodity</servlet-name>
+        <url-pattern>/commodity</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>order</servlet-name>
+        <jsp-file>/WEB-INF/views/order.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>order</servlet-name>
+        <url-pattern>/order</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>customer</servlet-name>
+        <jsp-file>/WEB-INF/views/customer.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>customer</servlet-name>
+        <url-pattern>/customer</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>customerAdd</servlet-name>
+        <jsp-file>/WEB-INF/views/customerAdd.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>customerAdd</servlet-name>
+        <url-pattern>/customerAdd</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>customerModify</servlet-name>
+        <jsp-file>/WEB-INF/views/customerModify.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>customerModify</servlet-name>
+        <url-pattern>/customerModify</url-pattern>
+    </servlet-mapping>
+
     <!--管理员登陆的Servlet-->
     <servlet>
         <servlet-name>manageLoginServlets</servlet-name>
