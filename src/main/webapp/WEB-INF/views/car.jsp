@@ -34,6 +34,14 @@
         <div class="layui-col-md2">
             <a href="${APP_PATH}/self">个人中心</a>
         </div>
+        <div class="layui-col-md1">
+            <div id="userName">
+
+            </div>
+        </div>
+        <div class="layui-col-md1">
+            <a href="${APP_PATH}/index">退出</a>
+        </div>
     </div>
 </div>
 <!-- 留白布局 -->
