@@ -41,11 +41,11 @@
             <div>首页</div>
         </div>
         <div class="layui-col-md2">
-            <a href="${APP_PATH}/self.jsp">个人中心</a>
+            <a href="${APP_PATH}/self">个人中心</a>
         </div>
         <div class="layui-col-md2">
             <i class="layui-icon layui-icon-cart-simple" style="color: #ddd;"></i>
-            <a href="${APP_PATH}/car.jsp">购物车</a>
+            <a href="${APP_PATH}/car">购物车</a>
         </div>
     </div>
 </div>
@@ -78,7 +78,7 @@
             <div class="layui-col-md2">
                 <!-- 分类 -->
                 <ul class="left-nav">
-                    <li class="active"><a href="${APP_PATH}/sort.jsp">服装</a></li>
+                    <li class="active"><a href="${APP_PATH}/sort">服装</a></li>
                     <li><a href="#">鞋包</a></li>
                     <li><a href="#">食品</a></li>
                     <li><a href="#">电子产品</a></li>

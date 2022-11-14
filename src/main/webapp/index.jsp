@@ -77,7 +77,7 @@
             <div class="layui-col-md2">
                 <!-- 分类 -->
                 <ul class="left-nav">
-                    <li class="active"><a href="./sort.html">服装</a></li>
+                    <li class="active"><a href="${APP_PATH}/sort">服装</a></li>
                     <li><a href="#">鞋包</a></li>
                     <li><a href="#">食品</a></li>
                     <li><a href="#">电子产品</a></li>

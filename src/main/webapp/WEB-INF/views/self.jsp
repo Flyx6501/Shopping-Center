@@ -15,8 +15,9 @@
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
     <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
     <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
-    <script type="text/javascript" src=".${APP_PATH}/static/frame/layui-2.6.8.js"></script>
+    <script type="text/javascript" src="${APP_PATH}/static/frame/layui-2.6.8.js"></script>
     <script type="text/javascript" src="${APP_PATH}/static/frame/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="${APP_PATH}/static/js/self.js"></script>
     <link rel="stylesheet" type="text/css" href="${APP_PATH}/static/frame/layui-2.6.8.css" />
     <link rel="stylesheet" type="text/css" href="${APP_PATH}/static/frame/bootstrap-3.4.1-dist.min.css" />
     <link rel="stylesheet" type="text/css" href="${APP_PATH}/static/css/self.css" />
@@ -28,14 +29,14 @@
     <div class="layui-row">
         <!-- 返回首页 -->
         <div class="layui-col-md8">
-            <a href="${APP_PATH}/userindex.jsp">返回首页</a>
+            <a href="${APP_PATH}/userindex">返回首页</a>
         </div>
         <div class="layui-col-md2">
             <a href="#">个人中心</a>
         </div>
         <div class="layui-col-md2">
             <i class="layui-icon layui-icon-cart-simple" style="color: #ddd;"></i>
-            <a href="${APP_PATH}/car.jsp">购物车</a>
+            <a href="${APP_PATH}/car">购物车</a>
         </div>
     </div>
 </div>
@@ -46,7 +47,7 @@
         <ul class="left-nav">
             <li class="active"><a href="#">个人信息</a></li>
             <li><a href="#">我的订单</a></li>
-            <li><a href="${APP_PATH}/password.jsp">修改密码</a></li>
+            <li><a href="${APP_PATH}/password">修改密码</a></li>
         </ul>
     </div>
     <div class="layui-col-md10">
