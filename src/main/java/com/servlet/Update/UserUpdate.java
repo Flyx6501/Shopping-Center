@@ -4,12 +4,14 @@ import com.mysql.jdbc.Connection;
 import com.service.ManagerDaoImpl;
 import com.service.UserDaoImpl;
 import com.utils.JDBCUtil;
+import org.json.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.SQLException;
@@ -65,7 +67,21 @@ public class UserUpdate extends HttpServlet {
         ManagerDaoImpl as = new ManagerDaoImpl();
         boolean flag=as.updateUserByUserId(c, userName, password, email, nickName, Integer.parseInt(userId));
         if (flag){
-            req.setAttribute("message", "修改成功");
+            JSONObject json=new JSONObject();
+            json.put("message","success");
+
+            PrintWriter out=resp.getWriter();
+            out.println(json);
+            out.close();
+
+        }else{
+            JSONObject json=new JSONObject();
+            json.put("message","failed");
+
+            PrintWriter out=resp.getWriter();
+            out.println(json);
+            out.close();
+
         }
 
 
