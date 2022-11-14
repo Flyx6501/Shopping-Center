@@ -32,6 +32,11 @@
     color: darkorange;
 }
 
+.layui-col-md1 a {
+    color: darkgray;
+    text-decoration: none;
+}
+
 /* 导航栏样式 */
 li {
     margin: 3.125rem;
