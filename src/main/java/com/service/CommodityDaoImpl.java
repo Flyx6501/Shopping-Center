@@ -51,13 +51,13 @@ public class CommodityDaoImpl  implements CommodityDao {
      **/
     @Override
     public Commodity getOne(int id){
+        Commodity g=new Commodity();
         try {
             con= (Connection) DBHeper.getCon();
-            ps=con.prepareStatement("select * from shopping where commodity_id=?");
+            ps=con.prepareStatement("select * from `commodity` where commodity_id=?");
             ps.setInt(1, id);
             rs=ps.executeQuery();
             if(rs.next()) {
-                Commodity g=new Commodity();
                 g.setCommodityId(rs.getInt(1));
                 g.setCommodityName(rs.getString(2));
                 g.setCommodityPrice(rs.getDouble(3));
@@ -65,15 +65,16 @@ public class CommodityDaoImpl  implements CommodityDao {
                 g.setCommodityPhoto(rs.getString(5));
                 g.setCommodityInformation(rs.getString(6));
                 g.setCommodityComment(rs.getString(7));
-                return g;
             }
         } catch (Exception e) {
             e.printStackTrace();
         }finally {
             DBHeper.getColes(con, ps, rs);
         }
-        return null;
+        return g;
     }
+
+
     /** insert语句返回的是自增列的值
      */
     @Override
