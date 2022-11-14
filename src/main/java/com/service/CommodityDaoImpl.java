@@ -25,7 +25,7 @@ public class CommodityDaoImpl  implements CommodityDao {
 
         try {
             con= (Connection) DBHeper.getCon();
-            ps=con.prepareStatement("select * from commodity");
+            ps=con.prepareStatement("select * from `commodity`");
             rs=ps.executeQuery();
             while (rs.next()){
                 Commodity g=new Commodity();

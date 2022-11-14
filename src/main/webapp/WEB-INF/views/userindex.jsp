@@ -41,11 +41,11 @@
             <div>首页</div>
         </div>
         <div class="layui-col-md2">
-            <a href="${APP_PATH}/self.html">个人中心</a>
+            <a href="${APP_PATH}/self">个人中心</a>
         </div>
         <div class="layui-col-md2">
             <i class="layui-icon layui-icon-cart-simple" style="color: #ddd;"></i>
-            <a href="${APP_PATH}/cart.html">购物车</a>
+            <a href="${APP_PATH}/car">购物车</a>
         </div>
     </div>
 </div>
@@ -78,7 +78,7 @@
             <div class="layui-col-md2">
                 <!-- 分类 -->
                 <ul class="left-nav">
-                    <li class="active"><a href="${APP_PATH}/sort.html">服装</a></li>
+                    <li class="active"><a href="${APP_PATH}/sort">服装</a></li>
                     <li><a href="#">鞋包</a></li>
                     <li><a href="#">食品</a></li>
                     <li><a href="#">电子产品</a></li>
@@ -126,191 +126,9 @@
         </div>
         <!-- 活动专区 -->
         <h3>活动专区</h3>
-        <div class="layui-row">
-            <div class="layui-col-md3">
-                <div class="thumbnail">
-                    <img src="" alt="...">
-                    <div class="caption">
-                        <h3>商品名</h3>
-                        <a href="">详情
-                            <p>价格</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="layui-col-md3">
-                <div class="thumbnail">
-                    <img src="" alt="...">
-                    <div class="caption">
-                        <h3>商品名</h3>
-                        <a href="">详情
-                            <p>价格</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="layui-col-md3">
-                <div class="thumbnail">
-                    <img src="" alt="...">
-                    <div class="caption">
-                        <h3>商品名</h3>
-                        <a href="">详情
-                            <p>价格</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="layui-col-md3">
-                <div class="thumbnail">
-                    <img src="" alt="...">
-                    <div class="caption">
-                        <h3>商品名</h3>
-                        <a href="">详情
-                            <p>价格</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
+        <div id="products">
+
         </div>
-        <div class="layui-row">
-            <div class="layui-col-md3">
-                <div class="thumbnail">
-                    <img src="" alt="...">
-                    <div class="caption">
-                        <h3>商品名</h3>
-                        <a href="">详情
-                            <p>价格</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="layui-col-md3">
-                <div class="thumbnail">
-                    <img src="" alt="...">
-                    <div class="caption">
-                        <h3>商品名</h3>
-                        <a href="">详情
-                            <p>价格</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="layui-col-md3">
-                <div class="thumbnail">
-                    <img src="" alt="...">
-                    <div class="caption">
-                        <h3>商品名</h3>
-                        <a href="">详情
-                            <p>价格</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="layui-col-md3">
-                <div class="thumbnail">
-                    <img src="" alt="...">
-                    <div class="caption">
-                        <h3>商品名</h3>
-                        <a href="">详情
-                            <p>价格</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="layui-row">
-            <div class="layui-col-md3">
-                <div class="thumbnail">
-                    <img src="" alt="...">
-                    <div class="caption">
-                        <h3>Thumbnail label</h3>
-                        <a href="">查看详情
-                            <p>查看价格</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="layui-col-md3">
-                <div class="thumbnail">
-                    <img src="" alt="...">
-                    <div class="caption">
-                        <h3>Thumbnail label</h3>
-                        <a href="">查看详情
-                            <p>查看价格</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="layui-col-md3">
-                <div class="thumbnail">
-                    <img src="" alt="...">
-                    <div class="caption">
-                        <h3>Thumbnail label</h3>
-                        <a href="">查看详情
-                            <p>查看价格</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="layui-col-md3">
-                <div class="thumbnail">
-                    <img src="" alt="...">
-                    <div class="caption">
-                        <h3>Thumbnail label</h3>
-                        <a href="">查看详情
-                            <p>查看价格</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="layui-row">
-            <div class="layui-col-md3">
-                <div class="thumbnail">
-                    <img src="" alt="...">
-                    <div class="caption">
-                        <h3>Thumbnail label</h3>
-                        <a href="">查看详情
-                            <p>查看价格</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="layui-col-md3">
-                <div class="thumbnail">
-                    <img src="" alt="...">
-                    <div class="caption">
-                        <h3>Thumbnail label</h3>
-                        <a href="">查看详情
-                            <p>查看价格</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="layui-col-md3">
-                <div class="thumbnail">
-                    <img src="" alt="...">
-                    <div class="caption">
-                        <h3>Thumbnail label</h3>
-                        <a href="">查看详情
-                            <p>查看价格</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="layui-col-md3">
-                <div class="thumbnail">
-                    <img src="" alt="...">
-                    <div class="caption">
-                        <h3>Thumbnail label</h3>
-                        <a href="">查看详情
-                            <p>查看价格</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 <script>
     layui.use('element', function() {

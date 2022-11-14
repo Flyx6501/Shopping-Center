@@ -6,30 +6,40 @@ import com.mysql.jdbc.Connection;
 import com.service.CommodityDaoImpl;
 import com.service.CommodityService;
 import com.service.CommodityServiceImpl;
+import org.json.JSONObject;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
-/** TODO
+/** 首页商品数据显示
  * @author Qgs123
  * @date 2022/11/10 10:00
  **/
+@WebServlet("/index.do")
 public class CommodityServlet extends HttpServlet {
     public CommodityServlet(){
     }
+
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         CommodityService commodityService=new CommodityServiceImpl();
         List<Commodity> list=commodityService.getCommodityList();
-        request.setAttribute("commodity",list);
+        JSONObject json=new JSONObject();
+        json.put("commodity",list);
+        PrintWriter out=response.getWriter();
+        out.println(json);
+        out.close();
         request.getRequestDispatcher("index.jsp").forward(request,response);
     }
-
+    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request,response);
     }
