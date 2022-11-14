@@ -73,7 +73,7 @@
                 </div>
                 <div class="cell c-quantity">
                     <button type="button"  class="reduce">-</button>
-                    <input type="text" value="数量" class="text-num">
+                    <input type="text" value="数量" class="text-num" value="1">
                     <button type="button" class="add">+</button>
                 </div>
                 <div class="cell c-sum">
