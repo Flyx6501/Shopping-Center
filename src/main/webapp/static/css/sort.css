@@ -33,6 +33,11 @@
     color: darkorange;
 }
 
+.layui-col-md1 a {
+    color: darkgray;
+    text-decoration: none;
+}
+
 /* 分类名 */
 .sort-name {
     color: darkorange;
