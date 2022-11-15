@@ -1,6 +1,6 @@
-/* @description: 个人主页-修改密码
+/* @description: 个人信息样式
    @author LL
-   @date 2022/11/12 11:07
+   @date 2022/11/14 0:39
    @version 1.0
 */
 /* 导航栏样式 */
@@ -10,8 +10,19 @@
     padding-top: 1.25rem;
     padding-bottom: 1.25rem;
 }
-/* 返回首页 */
+
+/* 链接样式 */
 .layui-col-md8 a {
+    color: darkgray;
+    text-decoration: none;
+}
+
+/* 链接鼠标移入效果 */
+.layui-col-md8 a:hover {
+    color: darkorange;
+}
+
+.layui-col-md2 a {
     color: darkgray;
     text-decoration: none;
 }
@@ -19,36 +30,6 @@
 /* 鼠标移入效果 */
 .layui-col-md2 a:hover {
     color: darkorange;
-}
-
-/* 返回首页 */
-.layui-col-md2 a {
-    color: darkgray;
-    text-decoration: none;
-}
-
-/* 导航栏样式 */
-.nav-bar {
-    background-color: #f7f9fa;
-    padding-left: 7rem;
-    padding-top: 1.25rem;
-    padding-bottom: 1.25rem;
-}
-/* 返回首页 */
-.layui-col-md8 a {
-    color: darkgray;
-    text-decoration: none;
-}
-
-/* 鼠标移入效果 */
-.layui-col-md2 a:hover {
-    color: darkorange;
-}
-
-/* 返回首页 */
-.layui-col-md2 a {
-    color: darkgray;
-    text-decoration: none;
 }
 
 .layui-col-md1 a {
@@ -56,10 +37,6 @@
     text-decoration: none;
 }
 
-/* 鼠标移入效果 */
-.layui-col-md8 a:hover {
-    color: darkorange;
-}
 /* 导航栏样式 */
 li {
     margin: 3.125rem;
@@ -102,7 +79,7 @@ input {
 }
 
 /* 基本信息显示条 */
-.new-password {
+.information {
     height: 60px;
     line-height: 60px;
     text-indent: 50px;
@@ -117,8 +94,13 @@ input {
     margin-left: 20px;
 }
 
-.input {
-    margin-top: 15px;
+/* .input {
+	margin-top: 15px;
+	margin-left: 20px;
+} */
+
+.sex {
+    margin-top: 20px;
     margin-left: 20px;
 }
 
@@ -132,17 +114,8 @@ input {
     height:40px;
     margin-top: 30px;
     margin-left: 200px;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
     background-color: darkorange;
     color: #fff;
     border-radius: 10px;
-}
-
-.msg {
-    color: darkorange;
-    font-size: 14px;
-    padding-left: 40px;
-    padding-top: 10px;
-    clear: both;
-    font-weight: bold;
 }

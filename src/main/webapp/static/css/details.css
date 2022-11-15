@@ -1,0 +1,124 @@
+/* @description: 商品详情
+   @author LL
+   @date 2022/11/14 10:38
+   @version 1.0
+*/
+/* 导航栏样式 */
+.nav-bar {
+    background-color: #f7f9fa;
+    padding-left: 7rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+}
+
+/* 返回首页 */
+.layui-col-md8 a {
+    color: darkgray;
+    text-decoration: none;
+}
+
+/* 鼠标移入效果 */
+.layui-col-md2 a:hover {
+    color: darkorange;
+}
+
+.layui-col-md2 a {
+    color: darkgray;
+    text-decoration: none;
+}
+
+.layui-col-md1 a {
+    color: darkgray;
+    text-decoration: none;
+}
+
+/* 鼠标移入效果 */
+.layui-col-md8 a:hover {
+    color: darkorange;
+}
+
+.wrap {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.whole {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.preview {
+    float: left;
+    width: 400px;
+    position: relative;
+    margin: 30px;
+}
+
+.d-images {
+    border: 1px solid #acaeb2;
+}
+
+.itemInfo-wrap {
+    display: block;
+    float: left;
+    width: 600px;
+    margin: 30px;
+}
+
+.itemInfo-wrap .d-goodsname {
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.news {
+    width: 500px;
+    height:150px;
+    color: #e4393c;
+    margin-bottom: 5px;
+    display: block;
+    font-size: 13px;
+    margin: 10px 0;
+}
+
+.d-price {
+    width: 120px;
+    text-align: right;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    color: #f10101;
+}
+
+.d-price span {
+    float: left;
+    /*margin-left: 5px;*/
+    font-size: 15px;
+}
+
+.d-price .d-pricenum {
+    float: left;
+    font-size: 22px;
+    margin-left: 5px;
+}
+
+.d-action {
+    display: block;
+    width: 500px;
+    height: 50px;
+    margin: 20px 0;
+    /*line-height: 50px;*/
+}
+
+.add-cart {
+    float: left;
+    height: 45px;
+    width: 120px;
+    line-height: 45px;
+    text-align: center;
+    background-color: #FF0000FF;
+    margin: 20px;
+}
+
+.add-cart a {
+    color: #FFFFFF;
+}

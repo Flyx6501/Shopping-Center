@@ -1,6 +1,6 @@
-/* @description: 前台首页样式
+/* @description: 商品分类列表样式
    @author LL
-   @date 2022/11/12 17:36
+   @date 2022/11/14 10:08
    @version 1.0
 */
 /* 导航栏样式 */
@@ -11,15 +11,10 @@
     padding-bottom: 1.25rem;
 }
 
-/* 登录注册 */
+/* 返回首页 */
 .layui-col-md8 a {
     color: darkgray;
     text-decoration: none;
-}
-
-/* 登录注册鼠标移入效果 */
-.layui-col-md8 a:hover {
-    color: darkorange;
 }
 
 /* 鼠标移入效果 */
@@ -33,16 +28,21 @@
     text-decoration: none;
 }
 
+/* 鼠标移入效果 */
+.layui-col-md8 a:hover {
+    color: darkorange;
+}
+
 .layui-col-md1 a {
     color: darkgray;
     text-decoration: none;
 }
 
-/* 商标 */
-.img-circle {
-    height: 9.375rem;
-    width: 9.375rem;
-    margin: 10% auto;
+/* 分类名 */
+.sort-name {
+    color: darkorange;
+    margin-left: 50px;
+    margin-top: 55px;
 }
 
 /* 搜索框样式 */
@@ -56,22 +56,7 @@
     margin-top: 50px;
     margin-left: 25px;
 }
-/* 导航栏样式 */
-li {
-    margin: 3.125rem;
-    font-size: 14px;
-}
-/* 导航栏超链接样式 */
-.left-nav a {
-    color: darkgray;
-    text-decoration: none;
-}
-/* 导航栏超链接移入效果 */
-.left-nav a:hover {
-    color: darkorange;
-}
 
-/*商品栏*/
 .thumbnail{
     margin: 10px;
 }
