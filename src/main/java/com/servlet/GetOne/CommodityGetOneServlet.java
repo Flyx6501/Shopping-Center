@@ -23,7 +23,7 @@ import static java.lang.Integer.parseInt;
  * @version 1.0
  * @date 2022/11/13 22:30
  **/
-@WebServlet("/inde.do")
+
 public class CommodityGetOneServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
