@@ -9,7 +9,7 @@ window.onload = function() {
     var id = url.split("=");
     $.ajax({
         /* 获取数据 */
-        url: "details.do",
+        url: "inde.do",
         type: "GET",
         dataType: "json",
         data: {
@@ -17,11 +17,30 @@ window.onload = function() {
         },
         success: function(data) {
             /* 读取成功时将数据读取,显示在页面内 */
-
             $("#img").html(data.commodityPhoto);
             $("#goodsName").html(data.commodityName);
             $("#props").html(data.commodityInformation);
             $("#price").html(data.commodityPrice);
+        }
+    });
+
+    /* id传送给购物车 */
+    function add() {
+        /* Cid为商品id */
+        window.location.href = "cart?Cid=" + id;
+    }
+
+    $.ajax({
+        /* 获取数据 */
+        url: "car.do",
+        type: "POST",
+        dataType: "json",
+        data: {
+            "id": id,
+        },
+        success: function(data) {
+            /* 数据存入购物车 */
+
         }
     });
 }
