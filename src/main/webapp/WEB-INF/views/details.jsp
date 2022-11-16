@@ -27,20 +27,21 @@
 <!-- 头部导航 -->
 <div class="nav-bar">
     <div class="layui-row">
-        <!-- 返回首页 -->
-        <div class="layui-col-md8">
-            <a href="${APP_PATH}/userindex">返回首页</a>
+        <!-- 首页 -->
+        <div class="layui-col-md6">
+            <div>首页</div>
         </div>
         <div class="layui-col-md2">
             <a href="${APP_PATH}/self">个人中心</a>
         </div>
         <div class="layui-col-md2">
             <i class="layui-icon layui-icon-cart-simple" style="color: #ddd;"></i>
-            <a href="">购物车</a>
+            <a href="${APP_PATH}/car">购物车</a>
         </div>
         <div class="layui-col-md1">
+            <%--获取用户名--%>
             <div id="userName">
-
+                <%=request.getAttribute("username")%>
             </div>
         </div>
         <div class="layui-col-md1">
@@ -76,7 +77,7 @@
         </div>
     </div>
 </div>
-<script>
+<%--<script>
     show();
     /* ./json/details. 数据接口 */
     function show(){
@@ -86,6 +87,6 @@
             $("#price").html(data.price);
         })
     }
-</script>
+</script>--%>
 </body>
 </html>
