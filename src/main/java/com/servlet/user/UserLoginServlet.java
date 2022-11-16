@@ -3,12 +3,14 @@ package com.servlet.user;
 import com.mysql.jdbc.Connection;
 import com.service.UserDaoImpl;
 import com.utils.JDBCUtil;
+import org.json.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.SQLException;
@@ -69,7 +71,13 @@ public class UserLoginServlet extends HttpServlet {
         c = (Connection) JDBCUtil.getConnection();
         boolean flag = userDao.getUserByUsernameAndPassword(c, userName, password);
         if (flag) {
-            req.setAttribute("message", "登陆成功");
+            JSONObject json=new JSONObject();
+            json.put("msg",userName);
+
+            PrintWriter out=resp.getWriter();
+            out.println(json);
+            out.close();
+            //req.setAttribute("message", "登陆成功");
             req.getRequestDispatcher("/success").forward(req, resp);
         }else{
             req.setAttribute("message","登陆失败");
