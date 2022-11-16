@@ -9,15 +9,15 @@ function checkSearch(search) {
     window.location.href = "result.html?Sid=" + $("#find").val();
 }
 
-function details(id) {
-    /* Cid为商品id */
-    window.location.href = "details.do?Cid=" + id;
-}
+/*function details(id) {
+    /!* Cid为商品id *!/
+    window.location.href = "details?Cid=" + id;
+}*/
 
 window.onload = function() {
     $.ajax({
         /* 获取数据 */
-        url: "http://localhost:8080/Shopping_Center/index.do", //获取商品列表
+        url: "http://localhost:8080/Shopping_Center_war_exploded/index.do", //获取商品列表
         type: "GET",
         dataType: "json",
         success: function(data) {
@@ -36,9 +36,9 @@ window.onload = function() {
                     domRow.append(
                         `<div class="layui-col-md3" name="" id="` + list[k].commodityId + `">
 							<div class="thumbnail">
-								<img src="` +list[k].commodityImg+ `" alt="...">
+								<img src="` +list[k].commodityPhoto+ `" alt="...">
 								<div class="caption">
-								<a href="" onclick="details(` + list[k].commodityId + `)">
+								<a href="details?Cid=` + list[k].commodityId +`">
 									<h3>` + list[k].commodityName + `</h3>
 										<p>` + list[k].commodityPrice + `</p>
 									</a>

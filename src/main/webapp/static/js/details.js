@@ -18,7 +18,7 @@ window.onload = function() {
         success: function(data) {
             /* 读取成功时将数据读取,显示在页面内 */
 
-            $("#img").html(data.commodityImg);
+            $("#img").html(data.commodityPhoto);
             $("#goodsName").html(data.commodityName);
             $("#props").html(data.commodityInformation);
             $("#price").html(data.commodityPrice);
