@@ -51,12 +51,16 @@ window.onload = function() {
             }
         }
     });
-$.ajax({
+/*$.ajax({
         url: "#",
         type: "GET",
         dataType: "json",
+        data:
+            {
+                "id":id
+            },
         success: function(data) {
             $("#userName").html(data.userName);
         }
-    });
+    });*/
 }
