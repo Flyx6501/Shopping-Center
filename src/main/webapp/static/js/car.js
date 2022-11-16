@@ -3,9 +3,32 @@
    @date 2022/11/14 10:15
    @version 1.0
 */
-$(function(){
+$(function() {
+    // $(".c-sum_num").click(function(){
+    // 	console.info($(this).text());
+    // })
+    var url = window.location.search;
+    var id = url.split("=");
+    /* 返回值给购物车 */
+    $.ajax({
+        /* 获取数据 */
+        url: "car.do",
+        type: "GET",
+        dataType: "json",
+        data: {
+            "id": id,
+        },
+        success: function(data) {
+            /* 读取成功时将数据读取,显示在页面内 */
+            $("#img").html(data.commodityImg);
+            $("#goodsName").html(data.commodityName);
+            $("#props").html(data.commodityInformation);
+            $("#price").html(data.commodityPrice);
+            /* 定位 遍历 */
+        }
+    });
     totl();
-    goodsnum();
+    /* goodsnum(); */
     // 全选
     $(".all").click(function() {
         all = $(this).prop("checked")
@@ -14,54 +37,54 @@ $(function(){
         })
     })
     // 减少商品数量
-    $(".reduce").click(function(){
+    $(".reduce").click(function() {
         var num = $(this).siblings(".text-num").val();
-        if(num>0){
+        if (num > 0) {
             num--;
             $(this).siblings(".text-num").val(num);
         };
-        var price=$(this).parents().siblings(".c-price").children(".c-pricenum").text();
+        var price = $(this).parents().siblings(".c-price").children(".c-pricenum").text();
         var sum_num = $(this).parents().siblings(".c-sum").children(".c-sumnum");
-        var sum = parseFloat(price*num);
+        var sum = parseFloat(price * num);
         // console.log(sum);
         $(sum_num).text(sum);
         totl();
-        goodsnum();
+         /* goodsnum(); */
     });
     // 增加商品数量
-    $(".add").click(function(){
+    $(".add").click(function() {
         var num = $(this).siblings(".text-num").val();
         num++;
         $(this).siblings(".text-num").val(num);
-        var price=$(this).parents().siblings(".c-price").children(".c-pricenum").text();
+        var price = $(this).parents().siblings(".c-price").children(".c-pricenum").text();
         var sum_num = $(this).parents().siblings(".c-sum").children(".c-sumnum");
-        var sum = parseFloat(price*num);
+        var sum = parseFloat(price * num);
         // console.log(sum);
         $(sum_num).text(sum);
         totl();
-        goodsnum();
+        /* goodsnum(); */
     });
     // 删除商品
-    $(".remove").click(function(){
+    $(".remove").click(function() {
         $(this).parents(".carts-goods").remove();
         totl();
-        goodsnum();
+        /* goodsnum(); */
     });
     // 总价
-    function totl(){
+    function totl() {
         let sumprice = 0;
-        $.each($(".c-sumnum"),function() {
-            sumprice+=parseFloat($(this).text());
+        $.each($(".c-sumnum"), function() {
+            sumprice += parseFloat($(this).text());
             $(".show-money span").text(sumprice);
         });
     };
     // 统计商品数量
-    function goodsnum(){
-        let goods_num=0;
-        $.each($(".text-num"),function() {
-            goods_num+=parseInt($(this).val());
+    /* function goodsnum() {
+        let goods_num = 0;
+        $.each($(".text-num"), function() {
+            goods_num += parseInt($(this).val());
             $(".goods_num span").text(goods_num);
         });
-    }
+    } */
 
 });
