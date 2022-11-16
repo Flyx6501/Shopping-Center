@@ -4,24 +4,30 @@
    @version 1.0
 */
 window.onload = function() {
-    $.ajax({
-        /* 获取用户名 */
-        /*var url = window.location.search;
-        var userName = url.split("=");*/
-        /* 获取数据列 */
+   /* $.ajax({
+        /!* 获取用户名 *!/
+        /!*var url = window.location.search;
+        var userName = url.split("=");*!/
+        /!* 获取数据列 *!/
         url: "#",
-        type: "GET",
+        type: "POST",
         dataType:"json",
+        data:{
+            userName: $("#selfName").val(),
+            phone: $("#phone").val(),
+            email: $("#email").val(),
+            address: $("#address").val(),
+        },
         success: function(data) {
-            /* 读取成功时将数据读取,显示在页面内 */
-            /*document.getElementById("#selfName").value = data.userName;
+            /!* 读取成功时将数据读取,显示在页面内 *!/
+            /!*document.getElementById("#selfName").value = data.userName;
             document.getElementById("#phone").value = data.phone;
             document.getElementById("#email").value = data.email;
-            document.getElementById("#address").value = data.address;*/
+            document.getElementById("#address").value = data.address;*!/
+            alert("修改成功")
         }
-    });
-}
-$(document).ready(function() {
+    });*/
+
     /* 电话 */
     $("#phone").blur(function() {
         var num = $("#phone").val().length;
@@ -46,7 +52,6 @@ $(document).ready(function() {
     function showMsg(msg) {
         $("#checkMsg").text(msg);
     }
-});
 
 $("#submit").on("click", function() {
     var model = {
@@ -77,3 +82,4 @@ $("#submit").on("click", function() {
 
     });
 })
+}
