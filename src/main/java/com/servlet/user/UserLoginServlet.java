@@ -70,15 +70,17 @@ public class UserLoginServlet extends HttpServlet {
         Connection c = null;
         c = (Connection) JDBCUtil.getConnection();
         boolean flag = userDao.getUserByUsernameAndPassword(c, userName, password);
+        System.out.println(flag);
         if (flag) {
-            JSONObject json=new JSONObject();
+           /* JSONObject json=new JSONObject();
             json.put("msg",userName);
 
             PrintWriter out=resp.getWriter();
             out.println(json);
-            out.close();
+            out.close();*/
             //req.setAttribute("message", "登陆成功");
-            req.getRequestDispatcher("/success").forward(req, resp);
+            req.setAttribute("userName",userName);
+            req.getRequestDispatcher("/userindex").forward(req, resp);
         }else{
             req.setAttribute("message","登陆失败");
             req.getRequestDispatcher("/login").forward(req,resp);
