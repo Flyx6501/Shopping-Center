@@ -5,7 +5,6 @@ import com.service.ManagerDaoImpl;
 import com.service.UserDaoImpl;
 import com.utils.JDBCUtil;
 import org.json.JSONObject;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -26,14 +25,13 @@ import java.sql.SQLException;
 public class UserUpdate extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doGet(req, resp);
+
+        doPost(req,resp);
         try {
             userUpdate(req, resp);
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-
-
     }
 
     @Override
@@ -57,13 +55,12 @@ public class UserUpdate extends HttpServlet {
 
     private void userUpdate(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException {
         Connection c = (Connection) JDBCUtil.getConnection();
-
-
         String userName = req.getParameter("userName");
         String password = req.getParameter("password");
         String email = req.getParameter("email");
         String nickName = req.getParameter("nickName");
         String userId = req.getParameter("useId");
+
         ManagerDaoImpl as = new ManagerDaoImpl();
         boolean flag=as.updateUserByUserId(c, userName, password, email, nickName, Integer.parseInt(userId));
         if (flag){
