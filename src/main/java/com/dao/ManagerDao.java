@@ -1,6 +1,9 @@
 package com.dao;
 
+import com.bean.User;
 import com.mysql.jdbc.Connection;
+
+import java.util.List;
 
 /** 管理员 Dao
  * @author l666888999
@@ -8,7 +11,6 @@ import com.mysql.jdbc.Connection;
  * @date 2022/11/8 15:10
  **/
 public interface ManagerDao {
-
     /**  进行管理员登陆
      * @param c 链接数据库
      * @param manageName  管理员的name
@@ -41,5 +43,25 @@ public interface ManagerDao {
      * @date 2022/11/11 20:28
      **/
     boolean updateUserByUserId(Connection c, String userName, String password, String email, String nickName, int userId);
+
+    /** TODO
+         * @param c 链接数据库
+         * @param userName 用户名
+         * @return java.util.List<com.bean.User>
+     * @author l666888999
+     * @date 2022/11/17 8:15
+     **/
+    List<User> getUserByUserName(Connection c,String userName);
+/** 增加用户信息
+     * @param c   进行数据库连接
+     * @param userName  用户名
+     * @param email  邮件
+     * @param address  收货地址
+     * @param nickName  昵称
+     * @return boolean
+ * @author l666888999
+ * @date 2022/11/19 21:39
+ **/
+    boolean addUser(Connection c,String userName,String email,String address,String nickName);
 
 }
