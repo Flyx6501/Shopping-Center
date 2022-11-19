@@ -49,7 +49,11 @@
         </div>
         <div class="layui-col-md1">
             <div id="userName">
-
+                <%=request.getAttribute("userName")%>
+                <%
+                    String userName = request.getAttribute("userName").toString();
+                    session.setAttribute("userName",userName);
+                %>
             </div>
         </div>
         <div class="layui-col-md1">
@@ -147,5 +151,7 @@
         });
     });
 </script>
+</div>
 </body>
+
 </html>
