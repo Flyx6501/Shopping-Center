@@ -41,7 +41,7 @@
         <div class="layui-col-md1">
             <%--获取用户名--%>
             <div id="userName">
-                <%=request.getAttribute("username")%>
+                <%=session.getAttribute("userName")%>
             </div>
         </div>
         <div class="layui-col-md1">
