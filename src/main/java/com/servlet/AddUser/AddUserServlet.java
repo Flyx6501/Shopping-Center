@@ -1,10 +1,11 @@
-package com.servlet.Update;
+package com.servlet.AddUser;
 
 import com.mysql.jdbc.Connection;
 import com.service.ManagerDaoImpl;
-import com.service.UserDaoImpl;
 import com.utils.JDBCUtil;
 import org.json.JSONObject;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,20 +17,22 @@ import java.lang.reflect.Method;
 import java.sql.SQLException;
 
 /**
- * a
+ * 添加用户
  *
  * @author l666888999
  * @version 1.0
- * @date 2022/11/11 15:49
+ * @date 2022/11/19 21:53
  **/
-public class UserUpdate extends HttpServlet {
+public class AddUserServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        doPost(req,resp);
+       doPost(req,resp);
         try {
-            userUpdate(req, resp);
-        } catch (SQLException | ClassNotFoundException e) {
+            addUser(req,resp);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
@@ -52,39 +55,22 @@ public class UserUpdate extends HttpServlet {
             throw new RuntimeException(e);
         }
     }
-
-    private void userUpdate(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException {
-        Connection c = (Connection) JDBCUtil.getConnection();
-        String userName = req.getParameter("userName");
-        String password = req.getParameter("password");
+    private void addUser(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException {
+        String userName = req.getParameter("username");
         String email = req.getParameter("email");
-        String nickName = req.getParameter("nickName");
-        String userId = req.getParameter("useId");
-
-        ManagerDaoImpl as = new ManagerDaoImpl();
-        boolean flag=as.updateUserByUserId(c, userName, password, email, nickName, Integer.parseInt(userId));
+        String address = req.getParameter("city");
+        String nickname = req.getParameter("nickname");
+        Connection c= (Connection) JDBCUtil.getConnection();
+        ManagerDaoImpl dao=new ManagerDaoImpl();
+        boolean flag = dao.addUser(c, userName, email, address, nickname);
         if (flag){
             JSONObject json=new JSONObject();
-            json.put("message","success");
+            json.put("msg","增加成功");
 
             PrintWriter out=resp.getWriter();
             out.println(json);
             out.close();
-
-        }else{
-            JSONObject json=new JSONObject();
-            json.put("message","failed");
-
-            PrintWriter out=resp.getWriter();
-            out.println(json);
-            out.close();
-
         }
-
-
-        //ToDo 转换
-        //req.getRequestDispatcher().forward(req,resp);
-
 
     }
 }

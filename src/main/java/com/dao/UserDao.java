@@ -47,6 +47,25 @@ public interface UserDao {
      * @date 2022/11/11 20:28
      **/
     boolean findUserByUserName(Connection c, String userName);
+   /** 判断密码是否匹配
+        * @param c  数据库的连接
+        * @param userName  用户姓名
+        * @return boolean
+    * @author l666888999
+    * @date 2022/11/17 14:22
+    **/
+    boolean searchUserByPassword(Connection c,String userName,String passwords);
+
+    /** 更新用户密码
+         * @param c
+         * @param password
+         * @param userName
+         * @return boolean
+     * @author l666888999
+     * @date 2022/11/19 21:02
+     **/
+    boolean updateUserByPassword(Connection c,String password,String userName);
+
 }
 
 

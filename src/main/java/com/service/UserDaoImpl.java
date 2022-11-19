@@ -81,5 +81,45 @@ public class UserDaoImpl implements UserDao {
        return false;
     }
 
+    @Override
+    public boolean searchUserByPassword(Connection c,String userName,String passwords) {
+        PreparedStatement ps=null;
+        try {
+            String sql = "SELECT user_username,user_password FROM `user` WHERE  user_username=? and user_password=?";
+            ps = c.prepareStatement(sql);
+            ps.setString(1,userName);
+            ps.setString(2,passwords);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                System.out.println("选择的是该密码");
+                return true;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            JDBCUtil.closeResource(c,ps);
+        }
+            return false;
+    }
 
+    @Override
+    public boolean updateUserByPassword(Connection c, String password, String userName){
+        PreparedStatement ps=null;
+        try {
+            String sql = "UPDATE `user` SET user_password=? WHERE user_username=?";
+             ps = c.prepareStatement(sql);
+            ps.setString(1, password);
+            ps.setString(2, userName);
+            int as = ps.executeUpdate();
+            if (as >= 1) {
+                System.out.println("更改成功");
+                return true;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            JDBCUtil.closeResource(c,ps);
+        }
+    return false;
+    }
 }

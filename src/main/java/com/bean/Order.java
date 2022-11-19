@@ -12,8 +12,18 @@ import java.util.List;
  * @date 2022/11/14 20:27
  **/
 public class Order {
+    private String id;
     //订单编号(随机产生)
     private String oid;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     //下单时间
     private Date ordertime;
     //获取购物车中的商品项
@@ -24,8 +34,11 @@ public class Order {
     private String name;
     //电话
     private String telephone;
+    //显示谁的订单，如果表中有外键，一般设置为对象。
     private User user;
     private List<OrderItem> list=new ArrayList<OrderItem>();
+    public Order() {
+    }
 
     public String getOid() {
         return oid;

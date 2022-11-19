@@ -1,9 +1,12 @@
 package com.service;
+import com.bean.User;
 import com.dao.ManagerDao;
 import com.mysql.jdbc.Connection;
 import com.utils.JDBCUtil;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 /** 管理员类的Service
  * @author l666888999
@@ -63,6 +66,56 @@ public class ManagerDaoImpl implements ManagerDao {
             ps.setInt(5,userId);
             int rs1=ps.executeUpdate();
             if (rs1>=1){
+                return true;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            JDBCUtil.closeResource(c,ps);
+        }
+        return false;
+    }
+
+    @Override
+    public List<User> getUserByUserName(Connection c, String userName) {
+        List<User> list= new ArrayList<>();
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        try {
+            String sql = "SELECT user_id,user_username,email,address,nickname FROM user WHERE user_username=?";
+             ps = c.prepareStatement(sql);
+            ps.setString(1, userName);
+             rs = ps.executeQuery();
+            while (rs.next()) {
+                User  user = new User();
+                user.setUseId(rs.getInt("user_id"));
+                user.setUserUsername(rs.getString("user_username"));
+                user.setEmail(rs.getString("email"));
+                user.setAddress(rs.getString("address"));
+                user.setNickname(rs.getString("nickname"));
+                list.add(user);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            JDBCUtil.closeResource(c,ps,rs);
+        }
+    return list;
+    }
+
+    @Override
+    public boolean addUser(Connection c, String userName, String email, String address, String nickName) {
+
+        PreparedStatement ps=null;
+        try {
+            String sql = "INSERT INTO user(user_username,email,address,nickname) VALUES (?,?,?,?)";
+            ps = c.prepareStatement(sql);
+            ps.setString(1, userName);
+            ps.setString(2, email);
+            ps.setString(3, address);
+            ps.setString(4, nickName);
+            int i = ps.executeUpdate();
+            if (i >= 1) {
                 return true;
             }
         }catch (Exception e){

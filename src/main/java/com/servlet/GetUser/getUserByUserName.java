@@ -1,35 +1,39 @@
-package com.servlet.Update;
+package com.servlet.GetUser;
 
-import com.mysql.jdbc.Connection;
+import com.bean.User;
 import com.service.ManagerDaoImpl;
-import com.service.UserDaoImpl;
 import com.utils.JDBCUtil;
-import org.json.JSONObject;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
- * a
+ * 返回所有商品信息
  *
  * @author l666888999
  * @version 1.0
- * @date 2022/11/11 15:49
+ * @date 2022/11/16 8:56
  **/
-public class UserUpdate extends HttpServlet {
+
+public class getUserByUserName extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        doPost(req,resp);
+        doPost(req, resp);
         try {
-            userUpdate(req, resp);
-        } catch (SQLException | ClassNotFoundException e) {
+            getUserByUserName(req, resp);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
@@ -53,38 +57,20 @@ public class UserUpdate extends HttpServlet {
         }
     }
 
-    private void userUpdate(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException {
-        Connection c = (Connection) JDBCUtil.getConnection();
+    private void getUserByUserName(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException {
         String userName = req.getParameter("userName");
-        String password = req.getParameter("password");
-        String email = req.getParameter("email");
-        String nickName = req.getParameter("nickName");
-        String userId = req.getParameter("useId");
 
-        ManagerDaoImpl as = new ManagerDaoImpl();
-        boolean flag=as.updateUserByUserId(c, userName, password, email, nickName, Integer.parseInt(userId));
-        if (flag){
-            JSONObject json=new JSONObject();
-            json.put("message","success");
-
-            PrintWriter out=resp.getWriter();
-            out.println(json);
-            out.close();
-
-        }else{
-            JSONObject json=new JSONObject();
-            json.put("message","failed");
-
-            PrintWriter out=resp.getWriter();
-            out.println(json);
-            out.close();
-
+        Connection c = JDBCUtil.getConnection();
+        ManagerDaoImpl dao = new ManagerDaoImpl();
+        // dao.getUserByUserName((com.mysql.jdbc.Connection) c,userName);
+        List<User> list = dao.getUserByUserName((com.mysql.jdbc.Connection) c, userName);
+        req.setAttribute("list", list);
+        //ToDo 路径补充
+        try {
+            req.getRequestDispatcher("").forward(req, resp);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
         }
-
-
-        //ToDo 转换
-        //req.getRequestDispatcher().forward(req,resp);
-
 
     }
 }

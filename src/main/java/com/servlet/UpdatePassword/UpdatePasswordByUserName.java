@@ -1,4 +1,4 @@
-package com.servlet.user;
+package com.servlet.UpdatePassword;
 
 import com.mysql.jdbc.Connection;
 import com.service.UserDaoImpl;
@@ -16,21 +16,21 @@ import java.lang.reflect.Method;
 import java.sql.SQLException;
 
 /**
- * 实现Servlet方法
+ * 进行用户密码更新
  *
  * @author l666888999
- * @date 2022/11/08 21:26
+ * @version 1.0
+ * @date 2022/11/18 11:49
  **/
-public class UserLoginServlet extends HttpServlet {
+public class UpdatePasswordByUserName extends HttpServlet {
     private static final long serialVersionUID = 1L;
-
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        doPost(request, response);
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doGet(req, resp);
+        doPost(req,resp);
         try {
-            userLogin(request, response);
-        } catch (SQLException  |ClassNotFoundException e) {
+            updatePasswordByUserName(req,resp);
+        } catch (SQLException  | ClassNotFoundException e){
             throw new RuntimeException(e);
         }
     }
@@ -49,41 +49,26 @@ public class UserLoginServlet extends HttpServlet {
         }
         try {
             method.invoke(this, req, resp);
-        } catch (IllegalAccessException |InvocationTargetException e) {
+        } catch (IllegalAccessException | InvocationTargetException e) {
             throw new RuntimeException(e);
         }
     }
-
-    /**
-     * 用户登陆
-     *
-     * @param req  请求
-     * @param resp 相应
-     * @author l666888999
-     * @date 2022/11/09 17:10
-     **/
-    private void userLogin(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException, ServletException {
-        String userName = req.getParameter("userName");
+    private void updatePasswordByUserName(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException {
+        Connection c= (Connection) JDBCUtil.getConnection();
         String password = req.getParameter("password");
-
+        String userName = req.getParameter("userName");
         UserDaoImpl userDao = new UserDaoImpl();
-        Connection c = null;
-        c = (Connection) JDBCUtil.getConnection();
-        boolean flag = userDao.getUserByUsernameAndPassword(c, userName, password);
-        System.out.println(flag);
-        if (flag) {
-           /* JSONObject json=new JSONObject();
-            json.put("msg",userName);
-
+        boolean flag = userDao.updateUserByPassword(c, password, userName);
+        System.out.println(password);
+        System.out.println(userName);
+        if (flag){
+            JSONObject json = new JSONObject();
+            json.put("msg","success");
             PrintWriter out=resp.getWriter();
             out.println(json);
-            out.close();*/
-            //req.setAttribute("message", "登陆成功");
-            req.setAttribute("userName",userName);
-            req.getRequestDispatcher("/userindex").forward(req, resp);
-        }else{
-            req.setAttribute("message","登陆失败");
-            req.getRequestDispatcher("/login").forward(req,resp);
+            out.close();
         }
+
+
     }
 }

@@ -1,10 +1,10 @@
-package com.servlet.Update;
+package com.servlet.UpdatePassword;
 
 import com.mysql.jdbc.Connection;
-import com.service.ManagerDaoImpl;
 import com.service.UserDaoImpl;
 import com.utils.JDBCUtil;
 import org.json.JSONObject;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,19 +16,18 @@ import java.lang.reflect.Method;
 import java.sql.SQLException;
 
 /**
- * a
- *
  * @author l666888999
  * @version 1.0
- * @date 2022/11/11 15:49
+ * @date 2022/11/17 8:31
  **/
-public class UserUpdate extends HttpServlet {
+public class SearchPasswordByUserName extends HttpServlet {
+    private static final long serialVersionUID = 1L;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        super.doGet(req, resp);
         doPost(req,resp);
         try {
-            userUpdate(req, resp);
+            searchPasswordByUserName(req,resp);
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -52,39 +51,31 @@ public class UserUpdate extends HttpServlet {
             throw new RuntimeException(e);
         }
     }
-
-    private void userUpdate(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException {
+    private void searchPasswordByUserName(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException {
+       // String password=req.getParameter("password");
         Connection c = (Connection) JDBCUtil.getConnection();
+        //String firstPassword=req.getParameter("firstPassword");
         String userName = req.getParameter("userName");
-        String password = req.getParameter("password");
-        String email = req.getParameter("email");
-        String nickName = req.getParameter("nickName");
-        String userId = req.getParameter("useId");
-
-        ManagerDaoImpl as = new ManagerDaoImpl();
-        boolean flag=as.updateUserByUserId(c, userName, password, email, nickName, Integer.parseInt(userId));
+        String passwords=req.getParameter("password");
+        UserDaoImpl dao=new UserDaoImpl();
+        boolean flag = dao.searchUserByPassword(c,userName,passwords);
+        System.out.println(userName);
+        System.out.println(passwords);
         if (flag){
-            JSONObject json=new JSONObject();
-            json.put("message","success");
-
+            JSONObject json = new JSONObject();
+            json.put("msg","success");
             PrintWriter out=resp.getWriter();
             out.println(json);
             out.close();
-
+          //  req.setAttribute("msg","修改密码成功");
         }else{
             JSONObject json=new JSONObject();
-            json.put("message","failed");
+            json.put("msg","failed");
 
             PrintWriter out=resp.getWriter();
             out.println(json);
             out.close();
 
         }
-
-
-        //ToDo 转换
-        //req.getRequestDispatcher().forward(req,resp);
-
-
     }
 }
