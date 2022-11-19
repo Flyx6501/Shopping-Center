@@ -5,6 +5,9 @@
   @version: 1.0
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%
+    pageContext.setAttribute("userName",request.getAttribute("userName"));
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,7 +20,7 @@
     <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
     <script type="text/javascript" src="${APP_PATH}/static/frame/layui-2.6.8.js"></script>
     <script type="text/javascript" src="${APP_PATH}/static/frame/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="${APP_PATH}/static/js/self.js"></script>
+    <script type="text/javascript" src="${APP_PTAH}/static/js/self.js"></script>
     <link rel="stylesheet" type="text/css" href="${APP_PATH}/static/frame/layui-2.6.8.css" />
     <link rel="stylesheet" type="text/css" href="${APP_PATH}/static/frame/bootstrap-3.4.1-dist.min.css" />
     <link rel="stylesheet" type="text/css" href="${APP_PATH}/static/css/self.css" />
@@ -55,7 +58,8 @@
         <ul class="left-nav">
             <li class="active"><a href="#">个人信息</a></li>
             <li><a href="#">我的订单</a></li>
-            <li><a href="${APP_PATH}/password">修改密码</a></li>
+            <li><a href="password">修改密码</a></li>
+
         </ul>
     </div>
     <div class="layui-col-md10">
