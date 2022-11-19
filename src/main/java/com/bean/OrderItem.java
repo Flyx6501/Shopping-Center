@@ -8,9 +8,13 @@ package com.bean;
  * @date 2022/11/14 21:04
  **/
 public class OrderItem {
+    public OrderItem() {
+    }
     private String itemid;
-    private int quantity;
-    private double total;
+   //外键
+    private Commodity commodity;
+    //外键
+    private Order order;
 
     public String getItemid() {
         return itemid;
@@ -20,28 +24,20 @@ public class OrderItem {
         this.itemid = itemid;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public Commodity getCommodity() {
+        return commodity;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setCommodity(Commodity commodity) {
+        this.commodity = commodity;
     }
 
-    public double getTotal() {
-        return total;
+    public Order getOrder() {
+        return order;
     }
 
-    public void setTotal(double total) {
-        this.total = total;
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
-    @Override
-    public String toString() {
-        return "OrderItem{" +
-                "itemid='" + itemid + '\'' +
-                ", quantity=" + quantity +
-                ", total=" + total +
-                '}';
-    }
 }
