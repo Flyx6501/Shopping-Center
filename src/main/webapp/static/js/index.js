@@ -52,9 +52,12 @@ window.onload = function() {
         }
     });
 $.ajax({
-        url: "#",
+        url: '${APP_PATH}/userLogin.do',
         type: "GET",
         dataType: "json",
+        data:{
+            "id":id
+        },
         success: function(data) {
             $("#userName").html(data.userName);
         }
