@@ -1,21 +1,17 @@
 package com.service;
 
 import com.bean.Commodity;
-import com.mysql.jdbc.Connection;
-
 import java.util.List;
-
-/**
- * @author 23130
+/**商品业务逻辑层接口
+ * @author Qgs123
  * @version 1.0
  * @date 2022/11/11 10:38
  **/
 public interface CommodityService {
-    List<Commodity> getCommodityList();
-
-    /**查询单个
+    /**查询商品表中的所有数据
+    */
+     List<Commodity> getCommodityList();
+    /**查询单个商品详细信息
      */
     Commodity getOne (int id);
-
-
 }

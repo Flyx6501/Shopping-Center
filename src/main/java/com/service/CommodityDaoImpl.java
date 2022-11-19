@@ -1,19 +1,13 @@
 package com.service;
-
 import com.bean.Commodity;
 import com.dao.CommodityDao;
-import com.mysql.jdbc.Blob;
 import com.mysql.jdbc.Connection;
 import com.utils.DBHeper;
-
-import java.io.BufferedInputStream;
-import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-/** 商品类的service
+/** 商品数据访问层
  * @author Qgs123
  * @date 2022/11/10 9:42
  **/
@@ -23,10 +17,12 @@ public class CommodityDaoImpl  implements CommodityDao {
     private ResultSet rs;
     public CommodityDaoImpl(){
     }
+    /**
+     * 查询商品表中的所有数据
+     */
     @Override
     public List<Commodity> getCommodityList() {
         List<Commodity> list=new ArrayList<Commodity>();
-
         try {
             con= (Connection) DBHeper.getCon();
             ps=con.prepareStatement("select * from `commodity`");
@@ -49,7 +45,7 @@ public class CommodityDaoImpl  implements CommodityDao {
         }
         return list;
     }
-    /** 查询单个
+    /** 查询单个商品详情
      * @author Qgs123
      * @date 2022/11/12 10:27
      **/
@@ -77,8 +73,6 @@ public class CommodityDaoImpl  implements CommodityDao {
         }
         return g;
     }
-
-
     /** insert语句返回的是自增列的值
      */
     @Override
@@ -89,7 +83,6 @@ public class CommodityDaoImpl  implements CommodityDao {
  */
         return false;
     }
-
     @Override
     public boolean updateCommodity(Commodity commodity) {
         String sql = "update shopping set  commodity_stock= ? where commodity_id = ? " ;
@@ -97,7 +90,6 @@ public class CommodityDaoImpl  implements CommodityDao {
  */
     return false;
     }
-
     @Override
     public boolean delCommodity(String commodity) {
         String sql = "delete from commodity where commodity_name like ? " ;
@@ -105,5 +97,4 @@ public class CommodityDaoImpl  implements CommodityDao {
    */
     return false;
     }
-
 }

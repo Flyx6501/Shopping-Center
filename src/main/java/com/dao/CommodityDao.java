@@ -5,8 +5,7 @@ import com.mysql.jdbc.Connection;
 
 import java.util.List;
 
-/** 商品 Dao
- *
+/** 商品数据访问层的接口
  * @author Qgs123
  * @date 2022/11/10 9:38
  **/
@@ -45,7 +44,5 @@ public interface CommodityDao {
      * @date 2022/11/12 10:26
      *
      **/
-    Commodity getOne(int id);
-
-
+     Commodity getOne(int id);
 }
