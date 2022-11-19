@@ -4,7 +4,7 @@
    @version 1.0
 */
 $(document).ready(function() {
-    $("#oldpassword").blur(function() {
+    $("#oldPassword").blur(function() {
         var oldPassword = $("#oldPassword").val();
         if(oldPassword == ''){
             showMsg("请输入原密码");
@@ -12,12 +12,16 @@ $(document).ready(function() {
         else{
             /* 判断原密码是否正确 */
             $.ajax({
-                url: "#",
+                url: "searchPasswordByUserName.do",
+                type: "post",
                 data: {
-                    oldpassword:oldPassword
+                    userName:userName,
+                    password:oldPassword,
                 },
-                success: function(e) {
-                    if (e.code == 1) {
+                dataType:"json",
+                success: function(res) {
+                    let msg = res.msg;
+                    if (msg == "success") {
                         showMsg("√");
                     } else {
                         showMsg("原密码输入错误");
@@ -37,6 +41,7 @@ $(document).ready(function() {
         }
     });
     $("#secondPassword").blur(function() {
+        var num = $("#secondPassword").val().length;
         var firstPassword = $("#firstPassword").val();
         var secondPassword = $("#secondPassword").val().length;
         if ($("#secondPassword").val() != firstPassword) {
@@ -51,13 +56,14 @@ $(document).ready(function() {
     });
     $("#btn").click(function() {
         var flag = true;
-        var oldpassword = $("#oldpassword").val();
+        /*alert(userName)*/
+        var oldPassword = $("#oldpassword").val();
         var firstPassword = $("#firstPassword").val();
-        var secondPassword = $("#secondPassword").val();
+        var password = $("#secondPassword").val();
         var first = $("#firstPassword").val().length;
         var second = $("#secondPassword").val().length;
         if (first != second || first < 6 || second < 6 || first > 10 || second > 10 || firstPassword !=
-            secondPassword) {
+            password) {
             flag = false;
         } else {
             flag = true;
@@ -65,23 +71,25 @@ $(document).ready(function() {
         if (flag) {
             /* 修改密码 */
             $.ajax({
-                url: "#",
+                url: "updatePasswordByUserName.do",
+                type: "post",
                 data: {
-                    oldpassword: old,
-                    password: pass
+                    /* password: oldpassword,*/
+                    userName: userName,
+                    password: password,
+
                 },
+                dataType:"json",
                 /* 成功则清空输入框 */
-                success: function(e) {
-                    if (e.code == 1) {
-                        $("#oldpassword").val("");
-                        $("#firstPassword").val("");
-                        $("#secondPassword").val("");
-                        $("#oldPassword").empty();
-                        $("#firstPassword").empty();
-                        $("#secondPassword").empty();
-                        alert("修改成功，请重新登录");
-                        window.location.href="login.jsp";
-                    }
+                success: function() {
+                    /* console.log(data);*/
+                    alert("修改成功");
+                    $("#oldpassword").val("");
+                    $("#firstPassword").val("");
+                    $("#secondPassword").val("");
+                    $("#oldPassword").empty();
+                    $("#firstPassword").empty();
+                    $("#secondPassword").empty();
                 }
             });
         }

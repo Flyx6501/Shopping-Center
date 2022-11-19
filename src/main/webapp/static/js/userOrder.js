@@ -1,6 +1,6 @@
-/* @description: 购物车操作
+/* @description: 我的订单操作
    @author LL
-   @date 2022/11/14 10:15
+   @date 2022/11/17 0:11
    @version 1.0
 */
 $(function() {
@@ -8,15 +8,15 @@ $(function() {
     // 	console.info($(this).text());
     // })
     var url = window.location.search;
-    var id = url.split("=");
+    var commodityId = url.split("=");
     /* 返回值给购物车 */
     $.ajax({
         /* 获取数据 */
-        url: "car.do",
+        url: "userOrder.do",
         type: "GET",
         dataType: "json",
         data: {
-            "id": id,
+            "commodityId": commodityId,
         },
         success: function(data) {
             /* 读取成功时将数据读取,显示在页面内 */
@@ -49,7 +49,7 @@ $(function() {
         // console.log(sum);
         $(sum_num).text(sum);
         totl();
-         /* goodsnum(); */
+        g /* oodsnum(); */
     });
     // 增加商品数量
     $(".add").click(function() {

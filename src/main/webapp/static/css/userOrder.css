@@ -1,0 +1,371 @@
+/* @description: 我的订单样式
+   @author LL
+   @date 2022/11/17 0:12
+   @version 1.0
+*/
+/* 导航栏样式 */
+.nav-bar {
+    background-color: #f7f9fa;
+    padding-left: 7rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+}
+
+/* 链接样式 */
+.layui-col-md8 a {
+    color: darkgray;
+    text-decoration: none;
+}
+
+/* 链接鼠标移入效果 */
+.layui-col-md8 a:hover {
+    color: darkorange;
+}
+
+.layui-col-md2 a {
+    color: darkgray;
+    text-decoration: none;
+}
+
+/* 鼠标移入效果 */
+.layui-col-md2 a:hover {
+    color: darkorange;
+}
+
+/* 导航栏样式 */
+li {
+    margin: 3.125rem;
+    font-size: 16px;
+}
+
+li a{
+    margin-left: 30px;
+}
+/* 导航栏超链接样式 */
+.left-nav a {
+    color: black;
+    text-decoration: none;
+}
+
+/* 导航栏超链接移入效果 */
+.left-nav a:hover {
+    color: darkorange;
+}
+
+/* 此时所在页面 */
+.active a{
+    color: darkorange;
+}
+
+/* 表单整体 */
+.whole {
+    width: 900px;
+    border: 1px solid #ddd;
+}
+
+
+.font {
+    font-size: 14px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+
+/* 导航栏样式 */
+.nav-bar {
+    background-color: #f7f9fa;
+    padding-left: 7rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+}
+
+/* 返回首页 */
+.layui-col-md8 a {
+    color: darkgray;
+    text-decoration: none;
+}
+
+/* 鼠标移入效果 */
+.layui-col-md2 a:hover {
+    color: darkorange;
+}
+
+/* 返回首页 */
+.layui-col-md2 a {
+    text-decoration: none;
+}
+
+/* 鼠标移入效果 */
+.layui-col-md8 a:hover {
+    color: darkorange;
+}
+
+.cart {
+    width: 1000px;
+    margin: 30px auto 0;
+    display: block;
+    /*height: 1000px;*/
+}
+
+.cart-head {
+    display: block;
+    height: 50px;
+    background-color: #e0dfdf;
+    line-height: 50px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.cart-head .column {
+    float: left;
+    margin-left: 40px;
+}
+
+.cart-head .g-select {
+    width: 80px;
+}
+
+.cart-head .g-select .g-checkbox {
+    float: left;
+    padding-right: 5px;
+    padding-left: 10px;
+}
+
+.cart-head .g-images {
+    width: 120px;
+}
+
+.cart-head .g-goodsname {
+    width: 140px;
+}
+
+.cart-head .g-props {
+    width: 130px;
+    margin-left: 30px;
+}
+
+.cart-head .g-price {
+    width: 80px;
+    margin-left: 15px;
+}
+
+.cart-head .g-quantity {
+    width: 80px;
+    padding-left: 20px;
+}
+
+.cart-head .g-sum {
+    width: 70px;
+    margin-left: 10px;
+    text-align: right;
+    padding-right: 35px;
+}
+
+.cart-head .g-action {
+    width: 40px;
+}
+
+.cart .carts-goods {
+    border-top: 1px solid #bababa;
+    padding-top: 20px;
+    margin-bottom: 20px;
+    height: 110px;
+}
+
+.carts-goods .c-select {
+    width: 30px;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.carts-goods .c-select .c-checkbox {
+    margin-top: 10px;
+}
+
+.carts-goods .c-images {
+    margin-left: 5px;
+    margin-right: 25px;
+}
+
+.c-images a img {
+    width: 110px;
+    border: 2px solid #9d9999;
+}
+
+.c-goodsname {
+    width: 120px;
+    margin-left: 60px;
+    /* margin-right: 20px; */
+    padding-top: 14px;
+}
+
+.c-goodsname a {
+    color: #000000;
+    font-size: 14px;
+}
+
+.c-props {
+    width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 13px;
+    padding-top: 14px;
+    margin-left: 50px;
+}
+
+.c-price {
+    margin-left: 16px;
+    padding-top: 13px;
+    width: 80px;
+    padding-right: 20px;
+    text-align: right;
+    font-size: 15px;
+}
+
+.c-price .c-pricenum {
+    float: right;
+}
+
+.c-quantity {
+    margin-left: 70px;
+    /* margin-right: 20px; */
+    width: 60px;
+    border: none;
+    padding-top: 13px;
+}
+
+.c-quantity button {
+    width: 20px;
+    height: 25px;
+    line-height: 20px;
+    float: left;
+    background-color: #d8dcdc;
+    border: none;
+}
+
+.c-quantity input {
+    float: left;
+    width: 50px;
+    height: 25px;
+    text-align: center;
+    box-sizing: border-box;
+    border: 1px solid #d7d2d2;
+    padding: 0;
+}
+
+.c-sum {
+    width: 85px;
+    font-weight: 600;
+    padding-top: 13px;
+    text-align: right;
+    margin-right: 20px;
+}
+
+.c-sum .c-sumnum {
+    float: right;
+}
+
+.c-action {
+    width: 80px;
+    margin-left: 30px;
+    padding-top: 13px;
+}
+
+.c-action a {
+    color: #e30606;
+    font-size: 15px;
+}
+
+.carts-goods .cell {
+    float: left;
+}
+
+.payment {
+    /* width: 100%; */
+    position: fixed;
+    height: 60px;
+    top: auto;
+    bottom: 0;
+    background-color: #e0dfdf;
+    margin-left:60px ;
+}
+
+.payment .cart-pay {
+    width: 1005px;
+    margin: 0 auto;
+    height: 58px;
+    position: relative;
+}
+
+.pay-left {
+    width: 350px;
+    height: 58px;
+    float: left;
+}
+
+.pay-left .select_all {
+    float: left;
+    line-height: 58px;
+    margin-left: 10px;
+}
+
+.goods_num {
+    float: left;
+    line-height: 58px;
+    margin-left: 20px;
+    font-size: 18px;
+}
+
+.goods_num span {
+    color: #f70000;
+}
+
+.pay-right {
+    position: absolute;
+    width: 650px;
+    height: 58px;
+    right: 0;
+    /*float: right;*/
+}
+
+.pay-right .btn {
+    float: right;
+    height: 60px;
+    margin-right:60px;
+}
+
+.pay-right .price-sum {
+    margin-top: 8px;
+    float: right;
+    position: relative;
+    height: 50px;
+    line-height: 40px;
+    width: 250px;
+    font-size: 18px;
+}
+
+.pay-right .price-sum .price-show {
+    float: left;
+}
+
+.price-sum .show-money {
+    color: #f1300f;
+    font-weight: 600;
+}
+
+.pay-right a {
+    position: relative;
+    display: block;
+    width: 100px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    color: #e0dfdf;
+    font-size: 25px;
+    cursor: pointer;
+    background-color: darkorange;
+    font-weight: 800;
+    color: #ffffff;
+    text-decoration: none;
+}

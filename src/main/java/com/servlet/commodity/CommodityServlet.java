@@ -1,16 +1,10 @@
 package com.servlet.commodity;
 
 import com.bean.Commodity;
-import com.dao.CommodityDao;
-import com.mysql.jdbc.Connection;
-import com.service.CommodityDaoImpl;
 import com.service.CommodityService;
 import com.service.CommodityServiceImpl;
 import org.json.JSONObject;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,7 +16,6 @@ import java.util.List;
  * @author Qgs123
  * @date 2022/11/10 10:00
  **/
-@WebServlet("/index.do")
 public class CommodityServlet extends HttpServlet {
     public CommodityServlet(){
     }

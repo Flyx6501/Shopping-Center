@@ -6,22 +6,42 @@
 window.onload = function() {
     /* 获取货物id */
     var url = window.location.search;
-    var id = url.split("=");
+    var commodityId = url.split("=");
+    /*console.log(commodityId);*/
     $.ajax({
         /* 获取数据 */
-        url: "details.do",
+        url: "CommodityGetOneServlet",
         type: "GET",
         dataType: "json",
         data: {
-            "id":id,
+            "commodityId":commodityId,
         },
-        success: function(data) {
+        success: function() {
             /* 读取成功时将数据读取,显示在页面内 */
-
             $("#img").html(data.commodityPhoto);
             $("#goodsName").html(data.commodityName);
             $("#props").html(data.commodityInformation);
             $("#price").html(data.commodityPrice);
+        }
+    });
+
+    /* id传送给购物车 */
+    function add() {
+        /* Cid为商品id */
+        window.location.href = "car?Cid=" + id;
+    }
+
+    $.ajax({
+        /* 获取数据 */
+        url: "car.do",
+        type: "POST",
+        dataType: "json",
+        data: {
+            "commodityId": commodityId,
+        },
+        success: function(data) {
+            /* 数据存入购物车 */
+
         }
     });
 }

@@ -51,6 +51,7 @@ window.onload = function() {
             }
         }
     });
+
 $.ajax({
         url: '${APP_PATH}/userLogin.do',
         type: "GET",
@@ -58,8 +59,18 @@ $.ajax({
         data:{
             "id":id
         },
+
+/*$.ajax({
+        url: "#",
+        type: "GET",
+        dataType: "json",
+        data:
+            {
+                "id":id
+            },
+
         success: function(data) {
             $("#userName").html(data.userName);
         }
-    });
+    });*/
 }

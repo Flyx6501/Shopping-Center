@@ -4,10 +4,16 @@
   @date: 2022/11/14 0:29
   @version: 1.0
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <%
+    pageContext.setAttribute("APP_PATH",request.getContextPath());
     pageContext.setAttribute("userName",request.getAttribute("userName"));
+    pageContext.setAttribute("phone",request.getAttribute("phone"));
+    pageContext.setAttribute("email",request.getAttribute("email"));
+    pageContext.setAttribute("address",request.getAttribute("address"));
 %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -16,6 +22,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <script type="text/javascript">
+        let userName = "<%=session.getAttribute("userName")%>";
+    </script>
     <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
     <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
     <script type="text/javascript" src="${APP_PATH}/static/frame/layui-2.6.8.js"></script>
@@ -43,7 +52,7 @@
         </div>
         <div class="layui-col-md1">
             <div id="userName">
-
+                <%=session.getAttribute("userName")%>
             </div>
         </div>
         <div class="layui-col-md1">
@@ -57,9 +66,9 @@
         <!-- 分类 -->
         <ul class="left-nav">
             <li class="active"><a href="#">个人信息</a></li>
-            <li><a href="#">我的订单</a></li>
-            <li><a href="password">修改密码</a></li>
 
+            <li><a href="${APP_PATH}/userOrder">我的订单</a></li>
+            <li><a href="${APP_PATH}/password">修改密码</a></li>
         </ul>
     </div>
     <div class="layui-col-md10">
@@ -84,21 +93,20 @@
                         </div>
                         <!-- input -->
                         <div class="layui-col-md10">
-                            <input class="input" type="text" name="selfName" id="selfName" value="selfName">
+                            <input class="input" type="text" name="userName" id="userName" value="${userName}">
                         </div>
                     </div>
-                    <!-- 性别 -->
                     <div class="layui-row">
                         <!-- 属性名 -->
                         <div class="layui-col-md2">
                             <div class="font">
-                                电话
+                                昵称
                                 <font class="red">*</font>
                             </div>
                         </div>
                         <!-- input -->
                         <div class="layui-col-md10">
-                            <input class="input" type="text" name="phone" id="phone" value="phone">
+                            <input class="input" type="text" name="nickName" id="nickName" value="${nickName}>
                         </div>
                     </div>
                     <!-- 邮箱 -->
@@ -112,7 +120,7 @@
                         </div>
                         <!-- input -->
                         <div class="layui-col-md10">
-                            <input class="input" type="text" name="email" id="email" value="email">
+                            <input class="input" type="text" name="email" id="email" value="${email}">
                         </div>
                     </div>
                     <div class="layui-row">
@@ -124,7 +132,7 @@
                         </div>
                         <!-- input -->
                         <div class="layui-col-md10">
-                            <input class="input" type="text" name="address" id="address" value="address">
+                            <input class="input" type="text" name="address" id="address" value="${address}>
                         </div>
                     </div>
                 </div>

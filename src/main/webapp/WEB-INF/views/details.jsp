@@ -12,6 +12,9 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <%
+        pageContext.setAttribute("APP_PATH", request.getContextPath());
+    %>
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
     <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
     <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
@@ -21,26 +24,30 @@
     <link rel="stylesheet" type="text/css" href="${APP_PATH}/static/frame/layui-2.6.8.css" />
     <link rel="stylesheet" type="text/css" href="${APP_PATH}/static/frame/bootstrap-3.4.1-dist.min.css" />
     <link rel="stylesheet" type="text/css" href="${APP_PATH}/static/css/details.css" />
+    <script type="text/javascript">
+        let APP_PATH=${APP_PATH};
+    </script>
     <title>详情</title>
 </head>
 <body>
 <!-- 头部导航 -->
 <div class="nav-bar">
     <div class="layui-row">
-        <!-- 返回首页 -->
-        <div class="layui-col-md8">
-            <a href="${APP_PATH}/userindex">返回首页</a>
+        <!-- 首页 -->
+        <div class="layui-col-md6">
+            <div>首页</div>
         </div>
         <div class="layui-col-md2">
             <a href="${APP_PATH}/self">个人中心</a>
         </div>
         <div class="layui-col-md2">
             <i class="layui-icon layui-icon-cart-simple" style="color: #ddd;"></i>
-            <a href="">购物车</a>
+            <a href="${APP_PATH}/car">购物车</a>
         </div>
         <div class="layui-col-md1">
+            <%--获取用户名--%>
             <div id="userName">
-
+                <%=session.getAttribute("userName")%>
             </div>
         </div>
         <div class="layui-col-md1">
@@ -76,7 +83,7 @@
         </div>
     </div>
 </div>
-<script>
+<%--<script>
     show();
     /* ./json/details. 数据接口 */
     function show(){
@@ -86,6 +93,6 @@
             $("#price").html(data.price);
         })
     }
-</script>
+</script>--%>
 </body>
 </html>
