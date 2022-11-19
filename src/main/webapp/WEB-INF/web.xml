@@ -45,12 +45,12 @@
 
     <!-- 跳转到登录成功页 -->
     <servlet>
-        <servlet-name>success</servlet-name>
-        <jsp-file>/WEB-INF/views/success.jsp</jsp-file>
+        <servlet-name>userindex</servlet-name>
+        <jsp-file>/WEB-INF/views/userindex.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
-        <servlet-name>success</servlet-name>
-        <url-pattern>/success</url-pattern>
+        <servlet-name>userindex</servlet-name>
+        <url-pattern>/userindex</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -167,5 +167,50 @@
         <servlet-name>login</servlet-name>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
+<!--查询用户信息-->
+    <servlet>
+        <servlet-name>select</servlet-name>
+        <servlet-class>com.servlet.GetUser.getUserByUserName</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>select</servlet-name>
+        <url-pattern>/getUserByUserName.do</url-pattern>
+    </servlet-mapping>
+    <!--个人中心-->
+    <servlet>
+        <servlet-name>self</servlet-name>
+        <jsp-file>/WEB-INF/views/self.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>self</servlet-name>
+        <url-pattern>/self</url-pattern>
+    </servlet-mapping>
+    <!--修改个人密码-->
+    <servlet>
+        <servlet-name>updatePassword</servlet-name>
+        <servlet-class>com.servlet.UpdatePassword.UpdatePasswordByUserName</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>updatePassword</servlet-name>
+        <url-pattern>/updatePasswordByUserName.do</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>searchPassword</servlet-name>
+        <servlet-class>com.servlet.UpdatePassword.SearchPasswordByUserName</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>searchPassword</servlet-name>
+        <url-pattern>/searchPasswordByUserName.do</url-pattern>
+    </servlet-mapping>
 
+   <!--修改密码跳转-->
+    <servlet>
+        <servlet-name>password</servlet-name>
+        <jsp-file>/WEB-INF/views/password.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>password</servlet-name>
+        <url-pattern>/password</url-pattern>
+    </servlet-mapping>
+    
 </web-app>
