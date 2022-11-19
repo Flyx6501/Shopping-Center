@@ -65,7 +65,7 @@ public class ManagerLoginServlet extends HttpServlet {
         boolean flag=asp.searchName((com.mysql.jdbc.Connection) c,adminName,password);
         System.out.println(flag);
         if (flag){
-            req.setAttribute("message","管理员登陆成功");
+            req.setAttribute("adminName",adminName);
             req.getRequestDispatcher("/managerlogin").forward(req,resp);
         }else {
             req.setAttribute("message","管理员登陆失败");
