@@ -16,6 +16,9 @@
     <%
         pageContext.setAttribute("APP_PATH", request.getContextPath());
     %>
+    <script type="text/javascript">
+        let APP_PATH=${APP_PATH};
+    </script>
 <%--    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
     <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>--%>
     <!-- Jquery -->
@@ -50,7 +53,11 @@
         <div class="layui-col-md1">
             <%--获取用户名--%>
             <div id="userName">
-            <%=request.getAttribute("username")%>
+            <%=request.getAttribute("userName")%>
+                <%
+                    String userName = request.getAttribute("userName").toString();
+                    session.setAttribute("userName",userName);
+                %>
             </div>
         </div>
         <div class="layui-col-md1">
@@ -148,5 +155,6 @@
         });
     });
 </script>
+</div>
 </body>
 </html>

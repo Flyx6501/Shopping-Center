@@ -37,7 +37,7 @@
         <div class="layui-col-md1">
             <%--获取用户名--%>
             <div id="userName">
-                <%=request.getAttribute("username")%>
+                <%=request.getAttribute("userName")%>
             </div>
         </div>
         <div class="layui-col-md1">

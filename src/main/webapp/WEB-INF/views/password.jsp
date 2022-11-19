@@ -16,14 +16,21 @@
     <%
         pageContext.setAttribute("APP_PATH", request.getContextPath());
     %>
+    <script type="text/javascript">
+        let APP_PATH=${APP_PATH};
+    </script>
+    <script type="text/javascript">
+        let userName = "<%=session.getAttribute("userName")%>";
+    </script>
     <!-- Jquery -->
     <script type="text/javascript" src="${APP_PATH}/static/frame/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="${APP_PATH}/static/js/password.js"></script>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="${APP_PATH}/static/frame/bootstrap-3.4.1-dist.min.css">
 
     <link rel="stylesheet" href="${APP_PATH}/static/frame/layui-2.6.8.css">
     <!-- 引入js验证文件-->
-    <script type="text/javascript" src="${APP_PATH}/static/js/password.js"></script>
+
     <!-- 引入css样式-->
     <link rel="stylesheet" href="${APP_PATH}/static/css/password.css">
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
@@ -34,21 +41,20 @@
 <!-- 头部导航 -->
 <div class="nav-bar">
     <div class="layui-row">
-        <!-- 首页 -->
-        <div class="layui-col-md6">
-            <div>首页</div>
+        <!-- 返回首页 -->
+        <div class="layui-col-md8">
+            <a href="${APP_PATH}/index">返回首页</a>
         </div>
         <div class="layui-col-md2">
             <a href="${APP_PATH}/self">个人中心</a>
         </div>
         <div class="layui-col-md2">
             <i class="layui-icon layui-icon-cart-simple" style="color: #ddd;"></i>
-            <a href="${APP_PATH}/car">购物车</a>
+            <a href="">购物车</a>
         </div>
         <div class="layui-col-md1">
-            <%--获取用户名--%>
             <div id="userName">
-                <%=request.getAttribute("username")%>
+                <%=session.getAttribute("userName")%>
             </div>
         </div>
         <div class="layui-col-md1">
@@ -62,7 +68,7 @@
         <!-- 分类 -->
         <ul class="left-nav">
             <li><a href="${APP_PATH}/self">个人信息</a></li>
-            <li><a href="${APP_PATH}/userOrder">我的订单</a></li>
+            <li><a href="#">我的订单</a></li>
             <li class="active"><a href="#">修改密码</a></li>
         </ul>
     </div>
@@ -70,7 +76,7 @@
     <div class="layui-col-md10">
         <!-- 修改密码 -->
         <div id="edit-password">
-            <form action="#" method="post" id="myself">
+            <form action="${APP_PATH}/password" method="post" id="myself">
                 <!-- 表单整体 -->
                 <div class="whole">
                     <!-- 基本信息显示条 -->
@@ -78,7 +84,7 @@
                         修改密码
                     </div>
                     <!-- 旧密码 -->
-                    <input type="hidden" id="password" value="${obj.passWord}">
+                    <%--<input type="hidden" id="password" value="">--%>
                     <div class="layui-row">
                         <!-- 属性名 -->
                         <div class="layui-col-md2">

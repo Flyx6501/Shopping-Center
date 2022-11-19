@@ -119,3 +119,12 @@ input {
     color: #fff;
     border-radius: 10px;
 }
+
+.msg {
+    color: darkorange;
+    font-size: 14px;
+    padding-left: 40px;
+    padding-top: 10px;
+    clear: both;
+    font-weight: bold;
+}

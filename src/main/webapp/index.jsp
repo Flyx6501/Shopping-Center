@@ -31,6 +31,9 @@
     <script type="text/javascript" src="${APP_PATH}/static/js/index.js"></script>
     <!-- 引入css样式-->
     <link rel="stylesheet" href="${APP_PATH}/static/css/index.css" />
+    <script type="text/javascript">
+        let APP_PATH=${APP_PATH};
+    </script>
 </head>
 <body>
 <!-- 头部导航栏-->

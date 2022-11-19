@@ -12,6 +12,9 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <%
+        pageContext.setAttribute("APP_PATH", request.getContextPath());
+    %>
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
     <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
     <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
@@ -21,6 +24,9 @@
     <link rel="stylesheet" type="text/css" href="${APP_PATH}/static/frame/layui-2.6.8.css" />
     <link rel="stylesheet" type="text/css" href="${APP_PATH}/static/frame/bootstrap-3.4.1-dist.min.css" />
     <link rel="stylesheet" type="text/css" href="${APP_PATH}/static/css/details.css" />
+    <script type="text/javascript">
+        let APP_PATH=${APP_PATH};
+    </script>
     <title>详情</title>
 </head>
 <body>
@@ -41,7 +47,7 @@
         <div class="layui-col-md1">
             <%--获取用户名--%>
             <div id="userName">
-                <%=request.getAttribute("username")%>
+                <%=session.getAttribute("userName")%>
             </div>
         </div>
         <div class="layui-col-md1">
