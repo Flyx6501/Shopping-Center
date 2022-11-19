@@ -9,10 +9,17 @@ h1{
 	text-align: center;
 	margin-top: 20px;
 }
+.layui-body {
+	/* 头部herader 60px 底部 footer 40px */
+	height: calc(100% - 104px);
+	padding-bottom: 0!important;
+}
+.layui-footer {
+	background: lightblue!important;
+}
 .home-page{
-	background-color: rgb(63, 165, 179);
 	height: 100%;
-	padding: 15px;
+	box-sizing: border-box;
 }
 .box {
 	display: flex;

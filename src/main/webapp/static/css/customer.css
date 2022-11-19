@@ -3,15 +3,35 @@
    @date 2022/11/14 2:02
    @version 1.0
 */
+html,body {
+	width: 100%;
+	height: 100%;
+}
 h1{
 	color: black;
 	font-size: 45px;
 	text-align: center;
 	margin-top: 20px;
 }
-.home-page{
+.child-page {
 	height: 100%;
 	padding: 15px;
+	/* 去除padding的影响 */
+	box-sizing: border-box;
+}
+.layui-table, .layui-table-view {
+	height: calc(100% - 48px)!important;
+	margin: 0!important;
+	margin-top: 10px!important;
+}
+.layui-table-view .layui-table {
+	margin-top: 0!important;
+}
+.layui-table-box {
+	height: calc(100% - 120px) !important;
+}
+.layui-table-main {
+	height: calc(100% - 50px)!important;
 }
 .box {
 	display: flex;
