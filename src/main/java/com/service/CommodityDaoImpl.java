@@ -3,6 +3,8 @@ import com.bean.Commodity;
 import com.dao.CommodityDao;
 import com.mysql.jdbc.Connection;
 import com.utils.DBHeper;
+import com.utils.JDBCUtil;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -46,6 +48,7 @@ public class CommodityDaoImpl  implements CommodityDao {
         return list;
     }
     /** 查询单个商品详情
+     *  @param id 根据商品id查找
      * @author Qgs123
      * @date 2022/11/12 10:27
      **/
@@ -73,28 +76,111 @@ public class CommodityDaoImpl  implements CommodityDao {
         }
         return g;
     }
-    /** insert语句返回的是自增列的值
-     */
+    /** 新增商品库存
+     * @param c 连接数据库
+     * @param commodityName 商品名
+     * @param commodityPrice 商品价格
+     * @param commodityStock 商品库存
+     * @param commodityInformation 商品信息
+     * @return boolean
+     * @author Qgs123
+     * @date 2022/11/20 16:44
+     **/
     @Override
-    public boolean addCommodity(Commodity commodity) {
-        String sql = "insert into shopping values(0,?,?,?,?)";
-/**      int count = super.executeUpdate(sql,commodity.getCommodityName(),commodity.getCommodityPrice(),commodity.getCommodityStock(),commodity.getCommodityInformation()) ;
- *      return count>0;
- */
+    public boolean addCommodity(Connection c,String commodityName,Double commodityPrice,int commodityStock,String commodityInformation) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            String sql = "INSERT INTO `commodity` (commodity_name,commodity_price,commodity_stock,commodity_information) VALUES (?,?,?,?)";
+            ps = c.prepareStatement(sql);
+            ps.setString(1,commodityName);
+            ps.setDouble(2, commodityPrice);
+            ps.setInt(3, commodityStock);
+
+            ps.setString(4,commodityInformation);
+            int rs1 = ps.executeUpdate();
+            if (rs1 >= 1) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtil.closeResource(c, ps, rs);
+        }
         return false;
     }
+    /** 更新商品库存信息
+     * @param c 连接数据库
+     * @param commodityId 商品的id
+     * @param commodityName 商品名
+     * @param commodityPrice 商品价格
+     * @param commodityStock 商品库存
+     * @param commodityInformation 商品信息
+         * @return boolean
+     * @author Qgs123
+            * @date 2022/11/20 16:08
+            **/
     @Override
-    public boolean updateCommodity(Commodity commodity) {
-        String sql = "update shopping set  commodity_stock= ? where commodity_id = ? " ;
-/**       return super.executeUpdate(sql,commodity.getCommodityStock(),commodity.getCommodityId())>0;
- */
-    return false;
+    public boolean updateCommodity(Connection c,String commodityName,Double commodityPrice,int commodityStock,String commodityInformation,int commodityId) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            String sql = "UPDATE  `commodity` SET commodity_name=?,commodity_price=?,commodity_stock=?,commodity_information=? WHERE commodity_id=?";
+            ps = c.prepareStatement(sql);
+            ps.setString(1,commodityName);
+            ps.setDouble(2, commodityPrice);
+            ps.setInt(3, commodityStock);
+           /** ps.setBytes(4,commodityPhoto);
+           */
+            ps.setString(4,commodityInformation);
+            ps.setInt(5,commodityId);
+            int rs1 = ps.executeUpdate();
+            if (rs1 >= 1) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtil.closeResource(c, ps, rs);
+        }
+        return false;
     }
+    /** 删除特定库存记录
+     * @param c 数据库连接
+     * @param commodityId 商品id
+     * @return boolean
+     * @author Qgs123
+     * @date 2022/11/20 16:43
+     **/
     @Override
-    public boolean delCommodity(String commodity) {
-        String sql = "delete from commodity where commodity_name like ? " ;
-/**      return super.executeUpdate(sql,commodity_name)>0;
-   */
-    return false;
+    public boolean deleteCommodity(Connection c,int commodityId) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            String sql = "delete from `commodity` where commodity_id=? ";
+
+            ps = c.prepareStatement(sql);
+            ps.setInt(1,commodityId);
+            int rs1 = ps.executeUpdate();
+            if (rs1 >= 1) {
+                return true;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            JDBCUtil.closeResource(c, ps, rs);
+        }
+        return false;
+    }
+    /** 根据id查询到商品信息
+     * @param c 连接数据库
+     * @param commodityId 商品的id
+     * @return boolean
+     * @author Qgs123
+     * @date 2022/11/20 17:40
+     **/
+    @Override
+    public boolean selectCommodity(Connection c,int commodityId){
+        return false;
     }
 }
