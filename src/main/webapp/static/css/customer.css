@@ -20,7 +20,7 @@ h1{
 	box-sizing: border-box;
 }
 .layui-table, .layui-table-view {
-	height: calc(100% - 48px)!important;
+	max-height: calc(100% - 48px)!important;
 	margin: 0!important;
 	margin-top: 10px!important;
 }
