@@ -18,6 +18,9 @@
     %>
 <%--    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
     <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>--%>
+    <script type="text/javascript">
+        let APP_PATH=${APP_PATH};
+    </script>
     <!-- Jquery -->
     <script type="text/javascript" src="${APP_PATH}/static/frame/jquery-3.4.1.min.js"></script>
     <!-- Bootstrap -->
@@ -31,9 +34,7 @@
     <script type="text/javascript" src="${APP_PATH}/static/js/index.js"></script>
     <!-- 引入css样式-->
     <link rel="stylesheet" href="${APP_PATH}/static/css/index.css" />
-    <script type="text/javascript">
-        let APP_PATH=${APP_PATH};
-    </script>
+
 </head>
 <body>
 <!-- 头部导航栏-->
