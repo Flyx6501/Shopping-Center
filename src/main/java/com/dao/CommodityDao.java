@@ -16,27 +16,44 @@ public interface CommodityDao {
      * @date 2022/11/10 9:40
      **/
     List <Commodity> getCommodityList();
-    /** 新增库存
-     * @param commodity 商品表的信息
+    /** 新增商品库存
+     * @param c 连接数据库
+     * @param commodityName 商品名
+     * @param commodityPrice 商品价格
+     * @param commodityStock 商品库存
+     * @param commodityInformation 商品信息
      * @return boolean
      * @author Qgs123
      * @date 2022/11/10 9:41
      **/
-    boolean addCommodity(Commodity commodity);
-    /** 修改库存
-     * @param commodity 商品表的信息
+    boolean addCommodity(Connection c,String commodityName,Double commodityPrice,int commodityStock,String commodityInformation);
+    /** 更新商品库存信息
+     * @param c 连接数据库
+     * @param commodityId 商品的id
+     * @param commodityName 商品名
+     * @param commodityPrice 商品价格
+     * @param commodityStock 商品库存
+     * @param commodityInformation 商品信息
      * @return boolean
      * @author Qgs123
      * @date 2022/11/10 9:41
      **/
-    boolean updateCommodity(Commodity commodity);
+    boolean updateCommodity(Connection c,String commodityName,Double commodityPrice,int commodityStock,String commodityInformation,int commodityId);
     /** 删除特定库存记录
-     * @param commodity 商品表的信息
+     * @param c 连接数据库
      * @return boolean
      * @author Qgs123
      * @date 2022/11/10 9:41
      **/
-    boolean delCommodity(String commodity);
+    boolean deleteCommodity(Connection c,int commodityId);
+    /** 根据id查询到商品信息
+     * @param c 连接数据库
+     * @param commodityId 商品的id
+     * @return boolean
+     * @author Qgs123
+     * @date 2022/11/20 17:36
+     **/
+    boolean selectCommodity(Connection c,int commodityId);
     /** 根据id查询
      * @param id 商品的id信息
      * @return Commodity 返回对应id商品所有数据
@@ -45,4 +62,6 @@ public interface CommodityDao {
      *
      **/
      Commodity getOne(int id);
+
+
 }

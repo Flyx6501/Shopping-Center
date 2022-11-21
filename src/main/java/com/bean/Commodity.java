@@ -1,5 +1,6 @@
 package com.bean;
 
+import java.util.Arrays;
 /** 商品实体类
  * @author Qgs123
  * @version 1.0
@@ -87,9 +88,9 @@ public class Commodity {
         return "Commodity{" +
                 "commodityId=" + commodityId +
                 ", commodityName='" + commodityName + '\'' +
-                ", commodityPrice='" + commodityPrice + '\'' +
-                ", commodityStock=" + commodityStock +'\'' +
-                ", commodityPhoto=" + commodityPhoto +'\'' +
+                ", commodityPrice=" + commodityPrice +
+                ", commodityStock=" + commodityStock +
+                ", commodityPhoto=" + Arrays.toString(commodityPhoto) +
                 ", commodityInformation='" + commodityInformation + '\'' +
                 ", commodityComment='" + commodityComment + '\'' +
                 '}';
