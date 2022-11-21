@@ -4,11 +4,16 @@
    @version 1.0
 */
 /* 搜索按钮点击事件 跳转到分类页*/
-function checkSearch(search) {
+checkSearch = function () {
     /* Sid为查询的内容 */
-    window.location.href = "result.html?Sid=" + $("#find").val();
+    let url ="result?Sid=" + $("#find").val();
+    window.location.href = url;
 }
-
+/*details = function () {
+    /!* Sid为查询的内容 *!/
+    let url = "details";
+    window.location.href = url;
+}*/
 /*function details(id) {
     /!* Cid为商品id *!/
     window.location.href = "details?Cid=" + id;
@@ -17,7 +22,7 @@ function checkSearch(search) {
 window.onload = function() {
     $.ajax({
         /* 获取数据 */
-        url: "http://localhost:8080/Shopping_Center_war_exploded/index.do", //获取商品列表
+        url: "index.do", //获取商品列表
         type: "GET",
         dataType: "json",
         success: function(data) {
@@ -38,7 +43,8 @@ window.onload = function() {
 							<div class="thumbnail">
 								<img src="` +list[k].commodityPhoto+ `" alt="...">
 								<div class="caption">
-								<a href="details?Cid=` + list[k].commodityId +`">
+								<!--<a href="#" onclick="details()">-->
+							<a href="details?id=` + list[k].commodityId +`">
 									<h3>` + list[k].commodityName + `</h3>
 										<p>` + list[k].commodityPrice + `</p>
 									</a>
@@ -52,13 +58,13 @@ window.onload = function() {
         }
     });
 
-$.ajax({
+/*$.ajax({
         url: '${APP_PATH}/userLogin.do',
         type: "GET",
         dataType: "json",
         data:{
             "id":id
-        },
+        },*/
 
 /*$.ajax({
         url: "#",
