@@ -5,42 +5,50 @@
 */
 window.onload = function() {
     /* 获取货物id */
-    var url = window.location.search;
-    var commodityId = url.split("=");
-    /*console.log(commodityId);*/
+    let url = window.location.search;
+    let Cid = url.split("=");
+    let id = Cid[1];
+    console.log(id);
     $.ajax({
         /* 获取数据 */
-        url: "CommodityGetOneServlet",
+        url: "commodityDetails.do",
         type: "GET",
         dataType: "json",
         data: {
-            "commodityId":commodityId,
+            id:id,
         },
-        success: function() {
+        success: function(result) {
             /* 读取成功时将数据读取,显示在页面内 */
-            $("#img").html(data.commodityPhoto);
-            $("#goodsName").html(data.commodityName);
-            $("#props").html(data.commodityInformation);
-            $("#price").html(data.commodityPrice);
+            /*document.getElementById("img").innerHTML = data.commodityImg;*/
+            console.log(result);
+            let data = result.commodity;
+            console.log(data);
+            let Commodity = JSON.parse(data);
+            console.log(Commodity);
+            document.getElementById("img").innerHTML=Commodity.commodityImg;
+            document.getElementById("goodsName").innerHTML=Commodity.commodityName;
+            document.getElementById("props").innerHTML=Commodity.commodityInformation;
+            document.getElementById("price").innerHTML=Commodity.commodityPrice;
         }
     });
 
-    /* id传送给购物车 */
+  /*  /!* id传送给购物车 *!/
     function add() {
-        /* Cid为商品id */
+        /!* Cid为商品id *!/
         window.location.href = "car?Cid=" + id;
-    }
+    }*/
+}
+add = function () {
 
     $.ajax({
-        /* 获取数据 */
         url: "car.do",
         type: "POST",
         dataType: "json",
         data: {
-            "commodityId": commodityId,
+            id: id,
         },
-        success: function(data) {
-            /* 数据存入购物车 */
+        success: function (data) {
+            alert("已加入购物车");
 
         }
     });
