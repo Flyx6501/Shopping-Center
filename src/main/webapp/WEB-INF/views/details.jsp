@@ -66,18 +66,18 @@
         </div>
         <div class="itemInfo-wrap">
             <div class="d-goodsname">
-                <h3 id="goodsName">web开发与应用</h3>
+                <h3 id="goodsName"></h3>
             </div>
             <div class="news">
                 <div class="d-props" id="props">
-                    开发与应用，适合学习前端开发，html5+css
+
                 </div>
             </div>
             <div class="d-price">
                 <span>￥</span>
-                <div class="d-pricenum" id="price">32.80</div>
+                <div class="d-pricenum" id="price"></div>
             </div>
-            <div class="add-cart">
+            <div class="add-cart" onclick="add()">
                 <a href="#">加入购物车</a>
             </div>
         </div>
