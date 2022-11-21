@@ -9,7 +9,64 @@ layui.use(['table', 'laypage', 'layer'], function() {
         laypage = layui.laypage,
         layer = layui.layer;
 
-    //操作列的三个按钮绑定各自的操作
+    //加载table实例
+    table.render({
+        // elem属性用来绑定容器的id属性值
+        elem: '#demo',
+        id: 'commodity_table',
+        height: 500,
+        // toolbar: '#toolbarDemo',
+        //url接口地址。
+        //默认会自动传递两个参数：?page=1&limit=30(该参数可通过request自定义)，page代表当前页码、limit代表每页数据量
+        url: baseUrl + '/index.do',
+        //开启分页
+        page: true,
+        cols: [[
+            {type: 'checkbox', unresize: true},
+            {field: 'com_id',title: 'ID',width: 100, unresize: true},
+            {field: 'com_name',title: '商品名称',width: 150,unresize: true},
+            {field: 'com_price',title: '商品价格',width: 220,unresize: true},
+            {field: 'com_stock',title: '库存',width: 250,unresize: true},
+            {field: 'com_information',title: '商品描述',width: 260,unresize: true},
+            {field: 'operate',title: '操作',width: 200, toolbar: '#barDemo', unresize: true},
+        ]],
+        parseData:function(d){
+            console.log(d)
+            var newArr = []
+            for (var i = 0; i < d.commodity.length; i++) {
+                var item = (d.commodity)[i]
+                // 往数组里面插入数据
+                newArr.push({
+                    com_id: item.commodityId,
+                    com_name: item.commodityName,
+                    com_price: item.commodityPrice,
+                    com_stock: item.commodityStock,
+                    com_information: item.commodityInformation
+                })
+            }
+            return{
+                "code": d ? 0 : -1,
+                "msg":'',
+                "count":newArr.length, // 总条数
+                "data": newArr
+            }
+        }
+    });
+
+    $('#commodity-search-btn').on('click', function () {
+        var keyWord = $('#keyword').val(); //得到搜索框里已输入的数据
+        console.log(keyWord, 8888)
+        //执行重载
+        table.reload('commodity_table', {
+            page: {
+                curr: 1 //重新从第 1 页开始
+            },
+            where: {
+                com_name: keyWord //在表格中进行搜索
+            }
+        });
+    })
+    //操作列的按钮绑定各自的操作
     table.on('tool(test)', function(obj) {
         console.log(obj);
         var data = obj.data; //获得当前行数据
@@ -57,17 +114,6 @@ layui.use(['table', 'laypage', 'layer'], function() {
                     }
                 });
                 layer.close(index);
-            });
-        } else if (layEvent == 'search') {
-            var keyWord = $('#keyword').val(); //得到搜索框里已输入的数据
-            //执行重载
-            table.reload('test', {
-                page: {
-                    curr: 1 //重新从第 1 页开始
-                },
-                where: {
-                    keyword: keyWord //在表格中进行搜索
-                }
             });
         }
     });
