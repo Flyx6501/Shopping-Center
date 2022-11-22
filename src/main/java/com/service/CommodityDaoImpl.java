@@ -4,10 +4,11 @@ import com.dao.CommodityDao;
 import com.mysql.jdbc.Connection;
 import com.utils.DBHeper;
 import com.utils.JDBCUtil;
-
+import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 /** 商品数据访问层
  * @author Qgs123
@@ -181,6 +182,36 @@ public class CommodityDaoImpl  implements CommodityDao {
      **/
     @Override
     public boolean selectCommodity(Connection c,int commodityId){
+
         return false;
+    }
+    /** 根据id查询商品图片
+     * @param id  商品的id信息
+     * @return com.bean.Commodity 返回对应id商品图片数据
+     * @author Qgs123
+     * @date 2022/11/21 21:57
+     **/
+    public Commodity getOnePhoto(int id){
+        Commodity g=new Commodity();
+        try {
+            con= (Connection) DBHeper.getCon();
+            ps=con.prepareStatement("select * from `commodity` where commodity_id=?");
+            ps.setInt(1, id);
+            rs=ps.executeQuery();
+            if(rs.next()) {
+                g.setCommodityId(rs.getInt(1));
+                g.setCommodityName(rs.getString(2));
+                g.setCommodityPrice(rs.getDouble(3));
+                g.setCommodityStock(rs.getInt(4));
+                g.setCommodityPhoto(rs.getBytes(5));
+                g.setCommodityInformation(rs.getString(5));
+                g.setCommodityComment(rs.getString(6));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            DBHeper.getColes(con, ps, rs);
+        }
+        return g;
     }
 }
