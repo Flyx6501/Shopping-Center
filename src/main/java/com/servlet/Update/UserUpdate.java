@@ -54,19 +54,21 @@ public class UserUpdate extends HttpServlet {
     }
 
     private void userUpdate(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException {
+        System.out.println("修改1");
         Connection c = (Connection) JDBCUtil.getConnection();
-        String userName = req.getParameter("userName");
-        String password = req.getParameter("password");
+        String userNames = req.getParameter("userName");
+        String address=req.getParameter("address");
         String email = req.getParameter("email");
         String nickName = req.getParameter("nickName");
-        String userId = req.getParameter("useId");
-
+        String userName = req.getParameter("userName");
+        System.out.println(userNames+address+email+nickName+userNames);
         ManagerDaoImpl as = new ManagerDaoImpl();
-        boolean flag=as.updateUserByUserId(c, userName, password, email, nickName, Integer.parseInt(userId));
+        boolean flag=as.updateUserByUserId(c,userNames,address,email,nickName,userName);
+
+        System.out.println(flag+"a");
         if (flag){
             JSONObject json=new JSONObject();
             json.put("message","success");
-
             PrintWriter out=resp.getWriter();
             out.println(json);
             out.close();
@@ -74,11 +76,9 @@ public class UserUpdate extends HttpServlet {
         }else{
             JSONObject json=new JSONObject();
             json.put("message","failed");
-
             PrintWriter out=resp.getWriter();
             out.println(json);
             out.close();
-
         }
 
 
