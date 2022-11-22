@@ -9,7 +9,45 @@ layui.use(['table', 'laypage', 'layer'], function() {
         laypage = layui.laypage,
         layer = layui.layer;
 
-    //操作列的三个按钮绑定各自的操作
+    //加载table实例
+    table.render({
+        // elem属性用来绑定容器的id属性值
+        elem: '#demo',
+        height: 500,
+        //工具栏
+        toolbar: '#toolbarDemo',
+        //url接口地址。
+        //默认会自动传递两个参数：?page=1&limit=30(该参数可通过request自定义)，page代表当前页码、limit代表每页数据量
+        url: '${APP_PATH}/index.do',
+        //开启分页
+        page: true,
+        cols: [[
+            {type: 'checkbox', unresize: true},
+            {field: 'id',title: 'ID',width: 100, unresize: true},
+            {field: 'username',title: '用户名',width: 150, unresize: true},
+            {field: 'email',title: '电子邮箱',width: 220, unresize: true},
+            {field: 'city',title: '收货地址',width: 250, unresize: true},
+            {field: 'nickname',title: '昵称',width: 260, unresize: true},
+            {field: 'operate',title: '操作',width: 200,toolbar: '#barDemo', unresize: true}
+        ]],
+
+    });
+
+    $('#customer-search-btn').on('click', function () {
+        var keyWord = $('#keyword').val(); //得到搜索框里已输入的数据
+        console.log(keyWord, 8888)
+        //执行重载
+        table.reload('commodity_table', {
+            page: {
+                curr: 1 //重新从第 1 页开始
+            },
+            where: {
+                com_name: keyWord //在表格中进行搜索
+            }
+        });
+    })
+
+    //操作列的按钮绑定各自的操作
     table.on('tool(test)', function(obj) {
         console.log(obj);
         var data = obj.data; //获得当前行数据
@@ -57,17 +95,6 @@ layui.use(['table', 'laypage', 'layer'], function() {
                     }
                 });
                 layer.close(index);
-            });
-        } else if (layEvent == 'search') {
-            var keyWord = $('#keyword').val(); //得到搜索框里已输入的数据
-            //执行重载
-            table.reload('test', {
-                page: {
-                    curr: 1 //重新从第 1 页开始
-                },
-                where: {
-                    keyword: keyWord //在表格中进行搜索
-                }
             });
         }
     });
