@@ -1,7 +1,7 @@
-package com.servlet.commodity;
+package com.servlet.GetUser;
 
-import com.mysql.jdbc.Connection;
-import com.service.CommodityDaoImpl;
+import com.bean.User;
+import com.service.ManagerDaoImpl;
 import com.utils.JDBCUtil;
 import org.json.JSONObject;
 
@@ -13,25 +13,33 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
-/**修改商品功能
- * @author Qgs123
+/**
+ * 不分页
+ *
+ * @author l666888999
  * @version 1.0
- * @date 2022/11/19 22:13
+ * @date 2022/11/21 12:02
  **/
-public class UpdateCommodityServlet extends HttpServlet {
+public class getUserByUserNames extends HttpServlet {
+    private static final long serialVersionUID = 1L;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doGet(req, resp);
+        //super.doGet(req, resp);
+        doPost(req,resp);
         try {
-            updateCommodityServlet(req, resp);
+            getUserByUserNames(req,resp);
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //super.doPost(req, resp);
         String servletPath = req.getServletPath();
         String methodName = servletPath.substring(1);
         methodName = methodName.substring(0, methodName.length() - 3);
@@ -48,26 +56,19 @@ public class UpdateCommodityServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
     }
-    private void updateCommodityServlet(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ClassNotFoundException {
-        Connection c = (Connection) JDBCUtil.getConnection();
-        String commodityName = request.getParameter("commodityName");
-        Double commodityPrice = Double.valueOf(request.getParameter("commodityPrice"));
-        Integer commodityStock = Integer.valueOf(request.getParameter("commodityStock"));
-        String commodityInformation=request.getParameter("commodityInformation");
-        Integer commodityId = Integer.valueOf(request.getParameter("commodityId"));
-        CommodityDaoImpl as = new CommodityDaoImpl();
-        boolean flag=as.updateCommodity(c,commodityName,commodityPrice,commodityStock,commodityInformation,commodityId);
+    private void getUserByUserNames(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException {
+        String userName = req.getParameter("userName");
+        Connection c = JDBCUtil.getConnection();
+        ManagerDaoImpl dao=new ManagerDaoImpl();
+        List<User> list = dao.getUserByUserNames((com.mysql.jdbc.Connection) c, userName);
         JSONObject json=new JSONObject();
-        if (flag){
-            json.put("message","success");
-            PrintWriter out=response.getWriter();
-            out.println(json);
-            out.close();
-        }else{
-            json.put("message","failed");
-            PrintWriter out=response.getWriter();
-            out.println(json);
-            out.close();
-        }
+        json.put("msg",list);
+
+        PrintWriter out=resp.getWriter();
+        out.println(json);
+        out.close();
+        //req.setAttribute("userList", list);
+
     }
+
 }
