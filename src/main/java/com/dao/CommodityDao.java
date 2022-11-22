@@ -62,6 +62,12 @@ public interface CommodityDao {
      *
      **/
      Commodity getOne(int id);
-
+     /** 根据id查询商品图片
+      * @param id  商品的id信息
+      * @return com.bean.Commodity 返回对应id商品图片数据
+      * @author Qgs123
+      * @date 2022/11/21 21:54
+      **/
+     Commodity getOnePhoto(int id);
 
 }
