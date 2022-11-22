@@ -33,8 +33,18 @@ public class CommodityServiceTest {
     @Test
     public void getOne() {
         CommodityServiceImpl commodityDao = new CommodityServiceImpl();
-        Commodity list1=commodityDao.getOne(5);
+        Commodity list1=commodityDao.getOne(2);
         System.out.println(list1);
+    }
+    /** 获取某个商品图片
+     * @author Qgs123
+     * @date 2022/11/22 11:38
+     **/
+    @Test
+    public void getOnePhoto(){
+        CommodityDaoImpl commodityDao=new CommodityDaoImpl();
+        Commodity list=commodityDao.getOnePhoto(1);
+        System.out.println(list);
     }
 
 }
