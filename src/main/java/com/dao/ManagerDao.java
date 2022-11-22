@@ -3,6 +3,7 @@ package com.dao;
 import com.bean.User;
 import com.mysql.jdbc.Connection;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /** 管理员 Dao
@@ -37,12 +38,11 @@ public interface ManagerDao {
      * @param password 密码
      * @param email 邮件
      * @param nickName 昵称
-     * @param userId 用户Id
      * @return boolean
      * @author l666888999
      * @date 2022/11/11 20:28
      **/
-    boolean updateUserByUserId(Connection c, String userName, String password, String email, String nickName, int userId);
+    boolean updateUserByUserId(Connection c, String userName, String password, String email, String nickName, String userNames);
 
     /** TODO
          * @param c 链接数据库
@@ -51,7 +51,7 @@ public interface ManagerDao {
      * @author l666888999
      * @date 2022/11/17 8:15
      **/
-    List<User> getUserByUserName(Connection c,String userName);
+   // List<User> getUserByUserName(Connection c,String userName);
 /** 增加用户信息
      * @param c   进行数据库连接
      * @param userName  用户名
@@ -64,4 +64,7 @@ public interface ManagerDao {
  **/
     boolean addUser(Connection c,String userName,String email,String address,String nickName);
 
+    List<User> getUserByUserName(Connection c,String userName,int currentPage,int pageSize);
+    List<User> getUserByUserNames(Connection c, String userName);
+    boolean deleteUserById(Connection c,int Id) throws SQLException;
 }

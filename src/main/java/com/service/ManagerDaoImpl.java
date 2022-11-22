@@ -1,20 +1,25 @@
 package com.service;
+
 import com.bean.User;
 import com.dao.ManagerDao;
 import com.mysql.jdbc.Connection;
 import com.utils.JDBCUtil;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/** 管理员类的Service
+/**
+ * 管理员类的Service
+ *
  * @author l666888999
  * @date 2022/11/08 19:20
  **/
 public class ManagerDaoImpl implements ManagerDao {
     @Override
-    public boolean searchName(Connection c, String manageName , String password) {
+    public boolean searchName(Connection c, String manageName, String password) {
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
@@ -23,7 +28,7 @@ public class ManagerDaoImpl implements ManagerDao {
             ps.setString(1, manageName);
             ps.setString(2, password);
             rs = ps.executeQuery();
-            if(rs.next()) {
+            if (rs.next()) {
                 return true;
             }
         } catch (Exception e) {
@@ -33,6 +38,7 @@ public class ManagerDaoImpl implements ManagerDao {
         }
         return false;
     }
+
     @Override
     public boolean registerName(Connection c, String password, String userName) {
         PreparedStatement ps = null;
@@ -41,7 +47,7 @@ public class ManagerDaoImpl implements ManagerDao {
             String sql = "INSERT INTO manage(password,mange_username) VALUES (?,?)";
             ps = c.prepareStatement(sql);
             ps.setString(1, password);
-            ps.setString(2,userName);
+            ps.setString(2, userName);
             rs = ps.executeQuery();
             while (rs.next()) {
                 return true;
@@ -53,41 +59,42 @@ public class ManagerDaoImpl implements ManagerDao {
         }
         return false;
     }
+
     @Override
-    public boolean updateUserByUserId(Connection c, String userName, String password, String email, String nickName, int userId) {
-        PreparedStatement ps=null;
+    public boolean updateUserByUserId(Connection c, String userNames, String address, String email, String nickName, String userName) {
+        PreparedStatement ps = null;
         try {
-            String sql = "UPDATE `user` SET user_username=?,user_password=?,email=?,nickname=? WHERE user_id=?";
+            String sql = "UPDATE `user` SET user_username=?,address=?,email=?,nickname=? WHERE user_username=?";
             ps = c.prepareStatement(sql);
-            ps.setString(1, userName);
-            ps.setString(2, password);
+            ps.setString(1, userNames);
+            ps.setString(2, address);
             ps.setString(3, email);
             ps.setString(4, nickName);
-            ps.setInt(5,userId);
-            int rs1=ps.executeUpdate();
-            if (rs1>=1){
+            ps.setString(5, userName);
+            int rs1 = ps.executeUpdate();
+            if (rs1 >= 1) {
                 return true;
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
-            JDBCUtil.closeResource(c,ps);
+        } finally {
+            JDBCUtil.closeResource(c, ps);
         }
         return false;
     }
 
-    @Override
-    public List<User> getUserByUserName(Connection c, String userName) {
-        List<User> list= new ArrayList<>();
-        PreparedStatement ps=null;
-        ResultSet rs=null;
+    //@Override
+    public List<User> getUserByUserNames(Connection c, String userName) {
+        List<User> list = new ArrayList<>();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             String sql = "SELECT user_id,user_username,email,address,nickname FROM user WHERE user_username=?";
-             ps = c.prepareStatement(sql);
+            ps = c.prepareStatement(sql);
             ps.setString(1, userName);
-             rs = ps.executeQuery();
+            rs = ps.executeQuery();
             while (rs.next()) {
-                User  user = new User();
+                User user = new User();
                 user.setUseId(rs.getInt("user_id"));
                 user.setUserUsername(rs.getString("user_username"));
                 user.setEmail(rs.getString("email"));
@@ -95,18 +102,31 @@ public class ManagerDaoImpl implements ManagerDao {
                 user.setNickname(rs.getString("nickname"));
                 list.add(user);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
-            JDBCUtil.closeResource(c,ps,rs);
+        } finally {
+            JDBCUtil.closeResource(c, ps, rs);
         }
-    return list;
+        return list;
+    }
+
+    @Override
+    public boolean deleteUserById(Connection c, int Id) throws SQLException {
+        String sql = "DELETE FROM user WHERE user_id=?";
+        PreparedStatement ps = c.prepareStatement(sql);
+        ps.setInt(1,Id);
+        int s = ps.executeUpdate();
+            if (s >= 1) {
+                return true;
+            }
+            JDBCUtil.closeResource(c,ps);
+        return false;
     }
 
     @Override
     public boolean addUser(Connection c, String userName, String email, String address, String nickName) {
 
-        PreparedStatement ps=null;
+        PreparedStatement ps = null;
         try {
             String sql = "INSERT INTO user(user_username,email,address,nickname) VALUES (?,?,?,?)";
             ps = c.prepareStatement(sql);
@@ -118,11 +138,41 @@ public class ManagerDaoImpl implements ManagerDao {
             if (i >= 1) {
                 return true;
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
-            JDBCUtil.closeResource(c,ps);
+        } finally {
+            JDBCUtil.closeResource(c, ps);
         }
         return false;
+    }
+
+    @Override
+    public List<User> getUserByUserName(Connection c, String userName, int currentPage, int pageSize) {
+        List<User> list = new ArrayList<>();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            String sql = "SELECT user_id,user_username,email,address,nickname FROM user WHERE user_username=? LIMIT ?,?";
+            ps = c.prepareStatement(sql);
+            ps.setString(1, userName);
+            //计算当前页
+            ps.setInt(2, (currentPage - 1) * pageSize);
+            ps.setInt(3, pageSize);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                User user = new User();
+                user.setUseId(rs.getInt("user_id"));
+                user.setUserUsername(rs.getString("user_username"));
+                user.setEmail(rs.getString("email"));
+                user.setAddress(rs.getString("address"));
+                user.setNickname(rs.getString("nickname"));
+                list.add(user);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtil.closeResource(c, ps, rs);
+        }
+        return list;
     }
 }

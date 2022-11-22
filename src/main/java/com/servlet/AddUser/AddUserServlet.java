@@ -4,7 +4,6 @@ import com.mysql.jdbc.Connection;
 import com.service.ManagerDaoImpl;
 import com.utils.JDBCUtil;
 import org.json.JSONObject;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

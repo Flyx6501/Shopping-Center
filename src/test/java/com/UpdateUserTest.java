@@ -23,7 +23,7 @@ public class UpdateUserTest {
         try {
             ManagerDaoImpl test = new ManagerDaoImpl();
             c = JDBCUtil.getConnection();
-            boolean flag = test.updateUserByUserId((com.mysql.jdbc.Connection) c, "ljy", "123", "6161@qq.com", "ll", 2);
+            boolean flag = test.updateUserByUserId((com.mysql.jdbc.Connection) c, "ss", "123", "6161@qq.com", "ll", "33");
             System.out.println(flag);
         } catch (Exception e) {
             e.printStackTrace();

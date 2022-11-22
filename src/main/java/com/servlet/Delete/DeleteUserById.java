@@ -1,10 +1,10 @@
-package com.servlet.Update;
+package com.servlet.Delete;
 
 import com.mysql.jdbc.Connection;
 import com.service.ManagerDaoImpl;
-import com.service.UserDaoImpl;
 import com.utils.JDBCUtil;
 import org.json.JSONObject;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,22 +16,25 @@ import java.lang.reflect.Method;
 import java.sql.SQLException;
 
 /**
- * a
+ * 删除用户
  *
  * @author l666888999
  * @version 1.0
- * @date 2022/11/11 15:49
+ * @date 2022/11/21 22:16
  **/
-public class UserUpdate extends HttpServlet {
+public class DeleteUserById extends HttpServlet {
+    private static final long serialVersionUID = 1L;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         doPost(req,resp);
         try {
-            userUpdate(req, resp);
-        } catch (SQLException | ClassNotFoundException e) {
+            deleteUserByIds(req,resp);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+
     }
 
     @Override
@@ -48,42 +51,23 @@ public class UserUpdate extends HttpServlet {
         }
         try {
             method.invoke(this, req, resp);
-        } catch (IllegalAccessException | InvocationTargetException e) {
+        } catch (IllegalAccessException |InvocationTargetException e) {
             throw new RuntimeException(e);
         }
     }
-
-    private void userUpdate(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException {
-        System.out.println("修改1");
-        Connection c = (Connection) JDBCUtil.getConnection();
-        String userNames = req.getParameter("userName");
-        String address=req.getParameter("address");
-        String email = req.getParameter("email");
-        String nickName = req.getParameter("nickName");
-        String userName = req.getParameter("userName");
-        System.out.println(userNames+address+email+nickName+userNames);
-        ManagerDaoImpl as = new ManagerDaoImpl();
-        boolean flag=as.updateUserByUserId(c,userNames,address,email,nickName,userName);
-
-        System.out.println(flag+"a");
+    private void deleteUserByIds(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException {
+        int Id = Integer.parseInt(req.getParameter("Id"));
+        Connection c= (Connection) JDBCUtil.getConnection();
+        ManagerDaoImpl dao = new ManagerDaoImpl();
+        boolean flag = dao.deleteUserById(c, Id);
         if (flag){
             JSONObject json=new JSONObject();
-            json.put("message","success");
-            PrintWriter out=resp.getWriter();
-            out.println(json);
-            out.close();
+            json.put("msg","delete success");
 
-        }else{
-            JSONObject json=new JSONObject();
-            json.put("message","failed");
             PrintWriter out=resp.getWriter();
             out.println(json);
             out.close();
         }
-
-
-        //ToDo 转换
-        //req.getRequestDispatcher().forward(req,resp);
 
 
     }
