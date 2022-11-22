@@ -4,6 +4,15 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          id="WebApp_ID" version="2.5">
     <display-name>Archetype Created Web Application</display-name>
+    <!--后台管理员新增商品-->
+    <servlet>
+        <servlet-name>AddCommodityServlet</servlet-name>
+        <servlet-class>com.servlet.commodity.AddCommodityServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddCommodityServlet</servlet-name>
+        <url-pattern>/addCommodity.do</url-pattern>
+    </servlet-mapping>
     <!--根据id获取商品图-->
     <servlet>
         <servlet-name>GetOnePhotoServlet</servlet-name>
