@@ -24,19 +24,18 @@
 <input type="hidden" value="${APP_PATH}" id="baseUrl">
 <!-- 内容主体区域 -->
 <div class="child-page">
-
-
     <div class="layui-form-item">
         <div class="layui-inline">
             <label class="layui-form-label">用户名称</label>
             <div class="layui-input-inline">
                 <!--注意此处input标签里的id-->
-                <input id="customer-search-btn" class="layui-input" name="keyword" id="keyword" autocomplete="off">
+                <input class="layui-input" name="keyword" id="keyword" autocomplete="off">
             </div>
         </div>
         <div class="layui-inline">
             <!--注意此处button标签里的type属性-->
-            <button class="layui-btn layui-btn-primary" lay-event="search"><i class="layui-icon"></i> 搜 索</button>
+            <button id="customer-search-btn" class="layui-btn layui-btn-primary"><i class="layui-icon"></i> 搜 索
+            </button>
         </div>
     </div>
 
