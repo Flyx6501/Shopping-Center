@@ -3,6 +3,8 @@ package com;
 import com.bean.Commodity;
 import com.service.CommodityDaoImpl;
 import com.service.CommodityServiceImpl;
+
+import java.net.PortUnreachableException;
 import java.sql.Connection;
 import com.utils.JDBCUtil;
 import org.junit.Test;
@@ -46,5 +48,14 @@ public class CommodityServiceTest {
         Commodity list=commodityDao.getOnePhoto(1);
         System.out.println(list);
     }
-
+    /** 获取某个商品的详情信息
+     * @author Qgs123
+     * @date 2022/11/23 21:23
+     **/
+    @Test
+    public void getOneCommodity(){
+        CommodityDaoImpl commodityDao=new CommodityDaoImpl();
+        List<Commodity>  list=commodityDao.getOneCommodity(1);
+        System.out.println(list);
+    }
 }
