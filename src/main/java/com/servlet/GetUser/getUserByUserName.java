@@ -1,5 +1,6 @@
 package com.servlet.GetUser;
 
+import com.bean.Page;
 import com.bean.User;
 import com.service.ManagerDaoImpl;
 import com.utils.JDBCUtil;
@@ -59,12 +60,25 @@ public class getUserByUserName extends HttpServlet {
 
     private void getUserByUserName(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException {
         String userName = req.getParameter("userName");
+     //   int currentPage=1;
+        int totalDate=1;
+        int pageSize=10;
+        int currentPage= Integer.parseInt(req.getParameter("page"));
 
+
+        int totalPage=(int)Math.ceil((double)totalDate/pageSize);
+        if (currentPage>totalPage){
+            currentPage=totalPage;
+        }
         Connection c = JDBCUtil.getConnection();
         ManagerDaoImpl dao = new ManagerDaoImpl();
         // dao.getUserByUserName((com.mysql.jdbc.Connection) c,userName);
-        List<User> list = dao.getUserByUserName((com.mysql.jdbc.Connection) c, userName);
-        req.setAttribute("list", list);
+        List<User> list = dao.getUserByUserName((com.mysql.jdbc.Connection) c, userName,currentPage,pageSize);
+        Page pg = new Page(currentPage, pageSize, totalDate);
+        pg.setPageDate(list);
+        req.setAttribute("pg",pg);
+        //req.setAttribute("list", list);
+
         //ToDo 路径补充
         try {
             req.getRequestDispatcher("").forward(req, resp);
