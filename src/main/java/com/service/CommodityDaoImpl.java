@@ -48,6 +48,37 @@ public class CommodityDaoImpl  implements CommodityDao {
         }
         return list;
     }
+/** 获取某个商品详细信息
+ * @param id  商品的id信息
+ * @return java.util.List<com.bean.Commodity>
+ * @author Qgs123
+ * @date 2022/11/23 21:18
+ **/
+    public List<Commodity> getOneCommodity(int id){
+        List<Commodity> list=new ArrayList<Commodity>();
+        try {
+            con= (Connection) DBHeper.getCon();
+            ps=con.prepareStatement("select * from `commodity` where commodity_id=?");
+            ps.setInt(1, id);
+            rs=ps.executeQuery();
+            while (rs.next()){
+                Commodity g=new Commodity();
+                g.setCommodityId(rs.getInt(1));
+                g.setCommodityName(rs.getString(2));
+                g.setCommodityPrice(rs.getDouble(3));
+                g.setCommodityStock(rs.getInt(4));
+                g.setCommodityPhoto(rs.getBytes(5));
+                g.setCommodityInformation(rs.getString(6));
+                g.setCommodityComment(rs.getString(7));
+                list.add(g);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DBHeper.getColes(con, ps, rs);
+        }
+        return list;
+    }
     /** 查询单个商品详情
      *  @param id 根据商品id查找
      * @author Qgs123
@@ -69,13 +100,14 @@ public class CommodityDaoImpl  implements CommodityDao {
                 g.setCommodityPhoto(rs.getBytes(5));
                 g.setCommodityInformation(rs.getString(6));
                 g.setCommodityComment(rs.getString(7));
+            return g;
             }
         } catch (Exception e) {
             e.printStackTrace();
         }finally {
             DBHeper.getColes(con, ps, rs);
         }
-        return g;
+        return null;
     }
     /** 新增商品库存
      * @param c 连接数据库
