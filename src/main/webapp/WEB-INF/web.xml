@@ -11,7 +11,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>AddCommodityServlet</servlet-name>
-        <url-pattern>/addCommodity.do</url-pattern>
+        <url-pattern>/AddCommodity.do</url-pattern>
     </servlet-mapping>
     <!--根据id获取商品图-->
     <servlet>
@@ -61,7 +61,7 @@
     <!-- 商品详细信息的 Servlet-->
     <servlet>
         <servlet-name>CommodityGetOneServlet</servlet-name>
-        <servlet-class>com.servlet.GetOne.CommodityGetOneServlet</servlet-class>
+        <servlet-class>com.servlet.commodity.GetOneCommodity</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CommodityGetOneServlet</servlet-name>
