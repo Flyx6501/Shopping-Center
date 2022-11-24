@@ -1,6 +1,5 @@
 package com.bean;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -12,16 +11,16 @@ import java.util.List;
  * @date 2022/11/14 20:27
  **/
 public class Order {
-    private String id;
+    private int id;
     //订单编号(随机产生)
     private String oid;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.id = Integer.parseInt(id);
     }
 
     //下单时间
@@ -36,7 +35,7 @@ public class Order {
     private String telephone;
     //显示谁的订单，如果表中有外键，一般设置为对象。
     private User user;
-    private List<OrderItem> list=new ArrayList<OrderItem>();
+    private List<OrderItem> list;
     public Order() {
     }
 
