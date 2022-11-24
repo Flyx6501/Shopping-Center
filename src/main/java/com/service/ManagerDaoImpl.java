@@ -111,16 +111,66 @@ public class ManagerDaoImpl implements ManagerDao {
     }
 
     @Override
-    public boolean deleteUserById(Connection c, int Id) throws SQLException {
+    public boolean deleteUserById(Connection c, int id) throws SQLException {
         String sql = "DELETE FROM user WHERE user_id=?";
         PreparedStatement ps = c.prepareStatement(sql);
-        ps.setInt(1,Id);
+        ps.setInt(1,id);
         int s = ps.executeUpdate();
             if (s >= 1) {
                 return true;
             }
             JDBCUtil.closeResource(c,ps);
         return false;
+    }
+
+    @Override
+    public boolean updateManagerById(Connection c,String userName,String address,String email,String nickName,int Id) {
+        PreparedStatement ps = null;
+        try {
+            String sql = "UPDATE `user` SET user_username=?,address=?,email=?,nickname=? WHERE user_id=?";
+            ps = c.prepareStatement(sql);
+            ps.setString(1, userName);
+            ps.setString(2, address);
+            ps.setString(3, email);
+            ps.setString(4, nickName);
+            ps.setInt(5,Id);
+            int rs1 = ps.executeUpdate();
+            if (rs1 >= 1) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtil.closeResource(c, ps);
+        }
+        return false;
+    }
+
+    @Override
+    public List<User> selectUser(Connection c) {
+        List<User> list = new ArrayList<>();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            String sql = "SELECT user_id,user_username,email,address,nickname FROM user";
+            ps = c.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                User user = new User();
+                user.setUseId(rs.getInt("user_id"));
+                user.setUserUsername(rs.getString("user_username"));
+                user.setEmail(rs.getString("email"));
+                user.setAddress(rs.getString("address"));
+                user.setNickname(rs.getString("nickname"));
+                list.add(user);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtil.closeResource(c, ps, rs);
+        }
+        return list;
+
     }
 
     @Override

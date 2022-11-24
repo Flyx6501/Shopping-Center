@@ -64,7 +64,49 @@ public interface ManagerDao {
  **/
     boolean addUser(Connection c,String userName,String email,String address,String nickName);
 
+    /** 通过用户名查询用户
+         * @param c 链接数据库
+         * @param userName 用户名
+         * @param currentPage 当前页
+         * @param pageSize 每页内容
+         * @return java.util.List<com.bean.User>
+     * @author l666888999
+     * @date 2022/11/23 8:44
+     **/
     List<User> getUserByUserName(Connection c,String userName,int currentPage,int pageSize);
+    /** 不分页查询用户
+         * @param c 数据库链接
+         * @param userName 用户名
+         * @return java.util.List<com.bean.User>
+     * @author l666888999
+     * @date 2022/11/23 8:45
+     **/
     List<User> getUserByUserNames(Connection c, String userName);
+   /** 删除用户信息
+        * @param c  数据库链接
+        * @param Id Id
+        * @return boolean
+    * @author l666888999
+    * @date 2022/11/23 8:46
+    **/
     boolean deleteUserById(Connection c,int Id) throws SQLException;
+    /** 更新用户信息
+         * @param c
+         * @param userName
+         * @param address
+         * @param email
+         * @param nickName
+         * @param Id
+         * @return boolean
+     * @author l666888999
+     * @date 2022/11/23 8:46
+     **/
+    boolean updateManagerById(Connection c,String userName,String address,String email,String nickName,int Id);
+   /** 查询所有用户信息
+        * @param c
+        * @return java.util.List<com.bean.User>
+    * @author l666888999
+    * @date 2022/11/23 8:47
+    **/
+    List<User> selectUser(Connection c);
 }

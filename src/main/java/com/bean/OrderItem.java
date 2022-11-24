@@ -11,7 +11,17 @@ public class OrderItem {
     public OrderItem() {
     }
     private String itemid;
-   //外键
+    private int buynum;
+
+    public int getBuynum() {
+        return buynum;
+    }
+
+    public void setBuynum(int buynum) {
+        this.buynum = buynum;
+    }
+
+    //外键
     private Commodity commodity;
     //外键
     private Order order;

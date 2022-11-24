@@ -55,5 +55,23 @@ public class GetUserTest {
         }
 
     }
+   @Test
+    public void getAll(){
+        Connection c=null;
+        try {
+            c = JDBCUtil.getConnection();
+            ManagerDaoImpl test = new ManagerDaoImpl();
+            List<User> lists = test.selectUser((com.mysql.jdbc.Connection) c);
+            System.out.println(lists);
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            try {
+                c.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
 
 }

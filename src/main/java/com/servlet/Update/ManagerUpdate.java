@@ -1,4 +1,4 @@
-package com.servlet.Delete;
+package com.servlet.Update;
 
 import com.mysql.jdbc.Connection;
 import com.service.ManagerDaoImpl;
@@ -16,25 +16,22 @@ import java.lang.reflect.Method;
 import java.sql.SQLException;
 
 /**
- * 删除用户
+ * 后台修改用户信息
  *
  * @author l666888999
  * @version 1.0
- * @date 2022/11/21 22:16
+ * @date 2022/11/22 16:02
  **/
-public class DeleteUserById extends HttpServlet {
+public class ManagerUpdate extends HttpServlet {
     private static final long serialVersionUID = 1L;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req,resp);
         try {
-            deleteUserByIds(req,resp);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+            updateManager(req,resp);
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     @Override
@@ -51,20 +48,28 @@ public class DeleteUserById extends HttpServlet {
         }
         try {
             method.invoke(this, req, resp);
-        } catch (IllegalAccessException |InvocationTargetException e) {
+        } catch (IllegalAccessException | InvocationTargetException e) {
             throw new RuntimeException(e);
         }
     }
-    private void deleteUserByIds(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException {
-        int id = Integer.parseInt(req.getParameter("id"));
-
+    private void updateManager(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException {
         Connection c= (Connection) JDBCUtil.getConnection();
-        ManagerDaoImpl dao = new ManagerDaoImpl();
-        boolean flag = dao.deleteUserById(c,id);
+        String userName = req.getParameter("userName");
+        String address=req.getParameter("address");
+        String email = req.getParameter("email");
+        String nickName = req.getParameter("nickName");
+        int Id= Integer.parseInt(req.getParameter("Id"));
+        ManagerDaoImpl dao=new ManagerDaoImpl();
+        boolean flag = dao.updateManagerById(c, userName, address, email, nickName, Id);
         if (flag){
             JSONObject json=new JSONObject();
-            json.put("msg",200);
-
+            json.put("message","success");
+            PrintWriter out=resp.getWriter();
+            out.println(json);
+            out.close();
+        }else{
+            JSONObject json=new JSONObject();
+            json.put("message","failed");
             PrintWriter out=resp.getWriter();
             out.println(json);
             out.close();

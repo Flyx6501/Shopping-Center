@@ -61,7 +61,7 @@
     <!-- 商品详细信息的 Servlet-->
     <servlet>
         <servlet-name>CommodityGetOneServlet</servlet-name>
-        <servlet-class>com.servlet.commodity.GetOneCommodityServlet</servlet-class>
+        <servlet-class>com.servlet.GetOne.CommodityGetOneServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CommodityGetOneServlet</servlet-name>
@@ -275,5 +275,49 @@
         <servlet-name>password</servlet-name>
         <url-pattern>/password</url-pattern>
     </servlet-mapping>
-    
+    <!--实现用户增加-->
+    <servlet>
+        <servlet-name>adduser</servlet-name>
+        <servlet-class>com.servlet.AddUser.AddUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>adduser</servlet-name>
+        <url-pattern>/addUser.do</url-pattern>
+    </servlet-mapping>
+    <!--更新用户-->
+    <servlet>
+        <servlet-name>userUpdate</servlet-name>
+        <servlet-class>com.servlet.Update.UserUpdate</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>userUpdate</servlet-name>
+        <url-pattern>/userUpdate.do</url-pattern>
+    </servlet-mapping>
+    <!--通过用户名查询用户-->
+    <servlet>
+        <servlet-name>getuser</servlet-name>
+        <servlet-class>com.servlet.GetUser.getUserByUserNames</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>getuser</servlet-name>
+        <url-pattern>/getUserByUserNames.do</url-pattern>
+    </servlet-mapping>
+    <!--删除用户-->
+    <servlet>
+        <servlet-name>deleteuser</servlet-name>
+        <servlet-class>com.servlet.Delete.DeleteUserById</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deleteuser</servlet-name>
+        <url-pattern>/deleteUserByIds.do</url-pattern>
+    </servlet-mapping>
+    <!--查询所有用户--> <servlet>
+    <servlet-name>getall</servlet-name>
+    <servlet-class>com.servlet.GetUser.GetAll</servlet-class>
+</servlet>
+    <servlet-mapping>
+        <servlet-name>getall</servlet-name>
+        <url-pattern>/getAll.do</url-pattern>
+    </servlet-mapping>
+
 </web-app>

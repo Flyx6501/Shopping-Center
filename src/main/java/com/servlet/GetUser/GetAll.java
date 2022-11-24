@@ -1,6 +1,6 @@
-package com.servlet.Delete;
+package com.servlet.GetUser;
 
-import com.mysql.jdbc.Connection;
+import com.bean.User;
 import com.service.ManagerDaoImpl;
 import com.utils.JDBCUtil;
 import org.json.JSONObject;
@@ -13,28 +13,30 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
- * 删除用户
+ * 遍历用户信息
  *
  * @author l666888999
  * @version 1.0
- * @date 2022/11/21 22:16
+ * @date 2022/11/22 19:54
  **/
-public class DeleteUserById extends HttpServlet {
+public class GetAll extends HttpServlet {
     private static final long serialVersionUID = 1L;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+       // super.doGet(req, resp);
         doPost(req,resp);
         try {
-            deleteUserByIds(req,resp);
+            getAll(req,resp);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     @Override
@@ -51,23 +53,22 @@ public class DeleteUserById extends HttpServlet {
         }
         try {
             method.invoke(this, req, resp);
-        } catch (IllegalAccessException |InvocationTargetException e) {
+        } catch (IllegalAccessException | InvocationTargetException e) {
             throw new RuntimeException(e);
         }
     }
-    private void deleteUserByIds(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException {
-        int id = Integer.parseInt(req.getParameter("id"));
+    private void getAll(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException {
+        Connection c = JDBCUtil.getConnection();
+        ManagerDaoImpl dao=new ManagerDaoImpl();
+        List<User> list = dao.selectUser((com.mysql.jdbc.Connection) c);
+        JSONObject json=new JSONObject();
+        json.put("msg",list);
 
-        Connection c= (Connection) JDBCUtil.getConnection();
-        ManagerDaoImpl dao = new ManagerDaoImpl();
-        boolean flag = dao.deleteUserById(c,id);
-        if (flag){
-            JSONObject json=new JSONObject();
-            json.put("msg",200);
+        PrintWriter out=resp.getWriter();
+        out.println(json);
+        out.close();
+        //req.setAttribute("userList", list);
 
-            PrintWriter out=resp.getWriter();
-            out.println(json);
-            out.close();
-        }
     }
+
 }
