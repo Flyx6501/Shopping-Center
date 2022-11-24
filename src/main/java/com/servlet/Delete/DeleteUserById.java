@@ -56,19 +56,18 @@ public class DeleteUserById extends HttpServlet {
         }
     }
     private void deleteUserByIds(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException {
-        int Id = Integer.parseInt(req.getParameter("Id"));
+        int id = Integer.parseInt(req.getParameter("id"));
+
         Connection c= (Connection) JDBCUtil.getConnection();
         ManagerDaoImpl dao = new ManagerDaoImpl();
-        boolean flag = dao.deleteUserById(c, Id);
+        boolean flag = dao.deleteUserById(c,id);
         if (flag){
             JSONObject json=new JSONObject();
-            json.put("msg","delete success");
+            json.put("msg",200);
 
             PrintWriter out=resp.getWriter();
             out.println(json);
             out.close();
         }
-
-
     }
 }
