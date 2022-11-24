@@ -3,12 +3,9 @@ package com;
 import com.bean.Commodity;
 import com.service.CommodityDaoImpl;
 import com.service.CommodityServiceImpl;
-
-import java.net.PortUnreachableException;
 import java.sql.Connection;
 import com.utils.JDBCUtil;
 import org.junit.Test;
-import java.sql.SQLException;
 import java.util.List;
 
 /**商品列表
