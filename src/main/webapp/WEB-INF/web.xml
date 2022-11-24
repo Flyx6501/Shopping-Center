@@ -61,7 +61,7 @@
     <!-- 商品详细信息的 Servlet-->
     <servlet>
         <servlet-name>CommodityGetOneServlet</servlet-name>
-        <servlet-class>com.servlet.commodity.GetOneCommodity</servlet-class>
+        <servlet-class>com.servlet.commodity.GetOneCommodityServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CommodityGetOneServlet</servlet-name>
