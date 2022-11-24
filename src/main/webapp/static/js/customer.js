@@ -20,7 +20,7 @@ layui.use(['table', 'laypage', 'layer'], function() {
         // toolbar: '#toolbarDemo',
         //url接口地址。
         //默认会自动传递两个参数：?page=1&limit=30(该参数可通过request自定义)，page代表当前页码、limit代表每页数据量
-        url: baseUrl + '/index.do',
+        url: baseUrl + '/getAll.do',
         //开启分页
         page: true,
         cols: [[
@@ -33,17 +33,16 @@ layui.use(['table', 'laypage', 'layer'], function() {
             {field: 'operate',title: '操作',width: 200,toolbar: '#barDemo', unresize: true}
         ]],
         parseData:function(d){
-            console.log(d)
             var newArr = []
-            for (var i = 0; i < d.commodity.length; i++) {
-                var item = (d.commodity)[i]
+            for (var i = 0; i < d.msg.length; i++) {
+                var item = (d.msg)[i]
                 // 往数组里面插入数据
                 newArr.push({
-                    com_id: item.commodityId,
-                    com_name: item.commodityName,
-                    com_price: item.commodityPrice,
-                    com_stock: item.commodityStock,
-                    com_information: item.commodityInformation
+                    id: item.useId,
+                    username: item.userUsername,
+                    email: item.email,
+                    city: item.address,
+                    nickname: item.nickname
                 })
             }
             return{
@@ -53,15 +52,13 @@ layui.use(['table', 'laypage', 'layer'], function() {
                 "data": newArr
             }
         }
-
-
     });
 
     $('#customer-search-btn').on('click', function () {
         var keyWord = $('#keyword').val(); //得到搜索框里已输入的数据
         console.log(keyWord, 8888)
         //执行重载
-        table.reload('commodity_table', {
+        table.reload('customer_table', {
             page: {
                 curr: 1 //重新从第 1 页开始
             },
@@ -104,8 +101,8 @@ layui.use(['table', 'laypage', 'layer'], function() {
                 // 加载中...
                 var loadIndex = layer.load();
                 $.ajax({
-                    url: "/user/del?id=" + data.id, //后台接口
-                    type: "get",
+                    url: "/Shopping_Center/deleteUserById.do?id=" + data.id, //后台接口
+                    type: "post",
                     success: function(res) {
                         //如果成功 关闭加载中这个进度条
                         layer.close(loadIndex);
