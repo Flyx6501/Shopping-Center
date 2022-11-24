@@ -17,8 +17,6 @@
     <link rel="stylesheet" href="${APP_PATH}/static/frame/layui-2.6.8.css">
     <script type="text/javascript" src="${APP_PATH}/static/frame/layui-2.6.8.js"></script>
     <script type="text/javascript" src="${APP_PATH}/static/frame/jquery-3.4.1.min.js"></script>
-
-
 </head>
 <body class="layui-layout-body">
 <input type="hidden" value="${APP_PATH}" id="baseUrl">
@@ -34,8 +32,7 @@
         </div>
         <div class="layui-inline">
             <!--注意此处button标签里的type属性-->
-            <button id="customer-search-btn" class="layui-btn layui-btn-primary"><i class="layui-icon"></i> 搜 索
-            </button>
+            <button id="customer-search-btn" class="layui-btn layui-btn-primary"><i class="layui-icon"></i> 搜 索</button>
         </div>
     </div>
 
