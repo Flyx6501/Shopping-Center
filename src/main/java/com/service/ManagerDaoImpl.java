@@ -111,10 +111,10 @@ public class ManagerDaoImpl implements ManagerDao {
     }
 
     @Override
-    public boolean deleteUserById(Connection c, int Id) throws SQLException {
+    public boolean deleteUserById(Connection c, int id) throws SQLException {
         String sql = "DELETE FROM user WHERE user_id=?";
         PreparedStatement ps = c.prepareStatement(sql);
-        ps.setInt(1,Id);
+        ps.setInt(1,id);
         int s = ps.executeUpdate();
             if (s >= 1) {
                 return true;
