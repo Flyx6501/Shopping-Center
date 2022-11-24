@@ -6,7 +6,6 @@ import com.service.CommodityServiceImpl;
 import java.sql.Connection;
 import com.utils.JDBCUtil;
 import org.junit.Test;
-import java.sql.SQLException;
 import java.util.List;
 
 /**商品列表
@@ -46,5 +45,14 @@ public class CommodityServiceTest {
         Commodity list=commodityDao.getOnePhoto(1);
         System.out.println(list);
     }
-
+    /** 获取某个商品的详情信息
+     * @author Qgs123
+     * @date 2022/11/23 21:23
+     **/
+    @Test
+    public void getOneCommodity(){
+        CommodityDaoImpl commodityDao=new CommodityDaoImpl();
+        List<Commodity>  list=commodityDao.getOneCommodity(1);
+        System.out.println(list);
+    }
 }
