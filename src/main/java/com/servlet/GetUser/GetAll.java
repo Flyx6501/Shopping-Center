@@ -28,7 +28,8 @@ public class GetAll extends HttpServlet {
     private static final long serialVersionUID = 1L;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
+       // super.doGet(req, resp);
+        doPost(req,resp);
         try {
             getAll(req,resp);
         } catch (SQLException e) {
