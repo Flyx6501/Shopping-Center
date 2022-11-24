@@ -12,7 +12,6 @@ import com.mysql.jdbc.Connection;
  * @date 2022/11/14 21:14
  **/
 public interface OrderDao {
-    void saveOrder(Connection c, Order order);
-    void saveOrderItem(Connection c, OrderItem item);
+    void addOrder(Connection c, Order order);
 
 }
