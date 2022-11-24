@@ -16,6 +16,13 @@ public interface CommodityDao {
      * @date 2022/11/10 9:40
      **/
     List <Commodity> getCommodityList();
+    /** 获取某个商品详细信息
+     * @param id  商品的id信息
+     * @return java.util.List<com.bean.Commodity>
+     * @author Qgs123
+     * @date 2022/11/23 21:17
+     **/
+    List <Commodity> getOneCommodity(int id);
     /** 新增商品库存
      * @param c 连接数据库
      * @param commodityName 商品名
