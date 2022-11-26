@@ -37,6 +37,23 @@ public class GetUserTest {
 
     }
     @Test
+    public void getTotalNum(){
+        Connection c=null;
+        try {
+            c = JDBCUtil.getConnection();
+            ManagerDaoImpl test = new ManagerDaoImpl();
+             test.getTotalNum((com.mysql.jdbc.Connection) c, "3");
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            try {
+                c.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+    @Test
     public void getUserByUserNames(){
         Connection c=null;
         try {
@@ -62,7 +79,6 @@ public class GetUserTest {
             c = JDBCUtil.getConnection();
             ManagerDaoImpl test = new ManagerDaoImpl();
             List<User> lists = test.selectUser((com.mysql.jdbc.Connection) c);
-            System.out.println(lists);
         }catch (Exception e){
             e.printStackTrace();
         }finally {
