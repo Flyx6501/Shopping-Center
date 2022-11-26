@@ -20,9 +20,43 @@ public class CommodityDaoImpl  implements CommodityDao {
     private ResultSet rs;
     public CommodityDaoImpl(){
     }
-    /**
-     * 查询商品表中的所有数据
-     */
+    /** 根据name获取商品信息
+     * @param name  商品的名字信息
+     * @return java.util.List<com.bean.Commodity>
+     * @author Qgs123
+     * @date 2022/11/26 9:47
+     **/
+    @Override
+    public List<Commodity> getNameCommodity(String name){
+        List<Commodity> list=new ArrayList<Commodity>();
+        try {
+            con= (Connection) DBHeper.getCon();
+            ps=con.prepareStatement("select * from `commodity` where commodity_name=?");
+            ps.setString(1,name);
+            rs=ps.executeQuery();
+            while (rs.next()){
+                Commodity g=new Commodity();
+                g.setCommodityId(rs.getInt(1));
+                g.setCommodityName(rs.getString(2));
+                g.setCommodityPrice(rs.getDouble(3));
+                g.setCommodityStock(rs.getInt(4));
+                g.setCommodityPhoto(rs.getBytes(5));
+                g.setCommodityInformation(rs.getString(6));
+                g.setCommodityComment(rs.getString(7));
+                list.add(g);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DBHeper.getColes(con, ps, rs);
+        }
+        return list;
+    }
+    /** 获取商品详情列表
+     * @return java.util.List<com.bean.Commodity>
+     * @author Qgs123
+     * @date 2022/11/16 9:40
+     **/
     @Override
     public List<Commodity> getCommodityList() {
         List<Commodity> list=new ArrayList<Commodity>();

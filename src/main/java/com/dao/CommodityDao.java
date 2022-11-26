@@ -10,6 +10,13 @@ import java.util.List;
  * @date 2022/11/10 9:38
  **/
 public interface CommodityDao {
+    /** 根据name获取商品信息
+     * @param name  商品的名字信息
+     * @return java.util.List<com.bean.Commodity>
+     * @author Qgs123
+     * @date 2022/11/26 9:14
+     **/
+    List<Commodity> getNameCommodity(String name);
     /** 获取所有的库存列表信息
      * @return java.util.List<com.bean.Commodity>
      * @author Qgs123
@@ -48,6 +55,7 @@ public interface CommodityDao {
     boolean updateCommodity(Connection c,String commodityName,Double commodityPrice,int commodityStock,String commodityInformation,int commodityId);
     /** 删除特定库存记录
      * @param c 连接数据库
+     * @param commodityId 商品id
      * @return boolean
      * @author Qgs123
      * @date 2022/11/10 9:41

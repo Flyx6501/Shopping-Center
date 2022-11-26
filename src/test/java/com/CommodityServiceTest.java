@@ -55,4 +55,14 @@ public class CommodityServiceTest {
         List<Commodity>  list=commodityDao.getOneCommodity(1);
         System.out.println(list);
     }
+    /** 根基商品名获取商品详情测试
+     * @author Qgs123
+     * @date 2022/11/26 9:52
+     **/
+    @Test
+    public void GetNameCommodity(){
+        CommodityDaoImpl commodityDao=new CommodityDaoImpl();
+        List<Commodity> list=commodityDao.getNameCommodity("a");
+        System.out.println(list);
+    }
 }
