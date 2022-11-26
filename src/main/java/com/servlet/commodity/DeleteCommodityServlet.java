@@ -3,17 +3,19 @@ package com.servlet.commodity;
 import com.mysql.jdbc.Connection;
 import com.service.CommodityDaoImpl;
 import com.utils.JDBCUtil;
+import org.json.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.SQLException;
 
-/**
+/** 管理员删除商品
  * @author Qgs123
  * @version 1.0
  * @date 2022/11/20 14:47
@@ -34,9 +36,7 @@ public class DeleteCommodityServlet extends HttpServlet {
         }
         try {
             method.invoke(this, req, resp);
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
-        } catch (InvocationTargetException e) {
+        } catch (IllegalAccessException |InvocationTargetException e) {
             throw new RuntimeException(e);
         }
     }
@@ -57,21 +57,17 @@ public class DeleteCommodityServlet extends HttpServlet {
      * @author Qgs123
      * @date 2022/11/18 22:10
      **/
-    private void deleteCommodity(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ClassNotFoundException, ServletException {
-        Integer commodityId = Integer.valueOf(request.getParameter("commodityId"));
-
+    private void deleteCommodity(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ClassNotFoundException{
+        int commodityId = Integer.parseInt(request.getParameter("commodityId"));
         Connection c = (Connection) JDBCUtil.getConnection();
         CommodityDaoImpl dao = new CommodityDaoImpl();
-
         boolean flag = dao.deleteCommodity(c,commodityId);
-        System.out.println(flag);
-
-        if (flag) {
-            request.setAttribute("message", "删除成功");
-            request.getRequestDispatcher("/success").forward(request,response);
-        }else {
-            request.setAttribute("message","删除失败");
-            request.getRequestDispatcher("/commodityAdd").forward(request,response);
+        if (flag){
+            JSONObject json=new JSONObject();
+            json.put("msg",200);
+            PrintWriter out=response.getWriter();
+            out.println(json);
+            out.close();
         }
     }
 }
