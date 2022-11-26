@@ -15,12 +15,12 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.SQLException;
 
-/** 管理员删除商品
+/**管理员更新商品的信息 根据id修改
  * @author Qgs123
  * @version 1.0
- * @date 2022/11/20 14:47
+ * @date 2022/11/26 11:05
  **/
-public class DeleteCommodityServlet extends HttpServlet {
+public class UpdateCommodityServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -44,24 +44,26 @@ public class DeleteCommodityServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
         try {
-            deleteCommodity(request, response);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+            updateCommodity(request, response);
+        } catch (SQLException |ClassNotFoundException e)  {
             throw new RuntimeException(e);
         }
     }
-    /** 商品删除
+    /** 管理员更新商品信息
      * @param request 请求
      * @param response 响应
      * @author Qgs123
-     * @date 2022/11/18 22:10
+     * @date 2022/11/26 11:09
      **/
-    private void deleteCommodity(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ClassNotFoundException{
-        int commodityId = Integer.parseInt(request.getParameter("commodityId"));
+    private void updateCommodity(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ClassNotFoundException{
+        String commodityName = request.getParameter("commodityName");
+        Double commodityPrice = Double.valueOf(request.getParameter("commodityPrice"));
+        Integer commodityStock = Integer.valueOf(request.getParameter("commodityStock"));
+        String commodityInformation=request.getParameter("commodityInformation");
+        Integer commpdityId=Integer.valueOf(request.getParameter("commodityId"));
         Connection c = (Connection) JDBCUtil.getConnection();
         CommodityDaoImpl dao = new CommodityDaoImpl();
-        boolean flag = dao.deleteCommodity(c,commodityId);
+        boolean flag = dao.updateCommodity(c,commodityName,commodityPrice,commodityStock,commodityInformation,commpdityId);
         if (flag){
             JSONObject json=new JSONObject();
             json.put("msg",200);
@@ -70,4 +72,5 @@ public class DeleteCommodityServlet extends HttpServlet {
             out.close();
         }
     }
+
 }

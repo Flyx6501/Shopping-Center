@@ -3,16 +3,18 @@ package com.servlet.commodity;
 import com.mysql.jdbc.Connection;
 import com.service.CommodityDaoImpl;
 import com.utils.JDBCUtil;
+import org.json.JSONObject;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.SQLException;
 
-/**
+/**后台管理员新增商品
  * @author Qgs123
  * @version 1.0
  * @date 2022/11/19 19:12
@@ -33,9 +35,7 @@ public class AddCommodityServlet extends HttpServlet {
         }
         try {
             method.invoke(this, req, resp);
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
-        } catch (InvocationTargetException e) {
+        } catch (IllegalAccessException |InvocationTargetException e) {
             throw new RuntimeException(e);
         }
     }
@@ -43,38 +43,31 @@ public class AddCommodityServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
         try {
-            AddCommodity(request, response);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+            addCommodity(request, response);
+        } catch (SQLException |ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
-/** 商品修改请求
+/** 商品新增请求
  * @param request 请求
  * @param response 响应
  * @author Qgs123
  * @date 2022/11/19 22:10
  **/
-    private void AddCommodity(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ClassNotFoundException, ServletException {
+    private void addCommodity(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ClassNotFoundException{
         String commodityName = request.getParameter("commodityName");
         Double commodityPrice = Double.valueOf(request.getParameter("commodityPrice"));
         Integer commodityStock = Integer.valueOf(request.getParameter("commodityStock"));
-//        byte[] photo = request.getParameter("commodityPhoto").getBytes();
         String commodityInformation=request.getParameter("commodityInformation");
-
         Connection c = (Connection) JDBCUtil.getConnection();
         CommodityDaoImpl dao = new CommodityDaoImpl();
-
         boolean flag = dao.addCommodity(c,commodityName,commodityPrice,commodityStock,commodityInformation);
-        System.out.println(flag);
-
-        if (flag) {
-            request.setAttribute("message", "添加成功");
-            request.getRequestDispatcher("/success").forward(request,response);
-        }else {
-            request.setAttribute("message","添加失败");
-            request.getRequestDispatcher("/commodityAdd").forward(request,response);
+        if (flag){
+            JSONObject json=new JSONObject();
+            json.put("msg",200);
+            PrintWriter out=response.getWriter();
+            out.println(json);
+            out.close();
         }
     }
 }
