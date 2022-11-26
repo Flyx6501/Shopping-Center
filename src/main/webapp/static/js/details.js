@@ -8,7 +8,7 @@ window.onload = function() {
     let url = window.location.search;
     let Cid = url.split("=");
     let id = Cid[1];
-    console.log(id);
+    /*console.log(id);*/
     $.ajax({
         /* 获取数据 */
         url: "commodityDetails.do",
@@ -19,33 +19,24 @@ window.onload = function() {
         },
         success: function(result) {
             /* 读取成功时将数据读取,显示在页面内 */
-            /*document.getElementById("img").innerHTML = data.commodityImg;*/
             console.log(result);
             let data = result.commodity;
-            console.log(data);
-            let Commodity = JSON.parse(data);
-            console.log(Commodity);
-            document.getElementById("img").innerHTML=Commodity.commodityImg;
-            document.getElementById("goodsName").innerHTML=Commodity.commodityName;
-            document.getElementById("props").innerHTML=Commodity.commodityInformation;
-            document.getElementById("price").innerHTML=Commodity.commodityPrice;
-        }
+            document.getElementById("goodsName").innerHTML=data[0].commodityName;
+            document.getElementById("props").innerHTML=data[0].commodityStock;
+            document.getElementById("price").innerHTML=data[0].commodityPrice;
+            }
     });
-
-  /*  /!* id传送给购物车 *!/
-    function add() {
-        /!* Cid为商品id *!/
-        window.location.href = "car?Cid=" + id;
-    }*/
 }
-add = function () {
 
+/*加入购物车点击事件*/
+add = function () {
     $.ajax({
         url: "car.do",
         type: "POST",
         dataType: "json",
         data: {
             id: id,
+            userName: userName,
         },
         success: function (data) {
             alert("已加入购物车");

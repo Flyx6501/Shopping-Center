@@ -12,30 +12,40 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>详情</title>
     <%
         pageContext.setAttribute("APP_PATH", request.getContextPath());
     %>
-    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
-    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
-    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
-    <script type="text/javascript" src="${APP_PATH}/static/frame/layui-2.6.8.js"></script>
-    <script type="text/javascript" src="${APP_PATH}/static/frame/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="${APP_PATH}/static/js/details.js"></script>
-    <link rel="stylesheet" type="text/css" href="${APP_PATH}/static/frame/layui-2.6.8.css" />
-    <link rel="stylesheet" type="text/css" href="${APP_PATH}/static/frame/bootstrap-3.4.1-dist.min.css" />
-    <link rel="stylesheet" type="text/css" href="${APP_PATH}/static/css/details.css" />
+    <!--定义绝对路径-->
     <script type="text/javascript">
         let APP_PATH=${APP_PATH};
     </script>
-    <title>详情</title>
+    <!--定义用户名-->
+    <script type="text/javascript">
+        let userName = "<%=session.getAttribute("userName")%>";
+    </script>
+    <!-- layui -->
+    <script type="text/javascript" src="${APP_PATH}/static/frame/layui-2.6.8.js"></script>
+    <!-- Jquery -->
+    <script type="text/javascript" src="${APP_PATH}/static/frame/jquery-3.4.1.min.js"></script>
+    <!-- 引入js验证文件-->
+    <script type="text/javascript" src="${APP_PATH}/static/js/details.js"></script>
+    <!-- layui -->
+    <link rel="stylesheet" type="text/css" href="${APP_PATH}/static/frame/layui-2.6.8.css" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="${APP_PATH}/static/frame/bootstrap-3.4.1-dist.min.css" />
+    <!-- 引入css样式-->
+    <link rel="stylesheet" type="text/css" href="${APP_PATH}/static/css/details.css" />
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
 </head>
 <body>
 <!-- 头部导航 -->
 <div class="nav-bar">
     <div class="layui-row">
-        <!-- 首页 -->
         <div class="layui-col-md6">
-            <div>首页</div>
+            <div>商品详情</div>
         </div>
         <div class="layui-col-md2">
             <a href="${APP_PATH}/self">个人中心</a>
@@ -45,7 +55,7 @@
             <a href="${APP_PATH}/car">购物车</a>
         </div>
         <div class="layui-col-md1">
-            <%--获取用户名--%>
+            <!--获取用户名-->
             <div id="userName">
                 <%=session.getAttribute("userName")%>
             </div>
@@ -83,16 +93,5 @@
         </div>
     </div>
 </div>
-<%--<script>
-    show();
-    /* ./json/details. 数据接口 */
-    function show(){
-        $.getJSON("./json/details.json",function(data){
-            $("#goodsName").html(data.goodsName);
-            $("#props").html(data.props);
-            $("#price").html(data.price);
-        })
-    }
-</script>--%>
 </body>
 </html>
