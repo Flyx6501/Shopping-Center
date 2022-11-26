@@ -4,7 +4,16 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          id="WebApp_ID" version="2.5">
     <display-name>Archetype Created Web Application</display-name>
-    <!--后台管理员根基商品名获取商品详情-->
+    <!--后台管理员根据商品id修改商品信息-->
+    <servlet>
+        <servlet-name>UpdateCommodityServlet</servlet-name>
+        <servlet-class>com.servlet.commodity.UpdateCommodityServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateCommodityServlet</servlet-name>
+        <url-pattern>/updateCommodity.do</url-pattern>
+    </servlet-mapping>
+    <!--后台管理员根据商品名获取商品详情-->
     <servlet>
         <servlet-name>CommodityGetNameServlet</servlet-name>
         <servlet-class>com.servlet.GetOne.CommodityGetNameServlet</servlet-class>
@@ -29,7 +38,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>AddCommodityServlet</servlet-name>
-        <url-pattern>/AddCommodity.do</url-pattern>
+        <url-pattern>/addCommodity.do</url-pattern>
     </servlet-mapping>
     <!--根据id获取商品图-->
     <servlet>
@@ -251,7 +260,7 @@
 <!--查询用户信息-->
     <servlet>
         <servlet-name>select</servlet-name>
-        <servlet-class>com.servlet.Car.GetUser.getUserByUserName</servlet-class>
+        <servlet-class>com.servlet.GetUser.getUserByUserName</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>select</servlet-name>
