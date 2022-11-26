@@ -4,12 +4,14 @@ import com.bean.Page;
 import com.bean.User;
 import com.service.ManagerDaoImpl;
 import com.utils.JDBCUtil;
+import org.json.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.Connection;
@@ -60,25 +62,25 @@ public class getUserByUserName extends HttpServlet {
 
     private void getUserByUserName(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException {
         String userName = req.getParameter("userName");
-     //   int currentPage=1;
-        int totalDate=1;
-        int pageSize=10;
+        ManagerDaoImpl dao = new ManagerDaoImpl();
+        Connection c = JDBCUtil.getConnection();
+        int totalDate = dao.getTotalNum((com.mysql.jdbc.Connection) c,userName);
+        int pageSize=5;
         int currentPage= Integer.parseInt(req.getParameter("page"));
-
-
         int totalPage=(int)Math.ceil((double)totalDate/pageSize);
         if (currentPage>totalPage){
             currentPage=totalPage;
         }
-        Connection c = JDBCUtil.getConnection();
-        ManagerDaoImpl dao = new ManagerDaoImpl();
-        // dao.getUserByUserName((com.mysql.jdbc.Connection) c,userName);
         List<User> list = dao.getUserByUserName((com.mysql.jdbc.Connection) c, userName,currentPage,pageSize);
         Page pg = new Page(currentPage, pageSize, totalDate);
         pg.setPageDate(list);
-        req.setAttribute("pg",pg);
-        //req.setAttribute("list", list);
+        JSONObject json=new JSONObject();
+        json.put("msg",pg);
 
+        PrintWriter out=resp.getWriter();
+        out.println(json);
+        out.close();
+       // req.setAttribute("pg",pg);
         //ToDo 路径补充
         try {
             req.getRequestDispatcher("").forward(req, resp);
