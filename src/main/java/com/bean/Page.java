@@ -105,12 +105,13 @@ public class Page<T> {
     }
 
     public int getTotalPage() {
-        return totalPage;
+        int count= totalDate/pageSize;
+        return (totalDate/pageSize==0)? count:count+1;
     }
 
-    public void setTotalPage(int totalPage) {
+   /* public void setTotalPage(int totalPage) {
         this.totalPage = totalPage;
-    }
+    }*/
 
     public int getPageSize() {
         return pageSize;
