@@ -32,7 +32,7 @@ public class CommodityServiceTest {
     @Test
     public void getOne() {
         CommodityServiceImpl commodityDao = new CommodityServiceImpl();
-        Commodity list1=commodityDao.getOne(2);
+        Commodity list1=commodityDao.getOne(4);
         System.out.println(list1);
     }
     /** 获取某个商品图片
@@ -62,7 +62,17 @@ public class CommodityServiceTest {
     @Test
     public void GetNameCommodity(){
         CommodityDaoImpl commodityDao=new CommodityDaoImpl();
-        List<Commodity> list=commodityDao.getNameCommodity("a");
+        List<Commodity> list=commodityDao.getNameCommodity("c");
+        System.out.println(list);
+    }
+    /** 商品模糊查询
+     * @author Qgs123
+     * @date 2022/11/27 20:33
+     **/
+    @Test
+    public void getFuzzyQueryCommodity(){
+        CommodityDaoImpl commodityDao=new CommodityDaoImpl();
+        List<Commodity> list=commodityDao.getFuzzyQueryCommodity("aa");
         System.out.println(list);
     }
 }
