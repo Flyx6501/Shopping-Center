@@ -55,12 +55,12 @@ public class ManagerUpdate extends HttpServlet {
     private void updateManager(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException {
         Connection c= (Connection) JDBCUtil.getConnection();
         String userName = req.getParameter("userName");
-        String address=req.getParameter("address");
-        String email = req.getParameter("email");
+        String email=req.getParameter("address");
+        String address = req.getParameter("email");
         String nickName = req.getParameter("nickName");
         int Id= Integer.parseInt(req.getParameter("Id"));
         ManagerDaoImpl dao=new ManagerDaoImpl();
-        boolean flag = dao.updateManagerById(c, userName, address, email, nickName, Id);
+        boolean flag = dao.updateManagerById(c, userName, email, address, nickName, Id);
         if (flag){
             JSONObject json=new JSONObject();
             json.put("message","success");
