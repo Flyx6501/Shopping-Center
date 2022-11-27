@@ -124,14 +124,14 @@ public class ManagerDaoImpl implements ManagerDao {
     }
 
     @Override
-    public boolean updateManagerById(Connection c,String userName,String address,String email,String nickName,int Id) {
+    public boolean updateManagerById(Connection c,String userName,String email,String address,String nickName,int Id) {
         PreparedStatement ps = null;
         try {
             String sql = "UPDATE `user` SET user_username=?,address=?,email=?,nickname=? WHERE user_id=?";
             ps = c.prepareStatement(sql);
             ps.setString(1, userName);
-            ps.setString(2, address);
-            ps.setString(3, email);
+            ps.setString(2, email);
+            ps.setString(3, address);
             ps.setString(4, nickName);
             ps.setInt(5,Id);
             int rs1 = ps.executeUpdate();
@@ -246,5 +246,4 @@ public class ManagerDaoImpl implements ManagerDao {
         }
         return total;
     }
-
 }
