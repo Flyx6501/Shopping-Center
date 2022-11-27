@@ -20,6 +20,38 @@ public class CommodityDaoImpl  implements CommodityDao {
     private ResultSet rs;
     public CommodityDaoImpl(){
     }
+    /** 商品的模糊查询
+     * @param name  商品名
+     * @return java.util.List<com.bean.Commodity>
+     * @author Qgs123
+     * @date 2022/11/27 17:41
+     **/
+    @Override
+    public List<Commodity> getFuzzyQueryCommodity(String name){
+        List<Commodity> list=new ArrayList<Commodity>();
+        try {
+            con= (Connection) DBHeper.getCon();
+            ps=con.prepareStatement("select * from `commodity` where commodity_name LIKE '%"+name+"%' ");
+
+            rs=ps.executeQuery();
+            while (rs.next()){
+                Commodity g=new Commodity();
+                g.setCommodityId(rs.getInt(1));
+                g.setCommodityName(rs.getString(2));
+                g.setCommodityPrice(rs.getDouble(3));
+                g.setCommodityStock(rs.getInt(4));
+                g.setCommodityPhoto(rs.getBytes(5));
+                g.setCommodityInformation(rs.getString(6));
+                g.setCommodityComment(rs.getString(7));
+                list.add(g);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DBHeper.getColes(con, ps, rs);
+        }
+        return list;
+    }
     /** 根据name获取商品信息
      * @param name  商品的名字信息
      * @return java.util.List<com.bean.Commodity>

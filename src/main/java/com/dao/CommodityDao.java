@@ -10,6 +10,13 @@ import java.util.List;
  * @date 2022/11/10 9:38
  **/
 public interface CommodityDao {
+    /** 商品模糊查询
+     * @param name 商品名
+     * @return java.util.List<com.bean.Commodity>
+     * @author Qgs123
+     * @date 2022/11/27 15:28
+     **/
+     List<Commodity> getFuzzyQueryCommodity(String name);
     /** 根据name获取商品信息
      * @param name  商品的名字信息
      * @return java.util.List<com.bean.Commodity>
