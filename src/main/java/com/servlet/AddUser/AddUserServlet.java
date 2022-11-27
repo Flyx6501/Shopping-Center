@@ -55,9 +55,9 @@ public class AddUserServlet extends HttpServlet {
         }
     }
     private void addUser(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException {
-        String userName = req.getParameter("username");
+        String userName = req.getParameter("userName");
         String email = req.getParameter("email");
-        String address = req.getParameter("city");
+        String address = req.getParameter("address");
         String nickname = req.getParameter("nickname");
         Connection c= (Connection) JDBCUtil.getConnection();
         ManagerDaoImpl dao=new ManagerDaoImpl();
