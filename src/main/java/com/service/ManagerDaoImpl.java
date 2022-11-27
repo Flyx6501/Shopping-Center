@@ -173,6 +173,8 @@ public class ManagerDaoImpl implements ManagerDao {
 
     }
 
+
+
     @Override
     public boolean addUser(Connection c, String userName, String email, String address, String nickName) {
 
@@ -225,4 +227,24 @@ public class ManagerDaoImpl implements ManagerDao {
         }
         return list;
     }
+    @Override
+    public int getTotalNum(Connection c,String userName) {
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        int total=0;
+        try {
+            String sql = "SELECT count(*) FROM user";
+            ps = c.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                total = rs.getInt(1);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally{
+            JDBCUtil.closeResource(c, ps, rs);
+        }
+        return total;
+    }
+
 }

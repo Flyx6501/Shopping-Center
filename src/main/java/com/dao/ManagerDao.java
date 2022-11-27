@@ -109,4 +109,12 @@ public interface ManagerDao {
     * @date 2022/11/23 8:47
     **/
     List<User> selectUser(Connection c);
+    /** 查询用户数目
+         * @param c
+         * @param userName
+         * @return int
+     * @author l666888999
+     * @date 2022/11/26 22:00
+     **/
+    int getTotalNum(Connection c,String userName);
 }
