@@ -63,8 +63,15 @@ public class CommodityDaoImpl  implements CommodityDao {
         List<Commodity> list=new ArrayList<Commodity>();
         try {
             con= (Connection) DBHeper.getCon();
-            ps=con.prepareStatement("select * from `commodity` where commodity_name=?");
-            ps.setString(1,name);
+            StringBuffer ss=new StringBuffer();
+            ss.append("select * from `commodity`");
+            if(name!=null && name !=""){
+                ss.append("where commodity_name =?");
+            }
+            ps=con.prepareStatement(String.valueOf(ss));
+            if (name!=null && name !=""){
+                ps.setString(1,name);
+            }
             rs=ps.executeQuery();
             while (rs.next()){
                 Commodity g=new Commodity();
