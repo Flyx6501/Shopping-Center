@@ -12,8 +12,8 @@ layui.use(['table', 'laypage', 'layer'], function() {
         //加载table实例
         table.render({
             // elem属性用来绑定容器的id属性值
-            elem: '#demo',
-            id: 'order_table',
+            elem: '#order',
+            id: 'orderTable',
             height: 500,
             // toolbar: '#toolbarDemo',
             //url接口地址。
@@ -23,21 +23,21 @@ layui.use(['table', 'laypage', 'layer'], function() {
             page: true,
             cols: [[
                 {type: 'checkbox', unresize: true},
-                {field: 'order_id', title: 'ID', width: 100, unresize: true},
-                {field: 'username', title: '用户名', width: 200, unresize: true},
-                {field: 'com_name', title: '商品名称', width: 230, unresize: true},
-                {field: 'com_num', title: '商品数量', width: 250, unresize: true},
-                {field: 'com_price', title: '价格', width: 230, unresize: true},
+                {field: 'orderId', title: 'ID', width: 100, unresize: true},
+                {field: 'userName', title: '用户名', width: 200, unresize: true},
+                {field: 'commodityName', title: '商品名称', width: 230, unresize: true},
+                {field: 'commodityNumber', title: '商品数量', width: 250, unresize: true},
+                {field: 'commodityPrice', title: '价格', width: 230, unresize: true},
                 // {field: 'operate',title: '操作',width: 200, toolbar: '#barDemo', width:150},
             ]],
         });
     });
 
-    $('#customer-search-btn').on('click', function () {
+    $('#orderSearch').on('click', function () {
         var keyWord = $('#keyword').val(); //得到搜索框里已输入的数据
         // console.log(keyWord, 8888)
         //执行重载
-        table.reload('customer_table', {
+        table.reload('orderTable', {
             page: {
                 curr: 1 //重新从第 1 页开始
             },
