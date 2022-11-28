@@ -32,12 +32,12 @@
         </div>
         <div class="layui-inline">
             <!--注意此处button标签里的type属性-->
-            <button id="order-search-btn" class="layui-btn layui-btn-primary"><i class="layui-icon"></i> 搜 索</button>
+            <button id="orderSearch" class="layui-btn layui-btn-primary"><i class="layui-icon"></i> 搜 索</button>
         </div>
     </div>
 
     <!-- 顾客信息数据表格 -->
-    <table id="demo" lay-filter="test" lay-data="{id: 'test'}"></table>
+    <table id="order" lay-filter="test" lay-data="{id: 'test'}"></table>
 
 </div>
 <script type="text/javascript" src="${APP_PATH}/static/js/order.js"></script>
