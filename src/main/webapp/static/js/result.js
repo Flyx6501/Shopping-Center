@@ -6,7 +6,7 @@
 /* 获取搜索参数 */
 var url = window.location.search;
 var findName = url.split("=");
-console.log(findName[1]);
+/*console.log(findName[1]);*/
 
 window.onload = function() {
     $.ajax({
@@ -19,7 +19,7 @@ window.onload = function() {
         },
         success: function(data) {
             let goodlist = $("#good-list");
-            var list = data.commodity;
+            var list = data;
             /*console.log(list);*/
             /*遍历显示*/
             for (let i = 0; i < Math.ceil(list.length / 4); i++) {
