@@ -19,9 +19,11 @@ window.onload = function() {
         },
         success: function(result) {
             /* 读取成功时将数据读取,显示在页面内 */
-            console.log(result);
+            /*console.log(result);*/
             let data = result.commodity;
+            /*console.log(data);*/
             document.getElementById("goodsName").innerHTML=data[0].commodityName;
+            /*console.log(data[0].commodityName);*/
             document.getElementById("props").innerHTML=data[0].commodityStock;
             document.getElementById("price").innerHTML=data[0].commodityPrice;
             }
@@ -31,7 +33,7 @@ window.onload = function() {
 /*加入购物车点击事件*/
 add = function () {
     $.ajax({
-        url: "car.do",
+        url: "#",
         type: "POST",
         dataType: "json",
         data: {
