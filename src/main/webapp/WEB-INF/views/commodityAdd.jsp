@@ -20,32 +20,33 @@
 </head>
 <body>
 <div style="padding:20px 20%">
+	<input type="hidden" value="${APP_PATH}" id="baseUrl">
 	<form class="layui-form">
 		<div class="layui-form-item">
 			<label class="layui-form-label">商品名称</label>
 			<div class="layui-input-block">
-				<input type="text" name="com_name" required lay-verify="required" autocomplete="off"
+				<input type="text" name="commodityName" required lay-verify="required" autocomplete="off"
 					   class="layui-input" maxlength="20" value="">
 			</div>
 		</div>
 		<div class="layui-form-item">
 			<label class="layui-form-label">商品价格</label>
 			<div class="layui-input-block">
-				<input type="text" name="com_price" required lay-verify="required" autocomplete="off"
+				<input type="text" name="commodityPrice" required lay-verify="required" autocomplete="off"
 					   class="layui-input" maxlength="30" value="">
 			</div>
 		</div>
 		<div class="layui-form-item">
 			<label class="layui-form-label">库存</label>
 			<div class="layui-input-block">
-				<input type="text" name="com_stock" required lay-verify="required" autocomplete="off" class="layui-input"
+				<input type="text" name="commodityStock" required lay-verify="required" autocomplete="off" class="layui-input"
 					   maxlength="15" value="">
 			</div>
 		</div>
 		<div class="layui-form-item">
 			<label class="layui-form-label">商品描述</label>
 			<div class="layui-input-block">
-				<input type="text" name="com_information" required lay-verify="required" autocomplete="off"
+				<input type="text" name="commodityInformation" required lay-verify="required" autocomplete="off"
 					   class="layui-input" maxlength="15" value="">
 			</div>
 		</div>
@@ -58,39 +59,7 @@
 	</form>
 </div>
 
-<script>
-    //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
-    layui.use(['form', 'laydate'], function() {
-        var form = layui.form,
-            laydate = layui.laydate;
+<script type="text/javascript" src="${APP_PATH}/static/js/commodityAdd.js"></script>
 
-        //监听提交
-        form.on("submit(save)", function(data) {
-            var index = layer.load();
-            $.ajax({
-                url: "/commodity/save",
-                type: "post",
-                contentType: "application/json;charset=UTF-8",
-                data: JSON.stringify(data.field),
-                dataType: 'json',
-                success: function(res) {
-                    console.log(res);
-                    layer.close(index);
-                    if (res.data == 200) {
-                        layer.msg("新增成功！");
-                    } else {
-                        layer.msg("新增失败，请重试！");
-                    }
-                },
-                error: function(response) {
-                    console.log(response);
-                    layer.close(index);
-                    layer.msg("请求出错，请重试!");
-                }
-            });
-            return false;
-        });
-    });
-</script>
 </body>
 </html>
