@@ -1,10 +1,10 @@
-package com.servlet.AddUser;
+package com.servlet.OrderServlet;
 
 import com.mysql.jdbc.Connection;
-import com.service.ManagerDaoImpl;
+import com.service.OrdersDaoImpl;
 import com.utils.JDBCUtil;
 import org.json.JSONObject;
-import javax.servlet.RequestDispatcher;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,26 +14,27 @@ import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.SQLException;
+import java.util.Collections;
+import java.util.List;
 
 /**
- * 添加用户
+ * 增加订单
  *
  * @author l666888999
  * @version 1.0
- * @date 2022/11/19 21:53
+ * @date 2022/11/24 20:06
  **/
-public class AddUserServlet extends HttpServlet {
+public class OrdersSelectServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       doPost(req,resp);
+        doPost(req,resp);
         try {
-            addUser(req,resp);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+            insertOrder(req,resp);
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+
     }
 
     @Override
@@ -54,22 +55,19 @@ public class AddUserServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
     }
-    private void addUser(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException {
+    private void insertOrder(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException {
         String userName = req.getParameter("userName");
-        String email = req.getParameter("email");
-        String address = req.getParameter("address");
-        String nickname = req.getParameter("nickname");
         Connection c= (Connection) JDBCUtil.getConnection();
-        ManagerDaoImpl dao=new ManagerDaoImpl();
-        boolean flag = dao.addUser(c, userName, email, address, nickname);
-        if (flag){
-            JSONObject json=new JSONObject();
-            json.put("msg","增加成功");
+        OrdersDaoImpl dao=new OrdersDaoImpl();
+        List<Object> list = dao.selectOrderByuserName(c, userName);
+        JSONObject json=new JSONObject();
+        json.put("msg",list);
+        PrintWriter out=resp.getWriter();
+        out.println(json);
+        out.close();
 
-            PrintWriter out=resp.getWriter();
-            out.println(json);
-            out.close();
-        }
 
     }
-}
+
+
+    }
