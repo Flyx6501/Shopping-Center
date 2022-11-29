@@ -142,7 +142,7 @@
         var element = layui.element;
        /* 一些事件触发*/
         element.on('tab(demo)', function(data) {
-            console.log(data);
+            /*console.log(data);*/
         });
     });
 </script>
