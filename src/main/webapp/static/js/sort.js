@@ -6,17 +6,17 @@
 window.onload = function() {
     $.ajax({
         /* 获取数据 */
-        url: "#",
+        url: "index.do",
         type: "GET",
         dataType: "json",
         success: function(data) {
             let products = $("#products");
             var list = data.commodity;
-            console.log(list);
+            /*console.log(list);*/
+            /*遍历显示*/
             for (let i = 0; i < Math.ceil(list.length / 4); i++) {
                 products.append(`<div class="layui-row" id="list` + i + `"></div>`);
             }
-
             let k = 0;
             for (let i = 0; i < Math.ceil(list.length / 4); i++) {
                 let domRow = $("#list" + i);
