@@ -9,15 +9,6 @@ checkSearch = function () {
     let url ="result?Sid=" + $("#find").val();
     window.location.href = url;
 }
-/*details = function () {
-    /!* Sid为查询的内容 *!/
-    let url = "details";
-    window.location.href = url;
-}*/
-/*function details(id) {
-    /!* Cid为商品id *!/
-    window.location.href = "details?Cid=" + id;
-}*/
 
 window.onload = function() {
     $.ajax({
@@ -57,26 +48,4 @@ window.onload = function() {
             }
         }
     });
-
-/*$.ajax({
-        url: '${APP_PATH}/userLogin.do',
-        type: "GET",
-        dataType: "json",
-        data:{
-            "id":id
-        },*/
-
-/*$.ajax({
-        url: "#",
-        type: "GET",
-        dataType: "json",
-        data:
-            {
-                "id":id
-            },
-
-        success: function(data) {
-            $("#userName").html(data.userName);
-        }
-    });*/
 }
