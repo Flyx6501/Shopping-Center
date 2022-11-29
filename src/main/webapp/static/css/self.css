@@ -11,14 +11,18 @@
     padding-bottom: 1.25rem;
 }
 
+.layui-col-md6{
+    font-size: 18px ;
+}
+
 /* 链接样式 */
-.layui-col-md8 a {
+.layui-col-md6 a {
     color: darkgray;
     text-decoration: none;
 }
 
 /* 链接鼠标移入效果 */
-.layui-col-md8 a:hover {
+.layui-col-md6 a:hover {
     color: darkorange;
 }
 
@@ -93,11 +97,6 @@ input {
     margin-top: 20px;
     margin-left: 20px;
 }
-
-/* .input {
-	margin-top: 15px;
-	margin-left: 20px;
-} */
 
 .sex {
     margin-top: 20px;
