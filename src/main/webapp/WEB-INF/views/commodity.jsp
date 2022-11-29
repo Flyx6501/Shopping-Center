@@ -32,17 +32,14 @@
         </div>
         <div class="layui-inline">
             <!--注意此处button标签里的type属性-->
-            <button id="commodity-search-btn" class="layui-btn layui-btn-primary"><i class="layui-icon"></i> 搜 索
-            </button>
+            <button id="commoditySearch" class="layui-btn layui-btn-primary"><i class="layui-icon"></i> 搜 索</button>
         </div>
     </div>
-
-
     <div class="layui-btn-group demoTable">
         <button class="layui-btn" id="add">新增</button>
     </div>
     <!-- 商品信息数据表格 -->
-    <table id="demo" lay-filter="test" lay-data="{id: 'test'}"></table>
+    <table id="commodity" lay-filter="test" lay-data="{id: 'test'}"></table>
 
     <script type="text/html" id="barDemo">
         <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
@@ -51,6 +48,6 @@
 </div>
 
 <script type="text/javascript" src="${APP_PATH}/static/js/commodity.js"></script>
-
 </body>
+
 </html>
