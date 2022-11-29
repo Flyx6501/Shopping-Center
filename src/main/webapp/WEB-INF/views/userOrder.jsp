@@ -71,9 +71,9 @@
     <div class="layui-col-md2">
         <!-- 分类 -->
         <ul class="left-nav">
-            <li><a href="./self.html">个人信息</a></li>
+            <li><a href="${APP_PATH}/self">个人信息</a></li>
             <li class="active"><a href="#">我的订单</a></li>
-            <li><a href="./password.html">修改密码</a></li>
+            <li><a href="${APP_PATH}/password">修改密码</a></li>
         </ul>
     </div>
     <div class="layui-col-md10">
