@@ -22,6 +22,10 @@
     color: darkorange;
 }
 
+.layui-col-md6{
+    font-size: 18px ;
+}
+
 /* 鼠标移入效果 */
 .layui-col-md2 a:hover {
     color: darkorange;

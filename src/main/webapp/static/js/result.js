@@ -1,21 +1,29 @@
-/* @description: 商品分类列表展示
+/* @description: 搜索结果
    @author LL
-   @date 2022/11/14 10:08
+   @date 2022/11/25 21:09
    @version 1.0
 */
+/* 获取搜索参数 */
+var url = window.location.search;
+var findName = url.split("=");
+/*console.log(findName[1]);*/
+
 window.onload = function() {
     $.ajax({
         /* 获取数据 */
-        url: "index.do",
+        url: "#",
         type: "GET",
         dataType: "json",
+        data:{
+          findName:findName,
+        },
         success: function(data) {
-            let products = $("#products");
-            var list = data.commodity;
+            let goodlist = $("#good-list");
+            var list = data;
             /*console.log(list);*/
             /*遍历显示*/
             for (let i = 0; i < Math.ceil(list.length / 4); i++) {
-                products.append(`<div class="layui-row" id="list` + i + `"></div>`);
+                goodlist.append(`<div class="layui-row" id="list` + i + `"></div>`);
             }
             let k = 0;
             for (let i = 0; i < Math.ceil(list.length / 4); i++) {

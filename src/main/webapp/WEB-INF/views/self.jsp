@@ -6,13 +6,6 @@
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
-<%--<%
-    pageContext.setAttribute("APP_PATH",request.getContextPath());
-    pageContext.setAttribute("userName",request.getAttribute("userName"));
-    pageContext.setAttribute("phone",request.getAttribute("phone"));
-    pageContext.setAttribute("email",request.getAttribute("email"));
-    pageContext.setAttribute("address",request.getAttribute("address"));
-%>--%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -24,21 +17,24 @@
     <%
         pageContext.setAttribute("APP_PATH", request.getContextPath());
     %>
+    <!--定义绝对路径-->
     <script type="text/javascript">
         let APP_PATH=${APP_PATH};
     </script>
+    <!--定义用户名-->
     <script type="text/javascript">
         let userName = "<%=session.getAttribute("userName")%>";
     </script>
     <!-- Jquery -->
     <script type="text/javascript" src="${APP_PATH}/static/frame/jquery-3.4.1.min.js"></script>
+    <!-- layui -->
+    <script type="text/javascript" src="${APP_PATH}/static/frame/layui-2.6.8.js"></script>
+    <!-- 引入js验证文件-->
     <script type="text/javascript" src="${APP_PATH}/static/js/self.js"></script>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="${APP_PATH}/static/frame/bootstrap-3.4.1-dist.min.css">
-
+    <!-- layui -->
     <link rel="stylesheet" href="${APP_PATH}/static/frame/layui-2.6.8.css">
-    <!-- 引入js验证文件-->
-
     <!-- 引入css样式-->
     <link rel="stylesheet" href="${APP_PATH}/static/css/self.css">
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
@@ -49,18 +45,18 @@
 <!-- 头部导航 -->
 <div class="nav-bar">
     <div class="layui-row">
-        <!-- 返回首页 -->
-        <div class="layui-col-md8">
-            <a href="${APP_PATH}/userindex">返回首页</a>
+        <div class="layui-col-md6">
+            <div>个人中心</div>
         </div>
         <div class="layui-col-md2">
-            <a href="#">个人中心</a>
+            <a href="${APP_PATH}/self">个人中心</a>
         </div>
         <div class="layui-col-md2">
             <i class="layui-icon layui-icon-cart-simple" style="color: #ddd;"></i>
             <a href="${APP_PATH}/car">购物车</a>
         </div>
         <div class="layui-col-md1">
+            <!--获取用户名-->
             <div id="userName">
                 <%=session.getAttribute("userName")%>
             </div>
@@ -96,7 +92,7 @@
                         <!-- 属性名 -->
                         <div class="layui-col-md2">
                             <div class="font">
-                                昵称
+                                姓名
                                 <font class="red">*</font>
                             </div>
                         </div>
@@ -144,7 +140,7 @@
                             <input class="input" type="text" name="address" id="address" value="${address}">
                         </div>
                     </div>
-                    <%-- 隐藏用户名--%>
+                    <!-- 隐藏用户名-->
                     <div class="layui-row">
                         <!-- 属性名 -->
                         <div class="layui-col-md2">
@@ -158,9 +154,9 @@
                             <input class="input" type="hidden" name="userName" id="userName2" value="${userName}">
                         </div>
                     </div>
+                    <!--保存-->
                     <div class="save">
                         <button type="button" class="submit" id="submit">保存</button>
-                        <!-- <a href="#" class="submit">保存</a> -->
                     </div>
                     <div id="checkMsg" class="msg"></div>
                 </div>
