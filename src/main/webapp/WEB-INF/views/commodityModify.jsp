@@ -20,33 +20,41 @@
 </head>
 
 <div style="padding:20px 20%">
+    <input type="hidden" value="${APP_PATH}" id="baseUrl">
 	<form class="layui-form">
+		<div class="layui-form-item">
+			<label class="layui-form-label">ID</label>
+			<div class="layui-input-block">
+				<input type="text" id="commodityId" name="commodityId" required lay-verify="required" autocomplete="off"
+					   class="layui-input" maxlength="20">
+			</div>
+		</div>
 		<div class="layui-form-item">
 			<label class="layui-form-label">商品名称</label>
 			<div class="layui-input-block">
-				<input type="text" id="com_name" name="com_name" required lay-verify="required" autocomplete="off"
-					   class="layui-input" maxlength="20" value="">
+				<input type="text" id="commodityName" name="commodityName" required lay-verify="required" autocomplete="off"
+					   class="layui-input" maxlength="20">
 			</div>
 		</div>
 		<div class="layui-form-item">
 			<label class="layui-form-label">商品价格</label>
 			<div class="layui-input-block">
-				<input type="text" id="com_price" name="com_price" required lay-verify="required" autocomplete="off"
-					   class="layui-input" maxlength="30" value="">
+				<input type="text" id="commodityPrice" name="commodityPrice" required lay-verify="required" autocomplete="off"
+					   class="layui-input" maxlength="30">
 			</div>
 		</div>
 		<div class="layui-form-item">
 			<label class="layui-form-label">库存</label>
 			<div class="layui-input-block">
-				<input type="text" id="com_stock" name="com_stock" required lay-verify="required" autocomplete="off" class="layui-input"
-					   maxlength="15" value="">
+				<input type="text" id="commodityStock" name="commodityStock" required lay-verify="required" autocomplete="off" class="layui-input"
+					   maxlength="15">
 			</div>
 		</div>
 		<div class="layui-form-item">
 			<label class="layui-form-label">商品描述</label>
 			<div class="layui-input-block">
-				<input type="text" id="com_information" name="com_information" required lay-verify="required" autocomplete="off"
-					   class="layui-input" maxlength="15" value="">
+				<input type="text" id="commodityInformation" name="commodityInformation" required lay-verify="required" autocomplete="off"
+					   class="layui-input" maxlength="15">
 			</div>
 		</div>
 		<div class="layui-form-item">
@@ -55,51 +63,8 @@
 				<button type="reset" class="layui-btn layui-btn-primary">重置</button>
 			</div>
 		</div>
-		<input type="hidden" id="id" name="id" value="">
 	</form>
 </div>
-
-<script>
-    //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
-    layui.use(['form', 'laydate'], function() {
-        var form = layui.form,
-            laydate = layui.laydate;
-
-
-
-        //监听提交
-        form.on("submit(save)", function(data) {
-            var index = layer.load();
-            $.ajax({
-                url: "/commodity/modify",
-                type: "post",
-                contentType: "application/json;charset=UTF-8",
-                data: JSON.stringify(data.field),
-                dataType: 'json',
-                success: function(res) {
-                    console.log(res);
-                    layer.close(index);
-                    if (res.data == 200) {
-                        layer.msg("编辑成功！");
-                    } else {
-                        layer.msg("编辑失败，请重试！");
-                    }
-                },
-                error: function(response) {
-                    console.log(response);
-                    layer.close(index);
-                    layer.msg("请求出错，请重试!");
-                }
-            });
-            return false;
-        });
-    });
-</script>
+<script type="text/javascript" src="${APP_PATH}/static/js/commodityModify.js"></script>
 </body>
 </html>
-<!--
-{
-code:
-msg:
-data:
-} -->
