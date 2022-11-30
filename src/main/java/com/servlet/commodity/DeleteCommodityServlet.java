@@ -62,12 +62,14 @@ public class DeleteCommodityServlet extends HttpServlet {
         Connection c = (Connection) JDBCUtil.getConnection();
         CommodityDaoImpl dao = new CommodityDaoImpl();
         boolean flag = dao.deleteCommodity(c,commodityId);
-        if (flag){
-            JSONObject json=new JSONObject();
-            json.put("msg",200);
-            PrintWriter out=response.getWriter();
-            out.println(json);
-            out.close();
+        JSONObject json = new JSONObject();
+        if (flag) {
+            json.put("msg","success");
+        }else {
+            json.put("msg","failed");
         }
+        PrintWriter out = response.getWriter();
+        out.println(json);
+        out.close();
     }
 }

@@ -22,7 +22,7 @@ public class CommodityGetFuzzyQueryServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        String name = request.getParameter("name");
+        String name = request.getParameter("commodityName");
         CommodityDao commodityService=new CommodityDaoImpl();
         List<Commodity> list=commodityService.getFuzzyQueryCommodity(name);
         JSONObject json=new JSONObject();
