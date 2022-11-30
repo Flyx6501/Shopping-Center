@@ -14,7 +14,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 
-/**根据商品获取商品详细信息
+/**根据商品名获取商品详细信息
  * @author Qgs123
  * @version 1.0
  * @date 2022/11/26 9:33
@@ -23,11 +23,9 @@ public class CommodityGetNameServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        String temp = request.getParameter("name");
-        String name=temp;
-
+        String temp = request.getParameter("commodityName");
         CommodityDao commodityService=new CommodityDaoImpl();
-        List<Commodity> list=commodityService.getNameCommodity(name);
+        List<Commodity> list=commodityService.getNameCommodity(temp);
         JSONObject json=new JSONObject();
         json.put("commodity",list);
         PrintWriter out=response.getWriter();
