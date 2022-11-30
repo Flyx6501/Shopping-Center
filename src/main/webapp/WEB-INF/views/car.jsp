@@ -65,17 +65,15 @@
         </div>
     </div>
 </div>
-<!-- 留白布局 -->
 <div class="layui-container">
     <div class="cart">
         <div class="cart-head">
             <div class="column g-select">
-                <div class="g-checkbox">
-                    <input type="checkbox" class="all each">
+                <div class="select-all">
+                    <input type="checkbox" class="all each" id="all" value="0">
+                    全选
                 </div>
-                全选
             </div>
-            <div class="column g-images">图片</div>
             <div class="column g-goodsname">商品名称</div>
             <div class="column g-props">商品信息</div>
             <div class="column g-price">单价</div>
@@ -83,69 +81,30 @@
             <div class="column g-sum">小计</div>
             <div class="column g-action">操作</div>
         </div>
+        <form action="#" method="post" id="addOrder" name="car">
+            <div id="car">
 
-        <%--<c:forEach items="${carList}" var="item">--%>
-
-        <div class="carts-goods" id="goodsCart">
-            <div class="cell c-select">
-                <div class="c-checkbox">
-                    <input type="checkbox" class="each">
-                </div>
             </div>
-            <div class="cell c-images">
-                <a href="#" title=""><img src="" alt="图片"></a>
-            </div>
-            <div class="cell c-goodsname"><a href="#" title="">名称</a></div>
-            <div class="cell c-props">详情</div>
-            <div class="cell c-price">
-                <span>￥</span>
-                <div class="c-pricenum">价格</div>
-            </div>
-            <div class="cell c-quantity">
-                <button type="button" class="reduce">-</button>
-                <input type="text" value="1" class="text-num">
-                <button type="button" class="add">+</button>
-            </div>
-            <div class="cell c-sum">
-                <span>￥</span>
-                <div class="c-sumnum">00.00</div>
-            </div>
-            <div class="cell c-action">
-                <a href="#" class="remove">移除商品</a>
-            </div>
-        </div>
-       <%-- </c:forEach>--%>
-    </div>
     <div class="payment">
         <div class="cart-pay">
-            <div class="pay-left">
-                <div class="select-all">
-                    <input type="checkbox" class="all each">
-                    全选
-                </div>
-                <!-- <div class="goods_num">
-                    已选择数量:
-                    <span>0</span>
-                    件
-                </div> -->
-            </div>
             <div class="pay-right">
                 <div class="right-compute">
                     <div class="btn">
                         <!-- 结算页 -->
-                        <a href="#">结算</a>
+                        <input type="submit" id="submitBtn" class="submit-btn" value="结算" onclick="checkSome()">
                     </div>
                     <div class="price-sum">
                         <div class="price-show">总价是：</div>
                         <div class="show-money">
                             ￥
-                            <span>00.00</span>
+                            <span id="money">0</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    </form>
 </div>
 </body>
 </html>

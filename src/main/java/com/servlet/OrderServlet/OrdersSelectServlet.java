@@ -30,7 +30,7 @@ public class OrdersSelectServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req,resp);
         try {
-            insertOrder(req,resp);
+            selectOrder(req,resp);
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -42,7 +42,6 @@ public class OrdersSelectServlet extends HttpServlet {
         String servletPath = req.getServletPath();
         String methodName = servletPath.substring(1);
         methodName = methodName.substring(0, methodName.length() - 3);
-
         Method method = null;
         try {
             method = getClass().getDeclaredMethod(methodName, HttpServletRequest.class, HttpServletResponse.class);
@@ -55,7 +54,7 @@ public class OrdersSelectServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
     }
-    private void insertOrder(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException {
+    private void selectOrder(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException {
         String userName = req.getParameter("userName");
         Connection c= (Connection) JDBCUtil.getConnection();
         OrdersDaoImpl dao=new OrdersDaoImpl();

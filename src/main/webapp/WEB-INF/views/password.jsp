@@ -16,21 +16,24 @@
     <%
         pageContext.setAttribute("APP_PATH", request.getContextPath());
     %>
+    <!--定义绝对路径-->
     <script type="text/javascript">
         let APP_PATH=${APP_PATH};
     </script>
+    <!--定义用户名变量-->
     <script type="text/javascript">
         let userName = "<%=session.getAttribute("userName")%>";
     </script>
     <!-- Jquery -->
     <script type="text/javascript" src="${APP_PATH}/static/frame/jquery-3.4.1.min.js"></script>
+    <!-- layui -->
+    <script type="text/javascript" src="${APP_PATH}/static/frame/layui-2.6.8.js"></script>
+    <!-- 引入js验证文件-->
     <script type="text/javascript" src="${APP_PATH}/static/js/password.js"></script>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="${APP_PATH}/static/frame/bootstrap-3.4.1-dist.min.css">
-
+    <!-- layui -->
     <link rel="stylesheet" href="${APP_PATH}/static/frame/layui-2.6.8.css">
-    <!-- 引入js验证文件-->
-
     <!-- 引入css样式-->
     <link rel="stylesheet" href="${APP_PATH}/static/css/password.css">
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
@@ -41,18 +44,19 @@
 <!-- 头部导航 -->
 <div class="nav-bar">
     <div class="layui-row">
-        <!-- 返回首页 -->
-        <div class="layui-col-md8">
-            <a href="${APP_PATH}/index">返回首页</a>
+        <!-- 首页 -->
+        <div class="layui-col-md6">
+            <div>修改密码</div>
         </div>
         <div class="layui-col-md2">
             <a href="${APP_PATH}/self">个人中心</a>
         </div>
         <div class="layui-col-md2">
             <i class="layui-icon layui-icon-cart-simple" style="color: #ddd;"></i>
-            <a href="">购物车</a>
+            <a href="${APP_PATH}/car">购物车</a>
         </div>
         <div class="layui-col-md1">
+            <!--获取用户名-->
             <div id="userName">
                 <%=session.getAttribute("userName")%>
             </div>
@@ -68,11 +72,10 @@
         <!-- 分类 -->
         <ul class="left-nav">
             <li><a href="${APP_PATH}/self">个人信息</a></li>
-            <li><a href="#">我的订单</a></li>
+            <li><a href="${APP_PATH}/userOrder">我的订单</a></li>
             <li class="active"><a href="#">修改密码</a></li>
         </ul>
     </div>
-    <!-- obj是用户实体 -->
     <div class="layui-col-md10">
         <!-- 修改密码 -->
         <div id="edit-password">
@@ -84,7 +87,6 @@
                         修改密码
                     </div>
                     <!-- 旧密码 -->
-                    <%--<input type="hidden" id="password" value="">--%>
                     <div class="layui-row">
                         <!-- 属性名 -->
                         <div class="layui-col-md2">
@@ -121,14 +123,13 @@
                                 <font class="red">*</font>
                             </div>
                         </div>
-                        <!-- select -->
+                        <!-- input -->
                         <div class="layui-col-md10">
                             <input class="input" type="password" id="secondPassword" name="secondPassword" required="required">
                         </div>
                     </div>
                     <div class="update">
                         <button type="button" id="btn" class="submit">确认修改</button>
-                        <!-- <a href="#" class="submit">保存</a> -->
                     </div>
                     <div id="checkMsg" class="msg"></div>
                 </div>
