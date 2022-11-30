@@ -11,19 +11,19 @@ import java.util.List;
  **/
 public interface CommodityDao {
     /** 商品模糊查询
-     * @param name 商品名
+     * @param commodityName 商品名
      * @return java.util.List<com.bean.Commodity>
      * @author Qgs123
      * @date 2022/11/27 15:28
      **/
-     List<Commodity> getFuzzyQueryCommodity(String name);
-    /** 根据name获取商品信息
-     * @param name  商品的名字信息
+     List<Commodity> getFuzzyQueryCommodity(String commodityName);
+    /** 根据commodityName获取商品信息
+     * @param commodityName 商品的名字信息
      * @return java.util.List<com.bean.Commodity>
      * @author Qgs123
      * @date 2022/11/26 9:14
      **/
-    List<Commodity> getNameCommodity(String name);
+    List<Commodity> getNameCommodity(String commodityName);
     /** 获取所有的库存列表信息
      * @return java.util.List<com.bean.Commodity>
      * @author Qgs123
