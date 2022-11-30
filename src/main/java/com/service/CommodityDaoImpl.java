@@ -21,17 +21,17 @@ public class CommodityDaoImpl  implements CommodityDao {
     public CommodityDaoImpl(){
     }
     /** 商品的模糊查询
-     * @param name  商品名
+     * @param commodityName  商品名
      * @return java.util.List<com.bean.Commodity>
      * @author Qgs123
      * @date 2022/11/27 17:41
      **/
     @Override
-    public List<Commodity> getFuzzyQueryCommodity(String name){
+    public List<Commodity> getFuzzyQueryCommodity(String commodityName){
         List<Commodity> list=new ArrayList<Commodity>();
         try {
             con= (Connection) DBHeper.getCon();
-            ps=con.prepareStatement("select * from `commodity` where commodity_name LIKE '%"+name+"%' ");
+            ps=con.prepareStatement("select * from `commodity` where commodity_name LIKE '%"+commodityName+"%' ");
 
             rs=ps.executeQuery();
             while (rs.next()){
@@ -52,25 +52,25 @@ public class CommodityDaoImpl  implements CommodityDao {
         }
         return list;
     }
-    /** 根据name获取商品信息
-     * @param name  商品的名字信息
+    /** 根据commodityName获取商品信息
+     * @param commodityName  商品的名字信息
      * @return java.util.List<com.bean.Commodity>
      * @author Qgs123
      * @date 2022/11/26 9:47
      **/
     @Override
-    public List<Commodity> getNameCommodity(String name){
+    public List<Commodity> getNameCommodity(String commodityName){
         List<Commodity> list=new ArrayList<Commodity>();
         try {
             con= (Connection) DBHeper.getCon();
             StringBuffer ss=new StringBuffer();
             ss.append("select * from `commodity`");
-            if(name!=null && name !=""){
+            if(commodityName!=null && commodityName !=""){
                 ss.append("where commodity_name =?");
             }
             ps=con.prepareStatement(String.valueOf(ss));
-            if (name!=null && name !=""){
-                ps.setString(1,name);
+            if (commodityName!=null && commodityName !=""){
+                ps.setString(1,commodityName);
             }
             rs=ps.executeQuery();
             while (rs.next()){
