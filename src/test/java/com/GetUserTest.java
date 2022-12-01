@@ -59,7 +59,7 @@ public class GetUserTest {
         try {
             c = JDBCUtil.getConnection();
             ManagerDaoImpl test = new ManagerDaoImpl();
-            List<User> lists = test.getUserByUserNames((com.mysql.jdbc.Connection) c, "33");
+            List<User> lists = test.getUserByUserNames((com.mysql.jdbc.Connection) c, "2");
             System.out.println(lists);
         }catch (Exception e){
             e.printStackTrace();
