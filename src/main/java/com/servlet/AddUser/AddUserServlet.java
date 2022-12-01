@@ -64,7 +64,7 @@ public class AddUserServlet extends HttpServlet {
         boolean flag = dao.addUser(c, userName, email, address, nickname);
         if (flag){
             JSONObject json=new JSONObject();
-            json.put("msg","增加成功");
+            json.put("msg","success");
 
             PrintWriter out=resp.getWriter();
             out.println(json);
