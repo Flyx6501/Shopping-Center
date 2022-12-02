@@ -18,7 +18,7 @@ layui.use(['table', 'laypage', 'layer'], function() {
         // toolbar: '#toolbarDemo',
         //url接口地址。
         //默认会自动传递两个参数：?page=1&limit=30(该参数可通过request自定义)，page代表当前页码、limit代表每页数据量
-        url: baseUrl + '/index.do',
+        url: baseUrl + '/commodityGetName.do',
         //开启分页
         page: true,
         cols: [[
@@ -58,7 +58,6 @@ layui.use(['table', 'laypage', 'layer'], function() {
         // console.log(keyWord, 8888)
         //执行重载
         table.reload('commodityTable', {
-            url:'#',
             page: {
                 curr: 1 //重新从第 1 页开始
             },
