@@ -13,20 +13,21 @@ layui.use(['table', 'laypage', 'layer'], function() {
     //加载table实例
     table.render({
         // elem属性用来绑定容器的id属性值
-        elem: '#demo',
-        id: 'customer_table',
+        elem: '#customer',
+        id: 'customerTable',
         height: 500,
         //工具栏
         // toolbar: '#toolbarDemo',
         //url接口地址。
         //默认会自动传递两个参数：?page=1&limit=30(该参数可通过request自定义)，page代表当前页码、limit代表每页数据量
-        url: baseUrl + '/getAll.do',
+        // url: baseUrl + '/getAll.do',
+        url: baseUrl + '/getUserByUserNames.do',
         //开启分页
         page: true,
         cols: [[
             {type: 'checkbox', unresize: true},
             {field: 'id',title: 'ID',width: 100, unresize: true},
-            {field: 'username',title: '用户名',width: 150, unresize: true},
+            {field: 'userName',title: '用户名',width: 150, unresize: true},
             {field: 'email',title: '电子邮箱',width: 220, unresize: true},
             {field: 'city',title: '收货地址',width: 250, unresize: true},
             {field: 'nickname',title: '昵称',width: 260, unresize: true},
@@ -39,7 +40,7 @@ layui.use(['table', 'laypage', 'layer'], function() {
                 // 往数组里面插入数据
                 newArr.push({
                     id: item.useId,
-                    username: item.userUsername,
+                    userName: item.userUsername,
                     email: item.email,
                     city: item.address,
                     nickname: item.nickname
@@ -54,11 +55,11 @@ layui.use(['table', 'laypage', 'layer'], function() {
         }
     });
 
-    $('#customer-search-btn').on('click', function () {
+    $('#customerSearch').on('click', function () {
         var keyWord = $('#keyword').val(); //得到搜索框里已输入的数据
-        console.log(keyWord, 8888)
+        //console.log(keyWord, 8888)
         //执行重载
-        table.reload('customer_table', {
+        table.reload('customerTable', {
             page: {
                 curr: 1 //重新从第 1 页开始
             },
@@ -87,10 +88,13 @@ layui.use(['table', 'laypage', 'layer'], function() {
                     //获取子页面的元素，进行数据渲染
                     //点击编辑时有数据显示在里面
                     body.contents().find("#id").val(data.id);
-                    body.contents().find('#username').val(data.username);
+                    body.contents().find('#userName').val(data.userName);
                     body.contents().find('#email').val(data.email);
                     body.contents().find('#city').val(data.city);
                     body.contents().find('#nickname').val(data.nickname);
+                },
+                end: function () {
+                    window.location.reload();
                 }
             });
         } else if (layEvent == 'del') {
@@ -101,16 +105,25 @@ layui.use(['table', 'laypage', 'layer'], function() {
                 // 加载中...
                 var loadIndex = layer.load();
                 $.ajax({
-                    url: "/Shopping_Center/deleteUserById.do?id=" + data.id, //后台接口
+                    // url: "/Shopping_Center/deleteUserById.do?id=" + data.id, //后台接口
+                    url: baseUrl+'/deleteUserByIds.do?id=' + data.id, //后台接口
                     type: "post",
+                    dataType: 'json',
                     success: function(res) {
-                        //如果成功 关闭加载中这个进度条
-                        layer.close(loadIndex);
+                        layer.close(index);
+
                         // 由后端定义200
-                        if (res.data == 200) {
-                            layer.msg("删除成功！");
-                            //刷新当前页面
-                            window.location.reload();
+                        if (res.msg == 200) {
+                            //console.log(1111);
+                            layer.msg("删除成功！", {
+                                icon: 1,
+                                time: 2000 //2秒关闭（如果不配置，默认是3秒）
+                            }, function () {
+                                //如果成功 关闭加载中这个进度条
+                                layer.close(loadIndex);
+                                // //刷新当前页面
+                                window.location.reload();
+                            });
                         } else {
                             layer.msg("删除失败！");
                         }
@@ -120,7 +133,7 @@ layui.use(['table', 'laypage', 'layer'], function() {
                         layer.msg("请求出错，请重试！");
                     }
                 });
-                layer.close(index);
+
             });
         }
     });
@@ -131,7 +144,10 @@ layui.use(['table', 'laypage', 'layer'], function() {
             title: '新增用户信息',
             area: ['50%', '80%'],
             offset: '40px',
-            content: baseUrl+"/customerAdd"
+            content: baseUrl+"/customerAdd",
+            end: function () {
+                window.location.reload();
+            }
         });
     });
 });
