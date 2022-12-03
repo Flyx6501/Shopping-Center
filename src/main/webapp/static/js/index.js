@@ -18,8 +18,9 @@ window.onload = function() {
         dataType: "json",
         success: function(data) {
             let products = $("#products");
+            //console.log(data);
             var list = data.commodity; //商品列表
-            console.log(list);
+            //console.log(list);
             for (let i = 0; i < Math.ceil(list.length / 4); i++) { //每四个商品一行
                 products.append(`<div class="layui-row" id="list` + i + `"></div>`);
             }
@@ -29,6 +30,8 @@ window.onload = function() {
                 let domRow = $("#list" + i);
                 /* let id = list[k].commodityId; */
                 for (let j = 0; j < 4; j++) {
+                    if (k >= list.length)
+                        break;
                     domRow.append(
                         `<div class="layui-col-md3" name="" id="` + list[k].commodityId + `">
 							<div class="thumbnail">
