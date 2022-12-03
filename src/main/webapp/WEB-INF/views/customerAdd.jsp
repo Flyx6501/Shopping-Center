@@ -13,18 +13,19 @@
 	%>
 	<meta charset="utf-8">
 	<title></title>
+	<link rel="stylesheet" href="${APP_PATH}/static/css/customer.css">
 	<link rel="stylesheet" href="${APP_PATH}/static/frame/layui-2.6.8.css">
-	<link rel="stylesheet" href="${APP_PATH}/static/css/managerlogin.css">
-	<script type="text/javascript" src="{APP_PATH}/static/frame/layui-2.6.8.js"></script>
+	<script type="text/javascript" src="${APP_PATH}/static/frame/layui-2.6.8.js"></script>
 	<script type="text/javascript" src="${APP_PATH}/static/frame/jquery-3.4.1.min.js"></script>
 </head>
-
+<body>
 <div style="padding:20px 20%">
+	<input type="hidden" value="${APP_PATH}" id="baseUrl">
 	<form class="layui-form">
 		<div class="layui-form-item">
 			<label class="layui-form-label">用户名</label>
 			<div class="layui-input-block">
-				<input type="text" name="username" required lay-verify="required" autocomplete="off"
+				<input type="text" name="userName" required lay-verify="required" autocomplete="off"
 					   class="layui-input" maxlength="20" value="">
 			</div>
 		</div>
@@ -58,39 +59,6 @@
 	</form>
 </div>
 
-<script>
-    //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
-    layui.use(['form', 'laydate'], function() {
-        var form = layui.form,
-            laydate = layui.laydate;
-
-        //监听提交
-        form.on("submit(save)", function(data) {
-            var index = layer.load();
-            $.ajax({
-                url: "/user/save",
-                type: "post",
-                contentType: "application/json;charset=UTF-8",
-                data: JSON.stringify(data.field),
-                dataType: 'json',
-                success: function(res) {
-                    console.log(res);
-                    layer.close(index);
-                    if (res.data == 200) {
-                        layer.msg("新增成功！");
-                    } else {
-                        layer.msg("新增失败，请重试！");
-                    }
-                },
-                error: function(response) {
-                    console.log(response);
-                    layer.close(index);
-                    layer.msg("请求出错，请重试!");
-                }
-            });
-            return false;
-        });
-    });
-</script>
+<script type="text/javascript" src="${APP_PATH}/static/js/customerAdd.js"></script>
 </body>
 </html>
