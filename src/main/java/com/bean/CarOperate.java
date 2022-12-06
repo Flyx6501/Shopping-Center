@@ -28,7 +28,12 @@ public class CarOperate extends Car{
         car.put(commodityId,(commodityCount==null)?1:commodityCount+1);
         super.setCar(car);
     }
-
+    /** 新增
+     * @param commodityId 商品id
+     * @param count 商品数量
+     * @author Qgs123
+     * @date 2022/12/01 14:59
+     **/
     public void add(String commodityId,int count){
         Map<String, Integer> car = super.getCar();
         Integer commodityCount = car.get(commodityId);
@@ -50,6 +55,31 @@ public class CarOperate extends Car{
                     super.setCar(car);
                 }else {
                     car.put(cId,commodityCount-1);
+                    super.setCar(car);
+                }
+            }else{
+                throw new CommodityNotFindException("数据删除出错，请重试！");
+            }
+        }
+    }
+    /** 移除
+     * @param commodityId 用户id
+     * @param count 商品数
+     * @author Qgs123
+     * @date 2022/12/01 14:59
+     **/
+    public void remove(String commodityId,int count) throws CommodityNotFindException {
+        Map<String, Integer> car = super.getCar();
+        Integer commodityCount = car.get(commodityId);
+        for(String cId:car.keySet()){
+            if(cId.equals(commodityId)){
+                if(car.get(cId) == count){
+                    car.remove(cId);
+                    super.setCar(car);
+                }else if(car.get(cId) < count){
+                    throw new CommodityNotFindException("数据删除出错，请重试！");
+                }else{
+                    car.put(cId,commodityCount-count);
                     super.setCar(car);
                 }
             }else{
