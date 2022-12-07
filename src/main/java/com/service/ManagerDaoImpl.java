@@ -89,9 +89,19 @@ public class ManagerDaoImpl implements ManagerDao {
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
-            String sql = "SELECT user_id,user_username,email,address,nickname FROM user WHERE user_username=?";
-            ps = c.prepareStatement(sql);
-            ps.setString(1, userName);
+            StringBuffer a=new StringBuffer();
+            a.append("SELECT user_id,user_username,email,address,nickname FROM `user`");
+            if (userName!=null && userName !=""){
+                a.append("where user_username =?");
+            }
+
+            //String sql = "SELECT user_id,user_username,email,address,nickname FROM user WHERE user_username=?";
+           // ps = c.prepareStatement(sql);
+            ps = c.prepareStatement(String.valueOf(a));
+           if (userName!=null && userName!=""){
+                ps.setString(1, userName);
+            }
+
             rs = ps.executeQuery();
             while (rs.next()) {
                 User user = new User();

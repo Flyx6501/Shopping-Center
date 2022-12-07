@@ -6,21 +6,21 @@
 /* 获取搜索参数 */
 var url = window.location.search;
 var findName = url.split("=");
-/*console.log(findName[1]);*/
+//console.log(findName[1]);
 
 window.onload = function() {
     $.ajax({
         /* 获取数据 */
-        url: "#",
+        url: "http://localhost:53000/commodity",
         type: "GET",
         dataType: "json",
-        data:{
-          findName:findName,
+        data: {
+            findName: findName,
         },
         success: function(data) {
             let goodlist = $("#good-list");
             var list = data;
-            /*console.log(list);*/
+            //console.log(list);
             /*遍历显示*/
             for (let i = 0; i < Math.ceil(list.length / 4); i++) {
                 goodlist.append(`<div class="layui-row" id="list` + i + `"></div>`);
@@ -29,6 +29,8 @@ window.onload = function() {
             for (let i = 0; i < Math.ceil(list.length / 4); i++) {
                 let domRow = $("#list" + i);
                 for (let j = 0; j < 4; j++) {
+                    if (k >= list.length)
+                        break;
                     domRow.append(
                         `<div class="layui-col-md3">
 							<div class="thumbnail">

@@ -18,7 +18,7 @@ layui.use(['table', 'laypage', 'layer'], function() {
         // toolbar: '#toolbarDemo',
         //url接口地址。
         //默认会自动传递两个参数：?page=1&limit=30(该参数可通过request自定义)，page代表当前页码、limit代表每页数据量
-        url: baseUrl + '/index.do',
+        url: baseUrl + '/commodityGetName.do',
         //开启分页
         page: true,
         cols: [[
@@ -31,7 +31,7 @@ layui.use(['table', 'laypage', 'layer'], function() {
             {field: 'operate',title: '操作',width: 200, toolbar: '#barDemo', unresize: true},
         ]],
         parseData:function(d){
-            console.log(d)
+            //console.log(d)
             var newArr = []
             for (var i = 0; i < d.commodity.length; i++) {
                 var item = (d.commodity)[i]
@@ -55,10 +55,9 @@ layui.use(['table', 'laypage', 'layer'], function() {
 
     $('#commoditySearch').on('click', function () {
         var keyWord = $('#keyword').val(); //得到搜索框里已输入的数据
-        console.log(keyWord, 8888)
+        // console.log(keyWord, 8888)
         //执行重载
         table.reload('commodityTable', {
-            url:'#',
             page: {
                 curr: 1 //重新从第 1 页开始
             },
@@ -76,7 +75,7 @@ layui.use(['table', 'laypage', 'layer'], function() {
         if (layEvent == 'edit') {
             layer.open({
                 type: 2,
-                title: '编辑用户信息',
+                title: '编辑商品信息',
                 area: ['50%', '80%'],
                 offset: '40px',
                 content: baseUrl+"/commodityModify",
@@ -89,6 +88,9 @@ layui.use(['table', 'laypage', 'layer'], function() {
                     body.contents().find('#commodityPrice').val(data.commodityPrice);
                     body.contents().find('#commodityStock').val(data.commodityStock);
                     body.contents().find('#commodityInformation').val(data.commodityInformation);
+                },
+                end: function () {
+                    window.location.reload();
                 }
             });
         } else if (layEvent == 'del') {
@@ -103,15 +105,21 @@ layui.use(['table', 'laypage', 'layer'], function() {
                     type: "get",
                     dataType: 'json',
                     success: function(res) {
-                        console.log(res);
-                        //如果成功 关闭加载中这个进度条
-                        layer.close(loadIndex);
-                        // 由后端定义200
+                        layer.close(index);
+                        //console.log(res);
                         if (res.msg == 'success') {
-                            layer.msg("删除成功！");
-                            //刷新当前页面
-                            window.location.reload();
+                            //console.log(1111);
+                            layer.msg("删除成功！", {
+                                icon: 1,
+                                time: 2000 //2秒关闭（如果不配置，默认是3秒）
+                            }, function () {
+                                //如果成功 关闭加载中这个进度条
+                                layer.close(loadIndex);
+                                // //刷新当前页面
+                                window.location.reload();
+                            });
                         } else {
+                            //console.log(11112222);
                             layer.msg("删除失败！");
                         }
                     },
@@ -120,7 +128,7 @@ layui.use(['table', 'laypage', 'layer'], function() {
                         layer.msg("请求出错，请重试！");
                     }
                 });
-                layer.close(index);
+
             });
         }
     });
@@ -131,7 +139,10 @@ layui.use(['table', 'laypage', 'layer'], function() {
             title: '新增商品信息',
             area: ['50%', '80%'],
             offset: '40px',
-            content: baseUrl+"/commodityAdd"
+            content: baseUrl+"/commodityAdd",
+            end: function () {
+                window.location.reload();
+            }
         });
     });
 });

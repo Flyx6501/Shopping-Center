@@ -20,33 +20,41 @@
 </head>
 
 <div style="padding:20px 20%">
+	<input type="hidden" value="${APP_PATH}" id="baseUrl">
 	<form class="layui-form">
+		<div class="layui-form-item">
+			<label class="layui-form-label">ID</label>
+			<div class="layui-input-block">
+				<input type="text" id="id" name="id" required lay-verify="required" autocomplete="off"
+					   class="layui-input" maxlength="20" >
+			</div>
+		</div>
 		<div class="layui-form-item">
 			<label class="layui-form-label">用户名</label>
 			<div class="layui-input-block">
-				<input type="text" id="username" name="username" required lay-verify="required" autocomplete="off"
-					   class="layui-input" maxlength="20" value="">
+				<input type="text" id="userName" name="userName" required lay-verify="required" autocomplete="off"
+					   class="layui-input" maxlength="20" >
 			</div>
 		</div>
 		<div class="layui-form-item">
 			<label class="layui-form-label">邮箱</label>
 			<div class="layui-input-block">
 				<input type="text" id="email" name="email" required lay-verify="required" autocomplete="off"
-					   class="layui-input" maxlength="30" value="">
+					   class="layui-input" maxlength="30" >
 			</div>
 		</div>
 		<div class="layui-form-item">
 			<label class="layui-form-label">收货地址</label>
 			<div class="layui-input-block">
 				<input type="text" id="city" name="city" required lay-verify="required" autocomplete="off" class="layui-input"
-					   maxlength="15" value="">
+					   maxlength="15" >
 			</div>
 		</div>
 		<div class="layui-form-item">
 			<label class="layui-form-label">昵称</label>
 			<div class="layui-input-block">
 				<input type="text" id="nickname" name="nickname" required lay-verify="required" autocomplete="off"
-					   class="layui-input" maxlength="15" value="">
+					   class="layui-input" maxlength="15" >
 			</div>
 		</div>
 		<div class="layui-form-item">
@@ -55,43 +63,9 @@
 				<button type="reset" class="layui-btn layui-btn-primary">重置</button>
 			</div>
 		</div>
-		<input type="hidden" id="id" name="id" value="">
 	</form>
 </div>
 
-<script>
-    //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
-    layui.use(['form', 'laydate'], function() {
-        var form = layui.form,
-            laydate = layui.laydate;
-
-        //监听提交
-        form.on("submit(save)", function(data) {
-            var index = layer.load();
-            $.ajax({
-                url: "/user/modify",
-                type: "post",
-                contentType: "application/json;charset=UTF-8",
-                data: JSON.stringify(data.field),
-                dataType: 'json',
-                success: function(res) {
-                    console.log(res);
-                    layer.close(index);
-                    if (res.data == 200) {
-                        layer.msg("编辑成功！");
-                    } else {
-                        layer.msg("编辑失败，请重试！");
-                    }
-                },
-                error: function(response) {
-                    console.log(response);
-                    layer.close(index);
-                    layer.msg("请求出错，请重试!");
-                }
-            });
-            return false;
-        });
-    });
-</script>
+<script type="text/javascript" src="${APP_PATH}/static/js/customerModify.js"></script>
 </body>
 </html>

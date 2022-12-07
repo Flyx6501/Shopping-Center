@@ -32,16 +32,15 @@
         </div>
         <div class="layui-inline">
             <!--注意此处button标签里的type属性-->
-            <button id="customer-search-btn" class="layui-btn layui-btn-primary"><i class="layui-icon"></i> 搜 索</button>
+            <button id="customerSearch" class="layui-btn layui-btn-primary"><i class="layui-icon"></i> 搜 索</button>
         </div>
     </div>
-
-
     <div class="layui-btn-group demoTable">
         <button class="layui-btn" id="add">新增</button>
     </div>
     <!-- 顾客信息数据表格 -->
-    <table id="demo" lay-filter="test" lay-data="{id: 'test'}"></table>
+    <table id="customer" lay-filter="test" lay-data="{id: 'test'}"></table>
+
     <script type="text/html" id="barDemo">
         <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
         <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
