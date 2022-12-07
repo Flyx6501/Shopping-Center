@@ -14,23 +14,18 @@ import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.SQLException;
-import java.util.Collections;
-import java.util.List;
 
 /**
- * 增加订单
- *
  * @author l666888999
  * @version 1.0
- * @date 2022/11/24 20:06
+ * @date 2022/12/6 21:37
  **/
-public class OrdersSelectServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+public class deleteOrders extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req,resp);
         try {
-            selectOrder(req,resp);
+            deleteOrders(req,resp);
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -54,25 +49,17 @@ public class OrdersSelectServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
     }
-    /** 管理员对订单的查询
-         * @param req
-         * @param resp
-     * @author l666888999
-     * @date 2022/12/06 21:48
-     **/
-    private void selectOrder(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException {
-        String userName = req.getParameter("userName");
+    public void deleteOrders(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException{
+        String commodityName = req.getParameter("commodityName");
         Connection c= (Connection) JDBCUtil.getConnection();
         OrdersDaoImpl dao=new OrdersDaoImpl();
-        List<Object> list = dao.selectOrderByuserName(c, userName);
-        JSONObject json=new JSONObject();
-        json.put("msg",list);
-        PrintWriter out=resp.getWriter();
-        out.println(json);
-        out.close();
-
-
+        boolean flag = dao.deleteOrders(c, commodityName);
+        if (flag){
+            JSONObject json=new JSONObject();
+            json.put("msg", true);
+            PrintWriter out=resp.getWriter();
+            out.println(json);
+            out.close();
+        }
     }
-
-
-    }
+}
