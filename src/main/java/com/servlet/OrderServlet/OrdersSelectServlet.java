@@ -54,6 +54,12 @@ public class OrdersSelectServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
     }
+    /** 管理员对订单的查询
+         * @param req
+         * @param resp
+     * @author l666888999
+     * @date 2022/12/06 21:48
+     **/
     private void selectOrder(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException {
         String userName = req.getParameter("userName");
         Connection c= (Connection) JDBCUtil.getConnection();
