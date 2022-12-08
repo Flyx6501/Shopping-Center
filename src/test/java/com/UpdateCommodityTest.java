@@ -7,13 +7,13 @@ import org.junit.Test;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-/**ºóÌ¨É¾³ýÉÌÆ·
+/**ï¿½ï¿½Ì¨É¾ï¿½ï¿½ï¿½ï¿½Æ·
  * @author Qgs123
  * @version 1.0
  * @date 2022/11/20 22:05
  **/
 public class UpdateCommodityTest {
-    /** ÉÌÆ·ÐÅÏ¢ÐÞ¸Ä
+    /** ï¿½ï¿½Æ·ï¿½ï¿½Ï¢ï¿½Þ¸ï¿½
      * @author Qgs123
      * @date 2022/11/20 9:46
      **/
@@ -35,7 +35,7 @@ public class UpdateCommodityTest {
             }
         }
     }
-    /** ÉÌÆ·ÐÅÏ¢Ìí¼Ó
+    /** ï¿½ï¿½Æ·ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½
      * @author Qgs123
      * @version 1.0
      * @date 2022/11/20 9:46
@@ -58,7 +58,7 @@ public class UpdateCommodityTest {
             }
         }
     }
-    /** É¾³ýÉÌÆ·
+    /** É¾ï¿½ï¿½ï¿½ï¿½Æ·
      * @author Qgs123
      * @date 2022/11/20 16:37
      **/
@@ -68,7 +68,7 @@ public class UpdateCommodityTest {
         try {
             CommodityDaoImpl test = new CommodityDaoImpl();
             c = JDBCUtil.getConnection();
-            boolean flag = test.deleteCommodity((com.mysql.jdbc.Connection)c,6);
+            boolean flag = test.deleteCommodity((com.mysql.jdbc.Connection)c,2);
             System.out.println(flag);
         } catch (Exception e) {
             e.printStackTrace();

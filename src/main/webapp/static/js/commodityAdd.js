@@ -11,13 +11,21 @@ layui.use(['form', 'laydate'], function() {
 
     //监听提交
     form.on("submit(save)", function(data) {
-        // console.log(data, 'data');
+        //console.log(data, 'data');
+        var formdata = new FormData()
+        formdata.append('commodityName',data.field.commodityName)
+        formdata.append('commodityPrice',data.field.commodityPrice)
+        formdata.append('commodityStock',data.field.commodityStock)
+        formdata.append('commodityInformation',data.field.commodityInformation)
+        formdata.append('commodityPhoto',data.form[4].files[0])
         $.ajax({
-            url: baseUrl+'/addCommodity.do?commodityName='+data.field.commodityName+'&commodityPrice='+data.field.commodityPrice+'&commodityStock='+data.field.commodityStock+'&commodityInformation='+data.field.commodityInformation,
+            url: baseUrl+'/addCommodity.do',
             type: "post",
-            contentType: "application/json;charset=UTF-8",
-            // data: JSON.stringify(data.field),
-            dataType: 'json',
+            contentType : false,
+            processData : false,
+            // contentType: "application/json;charset=UTF-8",
+            data:formdata,
+            // dataType: 'json',
             async: false,
             success: function(res) {
                 //console.log(res);
@@ -26,7 +34,7 @@ layui.use(['form', 'laydate'], function() {
                         icon: 1,
                         time: 2000 //2秒关闭（如果不配置，默认是3秒）
                     }, function(){
-                        //do something
+                        //do sometaddCommodity.dohing
                         window.parent.location.reload();//刷新父页面
                         var index = parent.layer.getFrameIndex(window.name);
                         parent.layer.close(index);

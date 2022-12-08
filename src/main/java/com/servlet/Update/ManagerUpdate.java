@@ -63,13 +63,13 @@ public class ManagerUpdate extends HttpServlet {
         boolean flag = dao.updateManagerById(c, userName, email, address, nickName, Id);
         if (flag){
             JSONObject json=new JSONObject();
-            json.put("message","success");
+            json.put("msg","success");
             PrintWriter out=resp.getWriter();
             out.println(json);
             out.close();
         }else{
             JSONObject json=new JSONObject();
-            json.put("message","failed");
+            json.put("msg","failed");
             PrintWriter out=resp.getWriter();
             out.println(json);
             out.close();
