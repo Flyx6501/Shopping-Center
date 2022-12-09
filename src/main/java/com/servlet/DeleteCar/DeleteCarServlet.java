@@ -4,9 +4,12 @@ import com.bean.Car;
 import com.bean.CarOperate;
 import com.bean.Commodity;
 import com.dao.CarDao;
+import com.dao.CommodityDao;
 import com.service.CarDaoImpl;
+import com.service.CommodityDaoImpl;
 import com.utils.CommodityNotFindException;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,7 +27,9 @@ import java.util.Objects;
  * @date 2022/11/15 19:42
  **/
 public class DeleteCarServlet extends HttpServlet {
+    CommodityDao commodityDao = new CommodityDaoImpl();
     CarDao carDao =new CarDaoImpl();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req, resp);
@@ -36,43 +41,38 @@ public class DeleteCarServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html;charset=UTF-8");
-        PrintWriter wirte = null;
-        int result =-1;
-        Map resultMap = new HashMap<>();
-        String userId=String.valueOf(req.getParameter("userId"));
-        List<Map> car= carDao.getCarByUserId(userId);
+        String userName=String.valueOf(req.getParameter("userName"));
+        List<Map> car= carDao.getCarByUserName(userName);
+
         Integer commodityId = Integer.valueOf(req.getParameter("commodityId"));
         Integer commodityNum = Integer.valueOf(req.getParameter("commodityNum"));
-        Double priceTotal = Double.valueOf(0);
+        Integer userId=0;
         for(Map commodity : car){
             /**购物车中有该商品
             */
             if(commodity.get("car_commodity_id") == commodityId){
-
                 int commodityNumNew = Integer.parseInt(commodity.get("car_commodity_num").toString()) - commodityNum;
                 if(commodityNumNew>0){
                     Integer carId =  Integer.parseInt(commodity.get("car_id").toString());
-                    result = carDao.updateCommodity(carId,userId,commodityId,commodityNumNew);
+                    userId =  Integer.parseInt(commodity.get("user_id").toString());
+                    carDao.updateCommodity(carId,userId,commodityId,commodityNumNew);
                 }
                 if(commodityNumNew==0){
-                    result = carDao.deleteCommodity(userId,commodityId);
+                    userId =  Integer.parseInt(commodity.get("user_id").toString());
+                    carDao.deleteCommodity(userId,commodityId);
                 }
             }
-
         }
         /**重定向网页
          */
-        if(result<0){
-            resultMap.put("result","error");
-        }else{
-            resultMap.put("result","success");
-        }
+        List<Commodity> list =  commodityDao.getUserCommodityList(userId);
         /**声明JSONArray对象并输入JSON字符串
-       */
-        JSONArray array = new JSONArray();
-        array.put(resultMap);
-        wirte = resp.getWriter();
-        wirte.print(array);
-        resp.sendRedirect("index.do");
+        */
+        JSONObject json=new JSONObject();
+        json.put("commodity",list);
+        PrintWriter out=resp.getWriter();
+        out.println(json);
+        out.close();
+        resp.sendRedirect(String.valueOf(json));
     }
 }
