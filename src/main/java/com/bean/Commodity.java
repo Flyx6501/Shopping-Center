@@ -15,9 +15,10 @@ public class Commodity {
     private String commodityInformation;
     private String commodityComment;
 
+    private int commodityNum;
     public Commodity(){
     }
-    public Commodity(int commodityId, String commodityName, Double commodityPrice, int commodityStock, byte[] commodityPhoto, String commodityInformation, String commodityComment) {
+    public Commodity(int commodityId, String commodityName, Double commodityPrice, int commodityStock, byte[] commodityPhoto, String commodityInformation, String commodityComment ,int commodityNum) {
         this.commodityId = commodityId;
         this.commodityName = commodityName;
         this.commodityPrice = commodityPrice;
@@ -25,6 +26,7 @@ public class Commodity {
         this.commodityPhoto = commodityPhoto;
         this.commodityInformation = commodityInformation;
         this.commodityComment = commodityComment;
+        this.commodityNum = commodityNum;
     }
 
     public  int getCommodityId() {
@@ -83,6 +85,14 @@ public class Commodity {
         this.commodityComment = commodityComment;
     }
 
+    public int getCommodityNum() {
+        return commodityNum;
+    }
+
+    public void setCommodityNum(int commodityNum) {
+        this.commodityNum = commodityNum;
+    }
+
     @Override
     public String toString() {
         return "Commodity{" +
@@ -93,6 +103,7 @@ public class Commodity {
                 ", commodityPhoto=" + Arrays.toString(commodityPhoto) +
                 ", commodityInformation='" + commodityInformation + '\'' +
                 ", commodityComment='" + commodityComment + '\'' +
+                ", commodityNum='" + commodityNum +
                 '}';
     }
 }
