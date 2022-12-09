@@ -13,7 +13,7 @@
     %>
     <meta charset="utf-8">
     <title></title>
-    <link rel="stylesheet" href="${APP_PATH}/static/css/commodity.css">
+    <link rel="stylesheet" href="${APP_PATH}/static/css/customer.css">
     <link rel="stylesheet" href="${APP_PATH}/static/frame/layui-2.6.8.css">
     <script type="text/javascript" src="${APP_PATH}/static/frame/layui-2.6.8.js"></script>
     <script type="text/javascript" src="${APP_PATH}/static/frame/jquery-3.4.1.min.js"></script>
