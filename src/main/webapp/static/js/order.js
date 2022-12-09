@@ -18,7 +18,7 @@ layui.use(['table', 'laypage', 'layer'], function() {
             // toolbar: '#toolbarDemo',
             //url接口地址。
             //默认会自动传递两个参数：?page=1&limit=30(该参数可通过request自定义)，page代表当前页码、limit代表每页数据量
-            url: '#', //TODO
+            url: baseUrl + '/selectOrder.do',
             //开启分页
             page: true,
             cols: [[
@@ -30,7 +30,28 @@ layui.use(['table', 'laypage', 'layer'], function() {
                 {field: 'commodityPrice', title: '价格', width: 230, unresize: true},
                 // {field: 'operate',title: '操作',width: 200, toolbar: '#barDemo', width:150},
             ]],
-        });
+            parseData:function(d){
+                //console.log(d)
+                var newArr = []
+                for (var i = 0; i < d.msg.length; i++) {
+                    var item = (d.msg)[i]
+                    // 往数组里面插入数据
+                    newArr.push({
+                        orderId: item.orderId,
+                        userName: item.userName,
+                        commodityName: item.commodityName,
+                        commodityNumber: item.commodityNumber,
+                        commodityPrice: item.commodityPrice
+                    })
+                }
+                return{
+                    "code": d ? 0 : -1,
+                    "msg":'',
+                    "count":newArr.length, // 总条数
+                    "data": newArr
+                }
+            }
+        //});
     });
 
     $('#orderSearch').on('click', function () {
@@ -45,8 +66,8 @@ layui.use(['table', 'laypage', 'layer'], function() {
                 userName: keyWord //在表格中进行搜索
             }
         });
-    })
-
+    });
+});
 
 
 
