@@ -13,10 +13,12 @@ import com.bean.Car;
 import com.bean.CarOperate;
 import com.bean.Commodity;
 import com.dao.CarDao;
+import com.dao.CommodityDao;
 import com.service.CarDaoImpl;
+import com.service.CommodityDaoImpl;
 import com.service.CommodityService;
 import com.service.CommodityServiceImpl;
-import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**将商品添加进购物车
  * @author Qgs123
@@ -25,6 +27,7 @@ import org.json.JSONArray;
  **/
 public class CarServlet extends HttpServlet {
     CarDao carDao= new CarDaoImpl();
+    CommodityDao commodityDao = new CommodityDaoImpl();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req, resp);
@@ -36,30 +39,25 @@ public class CarServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html;charset=UTF-8");
-        PrintWriter wirte = null;
-        int result =-1;
-        Map resultMap = new HashMap<>();
-        String userId=String.valueOf(req.getParameter("userId"));
-        List<Map> car= carDao.getCarByUserId(userId);
+        String userName=String.valueOf(req.getParameter("userName"));
+
+        List<Map> car= carDao.getCarByUserName(userName);
+
         Integer commodityId = Integer.valueOf(req.getParameter("commodityId"));
         Integer commodityNum = Integer.valueOf(req.getParameter("commodityNum"));
-        Double priceTotal = Double.valueOf(0);
-        for(Map commodity : car){
-            result = carDao.addCommodity(userId,commodityId,commodityNum);
-            Map commodityAdd = carDao.getCommodityById(String.valueOf(commodityId));
+        Integer userId = carDao.getUserIdByName(userName);
 
-        }
+        carDao.addCommodity(userId,commodityId,commodityNum);
         /**重定向网页
          */
-        if(result<0){
-            resultMap.put("result","error");
-        }else{
-            resultMap.put("result","success");
-        }
-        JSONArray array = new JSONArray();
-        array.put(resultMap);
-        wirte = resp.getWriter();
-        wirte.print(array);
-        resp.sendRedirect("index.do");
+        List<Commodity> list =  commodityDao.getUserCommodityList(userId);
+        /**声明JSONArray对象并输入JSON字符串
+        */
+        JSONObject json=new JSONObject();
+        json.put("commodity",list);
+        PrintWriter out=resp.getWriter();
+        out.println(json);
+        out.close();
+        resp.sendRedirect(String.valueOf(json));
     }
 }
