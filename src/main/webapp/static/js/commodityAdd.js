@@ -11,7 +11,7 @@ layui.use(['form', 'laydate'], function() {
 
     //监听提交
     form.on("submit(save)", function(data) {
-        //console.log(data, 'data');
+        //console.log(data);
         var formdata = new FormData()
         formdata.append('commodityName',data.field.commodityName)
         formdata.append('commodityPrice',data.field.commodityPrice)
