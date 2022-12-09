@@ -8,7 +8,6 @@ import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 /** 商品数据访问层
  * @author Qgs123
@@ -121,12 +120,54 @@ public class CommodityDaoImpl  implements CommodityDao {
         }
         return list;
     }
-/** 获取某个商品详细信息
- * @param id  商品的id信息
- * @return java.util.List<com.bean.Commodity>
- * @author Qgs123
- * @date 2022/11/23 21:18
- **/
+
+    /** 根据用户id获取用户对应的商品详情列表
+     * @param userId  用户id
+     * @return java.util.List<com.bean.Commodity>
+     * @author Qgs123
+     * @date 2022/11/16 9:40
+     **/
+    @Override
+    public List<Commodity> getUserCommodityList(Integer userId) {
+        List<Commodity> list=new ArrayList<Commodity>();
+        try {
+            con= (Connection) DBHeper.getCon();
+            StringBuffer ss=new StringBuffer();
+            ss.append(" select a.*,b.car_commodity_num from commodity a,car b ");
+            ss.append(" where a.commodity_id = b.car_commodity_id ");
+            if(userId!=null && userId !=0){
+                ss.append(" and b.car_user_id =? ");
+            }
+            ps=con.prepareStatement(String.valueOf(ss));
+            if (userId!=null && userId !=0){
+                ps.setInt(1,userId);
+            }
+            rs=ps.executeQuery();
+            while (rs.next()){
+                Commodity g=new Commodity();
+                g.setCommodityId(rs.getInt(1));
+                g.setCommodityName(rs.getString(2));
+                g.setCommodityPrice(rs.getDouble(3));
+                g.setCommodityStock(rs.getInt(4));
+                g.setCommodityPhoto(rs.getBytes(5));
+                g.setCommodityInformation(rs.getString(6));
+                g.setCommodityComment(rs.getString(7));
+                g.setCommodityNum(rs.getInt(8));
+                list.add(g);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DBHeper.getColes(con, ps, rs);
+        }
+        return list;
+    }
+    /** 获取某个商品详细信息
+     * @param id  商品的id信息
+     * @return java.util.List<com.bean.Commodity>
+     * @author Qgs123
+     * @date 2022/11/23 21:18
+     **/
     public List<Commodity> getOneCommodity(int id){
         List<Commodity> list=new ArrayList<Commodity>();
         try {
@@ -173,7 +214,7 @@ public class CommodityDaoImpl  implements CommodityDao {
                 g.setCommodityPhoto(rs.getBytes(5));
                 g.setCommodityInformation(rs.getString(6));
                 g.setCommodityComment(rs.getString(7));
-            return g;
+                return g;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -222,10 +263,10 @@ public class CommodityDaoImpl  implements CommodityDao {
      * @param commodityPrice 商品价格
      * @param commodityStock 商品库存
      * @param commodityInformation 商品信息
-         * @return boolean
+     * @return boolean
      * @author Qgs123
-            * @date 2022/11/20 16:08
-            **/
+     * @date 2022/11/20 16:08
+     **/
     @Override
     public boolean updateCommodity(Connection c,String commodityName,Double commodityPrice,int commodityStock,String commodityInformation,int commodityId) {
         PreparedStatement ps = null;
@@ -236,8 +277,8 @@ public class CommodityDaoImpl  implements CommodityDao {
             ps.setString(1,commodityName);
             ps.setDouble(2, commodityPrice);
             ps.setInt(3, commodityStock);
-           /** ps.setBytes(4,commodityPhoto);
-           */
+            /** ps.setBytes(4,commodityPhoto);
+             */
             ps.setString(4,commodityInformation);
             ps.setInt(5,commodityId);
             int rs1 = ps.executeUpdate();
