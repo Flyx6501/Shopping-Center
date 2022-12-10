@@ -10,12 +10,12 @@ package com.bean;
 public class Orders {
     private int orderId;
    private int commodityId;
-   private int commodityNum;
+   private int commodityNumber;
 
     public Orders(int orderId, int commodityId, int commodityNum) {
         this.orderId = orderId;
         this.commodityId = commodityId;
-        this.commodityNum = commodityNum;
+        this.commodityNumber = commodityNum;
     }
     public Orders(){
 
@@ -36,12 +36,12 @@ public class Orders {
         this.commodityId = commodityId;
     }
 
-    public int getCommodityNum() {
-        return commodityNum;
+    public int commodityNumber() {
+        return commodityNumber;
     }
 
-    public void setCommodityNum(int commodityNum) {
-        this.commodityNum = commodityNum;
+    public void commodityNumber(int commodityNumber) {
+        this.commodityNumber = commodityNumber;
     }
 
     @Override
@@ -49,7 +49,7 @@ public class Orders {
         return "Orders{" +
                 "orderId=" + orderId +
                 ", commodityId=" + commodityId +
-                ", commodityNum=" + commodityNum +
+                ", commodityNum=" + commodityNumber +
                 '}';
     }
 }
