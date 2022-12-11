@@ -28,6 +28,7 @@ layui.use(['table', 'laypage', 'layer'], function() {
             {field: 'commodityPrice',title: '商品价格',width: 220,unresize: true},
             {field: 'commodityStock',title: '库存',width: 250,unresize: true},
             {field: 'commodityInformation',title: '商品描述',width: 260,unresize: true},
+            {field: 'commodityPhoto',title: '商品图片',width: 260,align :"center",templet:"#imgtmp",unresize: true},
             {field: 'operate',title: '操作',width: 200, toolbar: '#barDemo', unresize: true},
         ]],
         parseData:function(d){
@@ -41,7 +42,8 @@ layui.use(['table', 'laypage', 'layer'], function() {
                     commodityName: item.commodityName,
                     commodityPrice: item.commodityPrice,
                     commodityStock: item.commodityStock,
-                    commodityInformation: item.commodityInformation
+                    commodityInformation: item.commodityInformation,
+                    commodityPhoto: item.commodityPhoto
                 })
             }
             return{
