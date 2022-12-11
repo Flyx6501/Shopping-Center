@@ -1,33 +1,28 @@
 package com.servlet.Car;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import com.bean.Car;
-import com.bean.CarOperate;
 import com.bean.Commodity;
 import com.dao.CarDao;
 import com.dao.CommodityDao;
 import com.service.CarDaoImpl;
 import com.service.CommodityDaoImpl;
-import com.service.CommodityService;
-import com.service.CommodityServiceImpl;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
-/**将商品添加进购物车
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+/**  获取购物车里商品列表
  * @author Qgs123
- * @version 1.0
- * @date 2022/11/27 20:16
+ * @date 2022/12/06 15:31
  **/
-public class CarServlet extends HttpServlet {
-    CarDao carDao= new CarDaoImpl();
+public class GetCarServlet extends HttpServlet {
     CommodityDao commodityDao = new CommodityDaoImpl();
+    CarDao carDao= new CarDaoImpl();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req, resp);
@@ -42,17 +37,11 @@ public class CarServlet extends HttpServlet {
         String userName=String.valueOf(req.getParameter("userName"));
 
         List<Map> car= carDao.getCarByUserName(userName);
-
-        Integer commodityId = Integer.valueOf(req.getParameter("commodityId"));
-        Integer commodityNum = Integer.valueOf(req.getParameter("commodityNum"));
-        Integer userId = carDao.getUserIdByName(userName);
-
-        carDao.addCommodity(userId,commodityId,commodityNum);
-        /**重定向网页
-         */
+        Integer userId = 0;
+        for(Map commodity : car){
+            userId = (Integer) commodity.get("user_id");
+        }
         List<Commodity> list =  commodityDao.getUserCommodityList(userId);
-        /**声明JSONArray对象并输入JSON字符串
-        */
         JSONObject json=new JSONObject();
         json.put("commodity",list);
         PrintWriter out=resp.getWriter();

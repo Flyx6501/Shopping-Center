@@ -1,7 +1,5 @@
 package com.service;
 
-import com.bean.Car;
-import com.bean.CarOperate;
 import com.dao.CarDao;
 import java.sql.ResultSet;
 import com.mysql.jdbc.Connection;
@@ -21,36 +19,39 @@ public class CarDaoImpl implements CarDao {
     private ResultSet rs;
 
     private int rs2;
-    /** 获取用户购物车
-     * @param userId  用户id
+    /** Map
+     * @param userName  用户id
      * @return com.bean.Car
      * @author Qgs123
      * @date 2022/12/01 14:55
      **/
     @Override
-    public List<Map> getCarByUserId(String userId) {
+    public List<Map> getCarByUserName(String userName) {
 
         List<Map> car =new LinkedList<>();
         try {
             con= (Connection) DBHeper.getCon();
             StringBuffer sb = new StringBuffer();
-            sb.append(" select a.*,b.commodity_price from  car a,commodity b ");
+            sb.append(" select a.*,b.commodity_price from  car a,commodity b,user c");
             sb.append(" where a.car_commodity_id = b.commodity_id ");
-            if(userId != null && userId != "") {
-                sb.append(" and car_user_id = ? ");
+            sb.append(" and c.user_id = a.car_user_id ");
+            if(userName != null && userName != "") {
+                sb.append(" and c.user_username = ? ");
             }
             ps=con.prepareStatement(String.valueOf(sb));
-            if(userId != null && userId != "") {
-                ps.setInt(1, Integer.parseInt(userId));
+            if(userName != null && userName != "") {
+                ps.setString(1, userName);
             }
             rs=ps.executeQuery();
             while (rs.next()){
                 Integer car_id = rs.getInt(1);
                 Integer commodity_id = rs.getInt(2);
+                Integer user_id = rs.getInt(3);
                 Integer commodity_num = rs.getInt(4);
                 Double commodity_price = rs.getDouble(5);
                 Map commodity = new HashMap<>();
                 commodity.put("car_id", car_id);
+                commodity.put("user_id", user_id);
                 commodity.put("car_commodity_id", commodity_id);
                 commodity.put("car_commodity_num", commodity_num);
                 commodity.put("commodity_price", commodity_price);
@@ -63,12 +64,12 @@ public class CarDaoImpl implements CarDao {
         }
         return car;
     }
-    /** map
+    /** Map
      * @param commodityId  商品id
      * @return java.util.Map
      * @author Qgs123
-        * @date 2022/12/04 11:24
-        **/
+     * @date 2022/12/04 11:24
+     **/
     @Override
     public Map getCommodityById(String commodityId) {
 
@@ -101,16 +102,16 @@ public class CarDaoImpl implements CarDao {
         }
         return commodity;
     }
-    /** 更新购物车数量
+    /** 更新商品
      * @param userId 用户id
-     * @param carId 购物车id
-     * @param count 商品数
+     * @param commodityId 商品id
+     * @param count 数量
      * @return java.lang.Integer
      * @author Qgs123
      * @date 2022/12/01 14:56
      **/
     @Override
-    public Integer updateCommodity(Integer carId,String userId,Integer commodityId,Integer count) {
+    public Integer updateCommodity(Integer carId,Integer userId,Integer commodityId,Integer count) {
 
         try {
             con= (Connection) DBHeper.getCon();
@@ -122,7 +123,7 @@ public class CarDaoImpl implements CarDao {
             sb.append(" and car_id = ? ");
             ps=con.prepareStatement(String.valueOf(sb));
             ps.setInt(1, count);
-            ps.setInt(2, Integer.parseInt(userId));
+            ps.setInt(2, userId);
             ps.setInt(3, commodityId);
             ps.setInt(4, carId);
             rs2=ps.executeUpdate();
@@ -133,15 +134,15 @@ public class CarDaoImpl implements CarDao {
         }
         return rs2;
     }
-    /** 删除商品
-     * @param userId 用户id
-     * @param commodityId 商品id
+    /** 删除购物车
+     * @param userId
+     * @param commodityId
      * @return java.lang.Integer
      * @author Qgs123
      * @date 2022/12/01 14:56
      **/
     @Override
-    public Integer deleteCommodity(String userId,Integer commodityId) {
+    public Integer deleteCommodity(Integer userId,Integer commodityId) {
 
         try {
             con= (Connection) DBHeper.getCon();
@@ -150,7 +151,7 @@ public class CarDaoImpl implements CarDao {
             sb.append(" where car_user_id = ? ");
             sb.append(" and car_commodity_id = ? ");
             ps=con.prepareStatement(String.valueOf(sb));
-            ps.setInt(1, Integer.parseInt(userId));
+            ps.setInt(1, userId);
             ps.setInt(2, commodityId);
             rs2=ps.executeUpdate();
         } catch (Exception e) {
@@ -161,15 +162,15 @@ public class CarDaoImpl implements CarDao {
         return rs2;
     }
     /** 添加商品
-     * @param userid 用户id
-     * @param commodityId 商品id
-     * @param count 数量
+     * @param userId
+     * @param commodityId
+     * @param count
      * @return java.lang.Integer
      * @author Qgs123
      * @date 2022/12/01 14:57
      **/
     @Override
-    public Integer addCommodity(String userid,Integer commodityId,Integer count) {
+    public Integer addCommodity(Integer userId,Integer commodityId,Integer count) {
 
         try {
             con= (Connection) DBHeper.getCon();
@@ -182,7 +183,7 @@ public class CarDaoImpl implements CarDao {
             String car_id = String.valueOf(date.getMonth()+ date.getDay()+ date.getHours() +date.getMinutes()+date.getSeconds());
             ps.setInt(1, Integer.parseInt(car_id));
             ps.setInt(2, commodityId);
-            ps.setInt(3, Integer.parseInt(userid));
+            ps.setInt(3, userId);
             ps.setInt(4, count);
             rs2=ps.executeUpdate();
         } catch (Exception e) {
@@ -191,5 +192,33 @@ public class CarDaoImpl implements CarDao {
             DBHeper.getColes(con, ps, rs);
         }
         return rs2;
+    }
+    /** 购物车用户名找id
+     * @param userName 用户名
+     * @return java.lang.Integer
+     * @author Qgs123
+     * @date 2022/12/01 14:57
+     **/
+    @Override
+    public Integer getUserIdByName(String userName) {
+        Integer userId = 0;
+        try {
+            con= (Connection) DBHeper.getCon();
+            StringBuffer sb = new StringBuffer();
+            sb.append("   select user_id from user   ");
+            sb.append("   where user_username = ? ");
+            ps=con.prepareStatement(String.valueOf(sb));
+            ps.setString(1, userName);
+            rs=ps.executeQuery();
+            while (rs.next()){
+
+                userId = rs.getInt(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DBHeper.getColes(con, ps, rs);
+        }
+        return userId;
     }
 }

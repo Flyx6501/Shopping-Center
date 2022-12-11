@@ -10,6 +10,13 @@ import java.util.List;
  * @date 2022/11/10 9:38
  **/
 public interface CommodityDao {
+    /** 用户获取商品列
+     * @param userId  用户id
+     * @return java.util.List<com.bean.Commodity>
+     * @author Qgs123
+     * @date 2022/12/09 15:44
+     **/
+    List<Commodity> getUserCommodityList(Integer userId);
     /** 商品模糊查询
      * @param commodityName 商品名
      * @return java.util.List<com.bean.Commodity>
