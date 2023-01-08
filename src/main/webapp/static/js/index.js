@@ -18,9 +18,9 @@ window.onload = function() {
         dataType: "json",
         success: function(data) {
             let products = $("#products");
-            //console.log(data);
+            /*console.log(data);*/
             var list = data.commodity; //商品列表
-            //console.log(list);
+            /*console.log(list);*/
             for (let i = 0; i < Math.ceil(list.length / 4); i++) { //每四个商品一行
                 products.append(`<div class="layui-row" id="list` + i + `"></div>`);
             }
