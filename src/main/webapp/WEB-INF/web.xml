@@ -67,6 +67,15 @@
         <servlet-name>DeleteCarServlet</servlet-name>
         <url-pattern>/deleteCar.do</url-pattern>
     </servlet-mapping>
+    <!--购物车页面请求的Servlet-->
+    <servlet-mapping>
+        <servlet-name>GetCarServlet</servlet-name>
+        <url-pattern>/getCar.do</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>GetCarServlet</servlet-name>
+        <servlet-class>com.servlet.Car.GetCarServlet</servlet-class>
+    </servlet>
     <!--购物车内商品数量操作的Servlet-->
     <servlet>
         <servlet-name>UpdateCarServlet</servlet-name>
