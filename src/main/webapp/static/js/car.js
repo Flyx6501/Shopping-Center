@@ -24,7 +24,7 @@ function reduce(cid, sum) {
     let cname = $("#commodityName" + cid).text();
     let cnum = $("#commodityNum" + cid).val();
     $.ajax({
-        url: "#",
+        url: "updateCar.do",
         type: "POST",
         dataType: "json",
         data: {
@@ -58,7 +58,7 @@ function add(cid, sum) {
     /* console.log(cname);
     console.log(cnum); */
     $.ajax({
-        url: "#",
+        url: "updateCar.do",
         type: "POST",
         dataType: "json",
         data: {
@@ -77,7 +77,7 @@ function add(cid, sum) {
 function del(cid) {
     $("#good" + cid).remove();
     $.ajax({
-        url: "#",
+        url: "deleteCar.do",
         type: "POST",
         dataType: "json",
         data: {
@@ -138,7 +138,7 @@ function changeAll() {
     }
 }
 
-/* 被选中的放入购物车 */
+/* 被选中的放入订单 */
 function checkSome() {
     for (var i = 0; i <= 2; i++) {
         if ($("#check" + i).val() == 0) {
@@ -178,7 +178,7 @@ window.onload = function() {
     /* 返回值给购物车 */
     $.ajax({
         /* 获取全部数据 */
-        url: "#",
+        url: "getCar.do",
         type: "GET",
         dataType: "json",
         data: {
@@ -186,6 +186,7 @@ window.onload = function() {
         },
         success: function(commodity) {
             /* 读取成功时将数据读取,显示在页面内 */
+            /*console.log(commodity);*/
             let commodityName = $("#commodityName").val;
             let car = $("#car");
             /* 获取购物车列表 */
