@@ -32,17 +32,22 @@ window.onload = function() {
 
 /*加入购物车点击事件*/
 add = function () {
+    let url = window.location.search;
+    let Cid = url.split("=");
+    let id = Cid[1];
+    let num = 1;
+    /*console.log(id);*/
     $.ajax({
-        url: "#",
+        url: "car.do",
         type: "POST",
         dataType: "json",
         data: {
-            id: id,
+            commodityId: id,
             userName: userName,
+            commodityNum: num,
         },
         success: function (data) {
             alert("已加入购物车");
-
         }
     });
 }
