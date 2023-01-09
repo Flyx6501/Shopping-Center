@@ -23,6 +23,8 @@ public class CommodityServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         CommodityService commodityService=new CommodityServiceImpl();
         List<Commodity> list=commodityService.getCommodityList();
         JSONObject json=new JSONObject();
