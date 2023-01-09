@@ -11,14 +11,14 @@ public class Commodity {
     private String commodityName;
     private Double commodityPrice;
     private int commodityStock;
-    private byte[]  commodityPhoto;
+    private String  commodityPhoto;
     private String commodityInformation;
     private String commodityComment;
 
     private int commodityNum;
     public Commodity(){
     }
-    public Commodity(int commodityId, String commodityName, Double commodityPrice, int commodityStock, byte[] commodityPhoto, String commodityInformation, String commodityComment ,int commodityNum) {
+    public Commodity(int commodityId, String commodityName, Double commodityPrice, int commodityStock, String commodityPhoto, String commodityInformation, String commodityComment ,int commodityNum) {
         this.commodityId = commodityId;
         this.commodityName = commodityName;
         this.commodityPrice = commodityPrice;
@@ -61,11 +61,11 @@ public class Commodity {
         this.commodityStock = commodityStock;
     }
 
-    public byte[] getCommodityPhoto() {
+    public String getCommodityPhoto() {
         return commodityPhoto;
     }
 
-    public void setCommodityPhoto(byte[] commodityPhoto) {
+    public void setCommodityPhoto(String commodityPhoto) {
         this.commodityPhoto = commodityPhoto;
     }
 
@@ -100,7 +100,7 @@ public class Commodity {
                 ", commodityName='" + commodityName + '\'' +
                 ", commodityPrice=" + commodityPrice +
                 ", commodityStock=" + commodityStock +
-                ", commodityPhoto=" + Arrays.toString(commodityPhoto) +
+                ", commodityPhoto=" + commodityPhoto +
                 ", commodityInformation='" + commodityInformation + '\'' +
                 ", commodityComment='" + commodityComment + '\'' +
                 ", commodityNum='" + commodityNum +
