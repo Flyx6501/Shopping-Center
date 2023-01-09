@@ -24,6 +24,8 @@ public class GetOneCommodityServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         String temp = request.getParameter("id");
         Integer id = parseInt(temp);
 
