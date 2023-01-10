@@ -16,20 +16,25 @@ public class CarServletTest {
     @Test
     public void GetCarByUserIdTest(){
         CarDaoImpl carDao=new CarDaoImpl();
-        List<Map> car=carDao.getCarByUserId("1");
-        System.out.println(car);
+//        List<Map> car=carDao.getCommodityById("2");
+//        System.out.println(car);
     }
     @Test
     public void UpdateCommodityTest(){
         CarDaoImpl carDao=new CarDaoImpl();
-        Integer car=carDao.updateCommodity(59,"1",1,2);
+        Integer car=carDao.updateCommodity(59,1,1,2);
         System.out.println(car);
     }
     @Test
     public void DeleteCommodity(){
         CarDaoImpl carDao=new CarDaoImpl();
-        Integer car=carDao.deleteCommodity("1",1);
+        Integer car=carDao.deleteCommodity(1,1);
         System.out.println(car);
     }
-
+    @Test
+    public void GetUserIdByName(){
+        CarDaoImpl carDao=new CarDaoImpl();
+        Integer car=carDao.getUserIdByName("h");
+        System.out.println(car);
+    }
 }

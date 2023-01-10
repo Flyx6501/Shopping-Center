@@ -39,7 +39,7 @@ public class CommodityDaoImpl  implements CommodityDao {
                 g.setCommodityName(rs.getString(2));
                 g.setCommodityPrice(rs.getDouble(3));
                 g.setCommodityStock(rs.getInt(4));
-                g.setCommodityPhoto(rs.getBytes(5));
+                g.setCommodityPhoto(rs.getString(5));
                 g.setCommodityInformation(rs.getString(6));
                 g.setCommodityComment(rs.getString(7));
                 list.add(g);
@@ -78,7 +78,7 @@ public class CommodityDaoImpl  implements CommodityDao {
                 g.setCommodityName(rs.getString(2));
                 g.setCommodityPrice(rs.getDouble(3));
                 g.setCommodityStock(rs.getInt(4));
-                g.setCommodityPhoto(rs.getBytes(5));
+                g.setCommodityPhoto(rs.getString(5));
                 g.setCommodityInformation(rs.getString(6));
                 g.setCommodityComment(rs.getString(7));
                 list.add(g);
@@ -108,7 +108,7 @@ public class CommodityDaoImpl  implements CommodityDao {
                 g.setCommodityName(rs.getString(2));
                 g.setCommodityPrice(rs.getDouble(3));
                 g.setCommodityStock(rs.getInt(4));
-                g.setCommodityPhoto(rs.getBytes(5));
+                g.setCommodityPhoto(rs.getString(5));
                 g.setCommodityInformation(rs.getString(6));
                 g.setCommodityComment(rs.getString(7));
                 list.add(g);
@@ -149,7 +149,7 @@ public class CommodityDaoImpl  implements CommodityDao {
                 g.setCommodityName(rs.getString(2));
                 g.setCommodityPrice(rs.getDouble(3));
                 g.setCommodityStock(rs.getInt(4));
-                g.setCommodityPhoto(rs.getBytes(5));
+                g.setCommodityPhoto(rs.getString(5));
                 g.setCommodityInformation(rs.getString(6));
                 g.setCommodityComment(rs.getString(7));
                 g.setCommodityNum(rs.getInt(8));
@@ -181,7 +181,7 @@ public class CommodityDaoImpl  implements CommodityDao {
                 g.setCommodityName(rs.getString(2));
                 g.setCommodityPrice(rs.getDouble(3));
                 g.setCommodityStock(rs.getInt(4));
-                g.setCommodityPhoto(rs.getBytes(5));
+                g.setCommodityPhoto(rs.getString(5));
                 g.setCommodityInformation(rs.getString(6));
                 g.setCommodityComment(rs.getString(7));
                 list.add(g);
@@ -211,7 +211,7 @@ public class CommodityDaoImpl  implements CommodityDao {
                 g.setCommodityName(rs.getString(2));
                 g.setCommodityPrice(rs.getDouble(3));
                 g.setCommodityStock(rs.getInt(4));
-                g.setCommodityPhoto(rs.getBytes(5));
+                g.setCommodityPhoto(rs.getString(5));
                 g.setCommodityInformation(rs.getString(6));
                 g.setCommodityComment(rs.getString(7));
                 return g;
@@ -349,9 +349,9 @@ public class CommodityDaoImpl  implements CommodityDao {
                 g.setCommodityName(rs.getString(2));
                 g.setCommodityPrice(rs.getDouble(3));
                 g.setCommodityStock(rs.getInt(4));
-                g.setCommodityPhoto(rs.getBytes(5));
-                g.setCommodityInformation(rs.getString(5));
-                g.setCommodityComment(rs.getString(6));
+                g.setCommodityPhoto(rs.getString(5));
+                g.setCommodityInformation(rs.getString(6));
+                g.setCommodityComment(rs.getString(7));
             }
         } catch (Exception e) {
             e.printStackTrace();

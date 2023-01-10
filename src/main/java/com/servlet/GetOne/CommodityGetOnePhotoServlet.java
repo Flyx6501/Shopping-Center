@@ -3,6 +3,7 @@ package com.servlet.GetOne;
 import com.bean.Commodity;
 import com.dao.CommodityDao;
 import com.service.CommodityDaoImpl;
+import org.json.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 
 import static java.lang.Integer.parseInt;
 
@@ -30,11 +32,11 @@ public class CommodityGetOnePhotoServlet extends HttpServlet {
         Integer id = parseInt(temp);
         CommodityDao commodityDao = new CommodityDaoImpl();
         Commodity list1=commodityDao.getOnePhoto(id);
-        byte[] img=null;
-        img=list1.getCommodityPhoto();
-        OutputStream outputStream = response.getOutputStream();
-        outputStream.write(img);
-        outputStream.flush();
-        outputStream.close();
+        JSONObject json=new JSONObject();
+        String img=list1.getCommodityPhoto();
+        json.put("commodity",img);
+        PrintWriter out=response.getWriter();
+        out.println(json);
+        out.close();
     }
 }
