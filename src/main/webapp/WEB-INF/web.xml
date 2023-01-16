@@ -58,6 +58,15 @@
         <servlet-name>GetOnePhotoServlet</servlet-name>
         <url-pattern>/getOnePhoto.do</url-pattern>
     </servlet-mapping>
+    <!--跳转到购物车页-->
+    <servlet>
+        <servlet-name>car</servlet-name>
+        <jsp-file>/WEB-INF/views/car.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>car</servlet-name>
+        <url-pattern>/car</url-pattern>
+    </servlet-mapping>
     <!--购物车数据删除的Servlet-->
     <servlet>
         <servlet-name>DeleteCarServlet</servlet-name>
@@ -131,7 +140,7 @@
         <servlet-name>userRegisterServlets</servlet-name>
         <url-pattern>/userRegister.do</url-pattern>
     </servlet-mapping>
-
+    <!--跳转到商品详情页-->
     <servlet>
         <servlet-name>details</servlet-name>
         <jsp-file>/WEB-INF/views/details.jsp</jsp-file>
@@ -140,7 +149,15 @@
         <servlet-name>details</servlet-name>
         <url-pattern>/details</url-pattern>
     </servlet-mapping>
-
+    <!--跳转到订单页面-->
+    <servlet>
+        <servlet-name>userOrder</servlet-name>
+        <jsp-file>/WEB-INF/views/userOrder.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>userOrder</servlet-name>
+        <url-pattern>/userOrder</url-pattern>
+    </servlet-mapping>
     <!-- 跳转到用户注册页 -->
     <servlet>
         <servlet-name>register</servlet-name>
@@ -150,7 +167,6 @@
         <servlet-name>register</servlet-name>
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
-
     <!-- 跳转到登录成功页 -->
     <servlet>
         <servlet-name>userindex</servlet-name>
@@ -261,7 +277,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>index</servlet-name>
-        <jsp-file>/WEB-INF/index.jsp</jsp-file>
+        <jsp-file>/index.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>index</servlet-name>
@@ -364,5 +380,49 @@
         <servlet-name>getall</servlet-name>
         <url-pattern>/getAll.do</url-pattern>
     </servlet-mapping>
-
+    <!--分类-->
+    <servlet>
+        <servlet-name>sort</servlet-name>
+        <jsp-file>/WEB-INF/views/sort.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>sort</servlet-name>
+        <url-pattern>/sort</url-pattern>
+    </servlet-mapping>
+    <!--搜索结果-->
+    <servlet>
+        <servlet-name>result</servlet-name>
+        <jsp-file>/WEB-INF/views/result.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>result</servlet-name>
+        <url-pattern>/result</url-pattern>
+    </servlet-mapping>
+    <!--登录前商品详情页面-->
+    <servlet>
+        <servlet-name>beforedetails</servlet-name>
+        <jsp-file>/WEB-INF/views/beforedetails.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>beforedetails</servlet-name>
+        <url-pattern>/beforedetails</url-pattern>
+    </servlet-mapping>
+    <!--登录前分类页面-->
+    <servlet>
+        <servlet-name>beforesort</servlet-name>
+        <jsp-file>/WEB-INF/views/beforesort.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>beforesort</servlet-name>
+        <url-pattern>/beforesort</url-pattern>
+    </servlet-mapping>
+    <!--登录前搜索页面-->
+    <servlet>
+        <servlet-name>beforeresult</servlet-name>
+        <jsp-file>/WEB-INF/views/beforeresult.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>beforeresult</servlet-name>
+        <url-pattern>/beforeresult</url-pattern>
+    </servlet-mapping>
 </web-app>
