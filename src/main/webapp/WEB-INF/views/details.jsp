@@ -69,9 +69,8 @@
 <div class="layui-container">
     <div class="whole">
         <div class="preview" id="preview">
-            <div class="d-images">
-                <img id="img"
-                     src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg14.360buyimg.com%2Fn1%2Fjfs%2Ft1%2F92724%2F24%2F20142%2F84153%2F61eaef16E03cabaca%2F14f6434ae59b63be.jpg&refer=http%3A%2F%2Fimg14.360buyimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1670832219&t=d23c3ad36e3412ea0de3db91143eb962">
+            <div class="d-images" id="photo">
+                <img id="img" src=>
             </div>
         </div>
         <div class="itemInfo-wrap">
