@@ -6,20 +6,24 @@
 /* 获取搜索参数 */
 var url = window.location.search;
 var findName = url.split("=");
+//console.log(findName);
+var searchName = decodeURI(findName[1]);
 //console.log(findName[1]);
-
+//console.log(searchName);
 window.onload = function() {
+    //console.log(searchName);
+    let commodityName = searchName;
     $.ajax({
         /* 获取数据 */
-        url: "http://localhost:53000/commodity",
+        url: "getFuzzyQuery.do",
         type: "GET",
         dataType: "json",
         data: {
-            findName: findName,
+            commodityName: commodityName,
         },
         success: function(data) {
-            let goodlist = $("#good-list");
-            var list = data;
+            let goodlist = $("#goodlist");
+            var list = data.commodity;
             //console.log(list);
             /*遍历显示*/
             for (let i = 0; i < Math.ceil(list.length / 4); i++) {
@@ -32,12 +36,11 @@ window.onload = function() {
                     if (k >= list.length)
                         break;
                     domRow.append(
-                        `<div class="layui-col-md3">
+                        `<div class="layui-col-md3" name="" id="` + list[k].commodityId + `">
 							<div class="thumbnail">
-								<img src="" alt="...">
+								<img src="` +list[k].commodityPhoto+ `" alt="...">
 								<div class="caption">
-								<a href="">
-								<img src="" alt="商品图片">
+							<a href="details?id=` + list[k].commodityId +`">
 									<h3>` + list[k].commodityName + `</h3>
 										<p>` + list[k].commodityPrice + `</p>
 									</a>
