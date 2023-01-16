@@ -12,7 +12,7 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>个人主页</title>
+    <title>分类</title>
     <%
         pageContext.setAttribute("APP_PATH", request.getContextPath());
     %>
@@ -73,14 +73,12 @@
         <!-- 分类名 -->
         <div class="layui-col-md2">
             <h3 class="sort-name">
-                <b>
-                    服装
-                </b>
+                <div id="sortName"></div>
             </h3>
         </div>
         <!-- 搜索框 -->
         <div class="layui-col-md10">
-            <div class="layui-col-md10">
+            <%--<div class="layui-col-md10">
                 <div class="layui-col-md10">
                     <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题"
                            class="layui-input">
@@ -91,11 +89,11 @@
                         <i class="layui-icon layui-icon-search" style="color: #fff;"></i>
                     </button>
                 </div>
-            </div>
+            </div>--%>
         </div>
     </div>
     <!-- 商品缩略 -->
-    <div class="products">
+    <div id="products">
 
     </div>
 </div>
