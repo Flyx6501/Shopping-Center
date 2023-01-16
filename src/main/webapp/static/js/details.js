@@ -8,7 +8,7 @@ window.onload = function() {
     let url = window.location.search;
     let Cid = url.split("=");
     let id = Cid[1];
-    /*console.log(id);*/
+    //console.log(id);
     $.ajax({
         /* 获取数据 */
         url: "commodityDetails.do",
@@ -19,12 +19,17 @@ window.onload = function() {
         },
         success: function(result) {
             /* 读取成功时将数据读取,显示在页面内 */
-            /*console.log(result);*/
+            //console.log(result);
             let data = result.commodity;
-            /*console.log(data);*/
+            //console.log(data);
+            //console.log(data[0].commodityPhoto);
+            //console.log(img);
+            let imgSrc = data[0].commodityPhoto;
+            //console.log(imgSrc);
+            document.getElementById("photo").innerHTML = "<img src ='" + imgSrc +"' height='400' width='300'>";
             document.getElementById("goodsName").innerHTML=data[0].commodityName;
             /*console.log(data[0].commodityName);*/
-            document.getElementById("props").innerHTML=data[0].commodityStock;
+            document.getElementById("props").innerHTML=data[0].commodityInformation;
             document.getElementById("price").innerHTML=data[0].commodityPrice;
             }
     });
@@ -36,7 +41,7 @@ add = function () {
     let Cid = url.split("=");
     let id = Cid[1];
     let num = 1;
-    /*console.log(id);*/
+    //console.log(id);
     $.ajax({
         url: "car.do",
         type: "POST",
@@ -48,6 +53,10 @@ add = function () {
         },
         success: function (data) {
             alert("已加入购物车");
-        }
+            /*window.location.href = "car";*/
+        },
+        /*error: function (data){
+            alert("请登录");
+        }*/
     });
 }
