@@ -19,7 +19,6 @@ function reduce(cid, sum) {
     }
     math();
     $("#commoditySum" + cid).text(sum);
-
     var id = cid;
     let cname = $("#commodityName" + cid).text();
     let cnum = $("#commodityNum" + cid).val();
@@ -41,12 +40,13 @@ function reduce(cid, sum) {
 }
 /* 加数量 */
 function add(cid, sum) {
-    var num = $("#commodityNum" + cid).val();
+    let num = $("#commodityNum" + cid).val();
+    //console.log(num);
     num++;
     $("#commodityNum" + cid).val(num);
     var price = $("#commodityPrice" + cid).text();
     sum = parseFloat(price * num);
-
+    //console.log(num);
     function math() {
         sum = Math.round(sum * 100) / 100;
     }
@@ -55,8 +55,8 @@ function add(cid, sum) {
     var id = cid;
     let cname = $("#commodityName" + cid).text();
     let cnum = $("#commodityNum" + cid).val();
-    /* console.log(cname);
-    console.log(cnum); */
+    //console.log(cname);
+    //console.log(cnum);
     $.ajax({
         url: "updateCar.do",
         type: "POST",
@@ -75,19 +75,21 @@ function add(cid, sum) {
 
 /* 删除 */
 function del(cid) {
-    $("#good" + cid).remove();
+    /*console.log(cid);*/
+    let num = $("#commodityNum" + cid).val();
+    //console.log(num);
     $.ajax({
         url: "deleteCar.do",
         type: "POST",
         dataType: "json",
         data: {
-            commodityId: id,
-            commodityName: cname,
-            commodityNum: cnum,
+            commodityId: cid,
+            commodityNum: num,
             userName: userName,
         },
         success: function(data) {
-
+             alert("删除成功");
+            $("#good" + cid).remove();
         }
     });
 }
@@ -109,34 +111,39 @@ function checkboxOnclick(cid) {
         /* var smoney = moneys - sums; */
         moneys -= sums;
         moneys = Math.round(moneys * 100) / 100;
-        /*console.log(moneys);*/
+        //console.log(moneys);
         $("#money").text(moneys);
         $("#check" + cid).val(0);
-        /* console.log($("#check" + cid).val()); */
+        //console.log($("#check" + cid).val());
     }
 }
 
-/*全选*/
+/*/!*全选*!/
 function changeAll() {
     let sum = 0;
-    /* val=1表示被选中,val=0表示未被选 */
+    let length = $("#length").val();
+    console.log(length);
+    /!* val=1表示被选中,val=0表示未被选 *!/
     if ($("#all").val() == 0) {
-        for (let i = 1; i <= 2; i++) {
+        for (let i = 1; i <= length; i++) {
             sum += parseFloat($("#commoditySum" + i).text());
+            console.log($("#commoditySum" + i).text());
+            console.log(i);
         }
         $("#money").text(sum);
-        /* 所有选框都val为1 */
-        /*console.log(sum);*/
+        /!* 所有选框都val为1 *!/
+        console.log(sum);
+        console.log(typeof sum);
         $("input[type='checkbox']").val(1);
-        /*console.log($("#all").val());*/
-        /* $("#all").val(1); */
+        //console.log($("#all").val());
+        //$("#all").val(1);
     } else {
-        /* 反选 即在被选中时（val=1时）再次点击，值变为0*/
+        /!* 反选 即在被选中时（val=1时）再次点击，值变为0*!/
         $("#money").text(0);
         $("input[type='checkbox']").val(0);
-        /* $("#all").val(0); */
+        /!* $("#all").val(0); *!/
     }
-}
+}*/
 
 /* 被选中的放入订单 */
 function checkSome() {
@@ -152,7 +159,6 @@ function checkSome() {
             order["cid"] = $("#commodityId" + j).val();
             /* order["userName"] = userName; */
             order["cnum"] = $("#commodityNum" + j).val();
-
             orders[i] = order;
             var json = JSON.stringify(orders);
         }
@@ -164,10 +170,11 @@ function checkSome() {
         type: "post",
         dataType: "json",
         data: {
-            json,
+            json
         },
         success: function(data) {
-
+            alert("已结算");
+            window.location.href = "userOrder";
         }
     });
 
@@ -184,22 +191,27 @@ window.onload = function() {
         data: {
              userName: userName,
         },
-        success: function(commodity) {
+        success: function(result) {
             /* 读取成功时将数据读取,显示在页面内 */
-            /*console.log(commodity);*/
-            let commodityName = $("#commodityName").val;
+            //console.log(result);
+            var data = result.commodity;
+            console.log(data);
+            var length = data.length;
+            //console.log(data.length);
+            /*let commodityName = $("#commodityName").text();*/
             let car = $("#car");
             /* 获取购物车列表 */
             let k = 0;
-            for (k = 0; k < 2; k++) {
-                let cid = commodity[k].commodityId;
-                let cname = commodity[k].commodityName;
-                let cinformation = commodity[k].commodityInformation;
-                let cprice = commodity[k].commodityPrice;
-                let cnum = commodity[k].commodityNum;
-                let csum = commodity[k].commoditySum;
+            for (k = 0; k < length; k++) {
+                var cid = data[k].commodityId;
+                let cname =data[k].commodityName;
+                let cinformation = data[k].commodityInformation;
+                let cprice = data[k].commodityPrice;
+                let cnum = data[k].commodityNum;
                 /* 初始总价 */
                 sum = parseFloat(cprice * cnum);
+                //console.log(sum);
+                //console.log(typeof sum);
                 car.append(
                     `<div class="carts-goods" id="good` + cid + `">
 					<input class="input" type="hidden" name="commodityId" id="commodityId` + cid + `" value="` + cid + `"> 
@@ -227,17 +239,56 @@ window.onload = function() {
 					<div class="cell c-action">
 						<a href="#" id="remove" class="remove" onclick="del(` + cid + `)">移除商品</a>
 					</div>
+					
+					<input id="length" type="hidden" value="` + length + `">
+					
 				</div>`
                 );
             }
+
+            /* 全选 */
+            $("#all").click(function(checkbox) {
+                all = $(this).prop("checked")
+                $(".each").each(function() {
+                    $(this).prop("checked", all);
+                })
+                changeAll();
+            });
+
+            /*全选*/
+            function changeAll() {
+                let sum = 0;
+                let length = $("#length").val();
+                console.log(length);
+                /* val=1表示被选中,val=0表示未被选 */
+                if ($("#all").val() == 0) {
+                    for (let i = 1; i <= length; i++) {
+                        sum += parseFloat($("#commoditySum" + i).text());
+                        console.log($("#commoditySum" + i).text());
+
+                    }
+                    $("#money").text(sum);
+                    /* 所有选框都val为1 */
+                    console.log(sum);
+                    console.log(typeof sum);
+                    $("input[type='checkbox']").val(1);
+                    //console.log($("#all").val());
+                    //$("#all").val(1);
+                } else {
+                    /* 反选 即在被选中时（val=1时）再次点击，值变为0*/
+                    $("#money").text(0);
+                    $("input[type='checkbox']").val(0);
+                    /* $("#all").val(0); */
+                }
+            }
         }
     });
-    /* 全选 */
+/*    /!* 全选 *!/
     $("#all").click(function(checkbox) {
         all = $(this).prop("checked")
         $(".each").each(function() {
             $(this).prop("checked", all);
         })
         changeAll();
-    });
+    });*/
 }
