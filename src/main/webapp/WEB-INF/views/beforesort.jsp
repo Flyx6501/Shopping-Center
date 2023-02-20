@@ -29,7 +29,7 @@
     <!-- layui -->
     <script type="text/javascript" src="${APP_PATH}/static/frame/layui-2.6.8.js"></script>
     <!-- 引入js验证文件-->
-    <script type="text/javascript" src="${APP_PATH}/static/js/sort.js"></script>
+    <script type="text/javascript" src="${APP_PATH}/static/js/beforesort.js"></script>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="${APP_PATH}/static/frame/bootstrap-3.4.1-dist.min.css">
     <!-- layui -->
