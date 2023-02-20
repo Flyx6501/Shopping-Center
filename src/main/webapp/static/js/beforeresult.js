@@ -20,7 +20,7 @@ window.onload = function() {
             commodityName: searchName,
         },
         success: function(data) {
-            let goodlist = $("#good-list");
+            let goodlist = $("#goodlist");
             var list = data.commodity;
             //console.log(list);
             /*遍历显示*/
