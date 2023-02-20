@@ -29,7 +29,7 @@
     <!-- layui -->
     <script type="text/javascript" src="${APP_PATH}/static/frame/layui-2.6.8.js"></script>
     <!-- 引入js验证文件-->
-    <script type="text/javascript" src="${APP_PATH}/static/js/result.js"></script>
+    <script type="text/javascript" src="${APP_PATH}/static/js/beforeresult.js"></script>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="${APP_PATH}/static/frame/bootstrap-3.4.1-dist.min.css">
     <!-- layui -->
@@ -58,7 +58,7 @@
 </div>
 <div class="layui-container">
     <!--商品列表-->
-    <div class="good-list">
+    <div class="good-list" id="goodlist">
 
     </div>
 </div>
