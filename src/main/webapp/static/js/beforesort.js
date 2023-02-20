@@ -4,14 +4,14 @@
    @version 1.0
 */
 var url = window.location.search;
-var sname = url.split("=");
+var sname = url.split("=%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20");
 var name = decodeURI(sname[1]);
 //console.log(sname[1]);
 //console.log(name);
 window.onload = function() {
     $("#sortName").text(name);
     let commodityName = $("#sortName").text();
-    //console.log(commodityName);
+    console.log(commodityName);
     $.ajax({
         /* 获取数据 */
         url: "getFuzzyQuery.do",
