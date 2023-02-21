@@ -234,17 +234,18 @@ public class CommodityDaoImpl  implements CommodityDao {
      * @date 2022/11/20 16:44
      **/
     @Override
-    public boolean addCommodity(Connection c,String commodityName,Double commodityPrice,int commodityStock,String commodityInformation) {
+    public boolean addCommodity(Connection c,String commodityName,Double commodityPrice,int commodityStock,String commodityInformation,String photo) {
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
-            String sql = "INSERT INTO `commodity` (commodity_name,commodity_price,commodity_stock,commodity_information) VALUES (?,?,?,?)";
+            String sql = "INSERT INTO `commodity` (commodity_name,commodity_price,commodity_stock,commodity_information,photo) VALUES (?,?,?,?,?)";
             ps = c.prepareStatement(sql);
             ps.setString(1,commodityName);
             ps.setDouble(2, commodityPrice);
             ps.setInt(3, commodityStock);
 
             ps.setString(4,commodityInformation);
+            ps.setString(5,photo);
             int rs1 = ps.executeUpdate();
             if (rs1 >= 1) {
                 return true;
