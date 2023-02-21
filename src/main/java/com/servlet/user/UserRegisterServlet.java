@@ -76,13 +76,8 @@ public class UserRegisterServlet extends HttpServlet {
 
         boolean flag = dao.insertUser(c,userName,password, email, nickName);
         System.out.println(flag);
+        req.setAttribute("message", "注册成功");
+        req.getRequestDispatcher("/login").forward(req,resp);
 
-        if (flag) {
-            req.setAttribute("message", "注册成功");
-            req.getRequestDispatcher("/success").forward(req,resp);
-        }else {
-            req.setAttribute("message","注册失败");
-            req.getRequestDispatcher("/register").forward(req,resp);
-        }
     }
 }
