@@ -1,4 +1,4 @@
-package com.servlet.OrderServlet;
+package com.servlet.Update.OrderServlet;
 
 import com.mysql.jdbc.Connection;
 import com.service.OrdersDaoImpl;
@@ -53,13 +53,5 @@ public class deleteOrders extends HttpServlet {
         String commodityName = req.getParameter("commodityName");
         Connection c= (Connection) JDBCUtil.getConnection();
         OrdersDaoImpl dao=new OrdersDaoImpl();
-        boolean flag = dao.deleteOrders(c, commodityName);
-        if (flag){
-            JSONObject json=new JSONObject();
-            json.put("msg", true);
-            PrintWriter out=resp.getWriter();
-            out.println(json);
-            out.close();
-        }
     }
 }
