@@ -18,7 +18,7 @@ layui.use(['table', 'laypage', 'layer'], function() {
             // toolbar: '#toolbarDemo',
             //url接口地址。
             //默认会自动传递两个参数：?page=1&limit=30(该参数可通过request自定义)，page代表当前页码、limit代表每页数据量
-            url: baseUrl + '/selectOrder.do',
+            url: baseUrl + '/getAllOrderServlet',
             //开启分页
             page: true,
             cols: [[
@@ -33,8 +33,8 @@ layui.use(['table', 'laypage', 'layer'], function() {
             parseData:function(d){
                 //console.log(d)
                 var newArr = []
-                for (var i = 0; i < d.msg.length; i++) {
-                    var item = (d.msg)[i]
+                for (var i = 0; i < d.order.length; i++) {
+                    var item = (d.order)[i]
                     // 往数组里面插入数据
                     newArr.push({
                         orderId: item.orderId,
