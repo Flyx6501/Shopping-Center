@@ -167,6 +167,7 @@
         <servlet-name>register</servlet-name>
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
+
     <!-- 跳转到登录成功页 -->
     <servlet>
         <servlet-name>userindex</servlet-name>
@@ -424,5 +425,14 @@
     <servlet-mapping>
         <servlet-name>beforeresult</servlet-name>
         <url-pattern>/beforeresult</url-pattern>
+    </servlet-mapping>
+    <!--后台编辑用户信息-->
+    <servlet>
+        <servlet-name>updateManager</servlet-name>
+        <servlet-class>com.servlet.Update.ManagerUpdate</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>updateManager</servlet-name>
+        <url-pattern>/updateManager.do</url-pattern>
     </servlet-mapping>
 </web-app>
