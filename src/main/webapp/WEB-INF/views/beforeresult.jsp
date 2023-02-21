@@ -1,7 +1,7 @@
 <%--
-  @description: 分类页
+  @description: 搜索结果
   @author: LL
-  @date: 2022/11/14 10:05
+  @date: 2023/01/14 21:49
   @version: 1.0
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
@@ -12,7 +12,7 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>分类</title>
+    <title>搜索结果</title>
     <%
         pageContext.setAttribute("APP_PATH", request.getContextPath());
     %>
@@ -29,7 +29,7 @@
     <!-- layui -->
     <script type="text/javascript" src="${APP_PATH}/static/frame/layui-2.6.8.js"></script>
     <!-- 引入js验证文件-->
-    <script type="text/javascript" src="${APP_PATH}/static/js/sort.js"></script>
+    <script type="text/javascript" src="${APP_PATH}/static/js/beforeresult.js"></script>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="${APP_PATH}/static/frame/bootstrap-3.4.1-dist.min.css">
     <!-- layui -->
@@ -44,58 +44,24 @@
 <!-- 头部导航 -->
 <div class="nav-bar">
     <div class="layui-row">
-        <!-- 首页 -->
-        <div class="layui-col-md6">
-            <div>分类</div>
+        <!-- 登录/注册 -->
+        <div class="layui-col-md8">
+            <a href="${APP_PATH}/login">登录</a>
+            <span>/</span>
+            <a href="${APP_PATH}/register">注册</a>
         </div>
         <div class="layui-col-md2">
-            <a href="${APP_PATH}/self">个人中心</a>
         </div>
         <div class="layui-col-md2">
-            <i class="layui-icon layui-icon-cart-simple" style="color: #ddd;"></i>
-            <a href="${APP_PATH}/car">购物车</a>
-        </div>
-        <div class="layui-col-md1">
-            <!--获取用户名-->
-            <div id="userName">
-                <%=session.getAttribute("userName")%>
-            </div>
-        </div>
-        <div class="layui-col-md1">
-            <a href="${APP_PATH}/index">退出</a>
         </div>
     </div>
 </div>
-<!-- 留白布局 -->
 <div class="layui-container">
-    <!-- 分类名+搜索 -->
-    <div class="layui-row">
-        <!-- 分类名 -->
-        <div class="layui-col-md2">
-            <h3 class="sort-name">
-                <div id="sortName"></div>
-            </h3>
-        </div>
-        <!-- 搜索框 -->
-        <div class="layui-col-md10">
-            <%--<div class="layui-col-md10">
-                <div class="layui-col-md10">
-                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题"
-                           class="layui-input">
-                </div>
-                <div class="layui-col-md2">
-                    <button type="button" class="layui-btn layui-btn-danger layui-btn-radius">
-                        搜索
-                        <i class="layui-icon layui-icon-search" style="color: #fff;"></i>
-                    </button>
-                </div>
-            </div>--%>
-        </div>
-    </div>
-    <!-- 商品缩略 -->
-    <div id="products">
+    <!--商品列表-->
+    <div class="good-list" id="goodlist">
 
     </div>
 </div>
+
 </body>
 </html>

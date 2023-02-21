@@ -64,6 +64,13 @@
                     session.setAttribute("userName",userName);
                 %>
             </div>
+            <%--<div id="userId">
+                <%=request.getAttribute("userId")%>
+                <%
+                    String userId = request.getAttribute("userId").toString();
+                    session.setAttribute("userId",userId);
+                %>
+            </div>--%>
         </div>
         <div class="layui-col-md1">
             <a href="${APP_PATH}/index">退出</a>
@@ -99,11 +106,36 @@
             <div class="layui-col-md2">
                 <!-- 分类 -->
                 <ul class="left-nav">
-                    <li class="active"><a href="${APP_PATH}/sort">服装</a></li>
-                    <li><a href="#">鞋包</a></li>
-                    <li><a href="#">食品</a></li>
-                    <li><a href="#">电子产品</a></li>
-                    <li><a href="#">百货</a></li>
+                    <li><button onclick="clothes()">
+                        <div id="clothes">
+                            服装
+                        </div>
+                    </button></li>
+                    <li><button onclick="shoes()">
+                        <div id="shoes">
+                            鞋包
+                        </div>
+                    </button></li>
+                    <li><button onclick="food()">
+                        <div id="food">
+                            食品
+                        </div>
+                    </button></li>
+                    <li><button onclick="electronics()">
+                        <div id="electronics">
+                            电子产品
+                        </div>
+                    </button></li>
+                    <li><button onclick="good()">
+                        <div id="good">
+                            百货
+                        </div>
+                    </button></li>
+                    <%--<li><a class="sort" onclick="sort()">服装</a></li>
+                    <li><a class="sort" onclick="sort()">鞋包</a></li>
+                    <li><a class="sort" onclick="sort()">食品</a></li>
+                    <li><a class="sort" onclick="sort()">电子产品</a></li>
+                    <li><a class="sort" onclick="sort()">百货</a></li>--%>
                 </ul>
             </div>
             <div class="layui-col-md10">
@@ -112,19 +144,19 @@
                     <div class="layui-carousel" id="test1">
                         <div carousel-item>
                             <div>
-                                <img src="" />
+                                <img src="https://img0.baidu.com/it/u=1730372278,59553320&fm=253&fmt=auto&app=138&f=JPEG?w=1200&h=375" />
                             </div>
                             <div>
-                                <img src="" />
+                                <img src="https://img0.baidu.com/it/u=3375536344,3445926657&fm=253&fmt=auto&app=138&f=JPEG?w=1200&h=375" />
                             </div>
                             <div>
-                                <img src="" />
+                                <img src="https://img2.baidu.com/it/u=1673359626,871155640&fm=253&fmt=auto&app=138&f=JPEG?w=1280&h=400" />
                             </div>
                             <div>
-                                <img src="" />
+                                <img src="https://img0.baidu.com/it/u=4119501877,2521047215&fm=253&fmt=auto&app=138&f=JPEG?w=1200&h=300" />
                             </div>
                             <div>
-                                <img src="" />
+                                <img src="https://img1.baidu.com/it/u=142061983,2550680505&fm=253&fmt=auto&app=138&f=JPEG?w=1280&h=465" />
                             </div>
                         </div>
                     </div>
@@ -146,7 +178,7 @@
             </div>
         </div>
         <!-- 活动专区 -->
-        <h3>活动专区</h3>
+        <h3>商品列表</h3>
         <div id="products">
 
         </div>

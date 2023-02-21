@@ -1,7 +1,7 @@
 <%--
-  @description: 分类页
+  @description: 登录前分类页
   @author: LL
-  @date: 2022/11/14 10:05
+  @date: 2023/01/14 10:05
   @version: 1.0
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
@@ -29,7 +29,7 @@
     <!-- layui -->
     <script type="text/javascript" src="${APP_PATH}/static/frame/layui-2.6.8.js"></script>
     <!-- 引入js验证文件-->
-    <script type="text/javascript" src="${APP_PATH}/static/js/sort.js"></script>
+    <script type="text/javascript" src="${APP_PATH}/static/js/beforesort.js"></script>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="${APP_PATH}/static/frame/bootstrap-3.4.1-dist.min.css">
     <!-- layui -->
@@ -44,25 +44,15 @@
 <!-- 头部导航 -->
 <div class="nav-bar">
     <div class="layui-row">
-        <!-- 首页 -->
-        <div class="layui-col-md6">
-            <div>分类</div>
+        <!-- 登录/注册 -->
+        <div class="layui-col-md8">
+            <a href="${APP_PATH}/login">登录</a>
+            <span>/</span>
+            <a href="${APP_PATH}/register">注册</a>
         </div>
         <div class="layui-col-md2">
-            <a href="${APP_PATH}/self">个人中心</a>
         </div>
         <div class="layui-col-md2">
-            <i class="layui-icon layui-icon-cart-simple" style="color: #ddd;"></i>
-            <a href="${APP_PATH}/car">购物车</a>
-        </div>
-        <div class="layui-col-md1">
-            <!--获取用户名-->
-            <div id="userName">
-                <%=session.getAttribute("userName")%>
-            </div>
-        </div>
-        <div class="layui-col-md1">
-            <a href="${APP_PATH}/index">退出</a>
         </div>
     </div>
 </div>
@@ -73,7 +63,9 @@
         <!-- 分类名 -->
         <div class="layui-col-md2">
             <h3 class="sort-name">
-                <div id="sortName"></div>
+                <div id="sortName">
+                    服装
+                </div>
             </h3>
         </div>
         <!-- 搜索框 -->

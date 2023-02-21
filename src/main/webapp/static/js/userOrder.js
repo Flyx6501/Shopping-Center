@@ -26,18 +26,21 @@ window.onload = function() {
     /* 返回值给购物车 */
     $.ajax({
         /* 获取全部数据 */
-        url: "#",
+        url: "selectOrders.do",
         type: "GET",
         dataType: "json",
         data: {
              userName: userName,
         },
-        success: function(order) {
+        success: function(data) {
             /* 读取成功时将数据读取,显示在页面内 */
+            //console.log(data);
+            let order = data.msg;
+            //console.log(order);
             let userOrder = $("#userOrder");
             /* 获取订单列表 */
             let k = 0;
-            for (k = 0; k < 2; k++) {
+            for (k = 0; k < order.length; k++) {
                 let oid = order[k].orderId;
                 let oname = order[k].orderName;
                 let onum = order[k].orderNum;

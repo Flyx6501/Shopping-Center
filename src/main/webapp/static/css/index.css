@@ -66,12 +66,15 @@ li {
     font-size: 14px;
 }
 /* 导航栏超链接样式 */
-.left-nav a {
-    color: darkgray;
+.left-nav button {
+    border:none;
+    outline: none;
+    background-color: #ffffff;
     text-decoration: none;
+    color: darkgrey;
 }
 /* 导航栏超链接移入效果 */
-.left-nav a:hover {
+.left-nav button:hover {
     color: darkorange;
 }
 

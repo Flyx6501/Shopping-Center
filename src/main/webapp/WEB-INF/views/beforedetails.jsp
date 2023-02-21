@@ -1,7 +1,7 @@
 <%--
-  @description: 商品详情界面
+  @description: 商品详情界面（登录前）
   @author: LL
-  @date: 2022/11/14 10:42
+  @date: 2023/01/14 10:42
   @version: 1.0
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
@@ -29,7 +29,7 @@
     <!-- Jquery -->
     <script type="text/javascript" src="${APP_PATH}/static/frame/jquery-3.4.1.min.js"></script>
     <!-- 引入js验证文件-->
-    <script type="text/javascript" src="${APP_PATH}/static/js/details.js"></script>
+    <script type="text/javascript" src="${APP_PATH}/static/js/beforedetails.js"></script>
     <!-- layui -->
     <link rel="stylesheet" type="text/css" href="${APP_PATH}/static/frame/layui-2.6.8.css" />
     <!-- Bootstrap -->
@@ -44,24 +44,15 @@
 <!-- 头部导航 -->
 <div class="nav-bar">
     <div class="layui-row">
-        <div class="layui-col-md6">
-            <div>商品详情</div>
+        <!-- 登录/注册 -->
+        <div class="layui-col-md8">
+            <a href="${APP_PATH}/login">登录</a>
+            <span>/</span>
+            <a href="${APP_PATH}/register">注册</a>
         </div>
         <div class="layui-col-md2">
-            <a href="${APP_PATH}/self">个人中心</a>
         </div>
         <div class="layui-col-md2">
-            <i class="layui-icon layui-icon-cart-simple" style="color: #ddd;"></i>
-            <a href="${APP_PATH}/car">购物车</a>
-        </div>
-        <div class="layui-col-md1">
-            <!--获取用户名-->
-            <div id="userName">
-                <%=session.getAttribute("userName")%>
-            </div>
-        </div>
-        <div class="layui-col-md1">
-            <a href="${APP_PATH}/index">退出</a>
         </div>
     </div>
 </div>
@@ -85,9 +76,6 @@
             <div class="d-price">
                 <span>￥</span>
                 <div class="d-pricenum" id="price"></div>
-            </div>
-            <div class="add-cart" onclick="add()">
-                <a href="#">加入购物车</a>
             </div>
             <input class="input" type="hidden" name="orderId" id="num" value="1">
         </div>

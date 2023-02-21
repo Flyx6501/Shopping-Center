@@ -6,27 +6,27 @@
 /* 搜索按钮点击事件 跳转到分类页*/
 checkSearch = function () {
     /* Sid为查询的内容 */
-    let url ="result?Sid=" + $("#find").val();
+    let url ="beforeresult?Sid=" + $("#find").val();
     window.location.href = url;
 }
 clothes = function (){
-    let url ="sort?Sname=" + $("#clothes").text();
+    let url ="beforesort?Sname=" + $("#clothes").text();
     window.location.href = url;
 }
 shoes = function (){
-    let url ="sort?Sname=" + $("#shoes").text();
+    let url ="beforesort?Sname=" + $("#shoes").text();
     window.location.href = url;
 }
 food = function (){
-    let url ="sort?Sname=" + $("#food").text();
+    let url ="beforesort?Sname=" + $("#food").text();
     window.location.href = url;
 }
 good = function (){
-    let url ="sort?Sname=" + $("#good").text();
+    let url ="beforesort?Sname=" + $("#good").text();
     window.location.href = url;
 }
 electronics = function (){
-    let url ="sort?Sname=" + $("#electronics").text();
+    let url ="beforesort?Sname=" + $("#electronics").text();
     window.location.href = url;
 }
 
@@ -38,15 +38,17 @@ window.onload = function() {
         dataType: "json",
         success: function(data) {
             let products = $("#products");
-            //console.log(data);
+            /*console.log(data);*/
             var list = data.commodity; //商品列表
-            //console.log(list);
+            /*console.log(list);*/
             for (let i = 0; i < Math.ceil(list.length / 4); i++) { //每四个商品一行
                 products.append(`<div class="layui-row" id="list` + i + `"></div>`);
             }
+
             let k = 0;
             for (let i = 0; i < Math.ceil(list.length / 4); i++) {
                 let domRow = $("#list" + i);
+                /* let id = list[k].commodityId; */
                 for (let j = 0; j < 4; j++) {
                     if (k >= list.length)
                         break;
@@ -55,14 +57,15 @@ window.onload = function() {
 							<div class="thumbnail">
 								<img src="` +list[k].commodityPhoto+ `" alt="...">
 								<div class="caption">
-							<a href="details?id=` + list[k].commodityId +`">
+								<!--<a href="#" onclick="details()">-->
+							<a href="beforedetails?id=` + list[k].commodityId +`">
 									<h3>` + list[k].commodityName + `</h3>
 										<p>` + list[k].commodityPrice + `</p>
 									</a>
 								</div>
 							</div>
 						</div>`
-                );
+                    );
                     k += 1;
                 }
             }

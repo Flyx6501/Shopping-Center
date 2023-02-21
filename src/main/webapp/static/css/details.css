@@ -40,6 +40,12 @@
     color: darkorange;
 }
 
+/* 登录注册 */
+.layui-col-md8 a {
+    color: darkgray;
+    text-decoration: none;
+}
+
 .wrap {
     width: 1200px;
     margin: 0 auto;
@@ -52,13 +58,16 @@
 
 .preview {
     float: left;
-    width: 400px;
+    height: 400px;
+    width: 300px;
     position: relative;
     margin: 30px;
 }
 
 .d-images {
-    border: 1px solid #acaeb2;
+    border: 1px solid #ffffff;
+    height: 400px;
+    width: 300px;
 }
 
 .itemInfo-wrap {
