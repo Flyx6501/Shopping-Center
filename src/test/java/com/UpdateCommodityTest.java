@@ -46,8 +46,8 @@ public class UpdateCommodityTest {
         try {
             CommodityDaoImpl test = new CommodityDaoImpl();
             c = JDBCUtil.getConnection();
-            boolean flag = test.addCommodity((com.mysql.jdbc.Connection)c, "A", 12.2,3,"aaa");
-            System.out.println(flag);
+//            boolean flag = test.addCommodity((com.mysql.jdbc.Connection)c, "A", 12.2,3,"aaa");
+  //          System.out.println(flag);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
