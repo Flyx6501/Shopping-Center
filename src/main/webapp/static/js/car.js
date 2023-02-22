@@ -118,66 +118,63 @@ function checkboxOnclick(cid) {
     }
 }
 
-/*/!*全选*!/
-function changeAll() {
-    let sum = 0;
-    let length = $("#length").val();
-    console.log(length);
-    /!* val=1表示被选中,val=0表示未被选 *!/
-    if ($("#all").val() == 0) {
-        for (let i = 1; i <= length; i++) {
-            sum += parseFloat($("#commoditySum" + i).text());
-            console.log($("#commoditySum" + i).text());
-            console.log(i);
-        }
-        $("#money").text(sum);
-        /!* 所有选框都val为1 *!/
-        console.log(sum);
-        console.log(typeof sum);
-        $("input[type='checkbox']").val(1);
-        //console.log($("#all").val());
-        //$("#all").val(1);
-    } else {
-        /!* 反选 即在被选中时（val=1时）再次点击，值变为0*!/
-        $("#money").text(0);
-        $("input[type='checkbox']").val(0);
-        /!* $("#all").val(0); *!/
-    }
-}*/
-
 /* 被选中的放入订单 */
-function checkSome() {
-    for (var i = 0; i <= 2; i++) {
+/*function checkSome() {
+    var len = $("input:checkbox:checked").length;
+    console.log(len);
+    var cid = $("#commodityId" + cid).val();
+    for (var i = 0; i <= len; i++) {
         if ($("#check" + i).val() == 0) {
             continue;
         }
-        var orders = new Array(2);
-        for (var i = 0; i < 2; i++) {
+        /!*var orders = new Array(2);*!/
+        for (var i = 0; i < len; i++) {
             let j=i+1;
-            var order = {};
-            order["oid"] = j;
-            order["cid"] = $("#commodityId" + j).val();
-            /* order["userName"] = userName; */
-            order["cnum"] = $("#commodityNum" + j).val();
-            orders[i] = order;
-            var json = JSON.stringify(orders);
-        }
-        /*console.log(json);*/
-    }
+            //let oid = i+1;
+            //var cid = $("#commodityId" + j).val();
+            //var cnum = $("#commodityNum" + j).val();
+            //console.log(oid);
+            console.log(userName);
+            console.log(cid);
+            console.log(cnum);
 
+        }
+    }
     $.ajax({
-        url: "#",
-        type: "post",
+        url: "orderServlet",
+        type: "POST",
         dataType: "json",
         data: {
-            json
+            //orderId: oid,
+            commodityId: cid,
+            userName: userName,
+            commodityNum: cnum,
+        },
+        success: function(data) {
+            //alert("已结算");
+            //window.location.href = "userOrder";
+        }
+    });
+
+}*/
+
+function apply(cid){
+    let cnum = $("#commodityNum" + cid).val();
+    $.ajax({
+        url: "orderServlet",
+        type: "POST",
+        dataType: "json",
+        data: {
+            //orderId: oid,
+            commodityId: cid,
+            userName: userName,
+            commodityNum: cnum,
         },
         success: function(data) {
             alert("已结算");
             window.location.href = "userOrder";
         }
     });
-
 }
 
 window.onload = function() {
@@ -207,7 +204,7 @@ window.onload = function() {
                 let cname =data[k].commodityName;
                 let cinformation = data[k].commodityInformation;
                 let cprice = data[k].commodityPrice;
-                let cnum = data[k].commodityNum;
+                var cnum = data[k].commodityNum;
                 /* 初始总价 */
                 sum = parseFloat(cprice * cnum);
                 //console.log(sum);
@@ -239,7 +236,9 @@ window.onload = function() {
 					<div class="cell c-action">
 						<a href="#" id="remove" class="remove" onclick="del(` + cid + `)">移除商品</a>
 					</div>
-					
+					<div class="cell c-action">
+					<a href="#" id="apply" class="apply" onclick="apply(` + cid + `)">结算</a>
+					</div>
 					<input id="length" type="hidden" value="` + length + `">
 					
 				</div>`
