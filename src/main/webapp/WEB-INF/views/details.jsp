@@ -89,7 +89,7 @@
             <div class="add-cart" onclick="add()">
                 <a href="#">加入购物车</a>
             </div>
-            <input class="input" type="hidden" name="orderId" id="num" value="1">
+            <input class="input" type="hidden" name="num" id="num" value="1">
         </div>
     </div>
 </div>
