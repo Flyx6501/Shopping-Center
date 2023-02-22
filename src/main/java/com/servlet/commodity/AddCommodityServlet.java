@@ -58,10 +58,11 @@ public class AddCommodityServlet extends HttpServlet {
         String commodityName = request.getParameter("commodityName");
         Double commodityPrice = Double.valueOf(request.getParameter("commodityPrice"));
         Integer commodityStock = Integer.valueOf(request.getParameter("commodityStock"));
-        String commodityInformation=request.getParameter("commodityInformation");
+        String commodityInformation=request.getParameter("commodityInformation" );
+        String photo=request.getParameter("commodityPhoto");
         Connection c = (Connection) JDBCUtil.getConnection();
         CommodityDaoImpl dao = new CommodityDaoImpl();
-        boolean flag = dao.addCommodity(c,commodityName,commodityPrice,commodityStock,commodityInformation);
+        boolean flag = dao.addCommodity(c,commodityName,commodityPrice,commodityStock,commodityInformation,photo);
         if (flag){
             JSONObject json=new JSONObject();
             json.put("msg",200);

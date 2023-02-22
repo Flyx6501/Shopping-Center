@@ -54,7 +54,7 @@ public interface CommodityDao {
      * @author Qgs123
      * @date 2022/11/10 9:41
      **/
-    boolean addCommodity(Connection c,String commodityName,Double commodityPrice,int commodityStock,String commodityInformation);
+    boolean addCommodity(Connection c,String commodityName,Double commodityPrice,int commodityStock,String commodityInformation,String photo);
     /** 更新商品库存信息
      * @param c 连接数据库
      * @param commodityId 商品的id

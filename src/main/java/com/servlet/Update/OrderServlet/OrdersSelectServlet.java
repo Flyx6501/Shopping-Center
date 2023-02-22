@@ -1,4 +1,4 @@
-package com.servlet.OrderServlet;
+package com.servlet.Update.OrderServlet;
 
 import com.mysql.jdbc.Connection;
 import com.service.OrdersDaoImpl;
@@ -64,12 +64,12 @@ public class OrdersSelectServlet extends HttpServlet {
         String userName = req.getParameter("userName");
         Connection c= (Connection) JDBCUtil.getConnection();
         OrdersDaoImpl dao=new OrdersDaoImpl();
-        List<Object> list = dao.selectOrderByuserName(c, userName);
-        JSONObject json=new JSONObject();
-        json.put("msg",list);
-        PrintWriter out=resp.getWriter();
-        out.println(json);
-        out.close();
+//        List<Object> list = dao.selectOrderByuserName(c, userName);
+//        JSONObject json=new JSONObject();
+//        json.put("msg",list);
+//        PrintWriter out=resp.getWriter();
+//        out.println(json);
+//        out.close();
 
 
     }

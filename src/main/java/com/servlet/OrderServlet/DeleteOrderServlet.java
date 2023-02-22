@@ -16,14 +16,14 @@ import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
 
-/**将商品添加进订单
+/**用户订单删除
  * @author Qgs123
  * @version 1.0
- * @date 2023/2/21 10:56
+ * @date 2023/2/21 11:59
  **/
-public class OrderServlet extends HttpServlet {
-     OrdersDao ordersDao=new OrdersDaoImpl();
-     CommodityDao commodityDao=new CommodityDaoImpl();
+public class DeleteOrderServlet extends HttpServlet {
+    CommodityDao commodityDao = new CommodityDaoImpl();
+    OrdersDao ordersDao=new OrdersDaoImpl();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req, resp);
@@ -34,14 +34,18 @@ public class OrderServlet extends HttpServlet {
         resp.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html;charset=UTF-8");
         String userName=String.valueOf(req.getParameter("userName"));
-        List<Map> order= ordersDao.getOrderByUserName(userName);
+        List<Map> car= ordersDao.getOrderByUserName(userName);
         Integer commodityId = Integer.valueOf(req.getParameter("commodityId"));
-        Integer commodityNum = Integer.valueOf(req.getParameter("commodityNum"));
-        Integer userId=ordersDao.getUserIdByName(userName);
-        ordersDao.addCommodity(userId,commodityId,commodityNum);
-        List<Commodity> list=commodityDao.getUserCommodityList(userId);
+        Integer userId=0;
+        for(Map commodity : car){
+            if(commodity.get("order_commodity_id") == commodityId){
+                    userId =  Integer.parseInt(commodity.get("user_id").toString());
+                    ordersDao.deleteCommodity(userId,commodityId);
+            }
+        }
+        List<Commodity> list =  ordersDao.getOrderCommodityList(userId);
         JSONObject json=new JSONObject();
-        json.put("order",list);
+        json.put("commodity",list);
         PrintWriter out=resp.getWriter();
         out.println(json);
         out.close();

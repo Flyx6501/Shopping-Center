@@ -1,55 +1,60 @@
 package com.bean;
 
-/**
- * 定义订单类的Bean
- *
- * @author l666888999
- * @version 1.0
- * @date 2022/11/24 19:29
+import com.service.CommodityService;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+/** 订单类
+ * @author Qgs123
+ * @date 2023/02/21 22:01
  **/
 public class Orders {
-    private int orderId;
-   private int commodityId;
-   private int commodityNumber;
+   @Autowired
+    private CommodityService commodityService;
+   private Map<String,Integer> orders;
+   private Integer orderCommodityCount;
+   private Double orderPriceCount;
+   private List<Commodity> commodityList;
 
-    public Orders(int orderId, int commodityId, int commodityNum) {
-        this.orderId = orderId;
-        this.commodityId = commodityId;
-        this.commodityNumber = commodityNum;
-    }
-    public Orders(){
-
-    }
-    public int getOrderId() {
-        return orderId;
+    public Orders() {
     }
 
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
+    public CommodityService getCommodityService() {
+        return commodityService;
     }
 
-    public int getCommodityId() {
-        return commodityId;
+    public Integer getOrderCommodityCount() {
+        return orderCommodityCount;
     }
 
-    public void setCommodityId(int commodityId) {
-        this.commodityId = commodityId;
+    public Map<String, Integer> getOrders() {
+        return orders;
     }
 
-    public int commodityNumber() {
-        return commodityNumber;
+    public List<Commodity> getCommodityList() {
+        return commodityList;
     }
 
-    public void commodityNumber(int commodityNumber) {
-        this.commodityNumber = commodityNumber;
+    public Double getOrderPriceCount() {
+        return orderPriceCount;
     }
 
-    @Override
-    public String toString() {
-        return "Orders{" +
-                "orderId=" + orderId +
-                ", commodityId=" + commodityId +
-                ", commodityNum=" + commodityNumber +
-                '}';
+    public Orders(Map<String, Integer> order) {
+        this.orders = orders;
+        this.commodityList = new ArrayList<>();
+        this.orderPriceCount = Double.valueOf(0);
+        for(String commodityId:orders.keySet()){
+            Commodity cc =commodityService.getOne(Integer.parseInt(commodityId));
+            this.commodityList.add(cc);
+        }
+        for(Commodity commodity:commodityList){
+            String commodityId = String.valueOf(commodity.getCommodityId());
+            this.orderCommodityCount += orders.get(commodityId);
+            this.orderPriceCount += commodity.getCommodityPrice() * orders.get(commodityId);
+
+        }
     }
 }

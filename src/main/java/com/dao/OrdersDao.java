@@ -1,51 +1,68 @@
 package com.dao;
 
+import com.bean.Commodity;
 import com.bean.Orders;
 import com.mysql.jdbc.Connection;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
-/**
- * 订单类的接口
- *
- * @author l666888999
- * @version 1.0
- * @date 2022/11/24 20:02
+/** 订单
+ * @author Qgs123
+ * @date 2023/02/21 16:25
  **/
 public interface OrdersDao {
-    /** 订单的插入
-         * @param c
-         * @param orderId
-         * @param commodityId
-         * @param commodityNum
-         * @return boolean
-     * @author l666888999
-     * @date 2022/11/27 21:44
+  /** 获取订单的用户信息
+       * @param userName  用户名
+       * @return java.util.List<java.util.Map>
+   * @author Qgs123
+          * @date 2023/02/21 11:31
+          **/
+   List<Map> getOrderByUserName(String userName);
+   /** 用户订单详情
+    * @param userId 用户id
+    * @return java.util.List<com.bean.Commodity>
+    * @author Qgs123
+    * @date 2023/02/21 15:16
+    **/
+    List<Commodity> getOrderCommodityList(Integer userId);
+    /** 获取全部订单列表
+     * @return java.util.List<com.bean.Commodity>
+     * @author Qgs123
+     * @date 2023/02/21 16:29
      **/
-    boolean insertOrder(Connection c, int orderId, int commodityId, int commodityNum);
-    /** 通过用户名选择订单
-         * @param c
-         * @param userName
-         * @return java.util.List<java.lang.Object>
-     * @author l666888999
-     * @date 2022/12/06 21:41
-     **/
-    List<Object> selectOrderByuserName(Connection c, String userName);
-    /** 进行订单的删除
-         * @param c
-         * @return java.util.List<java.lang.Object>
-     * @author l666888999
-     * @date 2022/12/06 21:42
-     **/
-    List<Object> selectOrders(Connection c);
-    /** 进行订单的删除
-         * @param c
-         * @param commodityName
-         * @return boolean
-     * @author l666888999
-     * @date 2022/12/06 22:09
-     **/
-    boolean deleteOrders(Connection c,String commodityName) throws SQLException;
+    List<Map> getAllOrderList(String userName);
+   /** Map
+        * @param commodityId  商品id
+        * @return java.util.Map
+    * @author Qgs123
+           * @date 2023/02/21 11:32
+           **/
+    Map getCommodityById(String commodityId);
+/** 删除订单
+     * @param userId 用户id
+     * @param commodityId 商品id
+     * @return java.lang.Integer
+ * @author Qgs123
+        * @date 2023/02/21 11:33
+        **/
+   Integer deleteCommodity(Integer userId,Integer commodityId);
+   /** 订单根据用户用查找用户id
+        * @param userName  用户名
+        * @return java.lang.Integer
+    * @author Qgs123
+           * @date 2023/02/21 11:35
+           **/
+    Integer getUserIdByName(String userName);
+/** 添加订单
+     * @param userId
+     * @param commodityId
+     * @param count
+     * @return java.lang.Integer
+ * @author Qgs123
+        * @date 2023/02/21 11:43
+        **/
+    Integer addCommodity(Integer userId,Integer commodityId,Integer count);
 
 }

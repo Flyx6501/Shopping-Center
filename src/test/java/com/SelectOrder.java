@@ -21,8 +21,8 @@ public class SelectOrder {
         try {
              c = (Connection) JDBCUtil.getConnection();
             OrdersDaoImpl test = new OrdersDaoImpl();
-            List<Object> select = test.selectOrderByuserName(c, "123456");
-            System.out.println(select);
+//            List<Object> select = test.selectOrderByuserName(c, "123456");
+//            System.out.println(select);
         }catch (Exception e){
             e.printStackTrace();
         }finally {
@@ -39,8 +39,8 @@ public class SelectOrder {
         try {
             c = (Connection) JDBCUtil.getConnection();
             OrdersDaoImpl test = new OrdersDaoImpl();
-            List<Object> select = test.selectOrders(c);
-            System.out.println(select);
+//            List<Object> select = test.selectOrders(c);
+//            System.out.println(select);
         }catch (Exception e){
             e.printStackTrace();
         }finally {
@@ -56,8 +56,8 @@ public class SelectOrder {
         Connection c=null;
         try {
             c = (Connection) JDBCUtil.getConnection();
-           OrdersDaoImpl test=new OrdersDaoImpl();
-           test.deleteOrders(c,"111");
+//           OrdersDaoImpl test=new OrdersDaoImpl();
+//           test.deleteOrders(c,"111");
 
         }catch (Exception e){
             e.printStackTrace();
