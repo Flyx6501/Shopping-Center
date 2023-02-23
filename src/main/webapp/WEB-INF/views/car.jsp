@@ -69,10 +69,10 @@
     <div class="cart">
         <div class="cart-head">
             <div class="column g-select">
-                <div class="select-all">
+                <%--<div class="select-all">
                     <input type="checkbox" class="all each" id="all" value="0">
                     全选
-                </div>
+                </div>--%>
             </div>
             <div class="column g-goodsname">商品名称</div>
             <div class="column g-props">商品信息</div>
@@ -91,7 +91,10 @@
                 <div class="right-compute">
                     <div class="btn">
                         <!-- 结算页 -->
-                        <input type="submit" id="submitBtn" class="submit-btn" value="结算" onclick="checkSome()">
+                        <%--<input type="submit" id="submitBtn" class="submit-btn" value="结算" onclick="checkSome()">--%>
+                        <%--<div onclick="checkSome()">
+                            <a href="#">结算</a>
+                        </div>--%>
                     </div>
                     <div class="price-sum">
                         <div class="price-show">总价是：</div>
