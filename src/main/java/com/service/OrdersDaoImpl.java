@@ -245,11 +245,11 @@ public class OrdersDaoImpl implements OrdersDao {
             StringBuffer ss=new StringBuffer();
             ss.append(" select b.order_id,c.user_username,a.commodity_name, b.order_commodity_num,a.commodity_price from `commodity` a,`order` b,`user` c");
             ss.append(" where a.commodity_id = b.order_commodity_id and b.order_user_id = c.user_id ");
-            if(userName!=null && userName !=""){
+            if(userName!=null && userName !="" && userName != "null"){
                 ss.append(" and c.user_username =? ");
             }
             ps=con.prepareStatement(String.valueOf(ss));
-            if (userName!=null && userName !=""){
+            if (userName!=null && userName !="" && userName != "null"){
                 ps.setString(1,userName);
             }
             rs=ps.executeQuery();

@@ -52,6 +52,7 @@ layui.use(['table', 'laypage', 'layer'], function() {
                 }
             }
         //});
+
     });
 
     $('#orderSearch').on('click', function () {
